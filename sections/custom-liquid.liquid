@@ -1,0 +1,29 @@
+<div class="spaced-section{% unless section.settings.skip_container %} container{% endunless %}">
+  {{ section.settings.custom_liquid }}
+</div>
+
+{% schema %}
+  {
+    "name": "Custom Liquid / HTML",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "skip_container",
+        "label": "Full page width",
+        "default": false
+      },
+      {
+        "type": "liquid",
+        "id": "custom_liquid",
+        "label": "Custom Liquid",
+        "default": "Add Liquid code or HTML to create advanced customizations."
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Liquid / HTML"
+      }
+    ]
+  }
+{% endschema %}

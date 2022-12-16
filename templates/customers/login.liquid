@@ -1,0 +1,117 @@
+<div class="section-banner">
+  <div class="banner banner--no-breadcrumbs{% if settings.account_show_hero_bg %} banner--bg banner--bg-color{% endif %}">
+    <div class="banner__text container" data-cc-animate>
+      <h1 class="login-content">{{ 'customer.login.title' | t }}</h1>
+
+      <div class="recover-content" hidden>
+        <h1>{{ 'customer.recover_password.title' | t }}</h1>
+        <div class="rte align-center">
+          {{ 'customer.recover_password.subtext' | t }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container spaced-section">
+  <div class="section-content">
+    <div class="general-form login-content" data-cc-animate data-cc-animate-delay="0.1s">
+      {% form 'customer_login' %}
+        {{ form.errors | default_errors }}
+
+        <div id="login_email" class="large_form">
+          <label for="customer_email" class="is-required">{{ 'customer.login.email' | t }}</label>
+          <input class="large input"
+                type="email"
+                name="customer[email]"
+                id="customer_email"
+                autocomplete="email"
+                aria-required="true"
+                required>
+        </div>
+
+        {%- if form.password_needed -%}
+          <div id="login_password" class="large_form">
+            <label for="customer_password" class="is-required">{{ 'customer.login.password' | t }}</label>
+            <input class="large input password"
+                  type="password"
+                  name="customer[password]"
+                  id="customer_password"
+                  aria-required="true"
+                  required>
+            <p class="forgot-password align-right">
+              <button type="button" class="link" onclick="toggleContent(true);">
+                {{- 'customer.login.forgot_password' | t -}}
+              </button>
+            </p>
+          </div>
+        {%- endif -%}
+
+        <div class="action_bottom">
+          <p>
+            <button class="button" type="submit">{{ 'customer.login.sign_in' | t }}</button>
+          </p>
+          {%- assign register_text = 'customer.login.create_new_account' | t -%}
+          {%- unless register_text == blank -%}
+            <p>{{ register_text | customer_register_link }}</p>
+          {%- endunless -%}
+        </div>
+      {% endform %}
+
+      {%- comment -%}
+        Guest Login form for shops with optional customer accounts.
+        This form is displayed only when users click on the checkout link on the cart page.
+      {%- endcomment -%}
+
+      {% if shop.checkout.guest_login %}
+        <div id="guest" class="spaced-row">
+          <h3>{{ 'customer.login.guest_title' | t }}</h3>
+
+          {% form 'guest_login' %}
+            <button class="button" type="submit">{{ 'customer.login.guest_continue' | t }}</button>
+          {% endform %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="general-form recover-content" hidden>
+      {% form 'recover_customer_password' %}
+        {{ form.errors | default_errors }}
+
+        <div id="recover_email" class="large_form">
+          <label class="is-required" for="email">{{ 'customer.recover_password.email' | t }}</label>
+          <input class="input" type="email" name="email" id="recover-email" autocomplete="email" aria-required="true" required>
+        </div>
+        <div class="action_bottom">
+          <p>
+            <button class="button" type="submit">{{ 'customer.recover_password.submit' | t }}</button>
+          </p>
+          <p class="note">
+            <button type="button" class="link" onclick="toggleContent(false);">
+              {{- 'customer.recover_password.cancel' | t -}}
+            </button>
+          </p>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</div>
+
+<script>
+  const loginEls = document.querySelectorAll('.login-content');
+  const recoverEls = document.querySelectorAll('.recover-content');
+
+  function toggleContent(recover) {
+    loginEls.forEach((el) => {
+      el.hidden = recover;
+    });
+
+    recoverEls.forEach((el) => {
+      el.hidden = !recover;
+    });
+  }
+
+  if (window.location.hash == '#recover') {
+    toggleContent(true);
+  }
+</script>

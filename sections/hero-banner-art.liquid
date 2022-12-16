@@ -1,0 +1,152 @@
+{%- liquid
+  assign bg_class = ''
+  assign has_image = false
+
+  unless section.settings.bg_style == 'none'
+    if section.settings.show_featured_image
+      if article.image
+        assign has_image = true
+        assign img = article.image
+      endif
+    elsif section.settings.image != blank
+      assign has_image = true
+      assign img = section.settings.image
+    endif
+    
+    if section.settings.bg_style == 'image' and has_image
+      assign bg_class = ' banner--bg banner--bg-image'
+    else
+      assign bg_class = ' banner--bg banner--bg-color'
+    endif
+  endunless
+-%}
+
+{%- if settings.hero_overlap > 0 and section.settings.bg_style == 'none' -%}
+  {%- style -%}
+    #shopify-section-{{ section.id }} + .shopify-section .section-content { margin-top: 0; }
+    #shopify-section-{{ section.id }} + .shopify-section .spaced-section .section-content { padding: 0; }
+  {%- endstyle -%}
+{%- endif -%}
+
+<div class="banner{{ bg_class }}{% unless settings.show_breadcrumbs %} banner--no-breadcrumbs{% endunless %}">
+  {%- if section.settings.bg_style == 'image' and has_image -%}
+    {% render 'hero-banner-image', img: img %}
+    <span class="banner__overlay"></span>
+  {%- endif -%}
+  
+  <div class="banner__text container reading-width" data-cc-animate>
+    <h1>{{ article.title }}</h1>
+    {%- if section.settings.show_date -%}
+      <div class="meta" data-cc-animate data-cc-animate-delay="0.1s">
+        <span class="published meta__item">
+          <time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+            {{ article.published_at | date: format: 'month_date_year' }}
+          </time>
+        </span>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if settings.show_breadcrumbs -%}
+    {% render 'breadcrumbs' %}
+  {%- endif -%}
+</div>
+
+{% schema %}
+  {
+    "name": "Hero banner",
+    "class": "section-banner banner-candidate",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "The hero banner contains the main page title (h1). If you choose to hide it, we advise you to provide an h1 title in another section (image banner or background video) for SEO purposes."
+      },
+      {
+        "type": "header",
+        "content": "Style"
+      },
+      {
+        "type": "select",
+        "id": "bg_style",
+        "label": "Background style",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "color",
+            "label": "Color"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          }
+        ],
+        "default": "image"
+      },
+      {
+        "type": "paragraph",
+        "content": "Height and color settings can be found in Theme Settings > Hero Banners."
+      },
+      {
+        "type": "header",
+        "content": "Image"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_featured_image",
+        "label": "Use featured image",
+        "default": true
+      },
+      {
+        "type": "paragraph",
+        "content": "Alternatively, select a custom image to show on ALL articles that use this template."
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "For best results, use an image with 16:9 aspect ratio and width of 3200px."
+      },
+      {
+        "type": "select",
+        "id": "image_align",
+        "label": "Image alignment",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "header",
+        "content": "Date"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_date",
+        "label": "Show article published date",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

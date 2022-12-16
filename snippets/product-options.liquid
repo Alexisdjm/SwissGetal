@@ -1,0 +1,122 @@
+{%- if product.variants.size > 1 -%}
+  <div class="product-form-block product-options no-js-hidden" data-show-availability="{{ block.settings.enable_dynamic_availability }}" {{ block.shopify_attributes }}>
+    {%- for option in product.options_with_values -%}
+      {%- assign swatches = false -%}
+
+      {%- if settings.swatch_enabled and option.name == settings.swatch_option_name -%}
+        {%- assign swatches = true -%}
+        <style>
+          {%- if settings.swatch_images -%}
+            {%- for value in option.values -%}
+              [data-swatch="{{ value | replace: '"', '' | downcase }}"]::before { background-image: url({{ value | handle | append: '.png' | file_img_url: '48x48', crop: 'center' }}); }
+            {%- endfor -%}
+          {%- else -%}
+            {%- for value in option.values -%}
+              [data-swatch="{{ value | replace: '"', '' | downcase }}"]::before { background-color: {{ value | handle | remove: '-' }}; }
+            {%- endfor -%}
+          {%- endif -%}
+        </style>
+      {%- endif -%}
+
+      {%- liquid
+        assign show_size_chart = false
+        if block.settings.enable_size_chart and block.settings.size_chart_variant == option.name and block.settings.size_chart_page != blank
+          assign show_size_chart = true
+        endif
+      -%}
+
+      {%- if show_size_chart -%}
+        {%- capture size_chart_link -%}
+          <div class="size-chart-container">
+            <a href="{{ pages[block.settings.size_chart_page].url }}" target="_blank" class="size-chart-link">
+              {{ 'products.product.size_chart' | t }}
+            </a>
+            <div class="size-chart-content hidden">
+              <div class="size-chart">
+                <div class="size-chart__inner rte">
+                  {{ pages[block.settings.size_chart_page].content }}
+                </div>
+              </div>
+            </div>
+          </div>
+        {%- endcapture -%}
+      {%- endif -%}
+
+      {%- if block.settings.selector_style == 'dropdown' -%}
+        {%- capture option_id -%}
+          {{ section.id }}-{{ option.name | handle }}
+        {%- endcapture -%}
+        {%- capture selector_label -%}
+          <label id="{{ option_id }}-option">{{- option.name -}}</label>
+        {%- endcapture -%}
+
+        <div class="option-selector{% if swatches %} swatches{% endif %}" data-selector-type="dropdown">
+          {%- if show_size_chart -%}
+            <div class="option-selector__hdr">
+              {{ size_chart_link }}
+              {{ selector_label }}
+            </div>
+          {%- else -%}
+            {{ selector_label }}
+          {%- endif -%}
+          {% render 'custom-select',
+            id: option_id,
+            option_values: option.values,
+            selected_value: option.selected_value,
+            swatches: swatches
+          %}
+        </div>
+      {%- else -%}
+        <fieldset class="option-selector{% if swatches %} swatches{% endif %}" data-selector-type="buttons">
+          {%- if show_size_chart -%}
+            <div class="option-selector__hdr">
+              {{ size_chart_link }}
+              <legend class="label">{{- option.name -}}</legend>
+            </div>
+          {%- else -%}
+            <legend class="label">{{- option.name -}}{% if swatches %}: <em class="js-color-text">{{ option.selected_value }}</em>{% endif %}</legend>
+          {%- endif -%}
+          <div class="option-selector__btns">
+            {%- for value in option.values -%}
+              <input class="opt-btn js-option"
+                     type="radio"
+                     name="{{ section.id }}-{{ option.name | handle }}-option"
+                     id="{{ section.id }}-{{ option.name | handle }}-opt{{ forloop.index }}"
+                     value="{{ value | escape }}"
+                     {% if option.selected_value == value %}checked{% endif %}>
+              <label class="opt-label"{% if swatches %} data-swatch="{{ value | replace: '"', '' | downcase }}"{% endif %} for="{{ section.id }}-{{ option.name | handle }}-opt{{ forloop.index }}">{{ value }}</label>
+            {%- endfor -%}
+          </div>
+        </fieldset>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- else -%}
+  <div class="product-form-block single-variant" {{ block.shopify_attributes }}>
+    {%- for option in product.options_with_values -%}
+      {%- liquid
+        assign opt_idx = 'option' | append: forloop.index
+        assign value = product.variants.first[opt_idx]
+        assign swatches = false
+
+        if settings.swatch_enabled and option.name == settings.swatch_option_name
+          assign swatches = true
+          assign swatch_value = value | replace: '"', '' | downcase
+        endif
+      -%}
+      <style>
+        {%- if settings.swatch_images -%}
+          [data-swatch="{{ swatch_value }}"]::before { background-image: url({{ value | handle | append: '.png' | file_img_url: '48x48', crop: 'center' }}); }
+        {%- else -%}
+          [data-swatch="{{ swatch_value }}"]::before { background-color: {{ value | handle | remove: '-' }}; }
+        {%- endif -%}
+      </style>
+      <div class="single-variant__row">
+        <span class="label label--inline">{{ option.name }}:</span> <em>{{ value }}</em>
+        {%- if swatches -%}
+          <div data-swatch="{{ swatch_value }}"></div>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+{%- endif -%}

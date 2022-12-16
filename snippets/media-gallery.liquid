@@ -1,0 +1,93 @@
+{%- assign models = product.media | where: 'media_type', 'model' -%}
+
+<div class="media-gallery__main"{% if template.name == 'product' %} data-cc-animate data-cc-animate-delay="0.1s"{% endif %}>
+  {%- if product.media.size > 0 -%}
+    {%- if section.settings.show_all_images or template.name == 'product' -%}
+      {%- for media in product.media -%}
+        {% render 'media',
+          media: media,
+          featured_image: featured_image,
+          prod_lightbox: section.settings.prod_lightbox,
+          prod_lightbox_zoom: section.settings.prod_lightbox_zoom,
+          enable_video_looping: section.settings.enable_video_looping
+        %}
+      {%- endfor -%}
+    {%- else -%}
+      {% render 'media',
+        media: product.featured_media,
+        featured_image: featured_image,
+        prod_lightbox: section.settings.prod_lightbox,
+        prod_lightbox_zoom: section.settings.prod_lightbox_zoom,
+        enable_video_looping: section.settings.enable_video_looping
+      %}
+    {%- endif -%}
+  {%- else -%}
+    <div class="placeholder-wrapper">
+      {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+    </div>
+  {%- endif -%}
+
+  {%- if models.size > 0 -%}
+    <script type="application/json" class="model-json">
+      {{- product.media | where: 'media_type', 'model' | json -}}
+    </script>
+    <button class="view-in-space"
+            type="button"
+            data-shopify-model3d-first-id="{{ models.first.id }}"
+            data-shopify-model3d-id="{{ models.first.id }}"
+            data-shopify-first-title="{{ product.title | escape }}"
+            data-shopify-title="{{ product.title | escape }}"
+            data-shopify-xr
+            data-shopify-xr-hidden>
+      {%- render 'icon-3d-badge-full-color' -%}
+      <span class="view-in-space__text">{{ 'products.product.view_in_space' | t }}</span>
+    </button>
+  {%- endif -%}
+</div>
+
+{%- if product.media.size > 1 and section.settings.show_all_images or template.name == 'product' -%}
+  <div class="thumbnails" data-cc-animate data-cc-animate-delay="0.1s">
+    <div class="thumbnails__container">
+      <div class="thumbnails__scroller">
+        <div class="thumbnails__thumbs">
+          {%- for media in product.media -%}
+            <a class="thumb thumb--media-{{ media.media_type }}{% if media.preview_image == featured_image %} is-active{% endif %}" href="{{ media.preview_image | image_url }}" data-media-type="{{ media.media_type }}" data-media-id="{{ media.id }}">
+
+              <div class="thumb__image lazyload-placeholder" style="padding-top: {{ 1 | divided_by: media.preview_image.aspect_ratio | times: 100 }}%;">
+                <img data-src="{{ media.preview_image | image_url: width: 80 }}"
+                     data-srcset="{{ media.preview_image | image_url: width: 160 }} 2x"
+                     class="img-fit lazyload"
+                     width="80"
+                     height="{{ 80 | divided_by: media.preview_image.aspect_ratio | round }}"
+                     alt="{{ media.preview_image.alt | escape }}">
+                <noscript>
+                  <img src="{{ media.preview_image | image_url: width: 80 }}" class="img-fit" width="80" height="{{ 80 | divided_by: media.preview_image.aspect_ratio | round }}" alt="{{ media.preview_image.alt | escape }}">
+                </noscript>
+              </div>
+
+              {%- if media.media_type == 'video' or media.media_type =='external_video' -%}
+                <div class="thumbnail__badge">
+                  {% render 'icon-video-badge-full-color' %}
+                </div>
+              {%- endif -%}
+
+              {%- if media.media_type == 'model' -%}
+                <div class="thumbnail__badge">
+                  {% render 'icon-3d-badge-full-color' %}
+                </div>
+              {%- endif -%}
+            </a>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+    <div class="thumbnails__nav">
+      <button type="button" class="thumbnails__prev" aria-label="{{ 'general.accessibility_labels.previous' | t }}">
+        {%- render 'svg-chevron-left' -%}
+      </button>
+      <button type="button" class="thumbnails__next" aria-label="{{ 'general.accessibility_labels.next' | t }}">
+        {%- render 'svg-chevron-right' -%}
+      </button>
+    </div>
+  </div>
+{%- endif -%}

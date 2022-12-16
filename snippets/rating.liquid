@@ -1,0 +1,23 @@
+{%- comment -%}
+  Parameters:
+  - rating_value: {Number} - The rating value
+  - rating_count: {Number} [optional] - The number of ratings
+{%- endcomment -%}
+
+{%- liquid
+  assign decimal = rating_value.rating | modulo: 1
+  assign stars_rating = rating_value.rating | floor
+
+  if decimal >= 0.3 and decimal <= 0.7
+    assign stars_rating = stars_rating | plus: 0.5
+  elsif decimal > 0.7
+    assign stars_rating = rating_value.rating | ceil
+  endif
+-%}
+
+<div class="rating" role="img" aria-label="{{ 'general.accessibility_labels.star_reviews_info' | t: rating_value: rating_value, rating_max: rating_value.scale_max }}">
+  <span class="rating__stars" aria-hidden="true" style="--rating: {{ stars_rating }}; --rating-max: {{ rating_value.scale_max }};">★★★★★</span>
+</div>
+{%- if rating_count != blank -%}
+  <p class="rating__count">({{ rating_count }})</p>
+{%- endif -%}

@@ -1,0 +1,558 @@
+{%- liquid
+  if section.settings.size contains 'page'
+    assign full_width = false
+  else
+    assign full_width = true
+  endif
+
+  if section.settings.size contains 'fixed'
+    assign height_class = 'fixed'
+  elsif section.settings.size contains 'viewport'
+    assign height_class = 'viewport'
+    assign sizes = '(max-aspect-ratio: 1/2) 50vh, 100vw'
+  else
+    assign height_class = 'auto'
+  endif
+
+  assign img = section.settings.image_desktop
+  assign img_crop = section.settings.image_align_mobile
+  assign img_align = 'img-fit--' | append: section.settings.image_align_desktop
+  assign m_img_align = 'img-fit--mob-' | append: section.settings.image_align_mobile
+
+  if section.settings.image_mobile != blank
+    assign m_img = section.settings.image_mobile
+  else
+    assign m_img = section.settings.image_desktop
+  endif
+
+  if section.settings.text_bg_color contains ',0'
+    assign bg_color = false
+  else
+    assign bg_color = section.settings.text_bg_color
+  endif
+-%}
+
+{%- style -%}
+  {%- if section.settings.size contains 'fixed' -%}
+    #{{ section.id }} .image-banner { min-height: {{ section.settings.height_mobile }}px; }
+    @media (max-width: 480px) {
+      #{{ section.id }} .mobile-stacked .image-banner__image { min-height: {{ section.settings.height_mobile }}px; }
+    }
+    @media (min-width: 480px) {
+      #{{ section.id }} .image-banner {
+        min-height: calc({{ section.settings.height_mobile }}px + ({{ section.settings.height_desktop }} - {{ section.settings.height_mobile }}) * ((100vw - 480px) / 1120));
+      }
+    }
+    @media (min-width: 1600px) {
+      #{{ section.id }} .image-banner { min-height: {{ section.settings.height_desktop }}px; }
+    }
+  {%- elsif section.settings.size contains 'auto' -%}
+    #{{ section.id }} .image-banner::after,
+    #{{ section.id }} .image-banner__image::after {
+      {%- if section.settings.image_desktop != blank -%}
+        padding-top: {{ 1 | divided_by: img.aspect_ratio | times: 100 }}%;
+      {%- else -%}
+        padding-top: 56.25%;
+      {%- endif -%}
+    }
+    {%- if section.settings.image_mobile != blank -%}
+      @media (max-width: 640px) {
+        #{{ section.id }} .image-banner::after,
+        #{{ section.id }} .image-banner__image::after {
+          padding-top: {{ 1 | divided_by: m_img.aspect_ratio | times: 100 }}%;
+        }
+      }
+    {%- endif -%}
+  {%- endif -%}
+  {%- if section.settings.tint_opacity > 0 -%}
+    #{{ section.id }} .image-banner__image::after {
+      background-color: rgba({{ section.settings.tint_color.red }}, {{ section.settings.tint_color.green }}, {{ section.settings.tint_color.blue }}, {{ section.settings.tint_opacity | divided_by: 100.0 }});
+    }
+  {%- endif -%}
+  #{{ section.id }} .text-overlay { color: {{ section.settings.text_color }}; }
+  {%- if section.settings.text_box_style == 'bg' and bg_color != false -%}
+    #{{ section.id }} .text-overlay--bg {
+      background-color: rgba({{ section.settings.text_bg_color.red }}, {{ section.settings.text_bg_color.green }}, {{ section.settings.text_bg_color.blue }}, {{ section.settings.text_bg_opacity | divided_by: 100.0 }});
+    }
+    #{{ section.id }} .text-overlay--bg .button:hover {
+      border-color: {{ section.settings.text_color }};
+      background: {{ section.settings.text_color }};
+      color: {{ section.settings.text_bg_color }};
+    }
+  {%- elsif section.settings.text_box_style == 'border' -%}
+    #{{ section.id }} .text-overlay--border { border-color: {{ section.settings.text_bg_color }}; }
+  {%- endif -%}
+  {%- if settings.hero_overlap > 0 and full_width == false -%}
+    #shopify-section-{{ section.id }} + .shopify-section .section-content { margin-top: 0; }
+    #shopify-section-{{ section.id }} + .shopify-section .spaced-section .section-content { padding: 0; }
+  {%- endif -%}
+{%- endstyle -%}
+
+<div {% unless full_width %}class="spaced-section" {% endunless %}id="{{ section.id }}">
+  <div class="image-banner{% unless full_width %} container section-content section-content--no-padding{% endunless %}{% if section.settings.text_below_mobile and section.settings.size != 'full-viewport' %} mobile-stacked{% unless section.settings.text_box_style == 'bg' %} mobile-stacked--spaced{% endunless %}{% endif %} {{ height_class }}-height content-align-{{ section.settings.text_position | split: ' ' | first }} content-valign-{{ section.settings.text_position | split: ' ' | last }}">
+    <div class="image-banner__image has-overlay lazyload-placeholder">
+      {%- if img != blank -%}
+        <picture>
+          {%- if section.settings.size == 'full-viewport' -%}
+            {%- comment -%} ---------- Mobile / full height ---------- {%- endcomment -%}
+            {%- if m_img.height < 1500 -%}
+              {%- assign m_img_width = m_img.height | times: 0.5 | ceil -%}
+              <source data-srcset="{{ m_img | image_url: width: m_img_width, height: m_img.height, crop: img_crop }}"
+                      media="(max-width: 480px)"
+                      width="{{ m_img_width }}"
+                      height="{{ m_img.height }}">
+            {%- else -%}
+              <source data-srcset="{{ m_img | image_url: width: 750, height: 1500, crop: img_crop }} 750w
+                                   {%- if m_img.height >= 1712 %}, {{ m_img | image_url: width: 856, height: 1712, crop: img_crop }} 856w{% endif -%}"
+                      media="(max-width: 480px)"
+                      width="428"
+                      height="{{ 428 | divided_by: 0.5 | ceil }}">
+            {%- endif -%}
+
+          {%- elsif section.settings.size contains 'fixed' -%}
+            {%- comment -%} ---------- Mobile / fixed height ---------- {%- endcomment -%}
+            {%- liquid
+              assign m_height_2x = section.settings.height_mobile | times: 2
+              assign m_img_ratio = 428.0 | divided_by: section.settings.height_mobile
+            -%}
+            {%- if m_img.width < 750 or m_img.height < m_height_2x -%}
+              {%- comment -%} Image smaller than container {%- endcomment -%}
+              {%- liquid
+                if m_img.width < 750
+                  assign m_img_ratio = 375.0 | divided_by: section.settings.height_mobile
+                  assign m_img_width = m_img.width
+                  assign m_img_height = m_img.width | divided_by: m_img_ratio | ceil
+                else
+                  assign m_img_width = m_img.height | times: m_img_ratio | ceil
+                  assign m_img_height = m_img.height
+                endif
+              -%}
+              <source data-srcset="{{ m_img | image_url: width: m_img_width, height: m_img_height, crop: img_crop }}"
+                      media="(max-width: 480px)"
+                      width="{{ m_img_width }}"
+                      height="{{ m_img_height }}">
+            {%- else -%}
+              {%- comment -%} Image larger than container {%- endcomment -%}
+              <source data-srcset="{{ m_img | image_url: width: 750, height: m_height_2x, crop: img_crop }} 750w
+                                   {%- if m_img.width >= 856 %}, {{ m_img | image_url: width: 856, height: m_height_2x, crop: img_crop }} 856w{% endif -%}"
+                      media="(max-width: 480px)"
+                      width="428"
+                      height="{{ 428 | divided_by: m_img_ratio | ceil }}">
+            {%- endif -%}
+
+          {%- else -%}
+            {%- comment -%} ---------- Mobile / natural height ---------- {%- endcomment -%}
+            <source data-srcset="{%- if m_img.width < 750 %}{{ m_img | image_url }} {{ m_img.width }}w{% endif -%}
+                                 {%- if m_img.width >= 750 %}{{ m_img | image_url: width: 750 }} 750w{% endif -%}
+                                 {%- if m_img.width >= 856 %}, {{ m_img | image_url: width: 856 }} 856w{% endif -%}"
+                    media="(max-width: 480px)"
+                    width="428"
+                    height="{{ 428 | divided_by: m_img.aspect_ratio | ceil }}">
+
+          {%- endif -%}
+
+          {%- comment -%}
+          {%- if section.settings.image_mobile != blank and m_img.width >= 1280 and section.settings.size != 'full-viewport' -%}
+            <source data-srcset="{{ m_img | image_url: width: 1280 }} 1280w"
+                    media="(max-width: 640px)"
+                    width="640"
+                    height="{{ 640 | divided_by: m_img.aspect_ratio | ceil }}">
+          {%- endif -%}
+          {%- endcomment -%}
+
+          {%- comment -%} ---------- Desktop ---------- {%- endcomment -%}
+          <img data-srcset="{%- if img.width < 1200 %}{{ img | image_url }} {{ img.width }}w{% endif -%}
+                            {%- if img.width >= 1200 %}{{ img | image_url: width: 1200 }} 1200w{% endif -%}
+                            {%- if img.width >= 1440 %}, {{ img | image_url: width: 1440 }} 1440w{% endif -%}
+                            {%- if img.width >= 1680 %}, {{ img | image_url: width: 1680 }} 1680w{% endif -%}
+                            {%- if img.width >= 1920 %}, {{ img | image_url: width: 1920 }} 1920w{% endif -%}
+                            {%- if img.width >= 2560 %}, {{ img | image_url: width: 2560 }} 2560w{% endif -%}
+                            {%- if img.width >= 3200 %}, {{ img | image_url: width: 3200 }} 3200w{% endif -%}"
+               data-src="{{ img | image_url: width: 1680 }}"
+               {% unless full_width %}data-sizes="(min-width: 1280px) 1200px, (min-width: 992px) calc(100vw - 80px), (min-width: 768px) calc(100vw - 60px), 100vw"{% endunless %}
+               src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{ img.width }} {{ img.height }}'%3E%3C/svg%3E"
+               class="img-fit {{ img_align }} {{ m_img_align }} lazyload"
+               width="{{ img.width }}"
+               height="{{ img.height }}"
+               alt="{{ img.alt | escape }}">
+        </picture>
+        <noscript>
+          <img src="{{ img | image_url: width: 1680 }}" class="img-fit" width="{{ img.width }}" height="{{ img.height }}" alt="{{ img.alt | escape }}">
+        </noscript>
+      {%- else -%}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'img-fit placeholder dark lazyload' }}
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="text-overlay{% unless section.settings.text_box_style == 'none' %} text-overlay--box text-overlay--{{ section.settings.text_box_style }}{% endunless %}{% unless bg_color != false and bg_color != settings.col_page_bg and section.settings.text_box_style == 'bg' %} text-overlay--stacked-no-pad{% endunless %}">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'heading' -%}
+              {%- if block.settings.heading_h1 -%}
+                <h1 class="text-overlay__heading {{ block.settings.heading_size }}" data-cc-animate-delay="0.1s" data-cc-animate="cc-fade-in-up" {{ block.shopify_attributes }}>
+                  {{- block.settings.heading | newline_to_br -}}
+                </h1>
+              {%- else -%}
+                <h2 class="text-overlay__heading {{ block.settings.heading_size }}" data-cc-animate-delay="0.1s" data-cc-animate="cc-fade-in-up" {{ block.shopify_attributes }}>
+                  {{- block.settings.heading | newline_to_br -}}
+                </h2>
+              {%- endif -%}
+            {%- when 'text' -%}
+              <div class="text-overlay__text{% if block.settings.enlarge_text %} large-text{% endif %} rte" data-cc-animate-delay="0.2s" data-cc-animate="cc-fade-in-up" {{ block.shopify_attributes }}>
+                {{ block.settings.text }}
+              </div>
+            {%- when 'button' -%}
+              <div class="text-overlay__link" data-cc-animate-delay="0.3s" data-cc-animate="cc-fade-in-up" {{ block.shopify_attributes }}>
+                <a class="button button--hollow" {% if block.settings.button_link == blank %}role="link" aria-disabled="true"{% else %}href="{{ block.settings.button_link }}"{% endif %}>
+                  {{- block.settings.button_label | escape -}}
+                </a>
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Image banner",
+    "class": "banner-candidate",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image_desktop",
+        "label": "Image",
+        "info": "For best results, use a landscape shaped image with a minimum width of 3200px."
+      },
+      {
+        "type": "image_picker",
+        "id": "image_mobile",
+        "label": "Mobile image (optional)",
+        "info": "For best results, use a square or portrait shaped image. If no mobile image is provided, the desktop image will be used."
+      },
+      {
+        "type": "select",
+        "id": "image_align_desktop",
+        "label": "Desktop image alignment",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "select",
+        "id": "image_align_mobile",
+        "label": "Mobile image alignment",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "header",
+        "content": "Image tint"
+      },
+      {
+        "type": "color",
+        "id": "tint_color",
+        "label": "Color",
+        "default": "#000000"
+      },
+      {
+        "type": "range",
+        "id": "tint_opacity",
+        "min": 0,
+        "max": 80,
+        "step": 5,
+        "unit": "%",
+        "label": "Opacity",
+        "default": 20
+      },
+      {
+        "type": "header",
+        "content": "Layout"
+      },
+      {
+        "type": "select",
+        "id": "size",
+        "label": "Size",
+        "info": "Height is restricted to 1080px maximum",
+        "options": [
+          {
+            "value": "full-auto",
+            "label": "Full width / natural height"
+          },
+          {
+            "value": "full-fixed",
+            "label": "Full width / fixed height"
+          },
+          {
+            "value": "full-viewport",
+            "label": "Full width / full height"
+          },
+          {
+            "value": "page-auto",
+            "label": "Page width / natural height"
+          },
+          {
+            "value": "page-fixed",
+            "label": "Page width / fixed height"
+          }
+        ],
+        "default": "full-fixed"
+      },
+      {
+        "type": "range",
+        "id": "height_desktop",
+        "min": 200,
+        "max": 800,
+        "step": 10,
+        "unit": "px",
+        "label": "Fixed height (desktop)",
+        "default": 680
+      },
+      {
+        "type": "range",
+        "id": "height_mobile",
+        "min": 200,
+        "max": 600,
+        "step": 10,
+        "unit": "px",
+        "label": "Fixed height (mobile)",
+        "default": 400
+      },
+      {
+        "type": "header",
+        "content": "Text overlay"
+      },
+      {
+        "type": "select",
+        "id": "text_box_style",
+        "label": "Box style",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "bg",
+            "label": "Background"
+          },
+          {
+            "value": "border",
+            "label": "Border"
+          }
+        ],
+        "default": "none"
+      },
+      {
+        "type": "color",
+        "id": "text_bg_color",
+        "label": "Background / border color",
+        "default": "#000000"
+      },
+      {
+        "type": "range",
+        "id": "text_bg_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Background opacity",
+        "default": 50
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "select",
+        "id": "text_position",
+        "label": "Text position",
+        "options": [
+          {
+            "value": "left top",
+            "label": "Top left"
+          },
+          {
+            "value": "center top",
+            "label": "Top center"
+          },
+          {
+            "value": "right top",
+            "label": "Top right"
+          },
+          {
+            "value": "left center",
+            "label": "Middle left"
+          },
+          {
+            "value": "center center",
+            "label": "Middle center"
+          },
+          {
+            "value": "right center",
+            "label": "Middle right"
+          },
+          {
+            "value": "left bottom",
+            "label": "Bottom left"
+          },
+          {
+            "value": "center bottom",
+            "label": "Bottom center"
+          },
+          {
+            "value": "right bottom",
+            "label": "Bottom right"
+          }
+        ],
+        "default": "center center"
+      },
+      {
+        "type": "checkbox",
+        "id": "text_below_mobile",
+        "label": "Show text below image on mobile",
+        "info": "Does not apply to \"full height\" mode",
+        "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "heading",
+        "name": "Heading",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Talk about your brand"
+          },
+          {
+            "type": "select",
+            "id": "heading_size",
+            "label": "Heading size",
+            "options": [
+              {
+                "value": "h2",
+                "label": "Small"
+              },
+              {
+                "value": "h1",
+                "label": "Medium"
+              },
+              {
+                "value": "h0",
+                "label": "Large"
+              }
+            ],
+            "default": "h1"         
+          },
+          {
+            "type": "checkbox",
+            "id": "heading_h1",
+            "label": "Set as page heading (uses h1 tag)",
+            "info": "For optimum SEO, a page should only have one h1 and it should be the first heading on the page.",
+            "default": false
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "Text",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+          },
+          {
+            "type": "checkbox",
+            "id": "enlarge_text",
+            "label": "Enlarge text",
+            "default": false
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "Button",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label",
+            "default": "Read more"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image banner",
+        "blocks": [
+          {
+            "type": "heading"
+          },
+          {
+            "type": "text"
+          },
+          {
+            "type": "button"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

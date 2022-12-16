@@ -1,0 +1,152 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+<head>
+  <!-- Alchemy 4.2.3 -->
+  {% render 'head-tag' %}
+  <title>
+    {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  </title>
+  {% render 'social-meta-tags' %}
+  {{ 'styles.css' | asset_url | stylesheet_tag }}
+  {{ 'new-styles.css' | asset_url | stylesheet_tag }}
+  {{ content_for_header }}
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+</head>
+
+{%- liquid
+  assign body_classes = ''
+
+  if template != blank
+    assign template_name = template | replace: '.', ' ' | truncatewords: 1, '' | handle
+    assign body_classes = 'template-' | append: template_name
+  endif
+
+  if template contains 'customers'
+    assign body_classes = body_classes | append: ' template-customer-area'
+  endif
+-%}
+
+<body class="{{ body_classes }}" id="{{ page_title | handle }}">
+  {%- if settings.enable_transition_in -%}
+    <script>if ('IntersectionObserver' in window) document.body.classList.add('cc-animate-enabled');</script>
+  {%- endif -%}
+
+  <a class="skip-link visually-hidden" href="#main">{{ 'general.accessibility_labels.skip_to_content' | t }}</a>
+  {% section 'announcement' %}
+  {% section 'header' %}
+
+  <main id="main">
+    {%- if template.name == 'article' -%}
+      <article>
+    {%- endif -%}
+
+    <div class="main-content">
+      {{ content_for_layout }}
+    </div>
+
+    {%- if template.name == 'article' -%}
+      </article>
+    {%- endif -%}
+  </main>
+
+  {% section 'footer' %}
+  {% section 'popup' %}
+
+  <div class="hidden" aria-hidden="true">
+    {%- form 'customer', id: 'signup-form-response' -%}
+      {%- if form.posted_successfully? -%}
+        <div class="newsletter-response success">
+          <div class="h3 no-margin">{{ 'layout.signup.post_success' | t }}</div>
+        </div>
+      {%- elsif form.errors -%}
+        <div class="newsletter-response">
+          {%- for field in form.errors -%}
+            <p class="error">{{ field | capitalize }} - {{ form.errors.messages[field] }}</p>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+
+  <script>
+    window.theme = window.theme || {};
+    window.lazySizesConfig = window.lazySizesConfig || { optimumx: 2 };
+    {% if settings.show_currency_code -%}
+      theme.money_format = {{ shop.money_with_currency_format | json }};
+    {%- else -%}
+      theme.money_format = {{ shop.money_format | json }};
+    {%- endif %}
+    theme.money_container = '.theme-money';
+    theme.routes = {
+      search_url: '{{ routes.search_url }}',
+      cart_url: '{{ routes.cart_url }}',
+      cart_add_url: '{{ routes.cart_add_url }}'
+    };
+    theme.settings = {
+      enable_search: {{ settings.enable_search }},
+      enable_overlay_transition: {{ settings.enable_overlay_transition | json }},
+      hero_overlap: {{ settings.hero_overlap }},
+      page_use_contrast_logo: {{ settings.page_use_contrast_logo }},
+      prod_card_image_ratio: '{{ settings.prod_card_image_ratio }}'
+    };
+    theme.strings = {
+      addedToCart: {{ 'products.product.added_to_cart' | t | json }},
+      addingToCart: {{ 'products.product.adding_to_cart' | t | json }},
+      addressError: {{ 'map.errors.address_error' | t | json }},
+      addressNoResults: {{ 'map.errors.address_no_results' | t | json }},
+      addressQueryLimit: {{ 'map.errors.address_query_limit_html' | t | json }},
+      authError: {{ 'map.errors.auth_error' | t | json }},
+      buttonDefault: {{ 'products.product.add_to_cart' | t | json }},
+      buttonNoStock: {{ 'products.variant.no_stock' | t | json }},
+      buttonNoVariant: {{ 'products.variant.non_existent' | t | json }},
+      cartTermsConfirmation: {{ 'cart.terms.confirmation' | t | json }},
+      close: {{ 'general.accessibility_labels.close' | t | json }},
+      imageSlider: {{ 'general.slider.images' | t | json }},
+      next: {{ 'general.accessibility_labels.next' | t | json }},
+      onlyXLeft: {{ 'products.labels.only_x_left' | t: quantity: '[[ quantity ]]' | json }},
+      previous: {{ 'general.accessibility_labels.previous' | t | json }},
+      priceNonExistent: {{ 'products.variant.non_existent' | t | json }},
+      products_product_unit_price_separator: {{ 'products.product.unit_price_separator' | t | json }},
+      productsListingFrom: {{ 'products.listing.from' | t | json }},
+      searchResultsPages: {{ 'general.quick_search.pages' | t | json }},
+      searchSeeAll: {{ 'layout.search.see_all' | t | json }}
+    };
+    
+    theme.checkForBannerBehindHeader = () => {
+      const bodyClasses = document.body.classList;
+      const bc = document.querySelector('.main-content > .banner-candidate:first-child');
+      const isCustomerArea = bodyClasses.contains('template-customer-area');
+      const activeBanner = document.querySelector('.active-banner');
+      if (activeBanner) activeBanner.classList.remove('active-banner');
+      bodyClasses.remove('has-image-banner', 'has-color-banner', 'no-banner', 'show-contrast-logo', 'header-overlapping');
+
+      if ((bc && bc.classList.contains('section-banner')) || isCustomerArea) {
+        const bannerSection =  document.querySelector('.section-banner');
+        const banner = document.querySelector('.banner');
+        if (banner.classList.contains('banner--bg')) {
+          bannerSection.classList.add('active-banner');
+          if (banner.classList.contains('banner--bg-color')) {
+            bodyClasses.add('has-color-banner');
+          } else if (banner.classList.contains('banner--bg-image')) {
+            bodyClasses.add('has-image-banner');
+          }
+        }
+      } else if (bc && !bc.querySelector('.spaced-section')) {
+        bodyClasses.add('has-image-banner');
+        bc.classList.add('active-banner');
+      }
+
+      if (bodyClasses.contains('has-color-banner') || bodyClasses.contains('has-image-banner')) {
+        if (document.querySelector('.pageheader__contents--overlap')) bodyClasses.add('header-overlapping');
+        if (theme.settings.page_use_contrast_logo) bodyClasses.add('show-contrast-logo');
+      } else {
+        bodyClasses.add('no-banner');
+      }
+    }
+    theme.checkForBannerBehindHeader();
+  </script>
+
+  <script src="{{ 'vendor.min.js' | asset_url }}"></script>
+  <script src="{{ 'theme.js' | asset_url }}"></script>
+</body>
+</html>

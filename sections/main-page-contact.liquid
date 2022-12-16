@@ -1,0 +1,63 @@
+<div class="spaced-section" data-section-type="page-contact">
+  <div class="container section-content">
+    <div class="reading-width">
+      {%- if page.content -%}
+        <div class="rte spaced-row-bottom" data-cc-animate data-cc-animate-delay="0.2s">
+          {{ page.content }}
+        </div>
+      {%- endif -%}
+      
+      <div class="general-form" data-cc-animate data-cc-animate-delay="0.3s">
+        {% form 'contact' %}
+          {%- if form.posted_successfully? -%}
+            <p class="feedback">{{ 'contact.form.post_success' | t }}</p>
+          {%- endif -%}
+
+          {%- if form.errors -%}
+            <ul class="errors">
+              {% for field in form.errors %}
+                <li>{{ field | replace: 'body','Message' | capitalize }} - {{ form.errors.messages[field] }}</li>
+              {% endfor %}
+            </ul>
+          {%- endif -%}
+
+          <div class="large_form">
+            <label class="is-required" for="contact_name">{{ 'contact.form.name' | t }}</label>
+            <input class="input"
+                   type="text"
+                   id="contact_name"
+                   name="contact[name]"
+                   autocomplete="name"
+                   value="{{ form.name }}"
+                   aria-required="true"
+                   required>
+          </div>
+          <div class="large_form">
+            <label class="is-required" for="contact_email">{{ 'contact.form.email' | t }}</label>
+            <input class="input email"
+                   type="email"
+                   id="contact_email"
+                   autocomplete="email"
+                   name="contact[email]"
+                   value="{{ form.email }}"
+                   aria-required="true"
+                   required>
+          </div>
+          <div class="large_form">
+            <label class="is-required" for="message">{{ 'contact.form.message' | t }}</label>
+            <textarea class="input" id="message" name="contact[body]" aria-required="true" required>{{ form.body }}</textarea>
+          </div>
+          <div class="action_bottom">
+            <button class="button" type="submit">{{ 'contact.form.send' | t }}</button>
+          </div>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Contact page"
+  }
+{% endschema %}

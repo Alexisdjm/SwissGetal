@@ -1,0 +1,363 @@
+{%- if section.blocks.size > 0 -%}
+  {%- liquid
+    assign mod_2 = section.blocks.size | modulo: 2
+    assign mod_3 = section.blocks.size | modulo: 3
+    assign split_column_widths = false
+
+    if section.blocks.size == 1
+      assign column_width = 'full'
+    elsif mod_2 == 0 and mod_3 > 0
+      assign column_width = 'half'
+    elsif mod_3 == 0
+      assign column_width = 'third'
+    else
+      assign split_column_widths = true
+    endif
+
+    if section.settings.image_ratio == 'shortest'
+      assign aspect_ratio = 0
+      for block in section.blocks
+        if block.settings.image.aspect_ratio > aspect_ratio
+          assign aspect_ratio = block.settings.image.aspect_ratio
+        endif
+      endfor
+    elsif section.settings.image_ratio == 'tallest'
+      assign aspect_ratio = 99
+      for block in section.blocks
+        if block.settings.image.aspect_ratio < aspect_ratio
+          assign aspect_ratio = block.settings.image.aspect_ratio
+        endif
+      endfor
+    else
+      assign aspect_ratio = section.settings.image_ratio
+    endif
+
+    unless section.settings.bg_style == 'none' or section.settings.color_scheme == 'none'
+      if section.settings.color_scheme == 'scheme-1'
+        assign bg_color = settings.col_scheme_1_bg
+        assign heading_color = settings.col_scheme_1_heading
+        assign text_color = settings.col_scheme_1_text
+      elsif section.settings.color_scheme == 'scheme-2'
+        assign bg_color = settings.col_scheme_2_bg
+        assign heading_color = settings.col_scheme_2_heading
+        assign text_color = settings.col_scheme_2_text
+      else
+        if section.settings.color_bg == blank or section.settings.color_bg contains ',0'
+          assign bg_color = settings.col_page_bg
+        else
+          assign bg_color = section.settings.color_bg
+        endif
+        if section.settings.color_heading == blank or section.settings.color_heading contains ',0'
+          assign heading_color = settings.col_headings
+        else
+          assign heading_color = section.settings.color_heading
+        endif
+        if section.settings.color_text == blank or section.settings.color_text contains ',0'
+          assign text_color = settings.col_text
+        else
+          assign text_color = section.settings.color_text
+        endif
+      endif
+    endunless
+  -%}
+
+  {%- style -%}
+    {%- if section.settings.image_width == 'full' -%}
+      #{{ section.id }} .card__image { padding-top: {{ 1 | divided_by: aspect_ratio | times: 100 }}%; }
+    {%- endif -%}
+    {%- unless section.settings.color_scheme == 'none' -%}
+      {%- if section.settings.bg_style == 'section' -%}
+        #{{ section.id }}, #{{ section.id }} .container { background-color: {{ bg_color }}; }
+        #{{ section.id }} .card { background-color: {{ settings.col_page_bg }}; color: {{ settings.col_text }}; }
+        {%- if section.settings.color_scheme == 'custom' -%}
+          {%- unless heading_color == settings.col_headings or section.settings.title == blank -%}
+            #{{ section.id }} .section-heading { color: {{ heading_color }}; }
+          {%- endunless -%}
+          #{{ section.id }} .button { border-color: {{ text_color }}; background: {{ text_color }}; color: {{ bg_color }}; }
+          #{{ section.id }} .button:hover { background: {{ bg_color }}; color: {{ text_color }}; }
+        {%- endif -%}
+      {%- elsif section.settings.bg_style == 'column' -%}
+        #{{ section.id }} .card { background-color: {{ bg_color }}; color: {{ text_color }}; }
+        {%- unless heading_color == settings.col_headings -%}
+          #{{ section.id }} .card__heading { color: {{ heading_color }}; }
+        {%- endunless -%}
+        #{{ section.id }} .feature-link { color: currentColor; }
+      {%- endif -%}
+    {%- endunless -%}
+  {%- endstyle -%}
+
+  <div class="multi-column {% if bg_color == settings.col_page_bg or section.settings.bg_style != 'section' or section.settings.color_scheme == 'none' %}spaced-section{% else %}padded-section{% endif %}{% unless section.settings.bg_style != 'section' %}{% if section.settings.color_scheme == 'scheme-1' or section.settings.color_scheme == 'scheme-2' %} color-{{ section.settings.color_scheme }}{% endif %}{% endunless %}" id="{{ section.id }}">
+    <div class="container section-content">
+      {%- if section.settings.title != blank -%}
+        <h2 class="section-heading align-center" data-cc-animate>
+          {{- section.settings.title | escape -}}
+        </h2>
+      {%- endif -%}
+
+      <ul class="grid grid--row-gutters-small">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            if split_column_widths and mod_3 == 1
+              if forloop.index <= 3
+                assign column_width = 'third'
+              else
+                assign column_width = 'half'
+              endif
+            elsif split_column_widths and mod_3 == 2
+              if forloop.index <= 2
+                assign column_width = 'half'
+              else
+                assign column_width = 'third'
+              endif
+            endif
+          -%}
+          <li class="column {{ column_width }}" {{ block.shopify_attributes }}>
+            <div class="card{% unless bg_color == settings.col_page_bg or section.settings.bg_style == 'none' or section.settings.color_scheme == 'none' %} card--padded{% if section.settings.bg_style == 'column' %} card--bg-color{% endif %}{% endunless %}" data-cc-animate="cc-fade-in-up" data-cc-animate-delay="{{ forloop.index | times: 0.2 }}s">
+              {%- if block.settings.image != blank -%}
+                {%- assign img = block.settings.image -%}
+                <div class="card__image">
+                  <img data-srcset="{%- if img.width < 375 %}{{ img | image_url }} {{ img.width }}w{% endif -%}
+                                    {%- if img.width >= 375 %}{{ img | image_url: width: 375 }} 375w{% endif -%}
+                                    {%- if img.width >= 670 %}, {{ img | image_url: width: 670 }} 670w{% endif -%}
+                                    {%- if img.width >= 780 %}, {{ img | image_url: width: 780 }} 780w{% endif -%}
+                                    {%- if img.width >= 1160 %}, {{ img | image_url: width: 1160 }} 1160w{% endif -%}"
+                       data-src="{{ img | image_url: width: 375 }}"
+                       data-sizes="auto"
+                       class="{% if section.settings.image_width == 'full' %}img-fit {% endif %}lazyload"
+                       width="{{ img.width }}"
+                       height="{{ img.height }}"
+                       alt="{{ img.alt | escape }}">
+                  <noscript>
+                    <img src="{{ img | image_url: width: 580 }}"{% if section.settings.image_width == 'full' %} class="img-fit"{% endif %} width="{{ img.width }}" height="{{ img.height }}" alt="{{ img.alt }}">
+                  </noscript>
+                </div>
+              {%- endif -%}
+              <div class="card__content{% if section.settings.column_align == 'center' %} align-center{% endif %}">
+                {%- if block.settings.heading != blank -%}
+                  <h3 class="card__heading">{{ block.settings.heading | escape }}</h3>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <div class="rte">
+                    {{ block.settings.text }}
+                  </div>
+                {%- endif -%}
+                {%- if block.settings.link_text != blank -%}
+                  <a class="feature-link" {% if block.settings.link_url != blank %}href="{{ block.settings.link_url }}"{% else %}role="link" aria-disabled="true"{% endif %}>
+                    {{ block.settings.link_text | escape }}
+                  </a>
+                {%- endif -%}
+              </div>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      {%- if section.settings.button_label != blank -%}
+        <div class="section-footer align-center">
+          <a class="button"{% if section.settings.button_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ section.settings.button_link }}"{% endif %}>
+            {{ section.settings.button_label | escape }}
+          </a>
+        </div>
+      {%- endif-%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Multi-column",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Multi-column"
+      },
+      {
+        "type": "select",
+        "id": "image_width",
+        "label": "Image width",
+        "options": [
+          {
+            "value": "auto",
+            "label": "Natural"
+          },
+          {
+            "value": "full",
+            "label": "Full"
+          }
+        ],
+        "default": "full"
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Image shape (aspect ratio)",
+        "options": [
+          {
+            "value": "shortest",
+            "label": "Adapt (shortest image)"
+          },
+          {
+            "value": "tallest",
+            "label": "Adapt (tallest image)"
+          },
+          {
+            "value": "1.33",
+            "label": "Landscape"
+          },
+          {
+            "value": "1",
+            "label": "Square"
+          },
+          {
+            "value": "0.75",
+            "label": "Portrait"
+          }
+        ],
+        "default": "shortest"
+      },
+      {
+        "type": "select",
+        "id": "column_align",
+        "label": "Column alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label",
+        "default": "Button label"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      },
+      {
+        "type": "select",
+        "id": "bg_style",
+        "label": "Background style",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "column",
+            "label": "Column"
+          },
+          {
+            "value": "section",
+            "label": "Section"
+          }
+        ],
+        "default": "column"
+      },
+      {
+        "type": "select",
+        "id": "color_scheme",
+        "label": "Color scheme",
+        "options": [
+          {
+            "value": "none",
+            "label": "Default"
+          },
+          {
+            "value": "scheme-1",
+            "label": "Scheme 1"
+          },
+          {
+            "value": "scheme-2",
+            "label": "Scheme 2"
+          },
+          {
+            "value": "custom",
+            "label": "Custom (set below)"
+          }
+        ],
+        "default": "scheme-1"
+      },
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Custom background color"
+      },
+      {
+        "type": "color",
+        "id": "color_heading",
+        "label": "Custom heading color"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Custom text color"
+      },
+      {
+        "type": "paragraph",
+        "content": "Color scheme text colors only apply to the \"Column\" background style"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "column",
+        "name": "Column",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Column"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Pair text with an image to focus on a product, collection or blog post. Add details on availability, style, or even provide a review.</p>"
+          },
+          {
+            "type": "text",
+            "id": "link_text",
+            "label": "Link text"
+          },
+          {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link url"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Multi-column",
+        "blocks": [
+          {
+            "type": "column"
+          },
+          {
+            "type": "column"
+          },
+          {
+            "type": "column"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

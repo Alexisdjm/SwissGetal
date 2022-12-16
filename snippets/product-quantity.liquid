@@ -1,0 +1,20 @@
+{%- capture attr -%}
+  {%- if template.name == 'cart' -%}
+    id="updates_{{ item.id }}" name="updates[]" value="{{ item.quantity }}" aria-label="{{ 'cart.general.quantity' | t }}"
+  {%- else -%}
+    id="quantity-{{ section.id }}" name="quantity" value="1"
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- unless template.name == 'cart' -%}
+  <label for="quantity-{{ section.id }}">{{ 'products.product.qty' | t }}</label>
+{%- endunless -%}
+<div class="qty-selector">
+  <button class="qty-btn minus-btn js-prod-qty no-js-hidden" type="button" data-direction="-">
+    <span class="visually-hidden">-</span>
+  </button>
+  <input class="input quantity" type="number" min="1" {{ attr }}>
+  <button class="qty-btn plus-btn js-prod-qty no-js-hidden" type="button" data-direction="+">
+    <span class="visually-hidden">+</span>
+  </button>
+</div>

@@ -1,0 +1,110 @@
+{%- case media.media_type -%}
+  {%- when 'image' -%}
+    {%- assign img = media.preview_image -%}
+    <div class="product-media product-media--image{% if img == featured_image %} is-active{% endif %}" data-media-id="{{ media.id }}" data-media-type="{{ media.media_type }}">
+      {%- if prod_lightbox -%}
+        <a class="product-media__link" href="{{ img | image_url }}" data-enable-zoom="{{ prod_lightbox_zoom }}">
+      {%- endif -%}
+      
+        {%- if img == featured_image and template.name == 'product' -%}
+          <picture>
+            <source srcset="{%- if img.width < 670 %}{{ img | image_url }} {{ img.width }}w{% endif -%}
+                            {%- if img.width >= 670 %}{{ img | image_url: width: 670 }} 670w{% endif -%}
+                            {%- if img.width >= 776 %}, {{ img | image_url: width: 776 }} 776w{% endif -%}"
+                    media="(max-width: 480px)"
+                    width="388"
+                    height="{{ 388 | divided_by: img.aspect_ratio | round }}">
+            <img srcset="{%- if img.width < 400 %}{{ img | image_url }} {{ img.width }}w{% endif -%}
+                         {%- if img.width >= 400 %}{{ img | image_url: width: 400 }} 400w{% endif -%}
+                         {%- if img.width >= 600 %}, {{ img | image_url: width: 600 }} 600w{% endif -%}
+                         {%- if img.width >= 800 %}, {{ img | image_url: width: 800 }} 800w{% endif -%}
+                         {%- if img.width >= 1200 %}, {{ img | image_url: width: 1200 }} 1200w{% endif -%}
+                         {%- if img.width >= 1400 %}, {{ img | image_url: width: 1400 }} 1400w{% endif -%}"
+                  src="{{ img | image_url: width: 600 }}"
+                  sizes="(min-width: 1280px) 600px, (min-width: 992px) calc(62.5% - 232px), (min-width: 768px) calc(50vw - 45px), calc(100vw - 40px)"
+                  class="product-media__image"
+                  width="{{ img.width }}"
+                  height="{{ img.height }}"
+                  alt="{{ img.alt | escape }}">
+          </picture>
+        {%- else -%}
+          <div class="lazyload-placeholder" style="padding-top: {{ 1 | divided_by: img.aspect_ratio | times: 100 }}%;">
+            <picture>
+              <source data-srcset="{%- if img.width < 670 %}{{ img | image_url }} {{ img.width }}w{% endif -%}
+                                   {%- if img.width >= 670 %}{{ img | image_url: width: 670 }} 670w{% endif -%}
+                                   {%- if img.width >= 776 %}, {{ img | image_url: width: 776 }} 776w{% endif -%}"
+                      data-media="(max-width: 480px)">
+              <img data-srcset="{%- if img.width < 400 %}{{ img | image_url }} {{ img.width }}w{% endif -%}
+                                {%- if img.width >= 400 %}{{ img | image_url: width: 400 }} 400w{% endif -%}
+                                {%- if img.width >= 600 %}, {{ img | image_url: width: 600 }} 600w{% endif -%}
+                                {%- if img.width >= 800 %}, {{ img | image_url: width: 800 }} 800w{% endif -%}
+                                {%- if img.width >= 1200 %}, {{ img | image_url: width: 1200 }} 1200w{% endif -%}
+                                {%- if img.width >= 1400 %}, {{ img | image_url: width: 1400 }} 1400w{% endif -%}"
+                   data-src="{{ img | image_url: width: 600 }}"
+                   data-sizes="(min-width: 1280px) 600px, (min-width: 992px) calc(62.5% - 232px), (min-width: 768px) calc(50vw - 45px), calc(100vw - 40px)"
+                   class="product-media__image img-fit lazyload"
+                   width="{{ img.width }}"
+                   height="{{ img.height }}"
+                   alt="{{ img.alt | escape }}">
+            </picture>
+            <noscript>
+              <img src="{{ img | image_url: width: 600 }}" class="img-fit" width="{{ img.width }}" height="{{ img.height }}" alt="{{ img.alt | escape }}">
+            </noscript>
+          </div>
+        {%- endif -%}
+
+      {%- if prod_lightbox -%}
+        </a>
+      {%- endif -%}
+    </div>
+
+  {%- when 'video' -%}
+    {%- style -%}
+      @media (max-width: 480px) {
+        .product-media--{{ media.id }} .plyr__poster {
+          background-image: url({{ media.preview_image | image_url: width: 776 }}) !important;
+        }
+      }
+      @media (min-width: 481px) {
+        .product-media--{{ media.id }} .plyr__poster {
+          background-image: url({{ media.preview_image | image_url: width: 1200 }}) !important;
+        }
+      }
+    {%- endstyle -%}
+    <div class="product-media product-media--video product-media--{{ media.id }} product-media--frame"
+         data-video-type="shopify"
+         data-media-id="{{ media.id }}"
+         data-media-type="{{ media.media_type }}"
+         data-enable-video-looping="{{ enable_video_looping }}"
+         style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100 }}%;">
+      {{ media | video_tag: controls: true, class: 'media-video', image_size: '600x600' }}
+    </div>
+
+  {%- when 'external_video' -%}
+    <div class="product-media product-media--video product-media--frame"
+         data-media-type="{{ media.media_type }}"
+         data-video-type="external"
+         data-media-id="{{ media.id }}"
+         data-video-id="{{ media.external_id }}"
+         data-enable-video-looping="{{ enable_video_looping }}"
+         style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100 }}%;">
+      {{ media | external_video_tag }}
+    </div>
+
+  {%- when 'model' -%}
+    <div class="product-media product-media--model product-media--frame"
+         data-media-type="{{ media.media_type }}"
+         data-media-id="{{ media.id }}"
+         data-model="{{ media.model | json }}"
+         style="padding-top: 100%">
+        {{ media | model_viewer_tag: image_size: '600x600', reveal: 'interaction', toggleable: true, data-model-id: media.id }}
+    </div>
+
+  {%- else -%}
+    <div class="product-media product-media--frame"
+          data-media-type="{{ media.media_type }}"
+          data-media-id="{{ media.id }}"
+          style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100 }}%;">
+        {{ media | media_tag: class: 'media-item', image_size: '600x600' }}
+    </div>
+{%- endcase -%}

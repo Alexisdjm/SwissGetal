@@ -1,0 +1,159 @@
+{%- unless section.settings.color_scheme == 'none' -%}
+  {%- liquid
+    if section.settings.color_scheme == 'scheme-1'
+      assign bg_color = settings.col_scheme_1_bg
+      assign text_color = settings.col_scheme_1_text
+    elsif section.settings.color_scheme == 'scheme-2'
+      assign bg_color = settings.col_scheme_2_bg
+      assign text_color = settings.col_scheme_2_text
+    else
+      if section.settings.color_bg == blank or section.settings.color_bg contains ',0'
+        assign bg_color = settings.col_page_bg
+      else
+        assign bg_color = section.settings.color_bg
+      endif
+
+      unless section.settings.color_heading == blank or section.settings.color_heading contains ',0'
+        assign heading_color = section.settings.color_heading
+      endunless
+
+      if section.settings.color_text == blank or section.settings.color_text contains ',0'
+        assign text_color = false
+      else
+        assign text_color = section.settings.color_text
+      endif
+    endif
+  -%}
+
+  {%- style -%}
+    {%- if section.settings.color_scheme == 'custom' -%}
+      {%- if text_color  -%}
+        #{{ section.id }} { background-color: {{ bg_color }}; color: {{ text_color }}; }
+        #{{ section.id }} .button { border-color: {{ text_color }}; background: {{ text_color }}; color: {{ bg_color }}; }
+        #{{ section.id }} .button:hover { background: {{ bg_color }}; color: {{ text_color }}; }
+      {%- else -%}
+        #{{ section.id }} { background-color: {{ bg_color }}; }
+      {%- endif -%}
+    {%- endif -%}
+    {%- if heading_color -%}
+      #{{ section.id }} .signup-icon { color: {{ heading_color }}; }
+      {%- if section.settings.heading != blank and section.settings.color_scheme == 'custom' -%}
+        #{{ section.id }} .section-heading { color: {{ heading_color }}; }
+      {%- endif -%}
+    {%- endif -%}
+    {%- if text_color -%}
+      #{{ section.id }} .input { border-color: {{ text_color | color_mix: bg_color, 40 }}; color: {{ text_color }}; }
+      #{{ section.id }} .input:focus { border-color: {{ text_color }}; }
+      #{{ section.id }} .input::placeholder { color: {{ text_color | color_modify: 'alpha', 0.5 }}; }
+    {%- endif -%}
+  {%- endstyle -%}
+{%- endunless -%}
+
+<div class="newsletter {% if bg_color == settings.col_page_bg or section.settings.color_scheme == 'none' %}spaced-section{% else %}padded-section{% endif %}{% if section.settings.color_scheme == 'scheme-1' or section.settings.color_scheme == 'scheme-2' %} color-{{ section.settings.color_scheme }}{% endif %}" id="{{ section.id }}" data-section-type="newsletter" data-cc-animate>
+  <div class="container">
+    <div class="signup-section">
+      {%- assign form_id = section.id | prepend: 'signup-form-' -%}
+      {% form 'customer', id: form_id %}
+        <input type="hidden" name="contact[tags]" value="prospect,newsletter">
+        <div class="signup-icon">
+          {% render 'svg-email' %}
+        </div>
+        {%- if section.settings.heading != blank -%}
+          <h2 class="section-heading h3">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        <div class="input-with-button">
+          <div class="input-with-button__input-wrapper">
+            <input class="input-with-button__input input"
+                   type="email"
+                   name="contact[email]"
+                   autocomplete="email"
+                   placeholder="{{ 'layout.signup.email' | t }}"
+                   aria-label="{{ 'layout.signup.email' | t | escape }}"
+                   aria-required="true"
+                   required>
+          </div>
+          <button class="input-with-button__button button" type="submit">{{ 'layout.signup.button' | t }}</button>
+        </div>
+
+        {%- if section.settings.text != blank -%}
+          <div class="rte reading-width">
+            {{ section.settings.text }}
+          </div>
+        {%- endif -%}
+      {% endform %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Newsletter",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Subscribe to our newsletter"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>A short sentence describing what someone will receive by subscribing<\/p>"
+      },
+      {
+        "type": "header",
+        "content": "Style"
+      },
+      {
+        "type": "select",
+        "id": "color_scheme",
+        "label": "Color scheme",
+        "options": [
+          {
+            "value": "none",
+            "label": "Default"
+          },
+          {
+            "value": "scheme-1",
+            "label": "Scheme 1"
+          },
+          {
+            "value": "scheme-2",
+            "label": "Scheme 2"
+          },
+          {
+            "value": "custom",
+            "label": "Custom (set below)"
+          }
+        ],
+        "default": "scheme-1"
+      },
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Custom background color"
+      },
+      {
+        "type": "color",
+        "id": "color_heading",
+        "label": "Custom heading color"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Custom text color"
+      },
+      {
+        "type": "paragraph",
+        "content": "Customers who subscribe will have their email address added to the \"accepts marketing\" [customer list](/admin/customers?query=&accepts_marketing=1)"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Newsletter"
+      }
+    ]
+  }
+{% endschema %}

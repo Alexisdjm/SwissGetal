@@ -1,0 +1,41 @@
+<div class="section-banner">
+  <div class="banner banner--no-breadcrumbs{% if settings.account_show_hero_bg %} banner--bg banner--bg-color{% endif %}">
+    <div class="banner__text container" data-cc-animate>
+      <h1>{{ 'customer.register.title' | t }}</h1>
+    </div>
+  </div>
+</div>
+
+<div class="spaced-section container">
+  <div class="section-content">
+    <div class="general-form" data-cc-animate data-cc-animate-delay="0.1s">
+      {% form 'create_customer' %}
+        {{ form.errors | default_errors }}
+
+        <div class="large_form">
+          <label class="is-required" for="first_name">{{ 'customer.register.first_name' | t }}</label>
+          <input class="input" type="text" name="customer[first_name]" id="first_name" autocomplete="given-name" aria-required="true" required>
+        </div>
+
+        <div class="large_form">
+          <label class="is-required" for="last_name">{{ 'customer.register.last_name' | t }}</label>
+          <input class="input" type="text" name="customer[last_name]" id="last_name" autocomplete="family-name" aria-required="true" required>
+        </div>
+
+        <div class="large_form">
+          <label class="is-required" for="email">{{ 'customer.register.email' | t }}</label>
+          <input class="input" type="email" name="customer[email]" id="email" autocomplete="email" aria-required="true" required>
+        </div>
+
+        <div class="large_form">
+          <label class="is-required" for="password">{{ 'customer.register.password' | t }}</label>
+          <input class="input password" type="password" name="customer[password]" id="password" aria-required="true" required>
+        </div>
+
+        <div class="action_bottom">
+          <button class="button" type="submit">{{ 'customer.register.submit' | t }}</button>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</div>

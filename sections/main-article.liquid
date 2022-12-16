@@ -1,0 +1,374 @@
+<div class="spaced-section" data-section-type="article">
+  <div class="container section-content">
+    <div class="reading-width">
+      {%- paginate article.comments by 30 -%}
+        <div class="article">
+          {%- if article.image != blank and section.settings.show_featured_image -%}
+            {%- assign img = article.image -%}
+            <div class="article-image">
+              <div class="lazyload-placeholder" style="padding-top: {{ 1 | divided_by: img.aspect_ratio | times: 100 }}%;" data-cc-animate data-cc-animate-delay="0.1s">
+                <img data-srcset="{%- if img.width < 800 %}{{ img | image_url }} {{ img.width }}w{% endif -%}
+                                  {%- if img.width >= 800 %}{{ img | image_url: width: 800 }} 800w{% endif -%}
+                                  {%- if img.width >= 1200 %}, {{ img | image_url: width: 1200 }} 1200w{% endif -%}
+                                  {%- if img.width >= 1600 %}, {{ img | image_url: width: 1600 }} 1600w{% endif -%}"
+                     data-src="{{ img | image_url: width: 800 }}"
+                     data-sizes="(min-width: 768px) 800px, 100vw"
+                     class="img-fit lazyload"
+                     width="{{ img.width }}"
+                     height="{{ img.height }}"
+                     alt="{{ img.alt | escape }}">
+                <noscript>
+                  <img src="{{ img | image_url: width: 800 }}" class="img-fit" width="{{ img.width }}" height="{{ img.height }}" alt="{{ img.alt | escape }}">
+                </noscript>
+              </div>
+            </div>
+          {%- endif -%}
+
+          <div class="rte reading-width" data-cc-animate>
+            {{ article.content }}
+          </div>
+
+          <div class="reading-width light-spaced-row article-page-author-row" data-cc-animate>
+            {%- if section.settings.show_author -%}
+              <span class="author">{{ 'blogs.article.posted_by_html' | t: author: article.author  }}</span>
+            {%- endif -%}
+            {%- if section.settings.show_sharing_icons -%}
+              {% render 'social-sharing',
+                share_title: article.title,
+                share_permalink: article.url,
+                share_image: article.image
+              %}
+            {%- endif -%}
+          </div>
+
+          {%- if section.settings.show_tags and article.tags.size > 0 -%}
+            <div class="light-spaced-row" data-cc-animate>
+              <p class="h5">{{ 'blogs.article.find_similar' | t }}</p>
+              {%- for tag in article.tags -%}
+                <a class="pill" href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- if blog.comments_enabled? -%}
+          {%- assign number_of_comments = article.comments_count -%}
+          {%- if comment and comment.created_at -%}
+            {%- assign number_of_comments = article.comments_count | plus: 1 -%}
+          {%- endif -%}
+
+          <div class="spaced-row light-spaced-row-top reading-width" id="comments" data-cc-animate data-cc-animate-delay="0.1s">
+            {%- if number_of_comments > 0 or comment and comment.status != blank -%}
+              <div class="comment-header">
+                <h3>{{ 'blogs.comments.title' | t }}</h3>
+              </div>
+            {%- endif -%}
+
+            {%- if comment and comment.status != blank -%}
+              <p class="success feedback">
+                {%- if blog.moderated? -%}
+                  {{- 'blogs.comments.success_moderated' | t -}}
+                {%- else -%}
+                  {{- 'blogs.comments.success' | t -}}
+                {%- endif -%}
+              </p>
+            {%- endif -%}
+
+            {%- if number_of_comments > 0 -%}
+              <div>
+                {% comment %}If a comment was just submitted with no blank field, let's show it{% endcomment %}
+                {%- if comment and comment.status != blank and comment.status != 'pending' -%}
+                  {%- assign submitted_comment_id = comment.id -%}
+                  <div id="{{ comment.id }}" class="comment light-spaced-row">
+                    <div class="comment-content">
+                      {{- comment.content -}}
+                    </div>
+                    <div class="comment-meta">
+                      <span class="comment-author">{{ 'blogs.comments.author_meta' | t: author: comment.author }}</span>
+                      <span class="comment-date">
+                        {%- assign comment_date = comment.created_at | date: format: 'month_date_year' -%}
+                        {{- 'blogs.comments.date_meta' | t: comment_date: comment_date -}}
+                      </span>
+                    </div>
+                  </div>
+                {%- endif -%}
+                {% comment %}The rest of the comments{% endcomment %}
+                {%- for comment in article.comments -%}
+                  {%- if comment.id != submitted_comment_id -%}
+                    <div id="{{ comment.id }}" class="comment light-spaced-row">
+                      <div class="comment-content">
+                        {{- comment.content -}}
+                      </div>
+                      <div class="comment-meta">
+                        <span class="comment-author">{{ 'blogs.comments.author_meta' | t: author: comment.author }}</span>
+                        <span class="comment-date">
+                          {%- assign comment_date = comment.created_at | date: format: 'month_date_year' -%}
+                          {{- 'blogs.comments.date_meta' | t: comment_date: comment_date -}}
+                        </span>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+
+            {% render 'pagination', paginate: paginate %}
+
+            <div class="general-form">
+              {% form article %}
+                <div class="comment-header">
+                  <h3 id="add-comment-title">{{ 'blogs.comments.form_title' | t }}</h3>
+                </div>
+
+                {% if form.errors %}
+                  <div class="errors lightly-spaced-row">
+                    {{ form.errors | default_errors }}
+                  </div>
+                {% endif %}
+
+                <div class="large_form">
+                  <label class="is-required" for="comment-author">{{ 'blogs.comments.name' | t }}</label>
+                  <input class="input{% if form.errors contains 'author' %} error{% endif %}"
+                         type="text"
+                         id="comment-author"
+                         name="comment[author]"
+                         autocomplete="name"
+                         value="{{ form.author }}"
+                         aria-required="true"
+                         required>
+                </div>
+
+                <div class="large_form">
+                  <label class="is-required" for="comment-email">{{ 'blogs.comments.email' | t }}</label>
+                  <input class="input{% if form.errors contains 'email' %} error{% endif %}"
+                         type="email"
+                         id="comment-email"
+                         name="comment[email]"
+                         autocomplete="email"
+                         value="{{ form.email }}"
+                         aria-required="true"
+                         required>
+                </div>
+
+                <div class="large_form">
+                  <label class="is-required" for="comment-body">{{ 'blogs.comments.message' | t }}</label>
+                  <textarea class="input{% if form.errors contains "body" %} error{% endif %}" name="comment[body]" id="comment-body" aria-required="true" required>{{ form.body }}</textarea>
+                </div>
+
+                <div class="action_bottom">
+                  <button class="button" type="submit">{{ 'blogs.comments.post' | t }}</button>
+                </div>
+              {% endform %}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endpaginate -%}
+    </div>
+  </div>
+
+  {%- if section.settings.show_featured_products -%}
+    {% render 'content-products', content: article.content %}
+  {%- endif -%}
+</div>
+
+{%- if blog.previous_article or blog.next_article -%}
+  <div class="padded-section wide-next-prev">
+    <div class="container">
+      <h2 class="section-heading" data-cc-animate>
+        <a href="{{ blog.url }}">{{ 'blogs.article.other_posts_title' | t }}</a>
+      </h2>
+      <div class="grid">
+        {%- if blog.previous_article -%}
+          <div class="column half" data-cc-animate data-cc-animate-delay="0.2s">
+            <div class="grid mini-article">
+              {%- if blog.previous_article.image != blank -%}
+                {%- assign prev_img = blog.previous_article.image -%}
+                <div class="column half">
+                  <a href="{{ blog.previous_article.url }}">
+                    <div class="lazyload-placeholder" style="padding-top: {{ 1 | divided_by: prev_img.aspect_ratio | times: 100 }}%;">
+                      <img data-srcset="{%- if prev_img.width < 270 %}{{ prev_img | image_url }} {{ prev_img.width }}w{% endif -%}
+                                        {%- if prev_img.width >= 270 %}{{ prev_img | image_url: width: 270 }} 270w{% endif -%}
+                                        {%- if prev_img.width >= 540 %}, {{ prev_img | image_url: width: 540 }} 540w{% endif -%}
+                                        {%- if prev_img.width >= 670 %}, {{ prev_img | image_url: width: 670 }} 670w{% endif -%}
+                                        {%- if prev_img.width >= 1280 %}, {{ prev_img | image_url: width: 1280 }} 1280w{% endif -%}"
+                            data-src="{{ prev_img | image_url: width: 270 }}"
+                            data-sizes="(min-width: 768px) 270px, calc(100vw - 40px)"
+                            class="img-fit lazyload"
+                            width="{{ prev_img.width }}"
+                            height="{{ prev_img.height }}"
+                            alt="{{ prev_img.alt | escape }}">
+                      <noscript>
+                        <img src="{{ prev_img | image_url: width: 270 }}" class="img-fit" width="{{ prev_img.width }}" height="{{ prev_img.height }}" alt="{{ prev_img.alt | escape }}">
+                      </noscript>
+                    </div>
+                  </a>
+                </div>
+              {%- endif -%}
+
+              <div class="column {% if blog.previous_article.image != blank %}half{% else %}full{% endif %}">
+                <div class="rte">
+                  <h3 class="h5"><a href="{{ blog.previous_article.url }}">{{ blog.previous_article.title }}</a></h3>
+                  <div class="hide-until-md">
+                    {%- if blog.previous_article.excerpt == blank -%}
+                      <p>{{ blog.previous_article.content | strip_html | truncate: 150 }}</p>
+                    {%- else -%}
+                      {{ blog.previous_article.excerpt }}
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if blog.next_article -%}
+          <div class="column half" data-cc-animate data-cc-animate-delay="0.3s">
+            <div class="grid mini-article">
+              {%- if blog.next_article.image != blank -%}
+                {%- assign next_img = blog.next_article.image -%}
+                <div class="column half">
+                  <a href="{{ blog.next_article.url }}">
+                    <div class="lazyload-placeholder" style="padding-top: {{ 1 | divided_by: next_img.aspect_ratio | times: 100 }}%;">
+                      <img data-srcset="{%- if next_img.width < 270 %}{{ next_img | image_url }} {{ next_img.width }}w{% endif -%}
+                                        {%- if next_img.width >= 270 %}{{ next_img | image_url: width: 270 }} 270w{% endif -%}
+                                        {%- if next_img.width >= 540 %}, {{ next_img | image_url: width: 540 }} 540w{% endif -%}
+                                        {%- if next_img.width >= 670 %}, {{ next_img | image_url: width: 670 }} 670w{% endif -%}
+                                        {%- if next_img.width >= 1280 %}, {{ next_img | image_url: width: 1280 }} 1280w{% endif -%}"
+                            data-src="{{ next_img | image_url: width: 270 }}"
+                            data-sizes="(min-width: 768px) 270px, calc(100vw - 40px)"
+                            class="img-fit lazyload"
+                            width="{{ next_img.width }}"
+                            height="{{ next_img.height }}"
+                            alt="{{ next_img.alt | escape }}">
+                      <noscript>
+                        <img src="{{ next_img | image_url: width: 270 }}" class="img-fit" width="{{ next_img.width }}" height="{{ next_img.height }}" alt="{{ next_img.alt | escape }}">
+                      </noscript>
+                    </div>
+                  </a>
+                </div>
+              {%- endif -%}
+
+              <div class="column {% if blog.next_article.image != blank %}half{% else %}full{% endif %}">
+                <div class="rte">
+                  <h3 class="h5"><a href="{{ blog.next_article.url }}">{{ blog.next_article.title }}</a></h3>
+                  <div class="hide-until-md">
+                    {%- if blog.next_article.excerpt == blank -%}
+                      <p>{{ blog.next_article.content | strip_html | truncate: 150 }}</p>
+                    {%- else -%}
+                      {{ blog.next_article.excerpt }}
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% render 'structured-data-article', article: article %}
+
+{% javascript %}
+  function loadFeaturedProducts() {
+    const contentProdsEl = document.querySelector('.content-products');
+    if (!contentProdsEl) return;
+
+    const prodEls = contentProdsEl.querySelectorAll('[data-lazy-product-handle]');
+    const ratioSetting = theme.settings.prod_card_image_ratio;
+    let ratioValue = ratioSetting;
+
+    if (ratioSetting === 'shortest') {
+      ratioValue = 0;
+    } else if (ratioSetting === 'tallest') {
+      ratioValue = 99;
+    }
+
+    contentProdsEl.classList.add('is-loading');
+
+    async function getProducts() {
+      for (el of prodEls) {
+        await fetch(`/products/${el.dataset.lazyProductHandle}/?section_id=product-item`)
+          .then((response) => response.text())
+          .then((responseText) => {
+            const html = responseText;
+            const fetchedHTML = document.implementation.createHTMLDocument();
+            fetchedHTML.documentElement.innerHTML = html;
+
+            if (ratioSetting === 'shortest' || ratioSetting === 'tallest') {
+              const imgMain = fetchedHTML.querySelector('.prod-image__main');
+              
+              if (imgMain) {
+                const paddingTop = imgMain.style.paddingTop;
+                const thisRatio = 1 / (Number(paddingTop.slice(0, -1)) / 100);
+
+                if (ratioSetting === 'shortest') {
+                  if (thisRatio > ratioValue) {
+                    ratioValue = thisRatio;
+                  }
+                } else if (thisRatio < ratioValue) {
+                  ratioValue = thisRatio;
+                }
+              }
+            }
+
+            el.replaceWith(fetchedHTML.querySelector('.card'));
+          })
+          .catch(() => {
+            el.remove();
+          });
+      }
+
+      contentProdsEl.querySelectorAll('.prod-image__main').forEach((el) => {
+        el.style.paddingTop = `${(1 / ratioValue) * 100}%`;
+      });
+
+      contentProdsEl.classList.remove('is-loading');
+    }
+
+    getProducts();
+  }
+
+  document.addEventListener('DOMContentLoaded', loadFeaturedProducts);
+  document.addEventListener('shopify:section:load', loadFeaturedProducts);
+{% endjavascript %}
+
+{% schema %}
+  {
+    "name": "Article",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_featured_image",
+        "label": "Show featured image",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_tags",
+        "label": "Show tags",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_author",
+        "label": "Show author",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_featured_products",
+        "label": "Show featured products",
+        "info": "Shows products that are linked in the article",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sharing_icons",
+        "label": "Show social sharing icons",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,189 @@
+{%- liquid
+  assign has_author_image = false
+  for block in section.blocks
+    if block.settings.author_image
+      assign has_author_image = true
+    endif
+  endfor
+-%}
+
+{%- if has_author_image -%}
+  {%- style -%}
+    #{{ section.id }} .testimonial-author__name:first-child {
+      margin-top: {{ section.settings.logo_height | plus: 10 }}px;
+    }
+  {%- endstyle -%}
+{%- endif -%}
+
+<div class="container spaced-section overlap-padded" id="{{ section.id }}" data-section-type="testimonials">
+  <div class="testimonials reading-width align-center">
+    {%- if section.settings.title != blank -%}
+      <h2 class="testimonials__title meta">{{ section.settings.title }}</h2>
+    {%- endif -%}
+
+    <ul class="testimonials__items light-spaced-row">
+      {%- for block in section.blocks -%}
+        <li class="testimonial{% if forloop.first %} testimonial--active{% endif %}" {{ block.shopify_attributes }}>
+          {%- if block.settings.link != blank -%}
+            <a href="{{ block.settings.link }}">
+          {%- endif -%}
+
+          {%- if block.settings.star_rating > 0 -%}
+            <div class="testimonial__rating">
+              {% for i in (1..block.settings.star_rating) %}★{% endfor %}
+            </div>
+          {%- endif -%}
+
+          <div class="testimonial__text h3">
+            {{ block.settings.testimonial }}
+          </div>
+
+          {%- if block.settings.link != blank -%}
+            </a>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+
+    <div class="testimonials-nav">
+      <ul class="testimonials-nav__list" data-autoplay="{{ section.settings.autoplay }}" data-autoplay-delay="5000">
+        {%- for block in section.blocks -%}
+          <li class="testimonials-nav__item" {{ block.shopify_attributes }}>
+            <div class="testimonial-author" role="button" tabindex="0">
+              {%- if block.settings.author_image -%}
+                {%- liquid
+                  assign image_height = block.settings.author_image.height
+                  if image_height > section.settings.logo_height
+                    assign image_height = section.settings.logo_height
+                  endif
+                  assign image_height_2x = image_height | times: 2
+                -%}
+                <div class="testimonial-author__image" style="position: relative; width: {{ section.settings.logo_height | times: block.settings.author_image.aspect_ratio | round | at_most: 200 }}px; height: {{ section.settings.logo_height }}px;">
+                  <img data-src="{{ block.settings.author_image | image_url: height: image_height }}"
+                       {%- if block.settings.author_image.height >= image_height_2x %}
+                         data-srcset="{{ block.settings.author_image | image_url: height: image_height_2x }} 2x"
+                       {% endif -%}
+                       data-sizes="auto"
+                       class="img-fit img-fit--contain lazyload"
+                       width="{{ image_height | times: block.settings.author_image.aspect_ratio | round | at_most: 200 }}"
+                       height="{{ image_height }}"
+                       alt="{{ block.settings.author_image.alt | escape }}">
+                  <noscript>
+                    <img src="{{ block.settings.author_image | image_url: height: image_height }}"
+                         class="img-fit img-fit--contain"
+                         width="{{ image_height | times: block.settings.author_image.aspect_ratio | round | at_most: 200 }}"
+                         height="{{ image_height }}"
+                         alt="{{ block.settings.author_image.alt | escape }}">
+                  </noscript>
+                </div>
+              {%- endif -%}
+              <div class="testimonial-author__name">
+                {{ block.settings.author_name | escape }}
+              </div>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Testimonials",
+    "max_blocks": 5,
+    "settings": [
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Heading",
+        "default": "Testimonials"
+      },
+      {
+        "id": "autoplay",
+        "type": "checkbox",
+        "label": "Autoplay",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "logo_height",
+        "min": 20,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Author image height",
+        "default": 60
+      }
+    ],
+    "blocks": [
+      {
+        "type": "testimonial",
+        "name": "Testimonial",
+        "settings": [
+          {
+            "type": "range",
+            "id": "star_rating",
+            "min": 0,
+            "max": 5,
+            "step": 1,
+            "label": "Star rating",
+            "default": 5
+          },
+          {
+            "type": "textarea",
+            "id": "testimonial",
+            "label": "Testimonial",
+            "default": "Add customer reviews or press releases to showcase your store's happy customers."
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          },
+          {
+            "type": "header",
+            "content": "Author"
+          },
+          {
+            "type": "image_picker",
+            "id": "author_image",
+            "label": "Image",
+            "info": "Logo or profile photo"
+          },
+          {
+            "type": "text",
+            "id": "author_name",
+            "label": "Name",
+            "default": "Author's name"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Testimonials",
+        "blocks": [
+          {
+            "type": "testimonial",
+            "settings": {
+              "author_name": "Author one"
+            }
+          },
+          {
+            "type": "testimonial",
+            "settings": {
+              "author_name": "Author two"
+            }
+          },
+          {
+            "type": "testimonial",
+            "settings": {
+              "author_name": "Author three"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

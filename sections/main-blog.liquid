@@ -1,0 +1,138 @@
+<div class="spaced-section" data-section-type="blog">
+  <div class="container section-content">
+    {%- if section.settings.show_tags and blog.all_tags.size > 0 -%}
+      <div class="blog-filter-reveal align-center show-until-sm">
+        <div class="blog-filter-reveal__inner">
+          <button class="feature-link blog-filter-toggle" type="button">
+            {{ 'blogs.tags.mobile_reveal' | t }}
+          </button>
+        </div>
+      </div>
+
+      <div class="blog-filter" data-cc-animate data-cc-animate-delay="0.1s">
+        <div class="blog-filter__inner">
+          <span class="blog-filter__select">
+            <label for="filter-tag">{{ 'blogs.tags.label' | t }}</label>
+            <select id="filter-tag">
+              <option value="{{ blog.url }}">{{ 'blogs.tags.all' | t }}</option>
+              {%- for tag in blog.all_tags -%}
+                <option value="{{ blog.url }}/tagged/{{ tag | handle }}" {% if current_tags contains tag %}selected{% endif %}>{{ tag }}</option>
+              {%- endfor -%}
+            </select>
+          </span>
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- paginate blog.articles by 6 -%}
+      <div class="articles">
+        {%- for article in blog.articles -%}
+          <article class="article{% if article.image != blank %} grid{% endif %}{% unless forloop.first == true %} light-spaced-row-top{% endunless %}" data-cc-animate data-cc-animate-offset="80%">
+            {%- if article.image != blank -%}
+              {%- assign img = article.image -%}
+              <div class="column half">
+                <div class="article-image img-block">
+                  <a href="{{ article.url }}">
+                    <div class="lazyload-placeholder" style="padding-top: {{ 1 | divided_by: img.aspect_ratio | times: 100 }}%;">
+                      <img data-srcset="{%- if img.width < 580 %}{{ img | image_url }} {{ img.width }}w{% endif -%}
+                                        {%- if img.width >= 580 %}{{ img | image_url: width: 580 }} 580w{% endif -%}
+                                        {%- if img.width >= 750 %}, {{ img | image_url: width: 750 }} 750w{% endif -%}
+                                        {%- if img.width >= 856 %}, {{ img | image_url: width: 856 }} 856w{% endif -%}
+                                        {%- if img.width >= 1160 %}, {{ img | image_url: width: 1160 }} 1160w{% endif -%}
+                                        {%- if img.width >= 1440 %}, {{ img | image_url: width: 1440 }} 1440w{% endif -%}"
+                          data-src="{{ img | image_url: width: 580 }}"
+                          data-sizes="(min-width: 1280px) 580px, (min-width: 992px) calc(50vw - 60px), (min-width: 768px) calc(50vw - 50px), 100vw"
+                          class="img-fit lazyload"
+                          width="{{ img.width }}"
+                          height="{{ img.height }}"
+                          alt="{{ img.alt | escape }}">
+                      <noscript>
+                        <img src="{{ img | image_url: width: 580 }}" class="img-fit" width="{{ img.width }}" height="{{ img.height }}" alt="{{ img.alt | escape }}">
+                      </noscript>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            {%- endif -%}
+            <div class="{% if article.image != blank %}column half {% endif %}">
+              <div class="article-summary">
+                <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
+
+                <div class="meta lightly-spaced-row">
+                  {%- if section.settings.show_author -%}
+                    <span class="author meta__item">{{ 'blogs.article.posted_by_compact_html' | t: author: article.author  }}</span>
+                  {%- endif -%}
+
+                  {%- if section.settings.show_date -%}
+                    <span class="published meta__item">
+                      <time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_date_year' }}</time>
+                    </span>
+                  {%- endif -%}
+
+                  {%- if blog.comments_enabled? and article.comments_count > 0 -%}
+                    <span class="comment-count meta__item">
+                      <a href="{{ article.url }}#comments">{{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}</a>
+                    </span>
+                  {%- endif -%}
+                </div>
+
+                <div class="rte reading-width">
+                  {%- if article.excerpt.size > 0 -%}
+                    {{ article.excerpt }}
+                  {%- else -%}
+                    <p>{{ article.content | strip_html | truncatewords: 35 }}</p>
+                  {%- endif -%}
+                </div>
+
+                <div class="h2-margin-top hide-until-md">
+                  <a class="button button--alt" href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a>
+                </div>
+              </div>
+            </div>
+          </article>
+        {%- else -%}
+          <p><em>{{ 'blogs.article.no_matches' | t }}</em></p>
+        {%- endfor -%}
+      </div>
+
+      {%- if paginate.pages > 1 -%}
+        <div class="pagination" data-cc-animate>
+          {% comment %}
+            When paginating blog articles, a previous article is actually a newer article, not an older one,
+            because blog articles are shown and paginated in a reversed chronological order.
+            The word 'previous' can be confusing, hence we'll change it.
+          {% endcomment %}
+          {%- assign older_articles = 'blogs.pagination.older_articles' | t -%}
+          {%- assign newer_articles = 'blogs.pagination.newer_articles' | t -%}
+          {% render 'pagination', previous_text: newer_articles, next_text: older_articles, paginate: paginate %}
+        </div>
+      {%- endif- %}
+    {%- endpaginate -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Blog listing",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_tags",
+        "label": "Show tags",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_author",
+        "label": "Show author",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_date",
+        "label": "Show published date",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

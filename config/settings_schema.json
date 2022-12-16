@@ -1,0 +1,977 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Alchemy",
+    "theme_author": "Clean Canvas",
+    "theme_version": "4.2.3",
+    "theme_documentation_url": "https:\/\/support.cleancanvas.co.uk\/alchemy-theme-support\/",
+    "theme_support_url": "https:\/\/support.cleancanvas.co.uk\/alchemy-theme-support\/"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Base"
+      },
+      {
+        "type": "color",
+        "id": "col_text",
+        "label": "Text",
+        "default": "#606468"
+      },
+      {
+        "type": "color",
+        "id": "col_headings",
+        "label": "Headings",
+        "default": "#212b36"
+      },
+      {
+        "type": "color",
+        "id": "col_links",
+        "label": "Links",
+        "default": "#f04c40"
+      },
+      {
+        "type": "color",
+        "id": "col_page_bg",
+        "label": "Background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Header"
+      },
+      {
+        "type": "color",
+        "id": "col_header_bg",
+        "label": "Background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "col_header_text",
+        "label": "Text",
+        "default": "#454f5b"
+      },
+      {
+        "type": "color",
+        "id": "col_header_text_overlap",
+        "label": "Text when over image or video",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Side navigation (left)"
+      },
+      {
+        "type": "color",
+        "id": "col_nav_bg",
+        "label": "Background",
+        "default": "#212b36"
+      },
+      {
+        "type": "color",
+        "id": "col_nav_links",
+        "label": "Links",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Side drawer (right)"
+      },
+      {
+        "type": "paragraph",
+        "content": "Used for site search and collection filters"
+      },
+      {
+        "type": "color",
+        "id": "col_search_bg",
+        "label": "Background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "col_search_headings",
+        "label": "Headings",
+        "default": "#212b36"
+      },
+      {
+        "type": "color",
+        "id": "col_search_text",
+        "label": "Text",
+        "default": "#454f5b"
+      },
+      {
+        "type": "header",
+        "content": "Sections (color scheme 1)"
+      },
+      {
+        "type": "paragraph",
+        "content": "Can be applied to any section with a color scheme setting"
+      },
+      {
+        "type": "color",
+        "id": "col_scheme_1_bg",
+        "label": "Background",
+        "default": "#eeeff0"
+      },
+      {
+        "type": "color",
+        "id": "col_scheme_1_heading",
+        "label": "Heading",
+        "default": "#212b36"
+      },
+      {
+        "type": "color",
+        "id": "col_scheme_1_text",
+        "label": "Text",
+        "default": "#454f5b"
+      },
+      {
+        "type": "header",
+        "content": "Sections (color scheme 2)"
+      },
+      {
+        "type": "paragraph",
+        "content": "Can be applied to any section with a color scheme setting"
+      },
+      {
+        "type": "color",
+        "id": "col_scheme_2_bg",
+        "label": "Background",
+        "default": "#212b36"
+      },
+      {
+        "type": "color",
+        "id": "col_scheme_2_heading",
+        "label": "Heading",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "col_scheme_2_text",
+        "label": "Text",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Cards"
+      },
+      {
+        "type": "color",
+        "id": "col_card_bg",
+        "label": "Background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "col_card_text",
+        "label": "Text",
+        "default": "#212b36"
+      },
+      {
+        "type": "header",
+        "content": "Labels"
+      },
+      {
+        "type": "color",
+        "id": "col_label_sold_out",
+        "label": "Sold out background",
+        "default": "#565656"
+      },
+      {
+        "type": "color",
+        "id": "col_label_sale",
+        "label": "Sale background",
+        "default": "#d52f5a"
+      },
+      {
+        "type": "color",
+        "id": "col_label_low_stock",
+        "label": "Low stock background",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "col_label_custom",
+        "label": "Custom label background",
+        "default": "#0b3d65"
+      },
+      {
+        "type": "header",
+        "content": "Ratings"
+      },
+      {
+        "type": "color",
+        "id": "col_stars",
+        "label": "Testimonial and review stars",
+        "default": "#f7c346"
+      },
+      {
+        "type": "header",
+        "content": "Footer"
+      },
+      {
+        "type": "color",
+        "id": "col_footer_bg",
+        "label": "Background",
+        "default": "#eeeff0"
+      },
+      {
+        "type": "color",
+        "id": "col_footer_text",
+        "label": "Text",
+        "default": "#212b36"
+      },
+      {
+        "type": "header",
+        "content": "Popup"
+      },
+      {
+        "type": "color",
+        "id": "col_popup_background",
+        "label": "Background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "col_popup_text",
+        "label": "Text",
+        "default": "#454f5b"
+      },
+      {
+        "type": "range",
+        "id": "popup_tint_opacity",
+        "min": 0,
+        "max": 80,
+        "step": 5,
+        "unit": "%",
+        "label": "Popup image tint opacity",
+        "default": 25
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Body"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_base_font",
+        "label": "Font",
+        "default": "karla_n4"
+      },
+      {
+        "type": "range",
+        "id": "font_size_base_int",
+        "min": 13,
+        "max": 18,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 16
+      },
+      {
+        "type": "header",
+        "content": "Headings"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_heading_font",
+        "label": "Font",
+        "default": "karla_n4"
+      },
+      {
+        "type": "range",
+        "id": "font_scale_headings",
+        "min": 100,
+        "max": 150,
+        "step": 5,
+        "unit": "%",
+        "label": "Font scale",
+        "default": 100
+      },
+      {
+        "type": "checkbox",
+        "id": "capitalize_headings",
+        "label": "Capitalize headings",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Navigation"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_nav_font",
+        "label": "Font",
+        "info": "Applies to the side menu only. Inline and mega menus use the body font.",
+        "default": "karla_n4"
+      },
+      {
+        "type": "range",
+        "id": "font_size_nav_inline_int",
+        "min": 14,
+        "max": 18,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size (inline menu)",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "font_size_nav_int",
+        "min": 16,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size (side menu)",
+        "default": 40
+      },
+      {
+        "type": "header",
+        "content": "Store name"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_logo_font",
+        "label": "Font",
+        "default": "karla_n4",
+        "info": "If not using a logo image"
+      },
+      {
+        "type": "range",
+        "id": "logo_size_int",
+        "min": 18,
+        "max": 34,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 24
+      }
+    ]
+  },
+  {
+    "name": "Buttons",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Primary button colors"
+      },
+      {
+        "type": "color",
+        "id": "col_btn_bg",
+        "label": "Background",
+        "default": "#606468"
+      },
+      {
+        "type": "color",
+        "id": "col_btn",
+        "label": "Text",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Secondary button colors"
+      },
+      {
+        "type": "color",
+        "id": "col_alt_btn_bg",
+        "label": "Background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "col_alt_btn",
+        "label": "Text and border",
+        "default": "#606468"
+      },
+      {
+        "type": "select",
+        "id": "button_text_transform",
+        "label": "Text",
+        "options": [
+          {
+            "value": "none",
+            "label": "Normal"
+          },
+          {
+            "value": "uppercase",
+            "label": "Uppercase"
+          }
+        ],
+        "default": "uppercase"
+      },
+      {
+        "type": "select",
+        "id": "button_shape",
+        "label": "Corner",
+        "options": [
+          {
+            "value": "sharp",
+            "label": "Sharp"
+          },
+          {
+            "value": "slightly_rounded",
+            "label": "Slightly rounded"
+          },
+          {
+            "value": "rounded",
+            "label": "Rounded"
+          }
+        ],
+        "default": "sharp"
+      },
+      {
+        "type": "select",
+        "id": "button_border_width",
+        "label": "Border width",
+        "options": [
+          {
+            "value": "1",
+            "label": "Standard"
+          },
+          {
+            "value": "2",
+            "label": "Thick"
+          }
+        ],
+        "default": "1"
+      }
+    ]
+  },
+  {
+    "name": "Hero banners",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_breadcrumbs",
+        "label": "Show breadcrumbs",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "account_show_hero_bg",
+        "label": "Show background on account pages",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "hero_bg_color",
+        "label": "Background color",
+        "default": "#eeeeee"
+      },
+      {
+        "type": "color",
+        "id": "hero_text_color",
+        "label": "Text color",
+        "default": "#333333"
+      },
+      {
+        "type": "checkbox",
+        "id": "page_use_contrast_logo",
+        "label": "Show contrast logo",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Image overlay"
+      },
+      {
+        "type": "color",
+        "id": "hero_tint_color",
+        "label": "Color",
+        "default": "#000000"
+      },
+      {
+        "type": "range",
+        "id": "hero_tint_opacity",
+        "min": 0,
+        "max": 80,
+        "step": 5,
+        "unit": "%",
+        "label": "Opacity",
+        "default": 20
+      },
+      {
+        "type": "color",
+        "id": "hero_tint_text_color",
+        "label": "Text color (when image shown)",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Layout"
+      },
+      {
+        "type": "paragraph",
+        "content": "These settings only apply when a background color or image is shown"
+      },
+      {
+        "type": "range",
+        "id": "hero_height_desktop",
+        "min": 280,
+        "max": 600,
+        "step": 10,
+        "label": "Height (desktop)",
+        "default": 360,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "hero_height_mobile",
+        "min": 200,
+        "max": 400,
+        "step": 10,
+        "label": "Height (mobile)",
+        "default": 240,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "hero_overlap",
+        "min": 0,
+        "max": 75,
+        "step": 5,
+        "label": "Page content overlap",
+        "default": 0,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "name": "Product cards",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Image"
+      },
+      {
+        "type": "select",
+        "id": "prod_card_image_ratio",
+        "label": "Image shape (aspect ratio)",
+        "options": [
+          {
+            "value": "shortest",
+            "label": "Adapt (shortest image)"
+          },
+          {
+            "value": "tallest",
+            "label": "Adapt (tallest image)"
+          },
+          {
+            "value": "1.33",
+            "label": "Landscape"
+          },
+          {
+            "value": "1",
+            "label": "Square"
+          },
+          {
+            "value": "0.75",
+            "label": "Portrait"
+          }
+        ],
+        "default": "shortest"
+      },
+      {
+        "type": "select",
+        "id": "prod_card_image_position",
+        "label": "Image alignment",
+        "options": [
+          {
+            "value": "top center",
+            "label": "Top"
+          },
+          {
+            "value": "center",
+            "label": "Middle"
+          },
+          {
+            "value": "bottom center",
+            "label": "Bottom"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "select",
+        "id": "prod_card_image_fit",
+        "label": "Image fit",
+        "info": "Choose to 'contain' the image (so it is fully visible) or 'cover' to fill the entire image box (image may be cropped)",
+        "options": [
+          {
+            "value": "contain",
+            "label": "Contain"
+          },
+          {
+            "value": "cover",
+            "label": "Cover"
+          }
+        ],
+        "default": "contain"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_hover_image",
+        "label": "Show second image on hover",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Labels"
+      },
+      {
+        "type": "select",
+        "id": "product_label_position",
+        "label": "Label position",
+        "options": [
+          {
+            "value": "tl",
+            "label": "Top left"
+          },
+          {
+            "value": "tr",
+            "label": "Top right"
+          },
+          {
+            "value": "bl",
+            "label": "Bottom left"
+          },
+          {
+            "value": "br",
+            "label": "Bottom right"
+          }
+        ],
+        "default": "tl"
+      },
+      {
+        "type": "checkbox",
+        "id": "label_sale_show",
+        "label": "Show sale label",
+        "info": "Products with compare-at price set",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "label_soldout_show",
+        "label": "Show sold out label",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "label_remain_show",
+        "label": "Show low inventory label",
+        "info": "Single variant products only",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "prod_stock_warn_limit_int",
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "label": "Low inventory threshold",
+        "default": 5
+      },
+      {
+        "type": "header",
+        "content": "Reviews"
+      },
+      {
+        "type": "paragraph",
+        "content": "Add reviews by installing the [Shopify Product Reviews app](https:\/\/apps.shopify.com\/product-reviews?ref=cleancanvas) and adding a \"Product reviews\" section"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_reviews_collection",
+        "label": "Show product rating",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Collection cards",
+    "settings": [
+      {
+        "type": "select",
+        "id": "coll_card_image_src",
+        "label": "Image source",
+        "info": "If 'Collection image' is selected but it doesn't exist, the first product image in the collection will be shown",
+        "options": [
+          {
+            "value": "collection",
+            "label": "Collection image"
+          },
+          {
+            "value": "product",
+            "label": "First product image"
+          }
+        ],
+        "default": "collection"
+      },
+      {
+        "type": "select",
+        "id": "coll_card_image_ratio",
+        "label": "Image shape (aspect ratio)",
+        "default": "shortest",
+        "options": [
+          {
+            "value": "shortest",
+            "label": "Adapt (shortest image)"
+          },
+          {
+            "value": "tallest",
+            "label": "Adapt (tallest image)"
+          },
+          {
+            "value": "1.33",
+            "label": "Landscape"
+          },
+          {
+            "value": "1",
+            "label": "Square"
+          },
+          {
+            "value": "0.75",
+            "label": "Portrait"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "coll_card_image_position",
+        "label": "Image alignment",
+        "options": [
+          {
+            "value": "top center",
+            "label": "Top"
+          },
+          {
+            "value": "center",
+            "label": "Middle"
+          },
+          {
+            "value": "bottom center",
+            "label": "Bottom"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "select",
+        "id": "coll_card_image_fit",
+        "label": "Image fit",
+        "info": "Choose to 'contain' the image (so it is fully visible) or 'cover' to fill the entire image box (image may be cropped)",
+        "options": [
+          {
+            "value": "contain",
+            "label": "Contain"
+          },
+          {
+            "value": "cover",
+            "label": "Cover"
+          }
+        ],
+        "default": "cover"
+      }
+    ]
+  },
+  {
+    "name": "Swatches",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "swatch_enabled",
+        "label": "Enable swatches",
+        "default": false,
+        "info": "This shows a circle of color for each option in the color selector. [Learn more](https:\/\/support.cleancanvas.co.uk\/swatches-faq)"
+      },
+      {
+        "type": "text",
+        "id": "swatch_option_name",
+        "label": "Option name",
+        "default": "Color"
+      },
+      {
+        "type": "checkbox",
+        "id": "swatch_images",
+        "label": "Use uploaded images instead of HTML colors",
+        "info": "Upload png image files where the file name matches the option value, in lowercase with spaces replaced by hyphens. For example 'Dark blue' becomes 'dark-blue.png'"
+      }
+    ]
+  },
+  {
+    "name": "Search",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_search",
+        "label": "Enable search",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "search_type",
+        "label": "Search only...",
+        "default": "product",
+        "options": [
+          {
+            "value": "product",
+            "label": "Products"
+          },
+          {
+            "value": "product,page",
+            "label": "Products and pages"
+          },
+          {
+            "value": "product,article",
+            "label": "Products and articles"
+          },
+          {
+            "value": "product,article,page",
+            "label": "Products, articles and pages"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "live_search_show_vendor",
+        "label": "Show product vendor",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "live_search_search_meta",
+        "label": "Search tags and skus",
+        "info": "May improve search speed when disabled",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Accounts"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_url",
+        "label": "Twitter",
+        "info": "https:\/\/twitter.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_url",
+        "label": "Facebook",
+        "info": "https:\/\/facebook.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_url",
+        "label": "Instagram",
+        "info": "https:\/\/instagram.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_url",
+        "label": "Pinterest",
+        "info": "https:\/\/pinterest.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_url",
+        "label": "Youtube",
+        "info": "https:\/\/youtube.com\/user\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo_url",
+        "label": "Vimeo",
+        "info": "https:\/\/vimeo.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_url",
+        "label": "TikTok",
+        "info": "https:\/\/tiktok.com\/@shopify"
+      },
+      {
+        "type": "header",
+        "content": "Custom link",
+        "info": "Upload a custom icon for your favorite social network"
+      },
+      {
+        "type": "image_picker",
+        "id": "social_custom_icon_alt",
+        "label": "Icon in navigation"
+      },
+      {
+        "type": "image_picker",
+        "id": "social_custom_icon",
+        "label": "Icon in footer"
+      },
+      {
+        "type": "text",
+        "id": "social_custom_url",
+        "label": "Link",
+        "info": "https:\/\/socialnetwork.com\/shopify"
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Image",
+        "info": "32 x 32px .png recommended"
+      }
+    ]
+  },
+  {
+    "name": "Animation",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_transition_in",
+        "label": "Reveal elements on scroll",
+        "info": "This effect is applied to products, articles, and certain home page sections",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_overlay_transition",
+        "label": "Reveal overlay text gradually",
+        "info": "This effect is applied to slideshows",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Currency format",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Currency codes"
+      },
+      {
+        "type": "paragraph",
+        "content": "Cart and checkout totals always show the currency code (e.g. $1.00 USD). Itemized, unit, and installment prices do not."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_currency_code",
+        "label": "Show currency codes",
+        "default": false
+      }
+    ]
+  }
+]

@@ -1,0 +1,229 @@
+<footer id="pagefooter" class="pagefooter" data-section-type="footer">
+  {%- if section.settings.show_newsletter -%}
+    <div class="signup-section{% if section.blocks.size == 0 and section.settings.show_country_selector == blank and section.settings.show_language_selector == blank and section.settings.show_social == blank %} no-border-bottom{% endif %}">
+      <div class="container">
+        {% form 'customer', id: 'footer-signup-form' %}
+          <input type="hidden" name="contact[tags]" value="prospect,newsletter">
+          <div class="signup-icon">
+            {% render 'svg-email' %}
+          </div>
+          <h2 class="h3">{{ section.settings.newsletter_heading }}</h2>
+          <div class="input-with-button">
+            <div class="input-with-button__input-wrapper">
+              <input class="input-with-button__input input"
+                     type="email"
+                     name="contact[email]"
+                     value=""
+                     placeholder="{{ 'layout.signup.email' | t }}"
+                     aria-label="{{ 'layout.signup.email' | t | escape }}"
+                     required>
+            </div>
+            <button class="input-with-button__button button" type="submit">{{ 'layout.signup.button' | t }}</button>
+          </div>
+
+          {%- if section.settings.newsletter_text != blank -%}
+            <div class="rte">
+              {{ section.settings.newsletter_text }}
+            </div>
+          {%- endif -%}
+        {% endform %}
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="container">
+      <div class="footer-columns footer-columns--count-{{ section.blocks.size }}">
+        {%- for block in section.blocks -%}
+          <div class="footer-columns__column" {{ block.shopify_attributes }}>
+            {%- if block.settings.heading -%}
+              <h2 class="footer-column-heading h6">{{ block.settings.heading | escape }}</h2>
+            {%- endif -%}
+
+            {%- if block.type == 'link_list' -%}
+              <ul class="footer-nav-links">
+                {%- for link in block.settings.menu.links -%}
+                  <li class="footer-nav-links__item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            {%- elsif block.type == 'text' -%}
+              <div class="rte">
+                {{ block.settings.text }}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- liquid
+    if section.settings.show_country_selector and localization.available_countries.size > 1
+      assign show_country_selector = true
+    else
+      assign show_country_selector = false
+    endif
+
+    if section.settings.show_language_selector and localization.available_languages.size > 1
+      assign show_language_selector = true
+    else
+      assign show_language_selector = false
+    endif
+  -%}
+
+  {%- if show_country_selector or show_language_selector or section.settings.show_social -%}
+    <div class="lower-footer{% if section.blocks.size == 0 %} no-border-top{% endif %} no-js-hidden">
+      <div class="container">
+        {%- if show_country_selector or show_language_selector -%}
+          <div class="lower-footer__left">
+            <div class="store-localization">
+              {% render 'localization', input_prefix: 'footer' %}
+            </div>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.show_social -%}
+          <div class="{% if show_country_selector == false and show_language_selector == false %}lower-footer__full{% else %}lower-footer__right{% endif %}">
+            {% render 'social-icons', icon_setting: settings.social_custom_icon, icon_size: 'x44' %}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="lower-footer lower-footer--lowest">
+    <div class="container">
+      <div class="lower-footer__left">
+        <div class="copyright">
+          <span class="seg">&copy; {{ "now" | date: "%Y" }} {{ shop.name }}</span>
+          {{ powered_by_link }}
+        </div>
+      </div>
+
+      {%- if section.settings.show_payment_icons -%}
+        <div class="payment-methods lower-footer__right">
+          <div class="payment-methods__inner">
+            {%- for type in shop.enabled_payment_types -%}
+              {{ type | payment_type_svg_tag: class: 'payment-icon' }}
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Newsletter"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_newsletter",
+        "label": "Show newsletter sign-up",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "newsletter_heading",
+        "label": "Heading",
+        "default": "Subscribe to our newsletter"
+      },
+      {
+        "type": "richtext",
+        "id": "newsletter_text",
+        "label": "Text",
+        "default": "<p>A short sentence describing what someone will receive by subscribing<\/p>"
+      },
+      {
+        "type": "paragraph",
+        "content": "Customers who subscribe will have their email address added to the \"accepts marketing\" [customer list](/admin/customers?query=&accepts_marketing=1)"
+      },
+      {
+        "type": "header",
+        "content": "Social"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_social",
+        "label": "Show social icons",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Payment Methods"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_payment_icons",
+        "label": "Show payment icons",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Country/Region Selector",
+        "info": "To add a country/region, go to your [payment settings.](/admin/settings/payments)"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_country_selector",
+        "label": "Show country/region selector",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Language Selector",
+        "info": "To add a language, go to your [language settings.](/admin/settings/languages)"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_language_selector",
+        "label": "Show language selector",
+        "default": true
+      }
+    ],
+    "max_blocks": 4,
+    "blocks": [
+      {
+        "type": "link_list",
+        "name": "Menu",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Footer links"
+          },
+          {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Menu",
+            "info": "This menu won't show dropdown items",
+            "default": "footer"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "Text area",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Talk about your store"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Share store details, promotions, or brand content with your customers.</p>"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

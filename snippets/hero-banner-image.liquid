@@ -1,0 +1,46 @@
+{%- liquid
+  assign img_crop = section.settings.image_align
+  assign hero_height_2x = settings.hero_height_mobile | times: 2
+-%}
+<div class="banner__image lazyload-placeholder">
+  <picture>
+    {%- if img.width < 750 or img.height < hero_height_2x -%}
+      {%- comment -%} Image smaller than container {%- endcomment -%}
+      {%- liquid
+        if img.width < 750
+          assign img_ratio_mobile = 375.0 | divided_by: settings.hero_height_mobile
+          assign img_width = img.width
+          assign img_height = img.width | divided_by: img_ratio_mobile | round
+        else
+          assign img_ratio_mobile = 428.0 | divided_by: settings.hero_height_mobile
+          assign img_width = img.height | times: img_ratio_mobile | round
+          assign img_height = img.height
+        endif
+      -%}
+      <source data-srcset="{{ img | image_url: width: img_width, height: img_height, crop: img_crop }}"
+              media="(max-width: 480px)"
+              width="{{ img_width }}"
+              height="{{ img_height }}">
+    {%- else -%}
+      {%- comment -%} Image larger than container {%- endcomment -%}
+      <source data-srcset="{{ img | image_url: width: 750, height: hero_height_2x, crop: img_crop }} 750w
+                           {%- if img.width >= 856 %}, {{ img | image_url: width: 856, height: hero_height_2x, crop: img_crop }} 856w{% endif -%}"
+              media="(max-width: 480px)"
+              width="428"
+              height="{{ settings.hero_height_mobile }}">
+    {%- endif -%}
+
+    <img data-srcset="{%- if img.width < 1366 %}{{ img | image_url }} {{ img.width }}w{% endif -%}
+                      {%- if img.width >= 1366 %}{{ img | image_url: width: 1366 }} 1366w{% endif -%}
+                      {%- if img.width >= 1600 %}, {{ img | image_url: width: 1600 }} 1600w{% endif -%}
+                      {%- if img.width >= 1920 %}, {{ img | image_url: width: 1920 }} 1920w{% endif -%}
+                      {%- if img.width >= 2560 %}, {{ img | image_url: width: 2560 }} 2560w{% endif -%}
+                      {%- if img.width >= 3200 %}, {{ img | image_url: width: 3200 }} 3200w{% endif -%}"
+         data-src="{{ img | image_url: width: 1600 }}"
+         class="img-fit lazyload"
+         width="{{ img.width }}"
+         height="{{ img.height }}"
+         alt="{{ img.alt | escape }}"
+         style="object-position: {{ section.settings.image_align }};">
+  </picture>
+</div>

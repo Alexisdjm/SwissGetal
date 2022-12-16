@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {}
+    },
+    "main": {
+      "type": "main-list-collections",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "main"
+  ]
+}

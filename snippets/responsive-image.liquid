@@ -1,0 +1,15 @@
+{%- comment -%} Popup background image only {%- endcomment -%}
+<img data-srcset="{%- if image.width < 450 %}{{ image | image_url }} {{ image.width }}w{% endif -%}
+                  {%- if image.width >= 450 %}{{ image | image_url: width: 450 }} 450w{% endif -%}
+                  {%- if image.width >= 670 %}, {{ image | image_url: width: 670 }} 670w{% endif -%}
+                  {%- if image.width >= 800 %}, {{ image | image_url: width: 800 }} 800w{% endif -%}
+                  {%- if image.width >= 900 %}, {{ image | image_url: width: 900 }} 900w{% endif -%}
+                  {%- if image.width >= 1200 %}, {{ image | image_url: width: 1200 }} 1200w{% endif -%}"
+     data-src="{{ image | image_url: width: 800 }}"
+     data-sizes="auto"
+     data-aspectratio="{{ image.aspect_ratio }}"
+     data-parent-fit="cover"
+     class="img-fit lazyload"
+     width="{{ image.width }}"
+     height="{{ image.height }}"
+     alt="{{ image.alt | escape }}">

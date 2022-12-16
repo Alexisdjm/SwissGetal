@@ -1,0 +1,383 @@
+{%- liquid
+  if section.settings.skip_container
+    assign full_width = true
+  else
+    assign full_width = false
+  endif
+-%}
+
+{%- style -%}
+  {%- if section.settings.text_below_mobile -%}
+    @media (max-width: 480px) {
+      #{{ section.id }} .video-container__media { height: {{ section.settings.height_mobile }}px; }
+    }
+  {%- else -%}
+    #{{ section.id }} .video-container { min-height: {{ section.settings.height_mobile }}px; }
+  {%- endif -%}
+  @media (min-width: 480px) {
+    #{{ section.id }} .video-container {
+      min-height: calc({{ section.settings.height_mobile }}px + ({{ section.settings.height_desktop }} - {{ section.settings.height_mobile }}) * ((100vw - 480px) / 1020));
+    }
+  }
+  @media (min-width: 1600px) {
+    #{{ section.id }} .video-container { min-height: {{ section.settings.height_desktop }}px; }
+  }
+  {%- if section.settings.tint_opacity > 0 -%}
+    #{{ section.id }} .video-container__image::after {
+      background-color: rgba({{ section.settings.tint_color.red }}, {{ section.settings.tint_color.green }}, {{ section.settings.tint_color.blue }}, {{ section.settings.tint_opacity | divided_by: 100.0 }});
+    }
+  {%- endif -%}
+  #{{ section.id }} .text-overlay { color: {{ section.settings.text_color }}; }
+  {%- if section.settings.text_box_style == 'bg' -%}
+    #{{ section.id }} .text-overlay--bg {
+      background-color: rgba({{ section.settings.text_bg_color.red }}, {{ section.settings.text_bg_color.green }}, {{ section.settings.text_bg_color.blue }}, {{ section.settings.text_bg_opacity | divided_by: 100.0 }});
+    }
+    #{{ section.id }} .text-overlay--bg .button:hover {
+      border-color: {{ section.settings.text_color }};
+      background: {{ section.settings.text_color }};
+      color: {{ section.settings.text_bg_color }};
+    }
+  {%- elsif section.settings.text_box_style == 'border' -%}
+    #{{ section.id }} .text-overlay--border { border-color: {{ section.settings.text_bg_color }}; }
+  {%- endif -%}
+  {%- if settings.hero_overlap > 0 and full_width == false -%}
+    #shopify-section-{{ section.id }} + .shopify-section .section-content { margin-top: 0; }
+    #shopify-section-{{ section.id }} + .shopify-section .spaced-section .section-content { padding: 0; }
+  {%- endif -%}
+{%- endstyle -%}
+
+<div {% unless full_width %}class="spaced-section spaced-section--sm-up" {% endunless %}id="{{ section.id }}" data-section-type="background-video">
+  <div class="video-container video-container--background{% unless full_width %} container container--not-mobile section-content section-content--no-padding{% endunless %}{% if section.settings.text_below_mobile %} mobile-stacked{% unless section.settings.text_box_style == 'bg' %} mobile-stacked--spaced{% endunless %}{% endif %} content-align-{{ section.settings.text_position | split: ' ' | first }} content-valign-{{ section.settings.text_position | split: ' ' | last }}"
+       data-video-id="{{ section.settings.video_url.id }}"
+       data-video-url="{{ section.settings.video_url }}"
+       data-video-autoplay="true"
+       data-video-loop="true">
+    <div class="video-container__media">
+      <div class="video-container__video"></div>
+      <div class="video-container__image has-overlay{% if section.settings.cover_image != blank %} lazyload-placeholder{% endif %}">
+        {%- if section.settings.cover_image != blank -%}
+          {%- assign img = section.settings.cover_image -%}
+          <img class="img-fit lazyload"
+               data-srcset="{%- if img.width < 750 %}{{ img | image_url }} {{ img.width }}w{% endif -%}
+                            {%- if img.width >= 750 %}{{ img | image_url: width: 750 }} 750w{% endif -%}
+                            {%- if img.width >= 856 %}, {{ img | image_url: width: 856 }} 856w{% endif -%}
+                            {%- if img.width >= 1366 %}, {{ img | image_url: width: 1366 }} 1366w{% endif -%}
+                            {%- if img.width >= 1600 %}, {{ img | image_url: width: 1600 }} 1600w{% endif -%}
+                            {%- if img.width >= 1920 %}, {{ img | image_url: width: 1920 }} 1920w{% endif -%}
+                            {%- if img.width >= 2560 %}, {{ img | image_url: width: 2560 }} 2560w{% endif -%}"
+               data-src="{{ img | image_url: width: 1600 }}"
+               {% unless full_width %}data-sizes="(min-width: 1280px) 1200px, (min-width: 992px) calc(100vw - 80px), (min-width: 768px) calc(100vw - 60px), 100vw"{% endunless %}
+               width="{{ img.width }}"
+               height="{{ img.height }}"
+               alt="{{ img.alt | escape }}">
+          <noscript>
+            <img src="{{ img | image_url: width: 1600 }}" class="img-fit" width="{{ img.width }}" height="{{ img.height }}" alt="{{ img.alt | escape }}">
+          </noscript>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="text-overlay{% unless section.settings.text_box_style == 'none' %} text-overlay--box text-overlay--{{ section.settings.text_box_style }}{% endunless %}{% unless bg_color != false and bg_color != settings.col_page_bg and section.settings.text_box_style == 'bg' %} text-overlay--stacked-no-pad{% endunless %}">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'heading' -%}
+              {%- if block.settings.heading_h1 -%}
+                <h1 class="text-overlay__heading {{ block.settings.heading_size }}" data-cc-animate-delay="0.1s" data-cc-animate="cc-fade-in-up" {{ block.shopify_attributes }}>
+                  {{- block.settings.heading | newline_to_br -}}
+                </h1>
+              {%- else -%}
+                <h2 class="text-overlay__heading {{ block.settings.heading_size }}" data-cc-animate-delay="0.1s" data-cc-animate="cc-fade-in-up" {{ block.shopify_attributes }}>
+                  {{- block.settings.heading | newline_to_br -}}
+                </h2>
+              {%- endif -%}
+            {%- when 'text' -%}
+              <div class="text-overlay__text{% if block.settings.enlarge_text %} large-text{% endif %} rte" data-cc-animate-delay="0.2s" data-cc-animate="cc-fade-in-up" {{ block.shopify_attributes }}>
+                {{ block.settings.text }}
+              </div>
+            {%- when 'button' -%}
+              <div class="text-overlay__link" data-cc-animate-delay="0.3s" data-cc-animate="cc-fade-in-up" {{ block.shopify_attributes }}>
+                <a class="button button--hollow" {% if block.settings.button_link == blank %}role="link" aria-disabled="true"{% else %}href="{{ block.settings.button_link }}"{% endif %} >
+                  {{ block.settings.button_label | escape }}
+                </a>
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Background video",
+    "class": "banner-candidate",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Background videos are designed to autoplay (when possible) and be silent. If you would like a video with sound, please use the 'Video' section."
+      },
+      {
+        "type": "paragraph",
+        "content": "Some mobile devices do not autoplay videos from third parties. [Read more](https://support.cleancanvas.co.uk/adding-a-background-video/#Background-Videos-not-working-on-Mobile-Devices)"
+      },
+      {
+        "type": "text",
+        "id": "video_url",
+        "label": "Video url",
+        "info": "Supports mp4, YouTube and Vimeo. Please read documentation before using. [Read more](https://support.cleancanvas.co.uk/adding-a-background-video)",
+        "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+      },
+      {
+        "type": "image_picker",
+        "id": "cover_image",
+        "label": "Cover image",
+        "info": "Shown while the video is loading or if autoplay is disabled. For best results, use an image with 16:9 aspect ratio and width of 3200px."
+      },
+      {
+        "type": "header",
+        "content": "Layout"
+      },
+      {
+        "type": "checkbox",
+        "id": "skip_container",
+        "label": "Full screen width",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "height_desktop",
+        "min": 400,
+        "max": 800,
+        "step": 10,
+        "unit": "px",
+        "label": "Height (desktop)",
+        "default": 650
+      },
+      {
+        "type": "range",
+        "id": "height_mobile",
+        "min": 200,
+        "max": 600,
+        "step": 10,
+        "unit": "px",
+        "label": "Height (mobile)",
+        "default": 250
+      },
+      {
+        "type": "header",
+        "content": "Video tint"
+      },
+      {
+        "type": "color",
+        "id": "tint_color",
+        "label": "Color",
+        "default": "#000000"
+      },
+      {
+        "type": "range",
+        "id": "tint_opacity",
+        "min": 0,
+        "max": 80,
+        "step": 5,
+        "unit": "%",
+        "label": "Opacity",
+        "default": 10
+      },
+      {
+        "type": "header",
+        "content": "Text overlay"
+      },
+      {
+        "type": "select",
+        "id": "text_box_style",
+        "label": "Box style",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "bg",
+            "label": "Background"
+          },
+          {
+            "value": "border",
+            "label": "Border"
+          }
+        ],
+        "default": "none"
+      },
+      {
+        "type": "color",
+        "id": "text_bg_color",
+        "label": "Background / border color",
+        "default": "#000000"
+      },
+      {
+        "type": "range",
+        "id": "text_bg_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Background opacity",
+        "default": 50
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "select",
+        "id": "text_position",
+        "label": "Text position",
+        "options": [
+          {
+            "value": "left top",
+            "label": "Top left"
+          },
+          {
+            "value": "center top",
+            "label": "Top center"
+          },
+          {
+            "value": "right top",
+            "label": "Top right"
+          },
+          {
+            "value": "left center",
+            "label": "Middle left"
+          },
+          {
+            "value": "center center",
+            "label": "Middle center"
+          },
+          {
+            "value": "right center",
+            "label": "Middle right"
+          },
+          {
+            "value": "left bottom",
+            "label": "Bottom left"
+          },
+          {
+            "value": "center bottom",
+            "label": "Bottom center"
+          },
+          {
+            "value": "right bottom",
+            "label": "Bottom right"
+          }
+        ],
+        "default": "center center"
+      },
+      {
+        "type": "checkbox",
+        "id": "text_below_mobile",
+        "label": "Show text below video on mobile",
+        "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "heading",
+        "name": "Heading",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Tell your story"
+          },
+          {
+            "type": "select",
+            "id": "heading_size",
+            "label": "Heading size",
+            "options": [
+              {
+                "value": "h2",
+                "label": "Small"
+              },
+              {
+                "value": "h1",
+                "label": "Medium"
+              },
+              {
+                "value": "h0",
+                "label": "Large"
+              }
+            ],
+            "default": "h1"        
+          },
+          {
+            "type": "checkbox",
+            "id": "heading_h1",
+            "label": "Set as page heading (uses h1 tag)",
+            "info": "For optimum SEO, only one h1 is recommended per page and it should be the first heading on the page.",
+            "default": false
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "Text",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>with auto-playing, auto-looping videos</p>"
+          },
+          {
+            "type": "checkbox",
+            "id": "enlarge_text",
+            "label": "Enlarge text",
+            "default": false
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "Button",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label",
+            "default": "Read more"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Background video",
+        "settings": {
+          "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+        },
+        "blocks": [
+          {
+            "type": "heading"
+          },
+          {
+            "type": "text"
+          },
+          {
+            "type": "button"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,172 @@
+<div class="container spaced-section overlap-padded">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="section-heading align-center" data-cc-animate>
+      {%- if section.settings.blog != blank -%}<a href="{{ blogs[section.settings.blog].url }}">{%- endif -%}
+        {{- section.settings.heading -}}
+      {%- if section.settings.blog != blank -%}</a>{%- endif -%}
+    </h2>
+  {%- endif -%}
+
+  <div class="grid grid--row-gutters">
+    {%- if section.settings.blog != blank -%}
+      {%- assign blog = blogs[section.settings.blog] -%}
+
+      {%- if blog.articles.size > 0 -%}
+        {%- assign article = blog.articles.first -%}
+        <div class="column half">
+          <div class="mini-article mini-article--main" data-cc-animate>
+            {%- if article.image != blank -%}
+              {%- assign img = article.image -%}
+              <div class="img-block">
+                <a href="{{ article.url }}">
+                  <div class="lazyload-placeholder" style="padding-top: {{ 1 | divided_by: img.aspect_ratio | times: 100 }}%;">
+                    <picture class="no-js-hidden">
+                      <source data-srcset="{%- if img.width < 670 %}{{ img | image_url }} {{ img.width }}w{% endif -%}
+                                           {%- if img.width >= 670 %}{{ img | image_url: width: 670 }} 670w{% endif -%}
+                                           {%- if img.width >= 776 %}, {{ img | image_url: width: 776 }} 776w{% endif -%}"
+                              media="(max-width: 480px)"
+                              width="388"
+                              height="{{ 388 | divided_by: img.aspect_ratio | round }}">
+                      <img data-srcset="{%- if img.width < 580 %}{{ img | image_url }} {{ img.width }}w{% endif -%}
+                                        {%- if img.width >= 580 %}{{ img | image_url: width: 580 }} 580w{% endif -%}
+                                        {%- if img.width >= 1160 %}, {{ img | image_url: width: 1160 }} 1160w{% endif -%}
+                                        {%- if img.width >= 1440 %}, {{ img | image_url: width: 1440 }} 1440w{% endif -%}"
+                          data-src="{{ img | image_url: width: 580 }}"
+                          data-sizes="(min-width: 1280px) 580px, (min-width: 992px) calc(50vw - 60px), (min-width: 768px) calc(50vw - 50px), calc(100vw - 40px)"
+                          class="img-fit lazyload"
+                          width="{{ img.width }}"
+                          height="{{ img.height }}"
+                          alt="{{ img.alt | escape }}">
+                    </picture>
+                    <noscript>
+                      <img src="{{ img | image_url: width: 580 }}" class="img-fit" width="{{ img.width }}" height="{{ img.height }}" alt="{{ img.alt | escape }}">
+                    </noscript>
+                  </div>
+                </a>
+              </div>
+            {%- endif -%}
+            <div class="rte h2-margin-top">
+              <h3 class="mini-article__title"><a href="{{ article.url }}">{{ article.title }}</a></h3>
+              <div class="mini-article__text">
+                {%- if article.excerpt == blank -%}
+                  <p>{{ article.content | strip_html | truncatewords: 35 }}</p>
+                {%- else -%}
+                  {{ article.excerpt | strip_html | truncatewords: 35 }}
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column half">
+          {%- for article in blog.articles limit: 3 offset: 1 -%}
+            {%- assign animate_delay = forloop.index | times: 0.15 -%}
+            <div class="grid mini-article" data-cc-animate data-cc-animate-delay="{{ animate_delay }}s">
+              {%- if article.image != blank -%}
+                {%- assign img = article.image -%}
+                <div class="column half">
+                  <div class="img-block">
+                    <a href="{{ article.url }}">
+                      <div class="lazyload-placeholder" style="padding-top: {{ 1 | divided_by: img.aspect_ratio | times: 100 }}%;">
+                        <img data-srcset="{%- if img.width < 270 %}{{ img | image_url }} {{ img.width }}w{% endif -%}
+                                          {%- if img.width >= 270 %}{{ img | image_url: width: 270 }} 270w{% endif -%}
+                                          {%- if img.width >= 540 %}, {{ img | image_url: width: 540 }} 540w{% endif -%}
+                                          {%- if img.width >= 670 %}, {{ img | image_url: width: 670 }} 670w{% endif -%}
+                                          {%- if img.width >= 1280 %}, {{ img | image_url: width: 1280 }} 1280w{% endif -%}"
+                             data-src="{{ img | image_url: width: 270 }}"
+                             data-sizes="(min-width: 768px) 270px, calc(100vw - 40px)"
+                             class="img-fit lazyload"
+                             width="{{ img.width }}"
+                             height="{{ img.height }}"
+                             alt="{{ img.alt | escape }}">
+                        <noscript>
+                          <img src="{{ img | image_url: width: 270 }}" class="img-fit" width="{{ img.width }}" height="{{ img.height }}" alt="{{ img.alt | escape }}">
+                        </noscript>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              {%- endif -%}
+              <div class="column{% if article.image != blank %} half{% else %} full{% endif %}">
+                <div class="rte">
+                  <h3 class="mini-article__title h5"><a href="{{ article.url }}">{{ article.title }}</a></h3>
+                  <div class="mini-article__text hide-until-md">
+                    {%- if article.excerpt == blank -%}
+                      <p>{{ article.content | strip_html | truncatewords: 20 }}</p>
+                    {%- else -%}
+                      {{ article.excerpt | strip_html | truncatewords: 20 }}
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {%- else -%}
+        <p>{{ 'homepage.onboarding.no_articles' | t }}</p>
+      {%- endif -%}
+
+    {%- else -%}
+
+      <div class="column half">
+        <div class="mini-article" data-cc-animate>
+          <div class="img-block">
+            <div class="placeholder-wrapper placeholder-wrapper--landscape">
+              {{ 'image' | placeholder_svg_tag: "placeholder" }}
+            </div>
+          </div>
+          <div class="rte h2-margin-top">
+            <h3>{{ 'onboarding.article.title' | t }}</h3>
+            <p>{{ 'homepage.onboarding.article_excerpt' | t }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="column half">
+        {%- for i in (1..3) -%}
+          {%- assign animate_delay = i | times: 0.15 -%}
+          <div class="grid mini-article" data-cc-animate data-cc-animate-delay="{{ animate_delay }}s">
+            <div class="column half">
+              <div class="img-block">
+                <div class="placeholder-wrapper placeholder-wrapper--landscape">
+                  {{ 'image' | placeholder_svg_tag: "placeholder" }}
+                </div>
+              </div>
+            </div>
+            <div class="column half">
+              <div class="rte">
+                <h3 class="h5">{{ 'onboarding.article.title' | t }}</h3>
+                <div class="hide-until-md">
+                  <p>{{ 'onboarding.article.excerpt' | t }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Blog posts",
+    "tag": "section",
+    "settings": [
+      {
+        "id": "heading",
+        "type": "text",
+        "label": "Heading"
+      },
+      {
+        "type": "blog",
+        "id": "blog",
+        "label": "Blog"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog posts"
+      }
+    ]
+  }
+{% endschema %}

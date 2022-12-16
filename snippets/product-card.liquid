@@ -1,0 +1,110 @@
+{%- liquid
+  assign inv_mngmt_size = product.variants.first.inventory_management | size
+  assign limit_as_int = settings.prod_stock_warn_limit_int | plus: 0
+  
+  if items_per_row == 2
+    assign col_class = 'half'
+  elsif items_per_row == 3
+    assign col_class = 'third'
+  elsif items_per_row == 5
+    assign col_class = 'fifth'
+  else
+    assign col_class = 'quarter'
+  endif
+
+  if aspect_ratio == null
+    if settings.prod_card_image_ratio == 'shortest' or settings.prod_card_image_ratio == 'tallest'
+      assign aspect_ratio = 1
+    else
+      assign aspect_ratio = settings.prod_card_image_ratio
+    endif
+  endif
+
+  if settings.prod_card_image_fit == 'cover'
+    assign cover = true
+  else
+    assign cover = false
+  endif
+
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  else
+    assign on_sale = false
+  endif
+-%}
+
+<div class="card{% if settings.product_hover_image and product.media.size > 1 %} card--with-hover{% endif %} column {{ col_class }}{% unless product.available %} sold-out{% endunless %}{% if on_sale %} on-sale{% endif %}"{% if animate %} data-cc-animate="cc-fade-in-up" data-cc-animate-delay="{{ animate | times: 0.15 }}s"{% endif %}>
+  <div class="card__image">
+    {%- if product.featured_media -%}
+      {% render 'card-image',
+        img: product.featured_media.preview_image,
+        aspect_ratio: aspect_ratio,
+        cover: cover,
+        items_per_row: items_per_row,
+        class: 'prod-image__main'
+      %}
+
+      {%- if settings.product_hover_image and product.media.size > 1 -%}
+        {% render 'card-image',
+          img: product.media[1].preview_image,
+          aspect_ratio: aspect_ratio,
+          cover: cover,
+          items_per_row: items_per_row,
+          class: 'prod-image__hover'
+        %}
+      {%- endif -%}
+    {%- else -%}
+      <div class="placeholder-wrapper" style="padding-top: {{ 1 | divided_by: aspect_ratio | times: 100 }}%;">
+        {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} Label {%- endcomment -%}
+    {%- if product.available == false and settings.label_soldout_show -%}
+      <span class="prod-label sold-out {{ settings.product_label_position }}">{{ 'products.labels.sold_out' | t }}</span>
+    {%- elsif product.compare_at_price_max > product.price and settings.label_sale_show -%}
+      <span class="prod-label sale {{ settings.product_label_position }}">{{ 'products.labels.sale' | t }}</span>
+    {%- elsif settings.label_remain_show and product.variants.size == 1 and inv_mngmt_size > 0 and product.variants.first.inventory_quantity > 0 and product.variants.first.inventory_quantity <= limit_as_int -%}
+      <span class="prod-label inventory {{ settings.product_label_position }}">{{ 'products.labels.only_x_left' | t: quantity: product.variants.first.inventory_quantity }}</span>
+    {%- else -%}
+      {%- for tag in product.tags -%}
+        {%- if tag contains 'meta-label-' -%}
+          <span class="prod-label general {{ settings.product_label_position }}">{{ tag | remove: 'meta-label-' }}</span>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+  <div class="card__content">
+    {%- if grid_show_vendor -%}
+      <p class="card__vendor">{{ product.vendor }}</p>
+    {%- endif -%}
+
+    <h3 class="card__title">
+      <a href="{{ product.url | within: collection }}" class="card__link">{{ product.title | escape }}</a>
+    </h3>
+    <div class="product-price">
+      {% if product.price_varies %}
+        <span class="product-price__from">{{ 'products.listing.from' | t }}</span>
+      {% endif %}
+      <span class="product-price__amount theme-money">
+        {%- if settings.show_currency_code -%}
+          {{- product.price | money_with_currency -}}
+        {%- else -%}
+          {{- product.price | money -}}
+        {%- endif -%}
+      </span>
+      {% if on_sale %}
+        <span class="product-price__compare theme-money">{{ product.compare_at_price | money }}</span>
+      {% endif %}
+      {%- assign variant = product.variants | sort: 'price' | first -%}
+      {%- render 'unit-price', variant: variant -%}
+    </div>
+
+    {%- if product.metafields.reviews.rating.value != blank and settings.enable_reviews_collection -%}
+      {% render 'rating',
+        rating_value: product.metafields.reviews.rating.value,
+        rating_count: product.metafields.reviews.rating_count
+      %}
+    {%- endif -%}
+  </div>
+</div>

@@ -1,0 +1,227 @@
+{%- liquid
+  assign show_filters = section.settings.coll_show_filters
+  assign show_sort_by = section.settings.coll_show_sort
+
+  if search.filters == empty
+    assign show_filters = false
+  endif
+-%}
+
+<div class="spaced-section" data-section-type="search" data-components="accordion,custom-select,price-range" data-filtering="{{ show_filters }}" data-sorting="{{ show_sort_by }}">
+  <div class="container section-content">
+    <div class="spaced-row-bottom reading-width">
+      <form action="{{ routes.search_url }}" method="get" class="search-form" role="search" autocomplete="off">
+        <input type="hidden" name="type" value="{{ settings.search_type }}">
+        <input type="hidden" name="options[prefix]" value="last">
+        <div class="input-with-button">
+          <div class="input-with-button__input-wrapper input-with-clear">
+            <input class="input-with-button__input input" type="search" name="q" placeholder="{{ 'general.search.placeholder' | t }}" autocomplete="off" value="{{ search.terms | escape }}" aria-label="{{ 'layout.search.placeholder' | t | escape }}">
+            <button class="input-with-clear__clear" type="button">{% render 'svg-close' %}</button>
+          </div>
+          <button class="button input-with-button__button" type="submit">
+            {{ 'general.search.submit' | t }}
+          </button>
+        </div>
+      </form>
+
+      {%- if search.performed -%}
+        {%- if search.results_count == 0 -%}
+          <div class="lightly-spaced-row align-center">
+            {{ 'general.search.no_results' | t: terms: search.terms }}
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+
+    {% comment %}
+      search.performed is false when accessing the /search page without a 'q' parameter set
+      in the URL. A shop-owner can link to the /search page from one of his link lists.
+      It is important to show a search form on that page if search.performed is false.
+    {% endcomment %}
+
+    {%- if search.performed -%}
+      {%- paginate search.results by section.settings.pagination_limit -%}
+        {% comment %}
+          Common pitfall to avoid: search.results should never be accessed before the opening
+          paginate tag. Move the opening and closing paginate tags to the very top and bottom of your
+          search.liquid template if you need to.
+          If you fail to do the above, the pagination of search results will be broken.
+          search.results_count is fine to access in or out of the paginate block.
+        {% endcomment %}
+
+        {% render 'facet-filters',
+          results: search,
+          paginate: paginate,
+          show_filters: show_filters,
+          show_sort_by: show_sort_by
+        %}
+
+        <div class="filters-results">
+          {%- if search.results_count > 0 -%}
+            <div class="grid grid--row-gutters">
+              {%- liquid
+                if settings.prod_card_image_ratio == 'shortest'
+                  assign aspect_ratio = 0
+                  for item in search.results
+                    if item.object_type == 'product'
+                      if item.featured_media.preview_image.aspect_ratio > aspect_ratio
+                        assign aspect_ratio = item.featured_media.preview_image.aspect_ratio
+                      endif
+                    else
+                      if item.image.aspect_ratio > aspect_ratio
+                        assign aspect_ratio = item.image.aspect_ratio
+                      endif
+                    endif
+                  endfor
+                elsif settings.prod_card_image_ratio == 'tallest'
+                  assign aspect_ratio = 99
+                  for item in search.results
+                    if item.object_type == 'product'
+                      if item.featured_media.preview_image.aspect_ratio < aspect_ratio
+                        assign aspect_ratio = item.featured_media.preview_image.aspect_ratio
+                      endif
+                    else
+                      if item.image.aspect_ratio < aspect_ratio
+                        assign aspect_ratio = item.image.aspect_ratio
+                      endif
+                    endif
+                  endfor
+                else
+                  assign aspect_ratio = settings.prod_card_image_ratio
+                endif
+              -%}
+              {%- for item in search.results -%}
+                {%- if item.object_type == 'product' -%}
+                  {% render 'product-card',
+                    product: item,
+                    aspect_ratio: aspect_ratio,
+                    grid_show_vendor: section.settings.grid_show_vendor,
+                    items_per_row: section.settings.products_per_row_int
+                  %}
+                {%- else -%}
+                  {%- liquid
+                    assign items_per_row = section.settings.products_per_row_int
+                    if items_per_row == 2
+                      assign col_class = 'half'
+                    elsif items_per_row == 3
+                      assign col_class = 'third'
+                    elsif items_per_row == 5
+                      assign col_class = 'fifth'
+                    else
+                      assign col_class = 'quarter'
+                    endif
+                  -%}
+                  <article class="card column {{ col_class }}">
+                    {%- if item.object_type == 'article' and item.image -%}
+                      <div class="card__image">
+                        {% render 'card-image',
+                          img: item.image,
+                          aspect_ratio: aspect_ratio,
+                          cover: true,
+                          items_per_row: section.settings.products_per_row_int
+                        %}
+                      </div>
+                    {%- endif -%}
+                    <div class="card__content">
+                      <h3 class="h5"><a class="card__link" href="{{ item.url }}">{{ item.title }}</a></h3>
+                      <div class="rte hide-until-md">
+                        <p>{{ item.content | strip_html | truncatewords: 20 | highlight: search.terms }}</p>
+                      </div>
+                    </div>
+                  </article>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+
+          {% render 'pagination', paginate: paginate %}
+        </div>
+      {%- endpaginate -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Search page",
+    "settings": [
+      {
+        "type": "range",
+        "id": "products_per_row_int",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "label": "Number of products per row",
+        "default": 4
+      },
+      {
+        "type": "range",
+        "id": "pagination_limit",
+        "min": 8,
+        "max": 50,
+        "step": 2,
+        "label": "Products per page",
+        "default": 16
+      },
+      {
+        "type": "checkbox",
+        "id": "show_prod_totals",
+        "label": "Show results total",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "grid_show_vendor",
+        "label": "Show product vendor",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Filtering"
+      },
+      {
+        "type": "checkbox",
+        "id": "coll_show_filters",
+        "label": "Enable filtering",
+        "info": "[Customize filters](\/admin\/menus)",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_filter_prod_counts",
+        "label": "Show product counts",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "filters_open",
+        "label": "Filters open by default (desktop)",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "some",
+            "label": "First 4"
+          },
+          {
+            "value": "all",
+            "label": "All"
+          }
+        ],
+        "default": "some"
+      },
+      {
+        "type": "header",
+        "content": "Sorting"
+      },
+      {
+        "type": "checkbox",
+        "id": "coll_show_sort",
+        "label": "Enable sorting",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,125 @@
+<div class="spaced-section" data-section-type="collection-list">
+  <div class="container section-content">
+    {%- if section.settings.title != blank -%}
+      <h2 class="section-heading align-center" data-cc-animate>
+        {{ section.settings.title | escape }}
+      </h2>
+    {%- endif -%}
+
+    <div class="grid grid--row-gutters product-list">
+      {%- if section.blocks.size > 0 -%}
+        {%- liquid
+          if settings.coll_card_image_ratio == 'shortest'
+            assign aspect_ratio = 0
+            for block in section.blocks
+              assign collection = collections[block.settings.collection]
+              if collection != blank
+                if settings.coll_card_image_src == 'product'
+                  assign coll_image = collection.products.first.featured_media.preview_image
+                else
+                  assign coll_image = collection.featured_image
+                endif
+
+                if coll_image.aspect_ratio > aspect_ratio
+                  assign aspect_ratio = coll_image.aspect_ratio
+                endif
+              endif
+            endfor
+          elsif settings.coll_card_image_ratio == 'tallest'
+            assign aspect_ratio = 99
+            for block in section.blocks
+              assign collection = collections[block.settings.collection]
+              if collection != blank
+                if settings.coll_card_image_src == 'product'
+                  assign coll_image = collection.products.first.featured_media.preview_image
+                else
+                  assign coll_image = collection.featured_image
+                endif
+
+                if coll_image.aspect_ratio < aspect_ratio
+                  assign aspect_ratio = coll_image.aspect_ratio
+                endif
+              endif
+            endfor
+          else
+            assign aspect_ratio = settings.coll_card_image_ratio
+          endif
+        -%}
+        {%- for block in section.blocks -%}
+          {%- assign collection = collections[block.settings.collection] -%}
+          {%- unless collection == blank -%}
+            {%- liquid
+              if settings.coll_card_image_src == 'product'
+                assign coll_image = collection.products.first.featured_media.preview_image
+              else
+                assign coll_image = collection.featured_image
+              endif
+            -%}
+            {% render 'collection-card',
+              collection: collection,
+              image: coll_image,
+              aspect_ratio: aspect_ratio,
+              items_per_row: section.settings.collections_per_row_int,
+              animate: forloop.index
+            %}
+          {%- else -%}
+            {% render 'onboarding-card',
+              aspect_ratio: aspect_ratio,
+              items_per_row: section.settings.collections_per_row_int,
+              is_product: false
+            %}
+          {%- endunless -%}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..section.settings.collections_per_row_int) -%}
+          {% render 'onboarding-card',
+            items_per_row: section.settings.collections_per_row_int,
+            is_product: false
+          %}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Collection list",
+    "max_blocks": 20,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      },
+      {
+        "type": "range",
+        "id": "collections_per_row_int",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "label": "Number of collections per row",
+        "default": 4
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection list"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,84 @@
+<div class="section-container">
+    <div class="flex-big-container">
+        <div class="main-text-ht v-align-{{ section.settings.vertical_align }}">
+            <div class="content-text-container">
+                <h2 class="huge-title size-{{ section.settings.title_size }}">{{ section.settings.big_title }}</h2>
+                <p class="text-promotion content-{{ section.settings.content_size }}">{{ section.settings.content }}</p>
+                <a href="{{ section.settings.final_link }}" class="learn-more">{{ section.settings.button_text }}</a>
+            </div>
+        </div>
+        <div class="side-image">
+            <img class="side-image-dimensions" src="{{ section.settings.side_image | img_url: 'master'  }}" alt="side image">
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "big title and image",
+        "class": "big-title",
+        "settings": [
+            {
+                "type": "text",
+                "id": "big_title",
+                "label": "big title",
+                "default": "this is the title"
+            },
+            {
+                "type": "range",
+                "id": "title_size",
+                "min": 50,
+                "max": 100,
+                "default": 95,
+                "step": 5,
+                "label": "title size"
+            },
+            {
+                "type": "text",
+                "id": "content",
+                "label": "content",
+                "default": "in this field you gotta write the content"
+            },
+            {
+                "type": "range",
+                "id": "content_size",
+                "min": 10,
+                "max": 18,
+                "default": 14,
+                "step": 2,
+                "label": "content size"
+            },
+            {
+                "type": "image_picker",
+                "id": "side_image",
+                "label": "side image"
+            },
+            {
+                "type": "url",
+                "id": "final_link",
+                "label": "bottom link"
+            },
+            {
+                "type": "text",
+                "id": "button_text",
+                "label": "button text",
+                "default": "button"
+            },
+            {
+                "type": "range",
+                "id": "vertical_align",
+                "min": 1,
+                "max": 5,
+                "step": 1,
+                "default": 1,
+                "label": "vertical align"
+            }
+        ],
+        "presets": [
+            {
+                "category": "big title",
+                "name": "big title left"
+            }
+        ]
+    }
+{% endschema %}

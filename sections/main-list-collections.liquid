@@ -1,0 +1,159 @@
+<div class="spaced-section" data-section-type="list-collections">
+  <div class="container section-content">
+    {%- if section.settings.display_type == 'all' -%}
+      {%- paginate collections by 12 -%}
+        {%- liquid
+          if settings.coll_card_image_ratio == 'shortest'
+            assign aspect_ratio = 0
+            for collection in collections
+              if settings.coll_card_image_src == 'product'
+                assign coll_image = collection.products.first.featured_media.preview_image
+              else
+                assign coll_image = collection.featured_image
+              endif
+        
+              if coll_image.aspect_ratio > aspect_ratio
+                assign aspect_ratio = coll_image.aspect_ratio
+              endif
+            endfor
+          elsif settings.coll_card_image_ratio == 'tallest'
+            assign aspect_ratio = 99
+            for collection in collections
+              if settings.coll_card_image_src == 'product'
+                assign coll_image = collection.products.first.featured_media.preview_image
+              else
+                assign coll_image = collection.featured_image
+              endif
+        
+              if coll_image.aspect_ratio < aspect_ratio
+                assign aspect_ratio = coll_image.aspect_ratio
+              endif
+            endfor
+          else
+            assign aspect_ratio = settings.coll_card_image_ratio
+          endif
+        -%}
+        <div class="grid grid--row-gutters product-list">
+          {%- for collection in collections -%}
+            {%- liquid
+              if settings.coll_card_image_src == 'product'
+                assign coll_image = collection.products.first.featured_media.preview_image
+              else
+                assign coll_image = collection.featured_image
+              endif
+            -%}
+            {% render 'collection-card',
+              collection: collection,
+              image: coll_image,
+              aspect_ratio: aspect_ratio,
+              items_per_row: 4
+            %}
+          {%- endfor -%}
+        </div>
+        {% render 'pagination', paginate: paginate %}
+      {%- endpaginate -%}
+    {%- else -%}
+      <div class="grid grid--row-gutters product-list" data-cc-animate>
+        {%- liquid
+          if settings.coll_card_image_ratio == 'shortest'
+            assign aspect_ratio = 0
+            for block in section.blocks
+              assign collection = collections[block.settings.collection]
+              if collection != blank
+                if settings.coll_card_image_src == 'product'
+                  assign coll_image = collection.products.first.featured_media.preview_image
+                else
+                  assign coll_image = collection.featured_image
+                endif
+
+                if coll_image.aspect_ratio > aspect_ratio
+                  assign aspect_ratio = coll_image.aspect_ratio
+                endif
+              endif
+            endfor
+          elsif settings.coll_card_image_ratio == 'tallest'
+            assign aspect_ratio = 99
+            for block in section.blocks
+              assign collection = collections[block.settings.collection]
+              if collection != blank
+                if settings.coll_card_image_src == 'product'
+                  assign coll_image = collection.products.first.featured_media.preview_image
+                else
+                  assign coll_image = collection.featured_image
+                endif
+
+                if coll_image.aspect_ratio < aspect_ratio
+                  assign aspect_ratio = coll_image.aspect_ratio
+                endif
+              endif
+            endfor
+          else
+            assign aspect_ratio = settings.coll_card_image_ratio
+          endif
+        -%}
+        {%- for block in section.blocks -%}
+          {%- assign collection = collections[block.settings.collection] -%}
+          {%- if block.settings.collection != empty -%}
+            {%- liquid
+              if settings.coll_card_image_src == 'product'
+                assign coll_image = collection.products.first.featured_media.preview_image
+              else
+                assign coll_image = collection.featured_image
+              endif
+            -%}
+            {% render 'collection-card',
+              collection: collection,
+              image: coll_image,
+              aspect_ratio: aspect_ratio,
+              items_per_row: 4
+            %}
+          {%- else -%}
+            {% render 'onboarding-card', aspect_ratio: aspect_ratio, items_per_row: 4, is_product: false %}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Collections list",
+    "max_blocks": 48,
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "All of your collections are listed by default. To customize your list, choose 'Selected' and add collections."
+      },
+      {
+        "type": "radio",
+        "id": "display_type",
+        "label": "Select collections to show",
+        "default": "all",
+        "options": [
+          {
+            "value": "all",
+            "label": "All"
+          },
+          {
+            "value": "selected",
+            "label": "Selected"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

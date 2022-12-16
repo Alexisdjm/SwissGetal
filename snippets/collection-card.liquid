@@ -1,0 +1,40 @@
+{%- liquid
+  if items_per_row == 2
+    assign col_class = 'half'
+  elsif items_per_row == 3
+    assign col_class = 'third'
+  elsif items_per_row == 5
+    assign col_class = 'fifth'
+  else
+    assign col_class = 'quarter'
+  endif
+
+  if settings.coll_card_image_fit == 'cover'
+    assign cover = true
+  else
+    assign cover = false
+  endif
+-%}
+
+<div class="card card--collection column {{ col_class }}"{% if animate %} data-cc-animate="cc-fade-in-up" data-cc-animate-delay="{{ animate | times: 0.15 }}s"{% endif %}>
+  <div class="card__image">
+    {%- if image != null -%}
+      {% render 'card-image',
+        img: image,
+        aspect_ratio: aspect_ratio,
+        cover: cover,
+        items_per_row: items_per_row
+      %}
+    {%- else -%}
+      <div class="placeholder-wrapper"{% if aspect_ratio %} style="padding-top: {{ 1 | divided_by: aspect_ratio | times: 100 }}%;"{% endif %}>
+        {%- capture placeholder_svg_name -%}collection-{{ 'now' | date: '%N' | modulo: 6 | plus: 1 }}{%- endcapture -%}
+        {{ placeholder_svg_name | placeholder_svg_tag: 'placeholder' }}
+      </div>
+    {%- endif -%}
+  </div>
+  <div class="card__content">
+    <h3 class="card__title">
+      <a href="{{ collection.url }}" class="card__link">{{ collection.title }}</a>
+    </h3>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="section-banner">
+	<div class="banner banner--no-breadcrumbs{% if settings.account_show_hero_bg %} banner--bg banner--bg-color{% endif %}">
+    <div class="banner__text container" data-cc-animate>
+      <h1>{{ 'customer.activate_account.title' | t }}</h1>
+      <div>{{ 'customer.activate_account.subtext' | t }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="spaced-section container">
+  <div class="section-content">
+    <div class="general-form" data-cc-animate data-cc-animate-delay="0.1s">
+      {% form 'activate_customer_password' %}
+        {{ form.errors | default_errors }}
+        
+        <div id="password" class="large_form">
+          <label class="is-required" for="password">{{ 'customer.activate_account.password' | t }}</label>
+          <input class="input password"
+                 type="password"
+                 name="customer[password]"
+                 id="customer_password"
+                 aria-required="true"
+                 required>
+        </div>
+        <div id="password_confirm" class="large_form">
+          <label class="is-required" for="password_confirmation">{{ 'customer.activate_account.password_confirm' | t }}</label>
+          <input class="input password"
+                 type="password"
+                 name="customer[password_confirmation]"
+                 id="customer_password_confirmation"
+                 aria-required="true"
+                 required>
+        </div>
+        <div class="action_bottom">
+          <p>
+            <button class="button" type="submit">{{ 'customer.activate_account.submit' | t }}</button>
+          </p>
+          <button class="button" type="submit" class="cancel" name="decline" id="customer_decline">
+            {{- 'customer.activate_account.cancel' | t -}}
+          </button>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</div>

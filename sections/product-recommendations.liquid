@@ -1,0 +1,123 @@
+<div class="product-recommendations"
+     data-section-id="{{ section.id }}"
+     data-limit="{{ section.settings.products_per_row_int }}"
+     data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.products_per_row_int }}">
+  {%- if recommendations.performed and recommendations.products_count > 0 -%}
+    <div class="spaced-section container">
+      <h2 class="section-heading align-center" data-cc-animate>
+        {{- section.settings.recommendations_title | escape -}}
+      </h2>
+      <div class="align-center grid grid--row-gutters product-list">
+        {%- liquid
+          if settings.prod_card_image_ratio == 'shortest'
+            assign aspect_ratio = 0
+            for product in recommendations.products
+              if product.featured_media.preview_image.aspect_ratio > aspect_ratio
+                assign aspect_ratio = product.featured_media.preview_image.aspect_ratio
+              endif
+            endfor
+          elsif settings.prod_card_image_ratio == 'tallest'
+            assign aspect_ratio = 99
+            for product in recommendations.products
+              if product.featured_media.preview_image.aspect_ratio < aspect_ratio
+                assign aspect_ratio = product.featured_media.preview_image.aspect_ratio
+              endif
+            endfor
+          else
+            assign aspect_ratio = settings.prod_card_image_ratio
+          endif
+        -%}
+        {%- for product in recommendations.products -%}
+          {% render 'product-card',
+            product: product,
+            aspect_ratio: aspect_ratio,
+            grid_show_vendor: section.settings.grid_show_vendor,
+            items_per_row: section.settings.products_per_row_int,
+            animate: forloop.index
+          %}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% javascript %}
+  function loadProductRecommendations() {
+    const sprSection = document.querySelector('.product-recommendations');
+    const { limit, url } = sprSection.dataset;
+
+    fetch(sprSection.dataset.url)
+      .then((response) => {
+        if (!response.ok) { throw response };
+        return response.text();
+      })
+      .then((html) => {
+        const div = document.createElement('div');
+        const colClass = new Map([['2', 'half'], ['3', 'third'], ['4', 'quarter'], ['5', 'fifth']]);
+
+        div.innerHTML = html;
+        div.querySelectorAll('.card').forEach((el) => {
+          el.classList.remove('half', 'third', 'quarter', 'fifth');
+          el.classList.add(colClass.get(limit));
+        });
+        sprSection.parentElement.innerHTML = div.querySelector('.product-recommendations').innerHTML;
+
+        window.theme.initAnimateOnScroll();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  document.addEventListener('shopify:section:load', (e) => {
+    const sectionEl = document.querySelector('.product-recommendations');
+
+    if (sectionEl && sectionEl.dataset.sectionId === e.detail.sectionId) {
+      loadProductRecommendations();
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', loadProductRecommendations);
+{% endjavascript %}
+
+{% schema %}
+  {
+    "name": "Product recommendations",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Dynamic recommendations change and improve with time. [Learn more](https://help.shopify.com/en/themes/development/recommended-products)"
+      },
+      {
+        "type": "text",
+        "id": "recommendations_title",
+        "label": "Heading",
+        "default": "You may also like"
+      },
+      {
+        "type": "checkbox",
+        "id": "grid_show_vendor",
+        "label": "Show product vendor",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "products_per_row_int",
+        "label": "Products per row",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "default": 4
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product recommendations"
+      }
+    ],
+    "templates": [
+      "product"
+    ]
+  }
+{% endschema %}

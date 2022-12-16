@@ -1,0 +1,77 @@
+<div class="section-container">
+  <div class="img-bg-container align-{{ section.settings.horizontal_align  }}">
+    <img class="img" src="{{ section.settings.background | img_url: 'master'  }}" alt="top">
+    <div class="text-container v-align-{{ section.settings.vertical_align  }}">
+      {% if section.settings.title %}
+        <h3 class="text-header">{{ section.settings.title }}</h3>
+      {% endif %}
+
+      <p class="main-text">{{ section.settings.content }}</p>
+
+      {% if section.settings.button_link %}
+        <div class="link-button">
+          <a class="the-link" href="{{ section.settings.button_link  }}">{{ section.settings.button_text  }}</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "big image and text",
+    "class": "big-image",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "background",
+        "label": "background"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "title",
+        "default": "some title"
+      },
+      {
+        "type": "text",
+        "id": "content",
+        "label": "content",
+        "default": "this is the main content"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "button link"
+      }, {
+        "type": "text",
+        "id": "button_text",
+        "label": "button text",
+        "default": "button"
+      }, {
+        "type": "range",
+        "id": "horizontal_align",
+        "min": 1,
+        "max": 3,
+        "step": 1,
+        "default": 1,
+        "label": "horizontal align"
+      }, 
+      {
+        "type": "range",
+        "id": "vertical_align",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "default": 1,
+        "label": "vertical align"
+      }
+    ],
+    "presets": [
+      {
+        "category": "top",
+        "name": "top image section"
+      }
+    ]
+  }
+{% endschema %}

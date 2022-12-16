@@ -1,0 +1,603 @@
+{%- liquid
+  if section.settings.size == 'page-fixed'
+    assign full_width = false
+    assign sizes = '(min-width: 1280px) 1200px, (min-width: 992px) calc(100vw - 80px), (min-width: 768px) calc(100vw - 60px), calc(100vw - 40px)'
+    assign split_sizes = '(min-width: 1280px) 600px, (min-width: 992px) calc(50vw - 40px), (min-width: 768px) calc(50vw - 30px), calc(50vw - 30px)'
+  else
+    assign full_width = true
+    assign sizes = '100vw'
+    assign split_sizes = '50vw'
+  endif
+
+  if section.settings.text_bg_color contains ',0'
+    assign bg_color = false
+  else
+    assign bg_color = section.settings.text_bg_color
+  endif
+-%}
+
+{%- if section.blocks.size > 0 -%}
+  {%- style -%}
+    {%- unless section.settings.size == 'full-viewport' -%}
+      #{{ section.id }} .slide { min-height: {{ section.settings.height_mobile }}px; }
+      @media (max-width: 480px) {
+        #{{ section.id }} .mobile-stacked .slide__image { min-height: {{ section.settings.height_mobile }}px; }
+        #{{ section.id }} .mobile-stacked .slick-prev,
+        #{{ section.id }} .mobile-stacked .slick-next,
+        #{{ section.id }} .mobile-stacked .slick-dots {
+          top: {{ section.settings.height_mobile | minus: 50 }}px; bottom: auto;
+        }
+      }
+      @media (min-width: 480px) {
+        #{{ section.id }} .slide {
+          min-height: calc({{ section.settings.height_mobile }}px + ({{ section.settings.height_desktop }} - {{ section.settings.height_mobile }}) * ((100vw - 480px) / 1120));
+        }
+      }
+      @media (min-width: 1600px) {
+        #{{ section.id }} .slide { min-height: {{ section.settings.height_desktop }}px; }
+      }
+    {%- endunless -%}
+    #{{ section.id }} .slide__image::after {
+      background-color: rgba({{ section.settings.tint_color.red }}, {{ section.settings.tint_color.green }}, {{ section.settings.tint_color.blue }}, {{ section.settings.tint_opacity | divided_by: 100.0 }});
+    }
+    #{{ section.id }} .text-overlay { color: {{ section.settings.text_color }}; }
+    #{{ section.id }} .text-overlay--bg .slide-btn:hover {
+      border-color: {{ section.settings.text_color }};
+      background: {{ section.settings.text_color }};
+      color: {{ section.settings.text_bg_color }};
+    }
+    {%- if section.settings.text_box_style == 'bg' -%}
+      #{{ section.id }} .text-overlay--bg {
+        background-color: rgba({{ section.settings.text_bg_color.red }}, {{ section.settings.text_bg_color.green }}, {{ section.settings.text_bg_color.blue }}, {{ section.settings.text_bg_opacity | divided_by: 100.0 }});
+      }
+    {%- elsif section.settings.text_box_style == 'border' -%}
+      #{{ section.id }} .text-overlay--border { border-color: {{ section.settings.text_bg_color }}; }
+    {%- endif -%}
+    {%- if settings.hero_overlap > 0 and full_width == false -%}
+      #shopify-section-{{ section.id }} + .shopify-section .section-content { margin-top: 0; }
+      #shopify-section-{{ section.id }} + .shopify-section .spaced-section .section-content { padding: 0; }
+    {%- endif -%}
+  {%- endstyle -%}
+{%- endif -%}
+
+<div class="slideshow-section{% unless full_width %} spaced-section spaced-section--sm-up{% endunless %}" id="{{ section.id }}" data-section-type="slideshow">
+  {% unless full_width %}
+    <div class="container container--not-mobile section-content section-content--no-padding">
+  {% endunless %}
+    {%- if section.blocks.size > 0 -%}
+      <div class="slideshow{% unless section.settings.show_mobile_arrows %} slideshow--no-mobile-arrows{% endunless %}{% if section.settings.text_below_mobile and section.settings.size != 'full-viewport' %} mobile-stacked{% unless section.settings.text_box_style == 'bg' %} mobile-stacked--spaced{% endunless %}{% endif %}{% if section.settings.size == 'full-viewport' %} viewport-height{% endif %}"
+           data-transition="{{ section.settings.slide_mode }}"
+           data-autoplay="{{ section.settings.autoplay }}"
+           data-autoplay-speed="{{ section.settings.autoplay_speed }}"
+           data-carousel="{{ section.settings.enable_split }}">
+
+        {%- for block in section.blocks -%}
+          <div class="slide block-{{ forloop.index }} content-align-{{ block.settings.text_position | split: ' ' | first }} content-valign-{{ block.settings.text_position | split: ' ' | last }}" data-index="{{ forloop.index }}" {{ block.shopify_attributes }}>
+            <div class="slide__image has-overlay lazyload-placeholder">
+              {%- if block.settings.image_desktop != blank -%}
+                {%- liquid
+                  assign img = block.settings.image_desktop
+                  assign img_crop = block.settings.image_align_mobile
+                  assign img_align = 'img-fit--' | append: block.settings.image_align_desktop
+                  assign m_img_align = 'img-fit--mob-' | append: block.settings.image_align_mobile
+
+                  if block.settings.image_mobile != blank
+                    assign m_img = block.settings.image_mobile
+                  else
+                    assign m_img = block.settings.image_desktop
+                  endif
+                -%}
+                <picture>
+                  {%- if section.settings.size == 'full-viewport' -%}
+                    {%- comment -%} ---------- Mobile / full height ---------- {%- endcomment -%}
+                    {%- liquid
+                      assign sizes = '(max-aspect-ratio: 1/2) 50vh, 100vw'
+                      assign split_sizes = '(max-aspect-ratio: 1/2) 50vh, 50vw'
+                    -%}
+                    {%- if m_img.height < 1500 -%}
+                      {%- assign m_img_width = m_img.height | times: 0.5 | ceil -%}
+                      <source data-srcset="{{ m_img | image_url: width: m_img_width, height: m_img.height, crop: img_crop }}"
+                              media="(max-width: 480px)"
+                              width="{{ m_img_width }}"
+                              height="{{ m_img.height }}">
+                    {%- else -%}
+                      <source data-srcset="{{ m_img | image_url: width: 750, height: 1500, crop: img_crop }} 750w
+                                          {%- if m_img.height >= 1712 %}, {{ m_img | image_url: width: 856, height: 1712, crop: img_crop }} 856w{% endif -%}"
+                              media="(max-width: 480px)"
+                              width="428"
+                              height="{{ 428 | divided_by: 0.5 | ceil }}">
+                    {%- endif -%}
+
+                  {%- else -%}
+                    {%- comment -%} ---------- Mobile / fixed height ---------- {%- endcomment -%}
+                    {%- liquid
+                      assign slide_height_2x = section.settings.height_mobile | times: 2
+                      assign m_img_ratio = 428.0 | divided_by: section.settings.height_mobile
+                    -%}
+                    {%- if m_img.width < 750 or m_img.height < slide_height_2x -%}
+                      {%- comment -%} Image smaller than container {%- endcomment -%}
+                      {%- liquid
+                        if m_img.width < 750
+                          assign m_img_ratio = 375.0 | divided_by: section.settings.height_mobile
+                          assign m_img_width = m_img.width
+                          assign m_img_height = m_img.width | divided_by: m_img_ratio | ceil
+                        else
+                          assign m_img_width = m_img.height | times: m_img_ratio | ceil
+                          assign m_img_height = m_img.height
+                        endif
+                      -%}
+                      <source data-srcset="{{ m_img | image_url: width: m_img_width, height: m_img_height, crop: img_crop }}"
+                              media="(max-width: 480px)"
+                              width="{{ m_img_width }}"
+                              height="{{ m_img_height }}">
+                    {%- else -%}
+                      {%- comment -%} Image larger than container {%- endcomment -%}
+                      <source data-srcset="{{ m_img | image_url: width: 750, height: slide_height_2x, crop: img_crop }} 750w
+                                      {%- if m_img.width >= 856 %}, {{ m_img | image_url: width: 856, height: slide_height_2x, crop: img_crop }} 856w{% endif -%}"
+                              media="(max-width: 480px)"
+                              width="428"
+                              height="{{ 428 | divided_by: m_img_ratio | ceil }}">
+                    {%- endif -%}
+
+                    {%- comment -%}
+                    {%- if block.settings.image_mobile != blank and m_img.width >= 1280 and m_img.height >= slide_height_2x %}
+                      <source data-srcset="{{ m_img | image_url: width: 1280 }} 1280w"
+                              media="(max-width: 640px)"
+                              width="640"
+                              height="{{ 640 | divided_by: m_img.aspect_ratio | ceil }}">
+                    {%- endif -%}
+                    {%- endcomment -%}
+
+                  {%- endif -%}
+
+                  {%- if section.settings.enable_split -%}
+                    {%- comment -%} ---------- Desktop / half width ---------- {%- endcomment -%}
+                    <img data-srcset="{%- if img.width < 600 %}{{ img | image_url }} {{ img.width }}w{% endif -%}
+                                      {%- if img.width >= 600 %}{{ img | image_url: width: 600 }} 600w{% endif -%}
+                                      {%- if img.width >= 960 %}, {{ img | image_url: width: 960 }} 960w{% endif -%}
+                                      {%- if img.width >= 1200 %}, {{ img | image_url: width: 1200 }} 1200w{% endif -%}
+                                      {%- if img.width >= 1440 %}, {{ img | image_url: width: 1440 }} 1440w{% endif -%}"
+                         data-src="{{ img | image_url: width: 960 }}"
+                         data-sizes="{{ split_sizes }}"
+                         src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{ img.width }} {{ img.height }}'%3E%3C/svg%3E"
+                         class="img-fit {{ img_align }} {{ m_img_align }} lazyload-manual"
+                         width="{{ img.width }}"
+                         height="{{ img.height }}"
+                         alt="{{ img.alt | escape }}">
+                  {%- else -%}
+                    {%- comment -%} ---------- Desktop / full width ---------- {%- endcomment -%}
+                    <img data-srcset="{%- if img.width < 1200 %}{{ img | image_url }} {{ img.width }}w{% endif -%}
+                                      {%- if img.width >= 1200 %}{{ img | image_url: width: 1200 }} 1200w{% endif -%}
+                                      {%- if img.width >= 1440 %}, {{ img | image_url: width: 1440 }} 1440w{% endif -%}
+                                      {%- if img.width >= 1680 %}, {{ img | image_url: width: 1680 }} 1680w{% endif -%}
+                                      {%- if img.width >= 1920 %}, {{ img | image_url: width: 1920 }} 1920w{% endif -%}
+                                      {%- if img.width >= 2560 %}, {{ img | image_url: width: 2560 }} 2560w{% endif -%}
+                                      {%- if img.width >= 3200 %}, {{ img | image_url: width: 3200 }} 3200w{% endif -%}"
+                         data-src="{{ img | image_url: width: 1680 }}"
+                         data-sizes="{{ sizes }}"
+                         src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{ img.width }} {{ img.height }}'%3E%3C/svg%3E"
+                         class="img-fit {{ img_align }} {{ m_img_align }} lazyload-manual"
+                         width="{{ img.width }}"
+                         height="{{ img.height }}"
+                         alt="{{ img.alt | escape }}">
+                  {%- endif -%}
+                </picture>
+                <noscript>
+                  <img class="img-fit {{ m_img_align }} {{ img_align }}" src="{{ img | image_url: width: 1680 }}" width="{{ img.width }}" height="{{ img.height }}" alt="{{ img.alt | escape }}">
+                </noscript>
+              {%- else -%}
+                {%- capture placeholder -%}lifestyle-{% cycle '1', '2' %}{%- endcapture -%}
+                {{ placeholder | placeholder_svg_tag: 'img-fit placeholder dark lazyload' }}
+              {%- endif -%}
+            </div>
+
+            {%- if block.settings.heading != blank or block.settings.text != blank or block.settings.button_1_text != blank or block.settings.button_2_text != blank -%}
+              <div class="text-overlay{% unless section.settings.text_box_style == 'none' %} text-overlay--box text-overlay--{{ section.settings.text_box_style }}{% endunless %}{% unless bg_color != false and bg_color != settings.col_page_bg and section.settings.text_box_style == 'bg' %} text-overlay--stacked-no-pad{% endunless %} transition transition-out">
+                {%- if block.settings.heading != blank -%}
+                  <h2 class="text-overlay__heading slide__heading {{ block.settings.heading_size }}">
+                    {{ block.settings.heading | newline_to_br }}
+                  </h2>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <div class="text-overlay__text slide__text{% if block.settings.enlarge_text %} large-text{% endif %} rte">
+                    {{ block.settings.text }}
+                  </div>
+                {%- endif -%}
+                {%- if block.settings.button_1_text != blank or block.settings.button_2_text != blank -%}
+                  <div class="slide__btns">
+                    {%- if block.settings.button_1_text != blank -%}
+                      <a href="{{ block.settings.button_1_url }}" class="slide-btn button button--hollow">
+                        {{- block.settings.button_1_text | escape -}}
+                      </a>
+                    {%- endif -%}
+                    {%- if block.settings.button_2_text != blank -%}
+                      <a href="{{ block.settings.button_2_url }}" class="slide-btn button button--hollow">
+                        {{- block.settings.button_2_text | escape -}}
+                      </a>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  {% unless full_width %}
+    </div>
+  {% endunless %}
+</div>
+
+{% schema %}
+  {
+    "name": "Slideshow",
+    "class": "banner-candidate",
+    "max_blocks": 5,
+    "settings": [
+      {
+        "type": "header",
+        "content": "Layout"
+      },
+      {
+        "type": "select",
+        "id": "size",
+        "label": "Size",
+        "info": "Height is restricted to 1080px maximum",
+        "options": [
+          {
+            "value": "full-fixed",
+            "label": "Full width / fixed height"
+          },
+          {
+            "value": "full-viewport",
+            "label": "Full width / full height"
+          },
+          {
+            "value": "page-fixed",
+            "label": "Page width / fixed height"
+          }
+        ],
+        "default": "full-fixed"
+      },
+      {
+        "type": "range",
+        "id": "height_desktop",
+        "min": 400,
+        "max": 800,
+        "step": 10,
+        "unit": "px",
+        "label": "Fixed height (desktop)",
+        "default": 700
+      },
+      {
+        "type": "range",
+        "id": "height_mobile",
+        "min": 300,
+        "max": 600,
+        "step": 10,
+        "unit": "px",
+        "label": "Fixed height (mobile)",
+        "default": 400
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_split",
+        "label": "Enable split screen",
+        "info": "Shows two slides on desktop",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Image tint"
+      },
+      {
+        "type": "color",
+        "id": "tint_color",
+        "label": "Color",
+        "default": "#000000"
+      },
+      {
+        "type": "range",
+        "id": "tint_opacity",
+        "min": 0,
+        "max": 80,
+        "step": 5,
+        "unit": "%",
+        "label": "Opacity",
+        "default": 20
+      },
+      {
+        "type": "header",
+        "content": "Text overlay"
+      },
+      {
+        "type": "select",
+        "id": "text_box_style",
+        "label": "Box style",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "bg",
+            "label": "Background"
+          },
+          {
+            "value": "border",
+            "label": "Border"
+          }
+        ],
+        "default": "none"
+      },
+      {
+        "type": "color",
+        "id": "text_bg_color",
+        "label": "Background / border color",
+        "default": "#000000"
+      },
+      {
+        "type": "range",
+        "id": "text_bg_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Background opacity",
+        "default": 50
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "checkbox",
+        "id": "text_below_mobile",
+        "label": "Show text below image on mobile",
+        "info": "Does not apply to \"full height\" mode",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Control"
+      },
+      {
+        "type": "select",
+        "id": "slide_mode",
+        "label": "Transition",
+        "info": "Always slides with split screen enabled",
+        "options": [
+          {
+            "value": "slide",
+            "label": "Slide"
+          },
+          {
+            "value": "fade",
+            "label": "Fade"
+          }
+        ],
+        "default": "slide"
+      },
+      {
+        "id": "autoplay",
+        "type": "checkbox",
+        "label": "Auto-rotate slides",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "autoplay_speed",
+        "min": 2,
+        "max": 10,
+        "step": 1,
+        "unit": "s",
+        "label": "Change slides every",
+        "default": 5
+      },
+      {
+        "type": "checkbox",
+        "id": "show_mobile_arrows",
+        "label": "Show arrows on small screens",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image_desktop",
+            "label": "Image",
+            "info": "For best results, use a landscape shaped image with a minimum width of 3200px."
+          },
+          {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Mobile image (optional)",
+            "info": "For best results, use a square or portrait shaped image. If no mobile image is provided, the desktop image will be used."
+          },
+          {
+            "type": "select",
+            "id": "image_align_desktop",
+            "label": "Desktop image alignment",
+            "options": [
+              {
+                "value": "top",
+                "label": "Top"
+              },
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              },
+              {
+                "value": "bottom",
+                "label": "Bottom"
+              }
+            ],
+            "default": "center"
+          },
+          {
+            "type": "select",
+            "id": "image_align_mobile",
+            "label": "Mobile image alignment",
+            "options": [
+              {
+                "value": "top",
+                "label": "Top"
+              },
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              },
+              {
+                "value": "bottom",
+                "label": "Bottom"
+              }
+            ],
+            "default": "center"
+          },
+          {
+            "type": "header",
+            "content": "Text content"
+          },
+          {
+            "type": "select",
+            "id": "text_position",
+            "label": "Text position",
+            "options": [
+              {
+                "value": "left top",
+                "label": "Top left"
+              },
+              {
+                "value": "center top",
+                "label": "Top center"
+              },
+              {
+                "value": "right top",
+                "label": "Top right"
+              },
+              {
+                "value": "left center",
+                "label": "Middle left"
+              },
+              {
+                "value": "center center",
+                "label": "Middle center"
+              },
+              {
+                "value": "right center",
+                "label": "Middle right"
+              },
+              {
+                "value": "left bottom",
+                "label": "Bottom left"
+              },
+              {
+                "value": "center bottom",
+                "label": "Bottom center"
+              },
+              {
+                "value": "right bottom",
+                "label": "Bottom right"
+              }
+            ],
+            "default": "center center"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Tell your story"
+          },
+          {
+            "type": "select",
+            "id": "heading_size",
+            "label": "Heading size",
+            "options": [
+              {
+                "value": "h2",
+                "label": "Small"
+              },
+              {
+                "value": "h1",
+                "label": "Medium"
+              },
+              {
+                "value": "h0",
+                "label": "Large"
+              }
+            ],
+            "default": "h1"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Pair text with an image to tell a story</p>"
+          },
+          {
+            "type": "checkbox",
+            "id": "enlarge_text",
+            "label": "Enlarge text",
+            "default": false
+          },
+          {
+            "type": "text",
+            "id": "button_1_text",
+            "label": "Button 1 text",
+            "default": "See more"
+          },
+          {
+            "type": "url",
+            "id": "button_1_url",
+            "label": "Button 1 link"
+          },
+          {
+            "type": "text",
+            "id": "button_2_text",
+            "label": "Button 2 text"
+          },
+          {
+            "type": "url",
+            "id": "button_2_url",
+            "label": "Button 2 link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Slideshow",
+        "blocks": [
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

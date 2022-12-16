@@ -1,0 +1,219 @@
+{% style %}
+  {%- for block in section.blocks -%}
+    {%- if block.settings.title != blank or block.settings.subheading != blank or block.settings.cta_text != blank -%}
+      .block-{{ block.id }} .overlay .inner {
+        color: {{ block.settings.text_color }};
+      }
+    {%- endif -%}
+  {%- endfor -%}
+{% endstyle %}
+
+{%- liquid
+  if section.settings.skip_container
+    assign full_width = true
+  else
+    assign full_width = false
+  endif
+-%}
+
+<div {% unless full_width %}class="spaced-section" {% endunless %}data-section-type="gallery" data-cc-animate>
+  <div class="{% unless full_width %}container section-content section-content--no-padding {% endunless %}flexible-layout">
+    {%- for block in section.blocks -%}
+      <div class="column-{{ block.settings.size }} img-block block-{{ block.id }}" {{ block.shopify_attributes }}>
+        {%- if block.settings.link != blank -%}
+          <a class="img-block__img-wrapper" href="{{ block.settings.link }}" data-cc-animate="cc-zoom-out">
+        {%- else -%}
+          <div class="img-block__img-wrapper" data-cc-animate="cc-zoom-out">
+        {%- endif -%}
+
+          {%- if block.settings.image -%}
+            {%- assign img = block.settings.image -%}
+            <div class="lazyload-placeholder" style="padding-top: {{ 1 | divided_by: img.aspect_ratio | times: 100 }}%;">
+              <picture>
+                <source data-srcset="{%- if img.width < 640 %}{{ img | image_url }} {{ img.width }}w{% endif -%}
+                                     {%- if img.width >= 640 %}{{ img | image_url: width: 640 }} 640w{% endif -%}
+                                     {%- if img.width >= 750 %}, {{ img | image_url: width: 750 }} 750w{% endif -%}
+                                     {%- if img.width >= 856 %}, {{ img | image_url: width: 856 }} 856w{% endif -%}"
+                        media="(max-width: 480px)"
+                        width="428"
+                        height="{{ 428 | divided_by: img.aspect_ratio | round }}">
+                <img data-srcset="{%- if img.width < 300 %}{{ img | image_url }} {{ img.width }}w{% endif -%}
+                                  {%- if img.width >= 300 %}{{ img | image_url: width: 300 }} 300w{% endif -%}
+                                  {%- if img.width >= 480 %}, {{ img | image_url: width: 480 }} 480w{% endif -%}
+                                  {%- if img.width >= 600 %}, {{ img | image_url: width: 600 }} 600w{% endif -%}
+                                  {%- if img.width >= 800 %}, {{ img | image_url: width: 800 }} 800w{% endif -%}
+                                  {%- if img.width >= 960 %}, {{ img | image_url: width: 960 }} 960w{% endif -%}
+                                  {%- if img.width >= 1200 %}, {{ img | image_url: width: 1200 }} 1200w{% endif -%}
+                                  {%- if img.width >= 1600 %}, {{ img | image_url: width: 1600 }} 1600w{% endif -%}
+                                  {%- if img.width >= 1920 %}, {{ img | image_url: width: 1920 }} 1920w{% endif -%}"
+                     data-src="{{ img | image_url: width: 1200 }}"
+                     data-sizes="auto"
+                     data-aspectratio="{{ img.aspect_ratio }}"
+                     data-parent-fit="cover"
+                     class="img-fit lazyload"
+                     width="{{ img.width }}"
+                     height="{{ img.height }}"
+                     alt="{{ img.alt | escape }}">
+              </picture>
+              <noscript>
+                <img src="{{ img | image_url: width: 1200 }}" class="img-fit" width="{{ img.width }}" height="{{ img.height }}" alt="{{ img.alt | escape }}">
+              </noscript>
+            </div>
+          {%- else -%}
+            {%- assign placeholder = 'image' -%}
+            <span class="placeholder_wrapper">
+              {%- if block.settings.caption == blank -%}
+                {{- placeholder | placeholder_svg_tag: 'placeholder' -}}
+              {%- else -%}
+                {{- placeholder | placeholder_svg_tag: 'placeholder dark' -}}
+              {%- endif -%}
+            </span>
+          {%- endif -%}
+
+          <div class="overlay"{% unless block.settings.tint_color contains ',0' %} style="background-color: rgba({{ block.settings.tint_color.red }}, {{ block.settings.tint_color.green }}, {{ block.settings.tint_color.blue }}, {{ block.settings.tint_opacity | divided_by: 100.0 }});"{% endunless %}>
+            {%- if block.settings.title != blank or block.settings.subheading != blank or block.settings.cta_text != blank -%}
+              <div class="inner">
+                {%- if block.settings.title != blank -%}
+                  <h2 class="overlay__block" data-cc-animate data-cc-animate-delay="0.1s">
+                    {{- block.settings.title | escape -}}
+                  </h2>
+                {%- endif -%}
+                {%- if block.settings.subheading != blank -%}
+                  <div class="overlay__block large-text" data-cc-animate data-cc-animate-delay="0.2s">
+                    {{ block.settings.subheading | escape }}
+                  </div>
+                {%- endif -%}
+                {%- if block.settings.cta_text != blank and block.settings.link != blank -%}
+                  <span class="overlay__block feature-link" data-cc-animate data-cc-animate-delay="0.3s">{{ block.settings.cta_text | escape }}</span>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </div>
+
+        {%- if block.settings.link != blank -%}
+          </a>
+        {%- else -%}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Image gallery",
+    "class": "section-gallery",
+    "max_blocks": 20,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "skip_container",
+        "label": "Full screen width",
+        "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "color",
+            "id": "tint_color",
+            "label": "Tint color",
+            "default": "#000000"
+          },
+          {
+            "type": "range",
+            "id": "tint_opacity",
+            "min": 0,
+            "max": 80,
+            "step": 5,
+            "unit": "%",
+            "label": "Tint opacity",
+            "default": 20
+          },
+          {
+            "type": "select",
+            "id": "size",
+            "label": "Width",
+            "default": "half",
+            "options": [
+              {
+                "value": "quarter",
+                "label": "Quarter"
+              },
+              {
+                "value": "third",
+                "label": "Third"
+              },
+              {
+                "value": "half",
+                "label": "Half"
+              },
+              {
+                "value": "two-thirds",
+                "label": "Two-thirds"
+              },
+              {
+                "value": "full",
+                "label": "Full"
+              }
+            ]
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          },
+          {
+            "type": "header",
+            "content": "Text overlay"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Image title"
+          },
+          {
+            "type": "text",
+            "id": "subheading",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "cta_text",
+            "label": "Link text",
+            "default": "See more"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color",
+            "default": "#ffffff"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image gallery",
+        "blocks": [
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

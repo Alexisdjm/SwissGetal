@@ -1,0 +1,138 @@
+{% layout none %}
+{%- assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros | strip_html -%}
+
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ 'gift_cards.issued.title' | t: value: formatted_initial_value, shop: shop.name }}</title>
+  <meta name="description" content="{{ 'gift_cards.issued.subtext' | t }}">
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+  {{ content_for_header }}
+
+  <style>
+    .gift-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 96px;
+      padding: 26px 0;
+    }
+    .gift-card-header h1 {
+      margin: 0;
+    }
+    .gift-card-main {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    #gift-card::before {
+      display: none !important;
+    }
+    #gift-card img {
+      margin: 0 auto;
+    }
+    .gift-card-amount.h3 {
+      font-family: inherit;
+    }
+  </style>
+
+  {{ 'gift-card.css' | shopify_asset_url | stylesheet_tag }}
+  {{ 'styles.css' | asset_url | stylesheet_tag }}
+</head>
+<body class="no-banner">
+  <div class="container align-center">
+    <header class="gift-card-header">
+      <h1 class="h2">
+        <a href="{{ shop.url }}">{{ shop.name }}</a>
+      </h1>
+    </header>
+
+    <main class="gift-card-main">
+      <div class="{% if gift_card.expired or gift_card.enabled != true %}disabled{% endif %}">
+        <div>
+          <h2 class="h4">{{ 'gift_cards.issued.subtext' | t }}</h2>
+          {% unless gift_card.enabled %}
+            <span class="gift-card-tag">{{ 'gift_cards.issued.disabled' | t }}</span>
+          {% endunless %}
+
+          {%- assign gift_card_expiry_date = gift_card.expires_on | date: "%d/%m/%y" -%}
+
+          {% if gift_card.expired and gift_card.enabled %}
+            <span class="gift-card-tag">{{ 'gift_cards.issued.expired' | t: expiry: gift_card_expiry_date }}</span>
+          {% endif %}
+          {% if gift_card.expired != true and gift_card.expires_on and gift_card.enabled %}
+            <span class="gift-card-tag gift-card-tag--active">{{ 'gift_cards.issued.active' | t: expiry: gift_card_expiry_date }}</span>
+          {% endif %}
+
+          {%- if settings.show_currency_code -%}
+            {%- assign initial_value = gift_card.initial_value | money_with_currency -%}
+            {%- assign current_balance = gift_card.balance | money_with_currency -%}
+          {%- else -%}
+            {%- assign initial_value = gift_card.initial_value | money -%}
+            {%- assign current_balance = gift_card.balance | money -%}
+          {%- endif -%}
+
+          <p class="gift-card-amount h3">{{ initial_value }}</p>
+          {%- if gift_card.balance != gift_card.initial_value -%}
+            <p>{{ 'gift_cards.issued.remaining_html' | t: balance: current_balance }}</p>
+          {%- endif -%}
+        </div>
+
+        <div id="gift-card-holder">
+          <div id="gift-card">
+            <img src="{{ 'gift-card/card.svg' | shopify_asset_url }}" width="580" height="{{ 580 | divided_by: 1.5 }}" alt="{{ 'gift_cards.issued.subtext' | t }}">
+
+            {%- assign code_size = gift_card.code | format_code | size -%}
+            <div id="gift-card-code-outer" class="{% if code_size <= 25 %}large{% elsif code_size > 25 and code_size <= 30 %}medium{% else %}small{% endif %}" onclick="selectText('gift-card-code-digits');">
+              <div id="gift-card-code-inner">
+                <strong id="gift-card-code-digits">{{ gift_card.code | format_code }}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p>{{ 'gift_cards.issued.redeem' | t }}</p>
+        <div id="qr-code"></div>
+
+        <p><a href="{{ shop.url }}" class="button" target="_blank">{{ 'gift_cards.issued.shop_link' | t }}</a></p>
+        <p>
+          <a href="#" class="action-link" onclick="window.print();">
+            <i class="action-link__print"></i>{{ 'gift_cards.issued.print' | t }}
+          </a>
+        </p>
+      </div>
+    </main>
+
+    {% if gift_card.pass_url %}
+      <footer>
+        <a href="{{ gift_card.pass_url }}">
+          <img id="apple-wallet-badge" src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="120" height="40" alt="{{ 'gift_cards.issued.add_to_apple_wallet' | t }}">
+        </a>
+      </footer>
+    {% endif %}
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Auto-selects gift card code on click, based on ID passed to the function
+      function selectText(el) {
+        const text = document.getElementById(el);
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(text);
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
+
+      new QRCode(document.getElementById('qr-code'), {
+        text: '{{ gift_card.qr_identifier }}',
+        width: 120,
+        height: 120
+      });
+    });
+  </script>
+  <script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}"></script>
+</body>
+</html>
