@@ -5,8 +5,8 @@
                 <img src="{{ section.settings.bg_img | img_url: 'master'  }}" alt="collection" class="img-absolute">
             </div>
             <div class="link-n-text">
-                <h3 class="collection-name">{{ section.settings.collection_tite }}</h3>
-                <a href="{{ section.settings.collection_link }}" class="collection-link-button">{{ section.settings.button_text }}</a>
+                <h3 class="collection-name font-{{ section.settings.font_color }}">{{ section.settings.collection_tite }}</h3>
+                <a href="{{ section.settings.collection_link }}" class="collection-link-button font-{{ section.settings.font_color }}">{{ section.settings.button_text }}</a>
             </div>
         </div>
     </div>
@@ -37,6 +37,26 @@
                 "type": "text",
                 "id": "button_text",
                 "label": "button text"
+            },
+            {
+                "type": "select",
+                "id": "font_color",
+                "label": "font color",
+                "default": "white",
+                "options": [
+                    {
+                        "value": "white",
+                        "label": "White font color"
+                    },
+                    {
+                        "value": "black",
+                        "label": "Black font color"
+                    },
+                    {
+                        "value": "gray",
+                        "label": "Gray font color"
+                    }
+                ]
             }
         ],
         "presets": [
