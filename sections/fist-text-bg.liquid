@@ -3,14 +3,14 @@
     <img class="img" src="{{ section.settings.background | img_url: 'master'  }}" alt="top">
     <div class="text-container v-align-{{ section.settings.vertical_align  }}">
       {% if section.settings.title %}
-        <h3 class="text-header">{{ section.settings.title }}</h3>
+        <h3 class="text-header font-{{ section.settings.font_color }}">{{ section.settings.title }}</h3>
       {% endif %}
 
-      <p class="main-text">{{ section.settings.content }}</p>
+      <p class="main-text font-{{ section.settings.font_color }}">{{ section.settings.content }}</p>
 
       {% if section.settings.button_link %}
         <div class="link-button">
-          <a class="the-link" href="{{ section.settings.button_link  }}">{{ section.settings.button_text  }}</a>
+          <a class="the-link font-{{ section.settings.font_color }}" href="{{ section.settings.button_link  }}">{{ section.settings.button_text  }}</a>
         </div>
       {% endif %}
     </div>
