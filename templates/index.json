@@ -98,6 +98,15 @@
         "product_rows_int": 1,
         "show_view_all": true
       }
+    },
+    "130e948b-50b5-4d36-8bb1-e4683ef8c35e": {
+      "type": "collection-link",
+      "settings": {
+        "bg_img": "shopify:\/\/shop_images\/Group_701.jpg",
+        "collection_tite": "Serums",
+        "collection_link": "shopify:\/\/collections\/serums",
+        "button_text": "View Serums"
+      }
     }
   },
   "order": [
@@ -106,6 +115,7 @@
     "619dd855-8e65-4a24-adc6-6b1fdb721a52",
     "featured-collection",
     "d6f84e7b-1069-436d-a842-e210de8a4c0e",
-    "3960676f-d47c-4489-a3f9-5fac1647f0fd"
+    "3960676f-d47c-4489-a3f9-5fac1647f0fd",
+    "130e948b-50b5-4d36-8bb1-e4683ef8c35e"
   ]
 }
