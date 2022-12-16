@@ -50,73 +50,15 @@
         "color_text": "#000000"
       }
     },
-    "slideshow": {
-      "type": "slideshow",
-      "blocks": {
-        "slide-0": {
-          "type": "image",
-          "settings": {
-            "image_align_desktop": "center",
-            "image_align_mobile": "center",
-            "text_position": "center center",
-            "heading": "Slideshow",
-            "heading_size": "h1",
-            "text": "<p>Pair text with an image to tell a story<\/p>",
-            "enlarge_text": false,
-            "button_1_text": "See more",
-            "button_1_url": "",
-            "button_2_text": "Shop now",
-            "button_2_url": ""
-          }
-        },
-        "slide-1": {
-          "type": "image",
-          "settings": {
-            "image_align_desktop": "center",
-            "image_align_mobile": "center",
-            "text_position": "center center",
-            "heading": "Slideshow",
-            "heading_size": "h1",
-            "text": "<p>Pair text with an image to tell a story<\/p>",
-            "enlarge_text": false,
-            "button_1_text": "See more",
-            "button_1_url": "",
-            "button_2_text": "",
-            "button_2_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide-0",
-        "slide-1"
-      ],
-      "settings": {
-        "size": "full_fixed",
-        "height_desktop": 700,
-        "height_mobile": 460,
-        "enable_split": false,
-        "tint_color": "#000000",
-        "tint_opacity": 20,
-        "text_box_style": "none",
-        "text_bg_color": "#000000",
-        "text_bg_opacity": 50,
-        "text_color": "#ffffff",
-        "text_below_mobile": false,
-        "slide_mode": "slide",
-        "autoplay": true,
-        "autoplay_speed": 5,
-        "show_mobile_arrows": true
-      }
-    },
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
         "title": "Featured collection",
-        "collection": "",
+        "collection": "programs",
         "grid_show_vendor": false,
-        "products_per_row_int": 3,
+        "products_per_row_int": 4,
         "product_rows_int": 1,
-        "show_view_all": false
+        "show_view_all": true
       }
     },
     "image-gallery": {
@@ -306,7 +248,6 @@
   "order": [
     "4dff2c58-2804-45b7-a91b-b79cbf722d5b",
     "rich-text",
-    "slideshow",
     "featured-collection",
     "image-gallery",
     "slideshow-with-text",
