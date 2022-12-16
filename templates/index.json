@@ -12,6 +12,44 @@
         "vertical_align": 3
       }
     },
+    "rich-text": {
+      "type": "rich-text",
+      "blocks": {
+        "block-0": {
+          "type": "heading",
+          "settings": {
+            "heading": ""
+          }
+        },
+        "block-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Swiss Getal came into existence to revitalize the skin, undo the signs of aging and help people fall in love with their skin. We are on a mission to bridge the gaps in the skincare industry in an environmentally responsible way.<\/p>",
+            "text_size": 130
+          }
+        },
+        "block-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "",
+            "button_link": "shopify:\/\/pages\/contact-us",
+            "button_style": "feature-link"
+          }
+        }
+      },
+      "block_order": [
+        "block-0",
+        "block-1",
+        "block-2"
+      ],
+      "settings": {
+        "text_alignment": "center",
+        "color_scheme": "none",
+        "color_bg": "{{ shop.brand.colors.primary[0].background }}",
+        "color_heading": "",
+        "color_text": "#000000"
+      }
+    },
     "slideshow": {
       "type": "slideshow",
       "blocks": {
@@ -68,44 +106,6 @@
         "autoplay": true,
         "autoplay_speed": 5,
         "show_mobile_arrows": true
-      }
-    },
-    "rich-text": {
-      "type": "rich-text",
-      "blocks": {
-        "block-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Rich text"
-          }
-        },
-        "block-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Use this text to share information about your store with your customers. Describe product, share announcements, or welcome customers to your store.<\/p>",
-            "text_size": 100
-          }
-        },
-        "block-2": {
-          "type": "button",
-          "settings": {
-            "button_label": "Some link",
-            "button_link": "shopify:\/\/pages\/contact-us",
-            "button_style": "feature-link"
-          }
-        }
-      },
-      "block_order": [
-        "block-0",
-        "block-1",
-        "block-2"
-      ],
-      "settings": {
-        "text_alignment": "center",
-        "color_scheme": "scheme-1",
-        "color_bg": "",
-        "color_heading": "",
-        "color_text": ""
       }
     },
     "featured-collection": {
@@ -305,8 +305,8 @@
   },
   "order": [
     "4dff2c58-2804-45b7-a91b-b79cbf722d5b",
-    "slideshow",
     "rich-text",
+    "slideshow",
     "featured-collection",
     "image-gallery",
     "slideshow-with-text",
