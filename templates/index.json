@@ -50,6 +50,18 @@
         "color_text": "#000000"
       }
     },
+    "619dd855-8e65-4a24-adc6-6b1fdb721a52": {
+      "type": "fist-text-bg",
+      "settings": {
+        "background": "shopify:\/\/shop_images\/BANNER02-edit_1_6_87a37cbd-850f-4ec6-9231-3c4aa446dbcc.webp",
+        "title": "Backed by Science.",
+        "content": "Our innovative skincare products are crafted with clean herbal ingredients and scientifically proven formulas that illuminate your skin.",
+        "button_link": "",
+        "button_text": "",
+        "horizontal_align": 1,
+        "vertical_align": 4
+      }
+    },
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
@@ -89,6 +101,7 @@
   "order": [
     "4dff2c58-2804-45b7-a91b-b79cbf722d5b",
     "rich-text",
+    "619dd855-8e65-4a24-adc6-6b1fdb721a52",
     "featured-collection",
     "d6f84e7b-1069-436d-a842-e210de8a4c0e",
     "3960676f-d47c-4489-a3f9-5fac1647f0fd"
