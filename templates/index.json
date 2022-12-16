@@ -73,12 +73,24 @@
         "button_text": "Learn More",
         "vertical_align": 3
       }
+    },
+    "3960676f-d47c-4489-a3f9-5fac1647f0fd": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured collection",
+        "collection": "serums",
+        "grid_show_vendor": false,
+        "products_per_row_int": 4,
+        "product_rows_int": 1,
+        "show_view_all": true
+      }
     }
   },
   "order": [
     "4dff2c58-2804-45b7-a91b-b79cbf722d5b",
     "rich-text",
     "featured-collection",
-    "d6f84e7b-1069-436d-a842-e210de8a4c0e"
+    "d6f84e7b-1069-436d-a842-e210de8a4c0e",
+    "3960676f-d47c-4489-a3f9-5fac1647f0fd"
   ]
 }
