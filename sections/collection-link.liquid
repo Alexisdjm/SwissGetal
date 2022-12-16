@@ -1,0 +1,37 @@
+<div class="section-container">
+    <div class="container-flex">
+        <div class="centered-collection">
+            <div class="inner-relative">
+                <img src="" alt="collection" class="img-absolute">
+            </div>
+            <h3 class="collection-name"></h3>
+            <a href="" class="collection-link-button"></a>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "collection link",
+        "class": "collection-link",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "bg_img",
+                "label": "background image"
+            },
+            {
+                "type": "text",
+                "id": "collection_tite",
+                "label": "collection title",
+                "default": "title"
+            },
+            {
+                "type": "url",
+                "id": "collection_link",
+                "label": "collection link"
+            }
+        ]
+
+    }
+{% endschema %}
