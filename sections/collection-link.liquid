@@ -4,8 +4,10 @@
             <div class="inner-relative">
                 <img src="{{ section.settings.bg_img | img_url: 'master'  }}" alt="collection" class="img-absolute">
             </div>
-            <h3 class="collection-name">{{ section.settings.collection_tite }}</h3>
-            <a href="{{ section.settings.collection_link }}" class="collection-link-button">{{ section.settings.button_text }}</a>
+            <div class="link-n-text">
+                <h3 class="collection-name">{{ section.settings.collection_tite }}</h3>
+                <a href="{{ section.settings.collection_link }}" class="collection-link-button">{{ section.settings.button_text }}</a>
+            </div>
         </div>
     </div>
 </div>
