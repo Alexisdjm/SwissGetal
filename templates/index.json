@@ -61,187 +61,17 @@
         "show_view_all": true
       }
     },
-    "image-gallery": {
-      "type": "image-gallery",
-      "blocks": {
-        "image-0": {
-          "type": "image",
-          "settings": {
-            "tint_color": "#000000",
-            "tint_opacity": 30,
-            "size": "third",
-            "link": "",
-            "title": "Image text",
-            "subheading": "",
-            "cta_text": "See more",
-            "text_color": "#ffffff"
-          }
-        },
-        "image-1": {
-          "type": "image",
-          "settings": {
-            "tint_color": "#000000",
-            "tint_opacity": 20,
-            "size": "third",
-            "link": "",
-            "title": "Image text",
-            "subheading": "",
-            "cta_text": "See more",
-            "text_color": "#ffffff"
-          }
-        },
-        "image-2": {
-          "type": "image",
-          "settings": {
-            "tint_color": "#000000",
-            "tint_opacity": 10,
-            "size": "third",
-            "link": "",
-            "title": "Image text",
-            "subheading": "",
-            "cta_text": "See more",
-            "text_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "image-0",
-        "image-1",
-        "image-2"
-      ],
+    "d6f84e7b-1069-436d-a842-e210de8a4c0e": {
+      "type": "big-title-image",
       "settings": {
-        "skip_container": true
-      }
-    },
-    "slideshow-with-text": {
-      "type": "slideshow-with-text",
-      "blocks": {
-        "slide-0": {
-          "type": "image",
-          "settings": {
-          }
-        },
-        "slide-1": {
-          "type": "image",
-          "settings": {
-          }
-        }
-      },
-      "block_order": [
-        "slide-0",
-        "slide-1"
-      ],
-      "settings": {
-        "layout": "left",
-        "heading": "Slideshow with text",
-        "text": "<p>Pair large text with images to give focus to your chosen product, collection or blog post. Add details on availability, style or even provide a review.<\/p>",
-        "button_text": "Shop",
-        "button_link": "",
-        "button_style": "button button--alt",
-        "text_alignment": "left",
-        "text_center_mobile": false,
-        "bg_style": "content",
-        "color_scheme": "scheme-1",
-        "color_bg": "",
-        "color_heading": "",
-        "color_text": "",
-        "slide_mode": "slide",
-        "autoplay": false,
-        "autoplay_speed": 5,
-        "slide_show_mobile_arrows": true
-      }
-    },
-    "testimonials": {
-      "type": "testimonials",
-      "blocks": {
-        "testimonial-0": {
-          "type": "testimonial",
-          "settings": {
-            "star_rating": 5,
-            "testimonial": "Add customer reviews or press releases to showcase your store's happy customers.",
-            "link": "",
-            "author_name": "Author's name"
-          }
-        },
-        "testimonial-1": {
-          "type": "testimonial",
-          "settings": {
-            "star_rating": 5,
-            "testimonial": "Add customer reviews or press releases to showcase your store's happy customers.",
-            "link": "",
-            "author_name": "Author's name"
-          }
-        }
-      },
-      "block_order": [
-        "testimonial-0",
-        "testimonial-1"
-      ],
-      "settings": {
-        "title": "Testimonials",
-        "autoplay": false,
-        "logo_height": 40
-      }
-    },
-    "video": {
-      "type": "video",
-      "blocks": {
-        "block-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Video",
-            "heading_size": "h2"
-          }
-        },
-        "block-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with a video to draw attention to an important detail of your brand or product line.<\/p>",
-            "enlarge_text": false
-          }
-        }
-      },
-      "block_order": [
-        "block-0",
-        "block-1"
-      ],
-      "settings": {
-        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
-        "skip_container": false,
-        "tint_color": "#000000",
-        "tint_opacity": 0,
-        "text_box_style": "none",
-        "text_bg_color": "#000000",
-        "text_bg_opacity": 50,
-        "text_color": "#ffffff",
-        "text_position": "center center",
-        "text_below_mobile": false
-      }
-    },
-    "featured-blog": {
-      "type": "featured-blog",
-      "settings": {
-        "heading": "",
-        "blog": ""
-      }
-    },
-    "image-with-text": {
-      "type": "image-with-text",
-      "settings": {
-        "skip_container": false,
-        "layout": "left",
-        "heading": "Image with text",
-        "text": "<p>Pair text with an image to give focus to a selected product, collection or blog post. Add details on availability, style or even provide a review.<\/p>",
-        "button_text": "Shop",
-        "button_link": "",
-        "button_style": "button button--alt",
-        "text_alignment": "left",
-        "text_center_mobile": true,
-        "bg_style": "content",
-        "color_scheme": "scheme-2",
-        "color_bg": "",
-        "color_heading": "",
-        "color_text": ""
+        "big_title": "Self-love begins with skincare.",
+        "title_size": 75,
+        "content": "Our experts have designed the best skincare products with clean and natural ingredients to cleanse, nourish and protect your skin type.",
+        "content_size": 14,
+        "side_image": "shopify:\/\/shop_images\/SGF-18_1_234645c1-0988-42cb-88b3-174a93bf9155.webp",
+        "final_link": "shopify:\/\/collections\/all",
+        "button_text": "Learn More",
+        "vertical_align": 3
       }
     }
   },
@@ -249,11 +79,6 @@
     "4dff2c58-2804-45b7-a91b-b79cbf722d5b",
     "rich-text",
     "featured-collection",
-    "image-gallery",
-    "slideshow-with-text",
-    "testimonials",
-    "video",
-    "featured-blog",
-    "image-with-text"
+    "d6f84e7b-1069-436d-a842-e210de8a4c0e"
   ]
 }
