@@ -3,7 +3,7 @@
     "4dff2c58-2804-45b7-a91b-b79cbf722d5b": {
       "type": "fist-text-bg",
       "settings": {
-        "background": "shopify:\/\/shop_images\/1_355e5eeb-5143-4c79-9207-3ace3078ab85.webp",
+        "background": "shopify:\/\/shop_images\/BANNER01_1.png",
         "title": "Inspired by Nature",
         "content": "Escape into the world of clean beauty with the best skincare products from Switzerland.",
         "button_link": "shopify:\/\/collections\/all",
@@ -105,7 +105,8 @@
         "bg_img": "shopify:\/\/shop_images\/Group_701.jpg",
         "collection_tite": "Serums",
         "collection_link": "shopify:\/\/collections\/serums",
-        "button_text": "View Serums"
+        "button_text": "View Serums",
+        "font_color": "white"
       }
     }
   },
