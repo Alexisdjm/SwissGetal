@@ -29,7 +29,7 @@
     "col_footer_text": "#ffffff",
     "col_popup_background": "#ffffff",
     "col_popup_text": "#152242",
-    "type_base_font": "futura_n4",
+    "type_base_font": "work_sans_n4",
     "font_size_base_int": 15,
     "type_heading_font": "din_neuzeit_grotesk_n3",
     "font_scale_headings": 100,
@@ -39,10 +39,10 @@
     "font_size_nav_int": 32,
     "type_logo_font": "neuzeit_s_n4",
     "logo_size_int": 24,
-    "col_btn_bg": "#152242",
+    "col_btn_bg": "#242424",
     "col_btn": "#ffffff",
     "col_alt_btn_bg": "#ffffff",
-    "col_alt_btn": "#152242",
+    "col_alt_btn": "#242424",
     "button_shape": "sharp",
     "button_border_width": "2",
     "show_breadcrumbs": false,
@@ -88,6 +88,10 @@
       "announcement": {
         "type": "announcement",
         "settings": {
+          "show_announcement": false,
+          "announcement_home_only": false,
+          "announcement_bar_text": "",
+          "announcement_bar_link": "",
           "announcement_bar_bg_color": "#ffe2d1",
           "announcement_bar_bg_text": "#132625"
         }
@@ -95,12 +99,56 @@
       "header": {
         "type": "header",
         "settings": {
+          "logo_width": 150,
+          "enable_header_overlap": true,
+          "enable_sticky": true,
+          "enable_logo_shrink": true,
+          "menu_linklist": "main-menu",
+          "menu_under_text": "",
+          "enable_inline_links": false,
+          "menu_align_logo_left": false,
+          "search_menu_title": "",
+          "search_menu_linklist": "",
+          "show_social_links": false,
+          "contact_info_phone": "",
+          "contact_info_email": "",
+          "contact_info_in_mega": true,
+          "show_country_selector": true,
+          "show_language_selector": true,
           "tint_color": "#000000",
           "tint_opacity": 25,
           "text_color": "#ffffff"
         }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "show_newsletter": false,
+          "newsletter_heading": "Subscribe to our newsletter",
+          "newsletter_text": "<p>A short sentence describing what someone will receive by subscribing<\/p>",
+          "show_social": true,
+          "show_payment_icons": true,
+          "show_country_selector": true,
+          "show_language_selector": true
+        }
+      },
+      "popup": {
+        "type": "popup",
+        "settings": {
+          "mode": "disabled",
+          "popup_delay_seconds": 5,
+          "popup_dismiss_for_days": 30,
+          "position": "center",
+          "title": "Sign up and save",
+          "text": "<p>Entice customers to sign up for your mailing list with discounts or exclusive offers.<\/p>",
+          "show_newsletter": true,
+          "show_social_icons": true
+        }
       }
-    }
+    },
+    "content_for_index": [
+
+    ]
   },
   "presets": {
     "Modern": {
