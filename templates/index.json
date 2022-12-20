@@ -8,7 +8,7 @@
         "content": "Escape into the world of clean beauty with the best skincare products from Switzerland.",
         "button_link": "shopify:\/\/collections\/all",
         "button_text": "Shop Now",
-        "button_style": "button",
+        "button_style": "button button--alt",
         "font_color": "white",
         "horizontal_align": 1,
         "vertical_align": 3
