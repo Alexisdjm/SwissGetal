@@ -1639,9 +1639,16 @@ button,
 
 .button.button--alt {
   border-color: {{ col_alt_btn_border }};
-  background: {{ col_alt_btn_bg }};
   color: {{ col_alt_btn }};
 }
+.button {
+  background: {{ col_alt_btn_bg }};
+}
+
+.button--alt {
+  background: transparent;
+}
+
 .button.button--alt:hover {
   background: {{ col_alt_btn }};
   color: {{ col_alt_btn_bg }};
