@@ -8,6 +8,7 @@
         "content": "Escape into the world of clean beauty with the best skincare products from Switzerland.",
         "button_link": "shopify:\/\/collections\/all",
         "button_text": "Shop Now",
+        "button_style": "button",
         "font_color": "white",
         "horizontal_align": 1,
         "vertical_align": 3
@@ -59,6 +60,7 @@
         "content": "Our innovative skincare products are crafted with clean herbal ingredients and scientifically proven formulas that illuminate your skin.",
         "button_link": "",
         "button_text": "",
+        "button_style": "feature-link",
         "font_color": "black",
         "horizontal_align": 1,
         "vertical_align": 4
