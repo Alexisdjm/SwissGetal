@@ -10,7 +10,7 @@
 
       {% if section.settings.button_link %}
         <div class="link-button">
-          <a class="the-link font-{{ section.settings.font_color }}" href="{{ section.settings.button_link  }}">{{ section.settings.button_text  }}</a>
+          <a class="the-link {{ block.settings.button_style }} font-{{ section.settings.font_color }}" href="{{ section.settings.button_link  }}">{{ section.settings.button_text  }}</a>
         </div>
       {% endif %}
     </div>
@@ -50,6 +50,26 @@
         "label": "button text",
         "default": "button"
       }, 
+      {
+        "type": "select",
+        "id": "button_style",
+        "label": "Button style",
+        "options": [
+          {
+            "value": "feature-link",
+            "label": "Link"
+          },
+          {
+            "value": "button",
+            "label": "Primary button"
+          },
+          {
+            "value": "button button--alt",
+            "label": "Secondary button"
+          }
+        ],
+        "default": "feature-link"
+      },
       {
         "type": "select",
         "id": "font_color",
