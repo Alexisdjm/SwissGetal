@@ -331,10 +331,6 @@ a, button, p {
   max-height: 229.15px;
 }
 
-.ig-square-logo {
-  height:239px;
-}
-
 .instagram-post-align {
   height: fit-content;
   width: fit-content;
@@ -345,6 +341,7 @@ a, button, p {
   max-width: 229px;
   height: 100%;
   display: flex;
+  visibility: hidden;
   align-items: center;
   justify-content: center;
   position: absolute;
@@ -355,7 +352,7 @@ a, button, p {
 }
 
 #instagram-container.ig-square-logo:hover {
-  visibility: visible;
+  visibility: visible !important;
 }
 
 .post {
