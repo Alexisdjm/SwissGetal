@@ -314,7 +314,7 @@ a, button, p {
 .arrows-container {
   position: absolute; 
   z-index:999; 
-  width: 98%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -335,11 +335,17 @@ a, button, p {
 
 .ig-square-logo {
   width: 17%;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   position: absolute;
   top: 0;
+  background-color: #242424;
+  opacity: 0.4;
+}
+
+.ig-square-logo::hover {
+  display: flex;
 }
 
 .post {
