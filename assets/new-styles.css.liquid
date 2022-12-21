@@ -343,7 +343,8 @@ a, button, p {
 .ig-square-logo {
   width: 17%;
   max-width: 229px;
-  display: none;
+  display: flex;
+  visibility: hidden;
   align-items: center;
   justify-content: center;
   position: absolute;
@@ -352,7 +353,7 @@ a, button, p {
 }
 
 .ig-square-logo:hover {
-  display: flex;
+  visibility: visible;
   background-color: #242424;
   opacity: 0.4;
 }
