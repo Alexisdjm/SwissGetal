@@ -6,9 +6,7 @@
     <section class="ig-section">
         {% for block in section.blocks %}
         <div class="post">
-            <picture class="instagram-post-align">
-                <img class="post-ig" src="{{ block.settings.instagram_image | img_url: 'master' }}" alt="post">
-            </picture>
+            <img class="post-ig" src="{{ block.settings.instagram_image | img_url: 'master' }}" alt="post">
             <div class="ig-square-logo">
                 <span class="mdi mdi-instagram"></span>
             </div>
