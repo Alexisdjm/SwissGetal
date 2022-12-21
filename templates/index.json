@@ -112,6 +112,17 @@
     },
     "c4d121f6-c426-4fd5-9fc5-6fc21e538cef": {
       "type": "instagram-carousel",
+      "blocks": {
+        "dc9b8081-8ec5-458a-a906-5302d34b5905": {
+          "type": "text",
+          "settings": {
+            "instagram_image": "shopify:\/\/shop_images\/SGlowres-1971_1.png"
+          }
+        }
+      },
+      "block_order": [
+        "dc9b8081-8ec5-458a-a906-5302d34b5905"
+      ],
       "settings": {
       }
     }
