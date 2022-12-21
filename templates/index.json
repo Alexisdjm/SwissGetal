@@ -109,6 +109,11 @@
         "button_text": "View Serums",
         "font_color": "white"
       }
+    },
+    "c4d121f6-c426-4fd5-9fc5-6fc21e538cef": {
+      "type": "instagram-carousel",
+      "settings": {
+      }
     }
   },
   "order": [
@@ -118,6 +123,7 @@
     "featured-collection",
     "d6f84e7b-1069-436d-a842-e210de8a4c0e",
     "3960676f-d47c-4489-a3f9-5fac1647f0fd",
-    "130e948b-50b5-4d36-8bb1-e4683ef8c35e"
+    "130e948b-50b5-4d36-8bb1-e4683ef8c35e",
+    "c4d121f6-c426-4fd5-9fc5-6fc21e538cef"
   ]
 }
