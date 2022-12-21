@@ -1,0 +1,44 @@
+<div class="section-container">
+    <div class="arrows-container">
+        <button id="left" class="arrow-btn">&#139;</button>
+        <button id="right" class="arrow-btn">&#155;</button>
+    </div>
+    <section class="ig-section">
+        {% for block in section.blocks %}
+        <div class="post">
+            <picture class="instagram-post-align">
+                <img class="post-ig" src="{{ block.settings.instagram_image | img_url: 'master' }}" alt="post">
+            </picture>
+            <div class="ig-square-logo">
+                <span class="mdi mdi-instagram"></span>
+            </div>
+        </div>
+        {% endfor %}      
+    </section>
+</div>
+
+{% schema %}
+    {
+        "name": "instagram carousel",
+        "class": "instagram-post",
+        "blocks": [
+            {
+                "type": "text",
+                "name": "instagram post",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "instagram_image",
+                        "label": "instagram post"
+                    }
+                ]
+            }
+        ],
+       "presets": [
+            {
+                "category": "instagram",
+                "name":"instagram posts galery"
+            }
+       ]
+    }
+{% endschema %}
