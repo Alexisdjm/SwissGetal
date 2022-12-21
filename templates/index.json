@@ -148,6 +148,38 @@
           "settings": {
             "instagram_image": "shopify:\/\/shop_images\/SGlowres-30_1.png"
           }
+        },
+        "6efa9642-b022-4432-9193-e3847ca96d69": {
+          "type": "text",
+          "settings": {
+            "instagram_image": "shopify:\/\/shop_images\/240232844_550578029616727_7251513765485544685_n.jpg"
+          }
+        },
+        "1077f320-8499-4e10-8c9e-63fb50ccb641": {
+          "type": "text",
+          "settings": {
+            "instagram_image": "shopify:\/\/shop_images\/230134462_1252888255171206_4045088668418347173_n.jpg"
+          }
+        },
+        "27b38dd2-8249-44ba-a341-11e66d5bf135": {
+          "type": "text",
+          "settings": {
+          }
+        },
+        "8176a605-39b3-44da-b23e-d0bf12d5c19f": {
+          "type": "text",
+          "settings": {
+          }
+        },
+        "b9881b83-5038-450d-9d82-c859f8e3e1ee": {
+          "type": "text",
+          "settings": {
+          }
+        },
+        "eff2a1f9-5a82-47a6-a0a2-fa3e86063473": {
+          "type": "text",
+          "settings": {
+          }
         }
       },
       "block_order": [
@@ -156,7 +188,13 @@
         "cc8a2e3f-200f-4108-88dd-9c0711826c40",
         "3ad21dc8-789d-48f7-8364-646ed37a590d",
         "4283dab6-5752-4bb8-8e5c-be842a2ff74d",
-        "ccf9526d-da7c-42ba-82ea-32f70d36b0e9"
+        "ccf9526d-da7c-42ba-82ea-32f70d36b0e9",
+        "6efa9642-b022-4432-9193-e3847ca96d69",
+        "1077f320-8499-4e10-8c9e-63fb50ccb641",
+        "27b38dd2-8249-44ba-a341-11e66d5bf135",
+        "8176a605-39b3-44da-b23e-d0bf12d5c19f",
+        "b9881b83-5038-450d-9d82-c859f8e3e1ee",
+        "eff2a1f9-5a82-47a6-a0a2-fa3e86063473"
       ],
       "settings": {
       }
