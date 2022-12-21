@@ -312,7 +312,7 @@ a, button, p {
 /* ---------------------------------------- instagram posts ----------------------------------------- */
 
 .arrows-container {
-  position: relative; 
+  position: absolute; 
   z-index:999; 
   width: 98%;
   display: flex;
@@ -325,7 +325,6 @@ a, button, p {
 }
 
 .post-ig, .ig-square-logo {
-  width: 235px;
   height:239px;
 }
 
@@ -335,9 +334,12 @@ a, button, p {
 }
 
 .ig-square-logo {
+  width: 17%;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  top: 0;
 }
 
 .post {
@@ -350,6 +352,7 @@ section {
   display: flex;
   overflow-x: hidden;
   overflow-y: hidden;
+  position: relative;
 }
 
 /* section .ig-section {
