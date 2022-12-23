@@ -102,6 +102,43 @@
     },
     "130e948b-50b5-4d36-8bb1-e4683ef8c35e": {
       "type": "collection-link",
+      "blocks": {
+        "df153b8c-ee3b-4958-bf19-7a4f132d62f1": {
+          "type": "text",
+          "settings": {
+            "bg_img": "shopify:\/\/shop_images\/SGF-22_1.png",
+            "collection_tite": "Serums",
+            "collection_link": "shopify:\/\/collections\/serums",
+            "button_text": "Shop Serums",
+            "button_style": "button button--alt"
+          }
+        },
+        "383aa7a3-8cff-4555-b081-8476713f6d7e": {
+          "type": "text",
+          "settings": {
+            "bg_img": "shopify:\/\/shop_images\/SGF-77_1.png",
+            "collection_tite": "Cleanser",
+            "collection_link": "shopify:\/\/collections\/programs",
+            "button_text": "Shop Cleanser",
+            "button_style": "button button--alt"
+          }
+        },
+        "e9678ba2-9112-4b01-8475-07c7be732fad": {
+          "type": "text",
+          "settings": {
+            "bg_img": "shopify:\/\/shop_images\/SGF-11_1.png",
+            "collection_tite": "Toners",
+            "collection_link": "shopify:\/\/collections\/programs",
+            "button_text": "Shop Toners",
+            "button_style": "button button--alt"
+          }
+        }
+      },
+      "block_order": [
+        "df153b8c-ee3b-4958-bf19-7a4f132d62f1",
+        "383aa7a3-8cff-4555-b081-8476713f6d7e",
+        "e9678ba2-9112-4b01-8475-07c7be732fad"
+      ],
       "settings": {
         "links_align": "grid-three"
       }
