@@ -3,7 +3,7 @@
         {% for block in section.blocks %}
             <div class="logo-container">
                 <img class="logo-src" src="{{ block.settings.logo | img_url: 'master'  }}" alt="logo">
-                <p>{{ block.settings.logo_text }}</p>
+                <p class="logo-text">{{ block.settings.logo_text }}</p>
             </div>
         {% endfor %}
     </div>
