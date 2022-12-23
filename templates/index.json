@@ -89,17 +89,6 @@
         "button_text": "Learn More"
       }
     },
-    "3960676f-d47c-4489-a3f9-5fac1647f0fd": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured collection",
-        "collection": "serums",
-        "grid_show_vendor": false,
-        "products_per_row_int": 4,
-        "product_rows_int": 1,
-        "show_view_all": true
-      }
-    },
     "130e948b-50b5-4d36-8bb1-e4683ef8c35e": {
       "type": "collection-link",
       "blocks": {
@@ -140,6 +129,17 @@
         "e9678ba2-9112-4b01-8475-07c7be732fad"
       ],
       "settings": {
+      }
+    },
+    "3960676f-d47c-4489-a3f9-5fac1647f0fd": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured collection",
+        "collection": "serums",
+        "grid_show_vendor": false,
+        "products_per_row_int": 4,
+        "product_rows_int": 1,
+        "show_view_all": true
       }
     },
     "c4d121f6-c426-4fd5-9fc5-6fc21e538cef": {
@@ -283,8 +283,8 @@
     "619dd855-8e65-4a24-adc6-6b1fdb721a52",
     "featured-collection",
     "d6f84e7b-1069-436d-a842-e210de8a4c0e",
-    "3960676f-d47c-4489-a3f9-5fac1647f0fd",
     "130e948b-50b5-4d36-8bb1-e4683ef8c35e",
+    "3960676f-d47c-4489-a3f9-5fac1647f0fd",
     "c4d121f6-c426-4fd5-9fc5-6fc21e538cef",
     "938522bf-21e4-4a5a-9e89-c1376002a251"
   ]
