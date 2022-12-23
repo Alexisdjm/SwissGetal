@@ -253,11 +253,13 @@
         "98b5da2e-d20d-45a6-9b2e-84c380834196": {
           "type": "text",
           "settings": {
+            "logo": "shopify:\/\/shop_images\/Proven.png"
           }
         },
         "3dcd1788-80c4-48a1-bcc1-74c9fb05cbe2": {
           "type": "text",
           "settings": {
+            "logo": "shopify:\/\/shop_images\/Science.png"
           }
         }
       },
