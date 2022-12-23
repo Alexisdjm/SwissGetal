@@ -1,0 +1,37 @@
+<div class="section-container">
+    <div class="container-flex">
+        {% for block in section.blocks %}
+            <div class="logo-container">
+                <img src="{{ block.settings.logo }}" alt="logo">
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "collection link",
+        "class": "collection-link",
+        "max_blocks": 4,
+        "blocks": [
+            {
+                "type": "text",
+                "name": "logo",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "logo",
+                        "label": "logo"
+                    }
+                ]
+
+            }
+        ],
+        "presets": [
+            {
+                "category": "logos",
+                "name": "Logo gallery"
+            }
+        ]
+    }
+{% endschema %}
