@@ -1,12 +1,12 @@
 <div class="section-container">
-    <div class="container-grid {{ section.settings.links_align }}">
+    <div class="container-flex">
         {% for block in section.blocks %}
             <div class="centered-collection">
                 <div class="inner-relative">
                     <img src="{{ block.settings.bg_img | img_url: 'master'  }}" alt="collection" class="img-absolute">
                 </div>
                 <div class="link-n-text">
-                    <h3 class="collection-name font-{{ block.settings.font_color }}">{{ block.settings.collection_tite }}</h3>
+                    <h3 class="">{{ block.settings.collection_title }}</h3>
                     <a href="{{ block.settings.collection_link }}" class="{{ block.settings.button_style }}">{{ block.settings.button_text }}</a>
                 </div>
             </div>
@@ -18,28 +18,6 @@
     {
         "name": "collection link",
         "class": "collection-link",
-        "settings": [
-            {
-                "type": "select",
-                "id": "links_align",
-                "label": "links amount",
-                "default": "grid-one",
-                "options": [
-                    {
-                        "label": "one",
-                        "value": "grid-one"
-                    },
-                    {
-                        "label": "two",
-                        "value": "grid-two"
-                    },
-                    {
-                        "label": "three",
-                        "value": "grid-three"
-                    }
-                ]
-            }
-        ],
         "max_blocks": 3,
         "blocks": [
             {
@@ -53,7 +31,7 @@
                     },
                     {
                         "type": "text",
-                        "id": "collection_tite",
+                        "id": "collection_title",
                         "label": "collection title",
                         "default": "title"
                     },
