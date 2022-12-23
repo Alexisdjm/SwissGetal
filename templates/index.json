@@ -117,7 +117,7 @@
           "type": "text",
           "settings": {
             "bg_img": "shopify:\/\/shop_images\/SGF-77_1.png",
-            "collection_title": "title",
+            "collection_title": "Cleanser",
             "collection_link": "shopify:\/\/collections\/programs",
             "button_text": "Shop Cleanser",
             "button_style": "button button--alt"
@@ -127,7 +127,7 @@
           "type": "text",
           "settings": {
             "bg_img": "shopify:\/\/shop_images\/SGF-11_1.png",
-            "collection_title": "title",
+            "collection_title": "Toners",
             "collection_link": "shopify:\/\/collections\/programs",
             "button_text": "Shop Toners",
             "button_style": "button button--alt"
