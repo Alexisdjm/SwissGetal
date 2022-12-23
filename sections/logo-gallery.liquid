@@ -2,7 +2,8 @@
     <div class="container-flex">
         {% for block in section.blocks %}
             <div class="logo-container">
-                <img src="{{ block.settings.logo | img_url: 'master'  }}" alt="logo">
+                <img class="logo-src" src="{{ block.settings.logo | img_url: 'master'  }}" alt="logo">
+                <p>{{ block.settings.logo_text }}</p>
             </div>
         {% endfor %}
     </div>
@@ -22,6 +23,12 @@
                         "type": "image_picker",
                         "id": "logo",
                         "label": "logo"
+                    },
+                    {
+                        "type": "text",
+                        "id": "logo_text",
+                        "label": "logo text",
+                        "default": "text"
                     }
                 ]
 
