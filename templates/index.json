@@ -107,7 +107,7 @@
           "type": "text",
           "settings": {
             "bg_img": "shopify:\/\/shop_images\/SGF-22_1.png",
-            "collection_tite": "Serums",
+            "collection_title": "title",
             "collection_link": "shopify:\/\/collections\/serums",
             "button_text": "Shop Serums",
             "button_style": "button button--alt"
@@ -117,7 +117,7 @@
           "type": "text",
           "settings": {
             "bg_img": "shopify:\/\/shop_images\/SGF-77_1.png",
-            "collection_tite": "Cleanser",
+            "collection_title": "title",
             "collection_link": "shopify:\/\/collections\/programs",
             "button_text": "Shop Cleanser",
             "button_style": "button button--alt"
@@ -127,7 +127,7 @@
           "type": "text",
           "settings": {
             "bg_img": "shopify:\/\/shop_images\/SGF-11_1.png",
-            "collection_tite": "Toners",
+            "collection_title": "title",
             "collection_link": "shopify:\/\/collections\/programs",
             "button_text": "Shop Toners",
             "button_style": "button button--alt"
@@ -140,7 +140,6 @@
         "e9678ba2-9112-4b01-8475-07c7be732fad"
       ],
       "settings": {
-        "links_align": "grid-three"
       }
     },
     "c4d121f6-c426-4fd5-9fc5-6fc21e538cef": {
@@ -235,6 +234,40 @@
       ],
       "settings": {
       }
+    },
+    "938522bf-21e4-4a5a-9e89-c1376002a251": {
+      "type": "logo-gallery",
+      "blocks": {
+        "61fcabaa-2b8a-4142-b869-be4b98d34551": {
+          "type": "text",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Swiss.png"
+          }
+        },
+        "d1ba9534-4ae1-4c0b-9c84-97709d82ad93": {
+          "type": "text",
+          "settings": {
+          }
+        },
+        "98b5da2e-d20d-45a6-9b2e-84c380834196": {
+          "type": "text",
+          "settings": {
+          }
+        },
+        "3dcd1788-80c4-48a1-bcc1-74c9fb05cbe2": {
+          "type": "text",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "61fcabaa-2b8a-4142-b869-be4b98d34551",
+        "d1ba9534-4ae1-4c0b-9c84-97709d82ad93",
+        "98b5da2e-d20d-45a6-9b2e-84c380834196",
+        "3dcd1788-80c4-48a1-bcc1-74c9fb05cbe2"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
@@ -245,6 +278,7 @@
     "d6f84e7b-1069-436d-a842-e210de8a4c0e",
     "3960676f-d47c-4489-a3f9-5fac1647f0fd",
     "130e948b-50b5-4d36-8bb1-e4683ef8c35e",
-    "c4d121f6-c426-4fd5-9fc5-6fc21e538cef"
+    "c4d121f6-c426-4fd5-9fc5-6fc21e538cef",
+    "938522bf-21e4-4a5a-9e89-c1376002a251"
   ]
 }
