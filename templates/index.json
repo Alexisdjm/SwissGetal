@@ -103,11 +103,7 @@
     "130e948b-50b5-4d36-8bb1-e4683ef8c35e": {
       "type": "collection-link",
       "settings": {
-        "bg_img": "shopify:\/\/shop_images\/Group_701.jpg",
-        "collection_tite": "Serums",
-        "collection_link": "shopify:\/\/collections\/serums",
-        "button_text": "View Serums",
-        "font_color": "white"
+        "links_align": "grid-three"
       }
     },
     "c4d121f6-c426-4fd5-9fc5-6fc21e538cef": {
