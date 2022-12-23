@@ -4,7 +4,9 @@
             <div class="content-text-container">
                 <h2 class="huge-title size-{{ section.settings.title_size }}">{{ section.settings.big_title }}</h2>
                 <p class="text-promotion content-{{ section.settings.content_size }}">{{ section.settings.content }}</p>
-                <a href="{{ section.settings.final_link }}" class="learn-more">{{ section.settings.button_text }}</a>
+                {% if section.settings.final_link %}
+                    <a href="{{ section.settings.final_link }}" class="learn-more">{{ section.settings.button_text }}</a>
+                {% endif %}
             </div>
         </div>
         <img class="img-align" src="{{ section.settings.side_image | img_url: 'master'  }}" alt="side image">
