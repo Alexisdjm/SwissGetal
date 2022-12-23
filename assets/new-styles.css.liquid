@@ -275,11 +275,12 @@ a, button, p {
 
 .container-grid {
   width: 100%;
-  display: grid;
+  display: flex;
   justify-content: center;
+  gap: 2%;
 }
 
-.grid-one {
+/* .grid-one {
   grid-template-columns: 1fr;
 }
 
@@ -291,13 +292,12 @@ a, button, p {
 .grid-three {
   grid-template-columns: repeat(3, 33%);
   gap: 10px;
-}
+} */
 
 
 .centered-collection {
   height: fit-content;
   width: 100%;
-  max-width: 1200px;
 }
 
 .inner-relative {
@@ -320,7 +320,7 @@ a, button, p {
   position: relative;
   max-width: 400px;
   margin: auto;
-  top: -30vh;
+  top: -50%;
   text-align: center;
 }
 
