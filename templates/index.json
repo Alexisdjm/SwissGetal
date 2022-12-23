@@ -241,25 +241,29 @@
         "61fcabaa-2b8a-4142-b869-be4b98d34551": {
           "type": "text",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/Swiss.png"
+            "logo": "shopify:\/\/shop_images\/Swiss.png",
+            "logo_text": "Made In Switzerland"
           }
         },
         "d1ba9534-4ae1-4c0b-9c84-97709d82ad93": {
           "type": "text",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/Quality.png"
+            "logo": "shopify:\/\/shop_images\/Quality.png",
+            "logo_text": "text"
           }
         },
         "98b5da2e-d20d-45a6-9b2e-84c380834196": {
           "type": "text",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/Proven.png"
+            "logo": "shopify:\/\/shop_images\/Proven.png",
+            "logo_text": "text"
           }
         },
         "3dcd1788-80c4-48a1-bcc1-74c9fb05cbe2": {
           "type": "text",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/Science.png"
+            "logo": "shopify:\/\/shop_images\/Science.png",
+            "logo_text": "text"
           }
         }
       },
