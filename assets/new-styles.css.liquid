@@ -273,11 +273,26 @@ a, button, p {
 
 /* --------------------------------------- collection link -------------------------------------------- */
 
-.container-flex {
+.container-grid {
   width: 100%;
-  display: flex;
+  display: grid;
   justify-content: center;
 }
+
+.grid-one {
+  grid-template-columns: 1fr;
+}
+
+.grid-two {
+  grid-template-columns: repeat(2, 50%);
+  gap: 10px;
+}
+
+.grid-three {
+  grid-template-columns: repeat(3, 33%);
+  gap: 10px;
+}
+
 
 .centered-collection {
   height: fit-content;

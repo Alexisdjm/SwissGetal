@@ -1,14 +1,16 @@
 <div class="section-container">
-    <div class="container-flex">
-        <div class="centered-collection">
-            <div class="inner-relative">
-                <img src="{{ section.settings.bg_img | img_url: 'master'  }}" alt="collection" class="img-absolute">
+    <div class="container-grid {{ section.settings.links_align }}">
+        {% for block in section.blocks %}
+            <div class="centered-collection">
+                <div class="inner-relative">
+                    <img src="{{ block.settings.bg_img | img_url: 'master'  }}" alt="collection" class="img-absolute">
+                </div>
+                <div class="link-n-text">
+                    <h3 class="collection-name font-{{ block.settings.font_color }}">{{ block.settings.collection_tite }}</h3>
+                    <a href="{{ block.settings.collection_link }}" class="collection-link-button font-{{ block.settings.font_color }}">{{ block.settings.button_text }}</a>
+                </div>
             </div>
-            <div class="link-n-text">
-                <h3 class="collection-name font-{{ section.settings.font_color }}">{{ section.settings.collection_tite }}</h3>
-                <a href="{{ section.settings.collection_link }}" class="collection-link-button font-{{ section.settings.font_color }}">{{ section.settings.button_text }}</a>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 
@@ -18,43 +20,70 @@
         "class": "collection-link",
         "settings": [
             {
-                "type": "image_picker",
-                "id": "bg_img",
-                "label": "background image"
-            },
-            {
-                "type": "text",
-                "id": "collection_tite",
-                "label": "collection title",
-                "default": "title"
-            },
-            {
-                "type": "url",
-                "id": "collection_link",
-                "label": "collection link"
-            },
-            {
-                "type": "text",
-                "id": "button_text",
-                "label": "button text"
-            },
-            {
                 "type": "select",
-                "id": "font_color",
-                "label": "font color",
-                "default": "white",
+                "id": "links_align",
+                "label": "links amount",
                 "options": [
                     {
-                        "value": "white",
-                        "label": "White font color"
+                        "label": "one",
+                        "value": "grid-one"
                     },
                     {
-                        "value": "black",
-                        "label": "Black font color"
+                        "label": "two",
+                        "value": "grid-one"
                     },
                     {
-                        "value": "gray",
-                        "label": "Gray font color"
+                        "label": "three",
+                        "value": "grid-one"
+                    }
+                ]
+            }
+        ],
+        "blocks": [
+            {
+                "type": "text",
+                "name": "background link",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "bg_img",
+                        "label": "background image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "collection_tite",
+                        "label": "collection title",
+                        "default": "title"
+                    },
+                    {
+                        "type": "url",
+                        "id": "collection_link",
+                        "label": "collection link"
+                    },
+                    {
+                        "type": "text",
+                        "id": "button_text",
+                        "label": "button text"
+                    },
+                    {
+                        "type": "select",
+                        "id": "button_style",
+                        "label": "Button style",
+                        "options": [
+                        {
+                            "value": "feature-link",
+                            "label": "Link"
+                        },
+                        {
+                            "value": "button",
+                            "label": "Primary button"
+                        },
+                        {
+                            "value": "button button--alt",
+                            "label": "Secondary button"
+                        }
+                        ],
+                        "default": "feature-link"
                     }
                 ]
             }
