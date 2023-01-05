@@ -42,7 +42,7 @@
     "col_btn_bg": "#242424",
     "col_btn": "#ffffff",
     "col_alt_btn_bg": "#ffffff",
-    "col_alt_btn": "#ffffff",
+    "col_alt_btn": "#242424",
     "button_shape": "sharp",
     "button_border_width": "2",
     "show_breadcrumbs": false,
