@@ -1,6 +1,9 @@
 <div id="first-section" class="section-container">
   <div class="img-bg-container align-{{ section.settings.horizontal_align  }}">
-    <img class="img" src="{{ section.settings.background | img_url: 'master'  }}" alt="top">
+    <img
+      class="img"
+      src="{{ section.settings.background | img_url: 'master'  }}"
+      alt="top">
     <div class="text-container v-align-{{ section.settings.vertical_align  }}">
       {% if section.settings.title %}
         <h3 class="text-header font-{{ section.settings.font_color }}">{{ section.settings.title }}</h3>
@@ -9,8 +12,8 @@
       <p class="main-text font-{{ section.settings.font_color }}">{{ section.settings.content }}</p>
 
       {% if section.settings.button_link %}
-        <div>
-          <a class="{{ section.settings.button_style }}" href="{{ section.settings.button_link  }}">{{ section.settings.button_text  }}</a>
+        <div class="link-n-text">
+          <a class="link {{ section.settings.button_style }}" href="{{ section.settings.button_link  }}">{{ section.settings.button_text }}</a>
         </div>
       {% endif %}
     </div>
@@ -43,14 +46,12 @@
         "type": "url",
         "id": "button_link",
         "label": "button link"
-      }, 
-      {
+      }, {
         "type": "text",
         "id": "button_text",
         "label": "button text",
         "default": "button"
-      }, 
-      {
+      }, {
         "type": "select",
         "id": "button_style",
         "label": "Button style",
@@ -58,19 +59,16 @@
           {
             "value": "feature-link",
             "label": "Link"
-          },
-          {
+          }, {
             "value": "button",
             "label": "Primary button"
-          },
-          {
+          }, {
             "value": "button button--alt",
             "label": "Secondary button"
           }
         ],
         "default": "feature-link"
-      },
-      {
+      }, {
         "type": "select",
         "id": "font_color",
         "label": "font color",
@@ -79,18 +77,15 @@
           {
             "value": "white",
             "label": "White font color"
-          },
-          {
+          }, {
             "value": "black",
             "label": "Black font color"
-          },
-          {
+          }, {
             "value": "gray",
             "label": "Gray font color"
           }
         ]
-      },
-      {
+      }, {
         "type": "range",
         "id": "horizontal_align",
         "min": 1,
@@ -98,8 +93,7 @@
         "step": 1,
         "default": 1,
         "label": "horizontal align"
-      }, 
-      {
+      }, {
         "type": "range",
         "id": "vertical_align",
         "min": 1,
