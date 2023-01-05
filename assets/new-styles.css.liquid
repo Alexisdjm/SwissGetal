@@ -1,10 +1,4 @@
-{% assign font_body = settings.type_body_font %}
-{% assign font_buttons = settings.type_buttons_font %}
-
-{{ font_body | font_face }}
-{{ font_buttons | font_face }}
-
-/* h1, h2, h3, h4, h5, h6, p {
+{% assign font_body = settings.type_body_font %}{% assign font_buttons = settings.type_buttons_font %}{{ font_body | font_face }}{{ font_buttons | font_face }}/* h1, h2, h3, h4, h5, h6, p {
   font-family: {{ font_body.family }}, {{ font_body.fallback_families }};
 }
 
@@ -44,28 +38,28 @@ a, button, p {
 }
 
 .v-align-1 {
-  top: calc(600px/2);
+  top: calc(600px / 2);
 }
 .v-align-2 {
-  top: calc(600px/3);
+  top: calc(600px / 3);
 }
 .v-align-3 {
-  top: calc(600px/4);
+  top: calc(600px / 4);
 }
 .v-align-4 {
-  top: calc(600px/5);
+  top: calc(600px / 5);
 }
 .v-align-5 {
-  top: calc(600px/6);
+  top: calc(600px / 6);
 }
 .v-align-6 {
-  top: calc(600px/7);
+  top: calc(600px / 7);
 }
 .v-align-7 {
-  top: calc(600px/8);
+  top: calc(600px / 8);
 }
 .v-align-8 {
-  top: calc(600px/9);
+  top: calc(600px / 9);
 }
 
 .text-container {
@@ -76,7 +70,7 @@ a, button, p {
   z-index: 9;
   margin: 100px;
   position: relative;
-  left: calc((100% - 1360px)/2 + 50px);
+  left: calc((100% - 1360px) / 2 + 50px);
 }
 
 .text-header {
@@ -154,7 +148,8 @@ a, button, p {
 
 /* ------------------------------------- side image huge title ------------------------------------------- */
 
-.big-title, .collection-link {
+.big-title,
+.collection-link {
   margin: 80px 0 120px;
 }
 
@@ -173,7 +168,7 @@ a, button, p {
 }
 
 .content-text-container {
-  position: absolute; 
+  position: absolute;
   height: fit-content;
   min-width: 680px;
 }
@@ -327,8 +322,8 @@ a, button, p {
 /* ---------------------------------------- instagram posts ----------------------------------------- */
 
 .arrows-container {
-  position: absolute; 
-  z-index:999; 
+  position: absolute;
+  z-index: 999;
   width: 100%;
   display: none;
 }
@@ -407,8 +402,12 @@ section {
   color: white
 }
 
+.link-n-text .link:hover {
+  border: none
+}
+
 .collection-link-text {
-   color: white;
+  color: white;
 }
 
 @media only screen and (max-width: 1200px) {
