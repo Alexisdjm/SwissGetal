@@ -41,7 +41,7 @@
     "logo_size_int": 24,
     "col_btn_bg": "#242424",
     "col_btn": "#ffffff",
-    "col_alt_btn_bg": "#ffffff",
+    "col_alt_btn_bg": "#242424",
     "col_alt_btn": "#ffffff",
     "button_shape": "sharp",
     "button_border_width": "2",
