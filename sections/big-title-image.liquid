@@ -1,5 +1,5 @@
-<div class="section-container">
-    <div style="background-color: aqua; min-height: 400px; width: 100%; position:absolute; top: 50%"></div>
+<div class="section-container align-vertical-center">
+    <div class="tight-optional-background {{ section.settings.bg_color }} {{ section.settings.bg_height }} {{ section.settings.display_bg }}"></div>
     <div class="flex-big-container">
         <div class="main-text-ht">
             <div class="content-text-container">
@@ -64,6 +64,25 @@
                 "id": "button_text",
                 "label": "button text",
                 "default": "button"
+            },
+            {
+                "type": "checkbox",
+                "id": "display_bg",
+                "default": "hide"
+            },
+            {
+                "type": "color",
+                "id": "bg_color",
+                "label": "tight background color"
+            },
+            {
+                "type": "range",
+                "id": "bg_height",
+                "label": "background height",
+                "min": 1,
+                "max": 4,
+                "step": 1,
+                "default": 2
             }
         ],
         "presets": [
