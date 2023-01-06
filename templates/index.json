@@ -301,8 +301,8 @@
         "button_text": "Shop Eye Elixir",
         "button_style": "another-button another-secondary-button",
         "display_bg": true,
-        "bg_color": "#def5f1",
-        "bg_height": 3
+        "bg_color": "#edf8f6",
+        "bg_height": 4
       }
     }
   },
