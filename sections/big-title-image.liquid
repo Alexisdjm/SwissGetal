@@ -1,5 +1,7 @@
 <div class="section-container align-vertical-center">
-    <div class="tight-optional-background {{ section.settings.bg_color }} {{ section.settings.bg_height }} {{ section.settings.display_bg }}"></div>
+    {% if section.settings.display_bg %}
+        <div class="tight-optional-background {{ section.settings.bg_color }} {{ section.settings.bg_height }} {{ section.settings.display_bg }}"></div> 
+    {% endif %}
     <div class="flex-big-container">
         <div class="main-text-ht">
             <div class="content-text-container">
@@ -69,7 +71,7 @@
                 "type": "checkbox",
                 "id": "display_bg",
                 "label": "display background",
-                "default": "hide"
+                "default": false
             },
             {
                 "type": "color",
