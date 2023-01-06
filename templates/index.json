@@ -290,7 +290,7 @@
         "side_image": "shopify:\/\/shop_images\/drops_1.png",
         "final_link": "",
         "button_text": "button",
-        "display_bg": false,
+        "display_bg": true,
         "bg_color": "#5c2828",
         "bg_height": 3
       }
