@@ -3,7 +3,7 @@
         <div style="background-color: {{ section.settings.bg_color }};" class="tight-optional-background tight-{{ section.settings.bg_height }} {{ section.settings.display_bg }}"></div> 
     {% endif %}
     <div class="flex-big-container">
-        <div class="main-text-ht">
+        <div class="main-text-ht {{ section.settings.text_vertical }}">
             <div class="content-text-container {{ section.settings.text_width }}">
                 <h2 style="color: {{ section.settings.font_color }}" class="huge-title {{ section.settings.font_style }} size-{{ section.settings.title_size }}">{{ section.settings.big_title }}</h2>
                 <p style="color: {{ section.settings.font_color }}" class="text-promotion content-{{ section.settings.content_size }}">{{ section.settings.content }}</p>
