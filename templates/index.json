@@ -86,7 +86,10 @@
         "content_size": 16,
         "side_image": "shopify:\/\/shop_images\/SGF-18_1_234645c1-0988-42cb-88b3-174a93bf9155.webp",
         "final_link": "shopify:\/\/collections\/all",
-        "button_text": "Learn More"
+        "button_text": "Learn More",
+        "display_bg": false,
+        "bg_color": "",
+        "bg_height": 2
       }
     },
     "130e948b-50b5-4d36-8bb1-e4683ef8c35e": {
@@ -276,6 +279,21 @@
       "settings": {
         "content_size": 14
       }
+    },
+    "54b40de3-e782-496f-bb86-b70049688a03": {
+      "type": "big-title-image",
+      "settings": {
+        "big_title": "Revitalise Your Eyes",
+        "title_size": 50,
+        "content": "The secret to younger-looking radiant eyes lies in our Eye Elixir. Our eye elixir collection comprises top skincare products formulated to de-puff and illuminate your eyes.",
+        "content_size": 14,
+        "side_image": "shopify:\/\/shop_images\/drops_1.png",
+        "final_link": "",
+        "button_text": "button",
+        "display_bg": false,
+        "bg_color": "#5c2828",
+        "bg_height": 3
+      }
     }
   },
   "order": [
@@ -287,6 +305,7 @@
     "130e948b-50b5-4d36-8bb1-e4683ef8c35e",
     "3960676f-d47c-4489-a3f9-5fac1647f0fd",
     "c4d121f6-c426-4fd5-9fc5-6fc21e538cef",
-    "938522bf-21e4-4a5a-9e89-c1376002a251"
+    "938522bf-21e4-4a5a-9e89-c1376002a251",
+    "54b40de3-e782-496f-bb86-b70049688a03"
   ]
 }
