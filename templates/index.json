@@ -81,6 +81,7 @@
       "type": "big-title-image",
       "settings": {
         "text_width": "left-bg-txt-container",
+        "font_color": "#000000",
         "big_title": "Self-love begins with skincare.",
         "title_size": 95,
         "font_style": "arial",
@@ -287,15 +288,16 @@
       "type": "big-title-image",
       "settings": {
         "text_width": "left-bg-txt-fit",
+        "font_color": "#332f2c",
         "big_title": "Revitalise Your Eyes",
-        "title_size": 40,
+        "title_size": 35,
         "font_style": "arial",
         "content": "The secret to younger-looking radiant eyes lies in our Eye Elixir. Our eye elixir collection comprises top skincare products formulated to de-puff and illuminate your eyes.",
         "content_size": 18,
         "side_image": "shopify:\/\/shop_images\/drops_1.png",
         "final_link": "shopify:\/\/collections\/all",
         "button_text": "Shop Eye Elixir",
-        "button_style": "new-button new-secondary-button",
+        "button_style": "another-button another-secondary-button",
         "display_bg": true,
         "bg_color": "#def5f1",
         "bg_height": 3
