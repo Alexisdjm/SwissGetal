@@ -13,7 +13,7 @@
 
       {% if section.settings.button_link %}
         <div>
-          <a class="link" href="{{ section.settings.button_link  }}">{{ section.settings.button_text }}</a>
+          <a class="link {{ section.settings.button_style }}" href="{{ section.settings.button_link  }}">{{ section.settings.button_text }}</a>
         </div>
       {% endif %}
     </div>
