@@ -8,7 +8,7 @@
                 <h2 class="huge-title {{ section.settings.font_style }} size-{{ section.settings.title_size }}">{{ section.settings.big_title }}</h2>
                 <p class="text-promotion content-{{ section.settings.content_size }}">{{ section.settings.content }}</p>
                 {% if section.settings.final_link %}
-                    <a href="{{ section.settings.final_link }}" class="learn-more">{{ section.settings.button_text }}</a>
+                    <a href="{{ section.settings.final_link }}" class="{{ section.settings.button_style }}">{{ section.settings.button_text }}</a>
                 {% endif %}
             </div>
         </div>
@@ -114,6 +114,22 @@
                 "id": "button_text",
                 "label": "button text",
                 "default": "button"
+            },
+            {
+                "type": "select",
+                "id": "button_style",
+                "default": "learn-more",
+                "label": "button style",
+                "options": [
+                    {
+                        "label": "underlined link",
+                        "value": "learn-more"
+                    },
+                    {
+                        "label": "square button",
+                        "value": "new-button new-secondary-button"
+                    }
+                ]
             },
             {
                 "type": "checkbox",
