@@ -4,8 +4,8 @@
     {% endif %}
     <div class="flex-big-container">
         <div class="main-text-ht">
-            <div class="content-text-container">
-                <h2 class="huge-title size-{{ section.settings.title_size }}">{{ section.settings.big_title }}</h2>
+            <div class="content-text-container {{ section.settings.text_width }}">
+                <h2 class="huge-title {{ section.settings.font_style }} size-{{ section.settings.title_size }}">{{ section.settings.big_title }}</h2>
                 <p class="text-promotion content-{{ section.settings.content_size }}">{{ section.settings.content }}</p>
                 {% if section.settings.final_link %}
                     <a href="{{ section.settings.final_link }}" class="learn-more">{{ section.settings.button_text }}</a>
@@ -22,6 +22,22 @@
         "class": "big-title",
         "settings": [
             {
+                "type": "select",
+                "id": "text_width",
+                "label": "text container width",
+                "default": "wide",
+                "options":[
+                    {
+                        "label": "wide",
+                        "value": "left-bg-txt-container"
+                    },
+                    {
+                        "label": "fit-content",
+                        "value": "left-bg-txt-fit"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "id": "big_title",
                 "label": "big title",
@@ -30,11 +46,31 @@
             {
                 "type": "range",
                 "id": "title_size",
-                "min": 50,
+                "min": 30,
                 "max": 100,
                 "default": 95,
                 "step": 5,
                 "label": "title size"
+            },
+            {
+                "type": "select",
+                "id": "font_style",
+                "label": "font family",
+                "default": "Arial",
+                "options": [
+                    {
+                        "label": "Arial",
+                        "value": "arial"
+                    },
+                    {
+                        "label": "Playfair",
+                        "value": "Playfair"
+                    },
+                    {
+                        "label": "Times new roman",
+                        "value": "times-new-roman"
+                    }
+                ]
             },
             {
                 "type": "text",
