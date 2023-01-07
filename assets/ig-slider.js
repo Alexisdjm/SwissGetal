@@ -17,7 +17,7 @@ let right_mover = () => {
 	l = l + movePer;
 	console.log(l)
 	console.log(l === maxMove)
-	if (l === maxMove) {
+	if (l >= maxMove) {
 		right.style.display = 'none'
 	}
 	if (ig_post_page == 1){l = 0;}
