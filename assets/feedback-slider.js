@@ -1,5 +1,6 @@
 let index = 1
 let r = 1
+show_slides(index)
 
 function myloop() {
     setTimeout(function() {
@@ -51,11 +52,9 @@ function show_slides(n) {
     }
     
     for (let i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace("active", "")
+        dots[i].className = dots[i].className.replace(" active", "")
     }
 
-    console.log(slides[index-1], dots[index-1].className)
-
     slides[index-1].style.display = "block";
-    dots[index-1].className += "active";
+    dots[index-1].className += " active";
 }
