@@ -1,23 +1,25 @@
-<div class="section-container flex flex-center">
-  <div class="flex flex-center">
-    <div>
-      <img src="{{ section.settings.open_qm | img_url: 'master' }}" alt="open">
-    </div>
-    <div class="slider-container">
-      {% for block in section.blocks %}
-        <div class="comment-container">
-          <p class="comment">{{ block.settings.comment_text }}</p>
+<div class="section-container">
+    <div class="flex flex-center">
+      <div class="flex flex-center">
+        <div>
+          <img src="{{ section.settings.open_qm | img_url: 'master' }}" alt="open">
         </div>
-      {% endfor %}
+        <div class="slider-container">
+          {% for block in section.blocks %}
+            <div class="comment-container">
+              <p class="comment">{{ block.settings.comment_text }}</p>
+            </div>
+          {% endfor %}
+        </div>
+        <div>
+          <img
+            class="align-bottom"
+            src="{{ section.settings.close_qm | img_url: 'master' }}"
+            alt="close">
+        </div>
+      </div>
     </div>
-    <div>
-      <img
-        class="align-bottom"
-        src="{{ section.settings.close_qm | img_url: 'master' }}"
-        alt="close">
-    </div>
-  </div>
-  <div class="dots">aaaaaaaaa</div>
+    <div class="dots"></div>
 </div>
 {% schema %}
   {
