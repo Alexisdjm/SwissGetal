@@ -321,11 +321,18 @@
           "settings": {
             "comment_text": "My teenage son is dealing with acne and we've searched for different products to help him. While searching we came across this acne spot treatment and it has done wonders for his skin. It's smoother and has less acne. The treatment is ight weight and not greasy."
           }
+        },
+        "dd2ce879-8d68-4701-919d-04c54fd1b21c": {
+          "type": "text",
+          "settings": {
+            "comment_text": "I've sensitive skin and for anti-aging in combination I use retinol which dries a lot my skin, and I have found a new way of combining products that are as powerful as retinol to use. I'm also using other products of the same brand. I'm loving this product and the results I'm getting. I love european products, and SwissGetal has excellent quality of ingredients and I highly recommend this ceramide and the brand in general. Loving it!"
+          }
         }
       },
       "block_order": [
         "bd67254c-73cb-4d58-a096-638148662152",
-        "0afa242d-5900-4043-96ab-faf25ae9d994"
+        "0afa242d-5900-4043-96ab-faf25ae9d994",
+        "dd2ce879-8d68-4701-919d-04c54fd1b21c"
       ],
       "settings": {
         "open_qm": "shopify:\/\/shop_images\/da21dde662a19a4b8a6e17048660983a.png",
