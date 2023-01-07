@@ -52,7 +52,6 @@ function show_slides(n) {
     }
     
     for (i = 0; i < dots.length; i++) {
-        console.log(dots[i])
         dots[i].className = dots[i].className.replace(" active", "")
     }
 
