@@ -1,7 +1,7 @@
 let span = document.getElementsByClassName('arrow-btn');
 let ig_post = document.getElementsByClassName('post')
 let ig_post_page = Math.ceil(ig_post.length/6);
-let l = 51;
+let l = 0;
 let movePer = 17;
 let maxMove = (ig_post.length - 6) * 17;
 const right = document.getElementById('right')
