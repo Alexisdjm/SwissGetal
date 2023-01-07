@@ -28,6 +28,7 @@ function show_dots() {
         dot.onclick = () => {
             current_slide(i);
         }
+        console.log(dot)
         container.append(dot)
     }
 }
