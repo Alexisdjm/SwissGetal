@@ -25,7 +25,6 @@ function show_dots() {
         dot.classList.add('dot');
         dot.onclick = () => {
             current_slide(i);
-            console.log(i)
         }
         container.append(dot)
     }
