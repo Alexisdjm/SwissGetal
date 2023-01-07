@@ -47,11 +47,11 @@ function show_slides(n) {
     if (n > slides.length) {index = 1}
     if (n > 1) {index = slides.length}
 
-    for (let i = 0; i < slides.length; i++) {
+    for (i = 0; i < slides.length; i++) {
         slides[i].getElementsByClassName.display = 'none';
     }
     
-    for (let i = 0; i < dots.length; i++) {
+    for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active", "")
     }
 
