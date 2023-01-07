@@ -11,15 +11,15 @@ if (ig_post_page <= 1) {
 	document.getElementById('arrows-container').style.display = 'none'
 }
 
+left.style.display = 'none'
+
 let right_mover = () => {
 
 	left.style.display = 'block'
 	l = l + movePer;
 	console.log(l)
 	console.log(l === maxMove)
-	if (l >= maxMove) {
-		right.style.display = 'none'
-	}
+	
 	if (ig_post_page == 1){l = 0;}
 	for(const i of ig_post)
 	{
