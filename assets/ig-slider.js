@@ -7,8 +7,6 @@ let maxMove = (ig_post.length - 6) * 17;
 const right = document.getElementById('right')
 const left = document.getElementById('left')
 
-console.log(maxMove)
-
 if (ig_post_page <= 1) {
 	document.getElementById('arrows-container').style.display = 'none'
 }
@@ -17,6 +15,7 @@ let right_mover = () => {
 
 	left.style.display = 'block'
 	l = l + movePer;
+	console.log(l)
 	if (l === maxMove) {
 		right.style.display = 'none'
 	}
@@ -31,6 +30,7 @@ let right_mover = () => {
 let left_mover = () => {
 	right.style.display = 'block'
 	l = l - movePer;
+	console.log(l)
 	if (l === 0) {
 		left.style.display = 'none'
 	}	
