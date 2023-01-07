@@ -151,6 +151,59 @@
         "show_view_all": true
       }
     },
+    "54b40de3-e782-496f-bb86-b70049688a03": {
+      "type": "big-title-image",
+      "settings": {
+        "text_width": "left-bg-txt-fit",
+        "font_color": "#332f2c",
+        "big_title": "Revitalise Your Eyes",
+        "title_size": 35,
+        "font_style": "arial",
+        "text_vertical": "top-10",
+        "text_left": 1,
+        "content": "The secret to younger-looking radiant eyes lies in our Eye Elixir. Our eye elixir collection comprises top skincare products formulated to de-puff and illuminate your eyes.",
+        "content_size": 18,
+        "side_image": "shopify:\/\/shop_images\/drops_1.png",
+        "final_link": "shopify:\/\/collections\/all",
+        "button_text": "Shop Eye Elixir",
+        "button_style": "another-button another-secondary-button",
+        "display_bg": true,
+        "bg_color": "#edf8f6",
+        "bg_height": 4
+      }
+    },
+    "f14f6588-68af-4e6b-8563-c03d5a8b4333": {
+      "type": "text-slider",
+      "blocks": {
+        "bd67254c-73cb-4d58-a096-638148662152": {
+          "type": "text",
+          "settings": {
+            "comment_text": "This serum works awesome. I don’t write review often, but this one I had to share. I bought it for my teenage daughter. In the few days, I noticed huge difference to her face: acne pimples where dried out, skin was less inflamed and still moisturized. My daughter has a combination skin type and this serum really absorbs fast and not clogs the pores in. Great results, love this product!"
+          }
+        },
+        "0afa242d-5900-4043-96ab-faf25ae9d994": {
+          "type": "text",
+          "settings": {
+            "comment_text": "My teenage son is dealing with acne and we've searched for different products to help him. While searching we came across this acne spot treatment and it has done wonders for his skin. It's smoother and has less acne. The treatment is ight weight and not greasy."
+          }
+        },
+        "dd2ce879-8d68-4701-919d-04c54fd1b21c": {
+          "type": "text",
+          "settings": {
+            "comment_text": "I've sensitive skin and for anti-aging in combination I use retinol which dries a lot my skin, and I have found a new way of combining products that are as powerful as retinol to use. I'm also using other products of the same brand. I'm loving this product and the results I'm getting. I love european products, and SwissGetal has excellent quality of ingredients and I highly recommend this ceramide and the brand in general. Loving it!"
+          }
+        }
+      },
+      "block_order": [
+        "bd67254c-73cb-4d58-a096-638148662152",
+        "0afa242d-5900-4043-96ab-faf25ae9d994",
+        "dd2ce879-8d68-4701-919d-04c54fd1b21c"
+      ],
+      "settings": {
+        "open_qm": "shopify:\/\/shop_images\/da21dde662a19a4b8a6e17048660983a.png",
+        "close_qm": "shopify:\/\/shop_images\/1.png"
+      }
+    },
     "c4d121f6-c426-4fd5-9fc5-6fc21e538cef": {
       "type": "instagram-carousel",
       "blocks": {
@@ -285,59 +338,6 @@
       "settings": {
         "content_size": 14
       }
-    },
-    "54b40de3-e782-496f-bb86-b70049688a03": {
-      "type": "big-title-image",
-      "settings": {
-        "text_width": "left-bg-txt-fit",
-        "font_color": "#332f2c",
-        "big_title": "Revitalise Your Eyes",
-        "title_size": 35,
-        "font_style": "arial",
-        "text_vertical": "top-10",
-        "text_left": 1,
-        "content": "The secret to younger-looking radiant eyes lies in our Eye Elixir. Our eye elixir collection comprises top skincare products formulated to de-puff and illuminate your eyes.",
-        "content_size": 18,
-        "side_image": "shopify:\/\/shop_images\/drops_1.png",
-        "final_link": "shopify:\/\/collections\/all",
-        "button_text": "Shop Eye Elixir",
-        "button_style": "another-button another-secondary-button",
-        "display_bg": true,
-        "bg_color": "#edf8f6",
-        "bg_height": 4
-      }
-    },
-    "f14f6588-68af-4e6b-8563-c03d5a8b4333": {
-      "type": "text-slider",
-      "blocks": {
-        "bd67254c-73cb-4d58-a096-638148662152": {
-          "type": "text",
-          "settings": {
-            "comment_text": "This serum works awesome. I don’t write review often, but this one I had to share. I bought it for my teenage daughter. In the few days, I noticed huge difference to her face: acne pimples where dried out, skin was less inflamed and still moisturized. My daughter has a combination skin type and this serum really absorbs fast and not clogs the pores in. Great results, love this product!"
-          }
-        },
-        "0afa242d-5900-4043-96ab-faf25ae9d994": {
-          "type": "text",
-          "settings": {
-            "comment_text": "My teenage son is dealing with acne and we've searched for different products to help him. While searching we came across this acne spot treatment and it has done wonders for his skin. It's smoother and has less acne. The treatment is ight weight and not greasy."
-          }
-        },
-        "dd2ce879-8d68-4701-919d-04c54fd1b21c": {
-          "type": "text",
-          "settings": {
-            "comment_text": "I've sensitive skin and for anti-aging in combination I use retinol which dries a lot my skin, and I have found a new way of combining products that are as powerful as retinol to use. I'm also using other products of the same brand. I'm loving this product and the results I'm getting. I love european products, and SwissGetal has excellent quality of ingredients and I highly recommend this ceramide and the brand in general. Loving it!"
-          }
-        }
-      },
-      "block_order": [
-        "bd67254c-73cb-4d58-a096-638148662152",
-        "0afa242d-5900-4043-96ab-faf25ae9d994",
-        "dd2ce879-8d68-4701-919d-04c54fd1b21c"
-      ],
-      "settings": {
-        "open_qm": "shopify:\/\/shop_images\/da21dde662a19a4b8a6e17048660983a.png",
-        "close_qm": "shopify:\/\/shop_images\/1.png"
-      }
     }
   },
   "order": [
@@ -348,9 +348,9 @@
     "d6f84e7b-1069-436d-a842-e210de8a4c0e",
     "130e948b-50b5-4d36-8bb1-e4683ef8c35e",
     "3960676f-d47c-4489-a3f9-5fac1647f0fd",
-    "c4d121f6-c426-4fd5-9fc5-6fc21e538cef",
-    "938522bf-21e4-4a5a-9e89-c1376002a251",
     "54b40de3-e782-496f-bb86-b70049688a03",
-    "f14f6588-68af-4e6b-8563-c03d5a8b4333"
+    "f14f6588-68af-4e6b-8563-c03d5a8b4333",
+    "c4d121f6-c426-4fd5-9fc5-6fc21e538cef",
+    "938522bf-21e4-4a5a-9e89-c1376002a251"
   ]
 }
