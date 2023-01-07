@@ -1,6 +1,6 @@
 let index = 1
 let r = 1
-show_slides(2)
+show_slides(1)
 
 function myloop() {
     setTimeout(function() {
