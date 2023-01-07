@@ -1,56 +1,58 @@
 <div class="section-container flex flex-center">
-    <div class="flex flex-center">
-        <div>
-            <img src="{{ section.settings.open_qm | img_url: 'master' }}" alt="open">
-        </div>
-        <div class="slider-container">
-            {% for block in section.blocks %}
-                <div class="comment-container">
-                    <p class="comment">{{ block.settings.comment_text }}</p>
-                </div>
-            {% endfor %}
-        </div>
-        <div>
-            <img class="align-bottom" src="{{ section.settings.close_qm | img_url: 'master' }}" alt="close">
-        </div>
+  <div class="flex flex-center">
+    <div>
+      <img src="{{ section.settings.open_qm | img_url: 'master' }}" alt="open">
     </div>
+    <div class="slider-container">
+      {% for block in section.blocks %}
+        <div class="comment-container">
+          <p class="comment">{{ block.settings.comment_text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+    <div>
+      <img
+        class="align-bottom"
+        src="{{ section.settings.close_qm | img_url: 'master' }}"
+        alt="close">
+    </div>
+  </div>
 </div>
 {% schema %}
-    {
-        "name": "slider comments",
-        "class": "big-title",
+  {
+    "name": "slider comments",
+    "class": "big-title",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "open_qm",
+        "label": "first decoration"
+      }, {
+        "type": "image_picker",
+        "id": "close_qm",
+        "label": "last decoration"
+      }
+    ],
+    "max_blocks": 5,
+    "blocks": [
+      {
+        "type": "text",
+        "name": "content of comment",
         "settings": [
-            {
-                "type": "image_picker",
-                "id": "open_qm",
-                "label": "first decoration"
-            },
-            {
-                "type": "image_picker",
-                "id": "close_qm",
-                "label": "last decoration"
-            }
-        ],
-        "max_blocks": 5,
-        "blocks": [
-            {
-                "type": "text",
-                "name": "content of comment",
-                "settings": [
-                    {
-                        "type": "text",
-                        "id": "comment_text",
-                        "label": "content",
-                        "default": "comment text"
-                    }
-                ]
-            }
-        ],
-        "presets": [
-            {
-                "category": "feedback",
-                "name": "feedback comments"
-            }
+          {
+            "type": "text",
+            "id": "comment_text",
+            "label": "content",
+            "default": "comment text"
+          }
         ]
-    }
+      }
+    ],
+    "presets": [
+      {
+        "category": "feedback",
+        "name": "feedback comments"
+      }
+    ]
+  }
 {% endschema %}
