@@ -3,9 +3,11 @@ let ig_post = document.getElementsByClassName('post')
 let ig_post_page = Math.ceil(ig_post.length/6);
 let l = 0;
 let movePer = 17;
-let maxMove = ig_post*17;
+let maxMove = (ig_post.length - 6) * 17;
 const right = document.getElementById('right')
 const left = document.getElementById('left')
+
+console.log(maxMove)
 
 if (ig_post_page <= 1) {
 	document.getElementById('arrows-container').style.display = 'none'
