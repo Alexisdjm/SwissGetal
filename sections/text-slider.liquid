@@ -1,0 +1,40 @@
+<div class="section-container flex flex-center">
+    <div class="flex flex-center">
+        <img src="../assets/“.png" alt="open">
+        <div class="slider-container">
+            {% for block in section.blocks %}
+                <div class="comment-container">
+                    <p class="comment">{{ block.settings.comment_text }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <img src="../assets/“ (1).png" alt="close">
+    </div>
+</div>
+{% schema %}
+    {
+        "name": "slider comments",
+        "class": "big-title",
+        "max_blocks": 5,
+        "blocks": [
+            {
+                "type": "text",
+                "name": "content of comment",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "comment_text",
+                        "label": "content",
+                        "default": "comment text"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "category": "feedback",
+                "name": "feedback comments"
+            }
+        ]
+    }
+{% endschema %}
