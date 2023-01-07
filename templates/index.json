@@ -309,6 +309,17 @@
     },
     "f14f6588-68af-4e6b-8563-c03d5a8b4333": {
       "type": "text-slider",
+      "blocks": {
+        "bd67254c-73cb-4d58-a096-638148662152": {
+          "type": "text",
+          "settings": {
+            "comment_text": "This serum works awesome. I don’t write review often, but this one I had to share. I bought it for my teenage daughter. In the few days, I noticed huge difference to her face: acne pimples where dried out, skin was less inflamed and still moisturized. My daughter has a combination skin type and this serum really absorbs fast and not clogs the pores in. Great results, love this product!"
+          }
+        }
+      },
+      "block_order": [
+        "bd67254c-73cb-4d58-a096-638148662152"
+      ],
       "settings": {
       }
     }
