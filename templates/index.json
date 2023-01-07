@@ -315,10 +315,17 @@
           "settings": {
             "comment_text": "This serum works awesome. I don’t write review often, but this one I had to share. I bought it for my teenage daughter. In the few days, I noticed huge difference to her face: acne pimples where dried out, skin was less inflamed and still moisturized. My daughter has a combination skin type and this serum really absorbs fast and not clogs the pores in. Great results, love this product!"
           }
+        },
+        "0afa242d-5900-4043-96ab-faf25ae9d994": {
+          "type": "text",
+          "settings": {
+            "comment_text": "My teenage son is dealing with acne and we've searched for different products to help him. While searching we came across this acne spot treatment and it has done wonders for his skin. It's smoother and has less acne. The treatment is ight weight and not greasy."
+          }
         }
       },
       "block_order": [
-        "bd67254c-73cb-4d58-a096-638148662152"
+        "bd67254c-73cb-4d58-a096-638148662152",
+        "0afa242d-5900-4043-96ab-faf25ae9d994"
       ],
       "settings": {
         "open_qm": "shopify:\/\/shop_images\/da21dde662a19a4b8a6e17048660983a.png",
