@@ -11,7 +11,7 @@ if (ig_post_page <= 1) {
 	document.getElementById('arrows-container').style.display = 'none'
 }
 
-
+console.log(ig_post.length)
 
 let right_mover = () => {
 
