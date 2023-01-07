@@ -1,6 +1,8 @@
 <div class="section-container flex flex-center">
     <div class="flex flex-center">
-        <img src="{{ section.settings.open_qm | img_url: 'master' }}" alt="open">
+        <div>
+            <img src="{{ section.settings.open_qm | img_url: 'master' }}" alt="open">
+        </div>
         <div class="slider-container">
             {% for block in section.blocks %}
                 <div class="comment-container">
@@ -8,7 +10,9 @@
                 </div>
             {% endfor %}
         </div>
-        <img src="{{ section.settings.close_qm | img_url: 'master' }}" alt="close">
+        <div>
+            <img src="{{ section.settings.close_qm | img_url: 'master' }}" alt="close">
+        </div>
     </div>
 </div>
 {% schema %}
