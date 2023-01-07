@@ -41,5 +41,5 @@ let left_mover = () => {
 		}
 	}
 }
-right.onclick = ()=>{right_mover(); console.log('right')}
-left.onclick = ()=>{left_mover(); console.log('left')}
+right.onclick = ()=>{right_mover();}
+left.onclick = ()=>{left_mover();}
