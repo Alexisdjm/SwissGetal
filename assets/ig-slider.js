@@ -3,13 +3,11 @@ let ig_post = document.getElementsByClassName('post')
 let ig_post_page = Math.ceil(ig_post.length/6);
 let l = 0;
 let movePer = 17;
-let maxMove = ig_post_page*17;
+let maxMove = ig_post*17;
 const right = document.getElementById('right')
 const left = document.getElementById('left')
 
-console.log(ig_post_page)
-
-if (ig_post_page === 1) {
+if (ig_post_page <= 1) {
 	document.getElementById('arrows-container').style.display = 'none'
 }
 
@@ -36,10 +34,10 @@ let left_mover = () => {
 	}	
 	if (l<=0){l = 0;}
 	for(const i of ig_post){
-		if (ig_post_page>1){
+		if (ig_post_page > 1){
 			i.style.left = '-' + l + '%';
 		}
 	}
 }
-span[1].onclick = ()=>{right_mover();}
-span[0].onclick = ()=>{left_mover();}
+right.onclick = ()=>{right_mover(); console.log('right')}
+left.onclick = ()=>{left_mover(); console.log('left')}
