@@ -15,12 +15,17 @@ if (ig_post_page <= 1) {
 
 let right_mover = () => {
 
-
+	left.style.visibility = 'visible';
 	l = l + movePer;
 	console.log(l)
 	console.log(l === maxMove)
 	
 	if (ig_post_page == 1){l = 0;}
+
+	if (l === maxMove) {
+		right.style.visibility = 'hidden'
+	}
+
 	for(const i of ig_post)
 	{
 		if (l > maxMove){l = l - movePer;}
@@ -30,9 +35,15 @@ let right_mover = () => {
 
 let left_mover = () => {
 
+	right.style.visibility = 'visible';
+
 	l = l - movePer;
 	console.log(l)
 	console.log(l === 0)
+
+	if (l === 0) {
+		left.style.visibility = 'hidden'
+	}
 		
 	if (l<=0){l = 0;}
 	for(const i of ig_post){
