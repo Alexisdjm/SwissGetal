@@ -20,6 +20,8 @@ function show_dots() {
     let container = document.getElementById('dots-container');
     container.innerHTML = '';
 
+    console.log(amount)
+
     for (let i = 1; i < amount; i++) {
         let dot = document.createElement('span')
         dot.classList.add('dot');
