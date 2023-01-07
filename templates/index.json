@@ -321,6 +321,8 @@
         "bd67254c-73cb-4d58-a096-638148662152"
       ],
       "settings": {
+        "open_qm": "shopify:\/\/shop_images\/da21dde662a19a4b8a6e17048660983a.png",
+        "close_qm": "shopify:\/\/shop_images\/1.png"
       }
     }
   },
