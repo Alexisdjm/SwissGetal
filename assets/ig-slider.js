@@ -16,6 +16,7 @@ let right_mover = () => {
 	left.style.display = 'block'
 	l = l + movePer;
 	console.log(l)
+	console.log(l === maxMove)
 	if (l === maxMove) {
 		right.style.display = 'none'
 	}
@@ -31,6 +32,7 @@ let left_mover = () => {
 	right.style.display = 'block'
 	l = l - movePer;
 	console.log(l)
+	console.log(l === 0)
 	if (l === 0) {
 		left.style.display = 'none'
 	}	
