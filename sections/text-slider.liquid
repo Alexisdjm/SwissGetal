@@ -1,6 +1,6 @@
 <div class="section-container flex flex-center">
     <div class="flex flex-center">
-        <img src="../assets/“.png" alt="open">
+        <img src="{{ section.settings.open_qm | img_url: 'master' }}" alt="open">
         <div class="slider-container">
             {% for block in section.blocks %}
                 <div class="comment-container">
@@ -8,13 +8,25 @@
                 </div>
             {% endfor %}
         </div>
-        <img src="../assets/“ (1).png" alt="close">
+        <img src="{{ section.settings.close_qm | img_url: 'master' }}" alt="close">
     </div>
 </div>
 {% schema %}
     {
         "name": "slider comments",
         "class": "big-title",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "open_qm",
+                "label": "first decoration"
+            },
+            {
+                "type": "image_picker",
+                "id": "close_qm",
+                "label": "last decoration"
+            }
+        ],
         "max_blocks": 5,
         "blocks": [
             {
