@@ -16,7 +16,7 @@ myloop();
 
 function show_dots() {
     let amount = document.getElementsByClassName('comment-container').length;
-    let container = document.getElementByIdI('dots-container');
+    let container = document.getElementById('dots-container');
     container.innerHTML = '';
 
     for (let i = 1; i < amount; i++) {
