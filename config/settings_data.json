@@ -92,7 +92,7 @@
           "announcement_home_only": false,
           "announcement_bar_text": "",
           "announcement_bar_link": "",
-          "announcement_bar_bg_color": "#ffe2d1",
+          "announcement_bar_bg_color": "#ffffff",
           "announcement_bar_bg_text": "#132625"
         }
       },
