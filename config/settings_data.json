@@ -144,6 +144,15 @@
           "show_newsletter": true,
           "show_social_icons": true
         }
+      },
+      "new-header": {
+        "type": "new-header",
+        "settings": {
+          "logo-img": "shopify:\/\/shop_images\/image_1_1.png",
+          "logo_width": 150,
+          "enable_sticky": true,
+          "menu_linklist": "main-menu"
+        }
       }
     },
     "content_for_index": [
