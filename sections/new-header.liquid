@@ -1,12 +1,12 @@
 <div class="new-header">
     <div class="menu-container">
-        <ul>
+        <nav>
             {% for link in linklists[section.settings.menu_linklist].links %}
-                <li>
+                <div>
                     <a href="{{ link.url }}">{{ link.title }}</a>
-                </li>
+                </div>
             {% endfor %}
-        </ul>
+        </nav>
     </div>
     <div class="logo-container">
         <img width="{{ section.settings.logo_width }}" src="{{ section.settings.logo-img | img_url: 'master' }}" alt="logo">
