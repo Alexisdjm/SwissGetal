@@ -1,0 +1,74 @@
+<div class="new-header">
+    <div class="menu-container">
+        {% for link in linklists[section.settings.menu_linklist].links %}
+            <div>
+                <ul>
+                    {% for child in link.links %}
+                        <li>
+                            <a href="{{ child.url }}">{{- child.title | strip -}}</a>
+                        </li>
+                    {% endfor %}  
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="logo-container">
+        <img width="{{ section.settings.logo_width }}" src="{{ section.settings.logo | img_url: 'master' }}" alt="logo">
+    </div>
+    <div class="items-container">
+        <i class="fa-regular fa-magnifying-glass"></i>
+        <i class="fa-solid fa-user"></i>
+        <i class="fa-regular fa-heart"></i>
+        <i class="fa-regular fa-cart-shopping"></i>
+    </div>
+</div>
+{% schema %}
+    {
+        "name": "new-header",
+        "class": "new-header-section",
+        "settings": [
+            {
+                "type": "image_picker",
+                "label": "logo",
+                "id": "logo-img"
+            },
+            {
+                "type": "image_picker",
+                "id": "alt_logo",
+                "label": "Contrast logo",
+                "info": "Optional logo used when over the header slideshow and images."
+            },
+            {
+                "type": "range",
+                "id": "logo_width",
+                "min": 50,
+                "max": 250,
+                "step": 5,
+                "unit": "px",
+                "label": "Maximum logo width",
+                "info": "Logo height is restricted to 150px.",
+                "default": 150
+            },
+            {
+                "type": "header",
+                "content": "Layout"
+            },
+            {
+                "type": "checkbox",
+                "id": "enable_sticky",
+                "label": "Stick to top of screen on scroll",
+                "default": true
+            },
+            {
+                "type": "header",
+                "content": "Navigation"
+            },
+            {
+                "type": "link_list",
+                "id": "menu_linklist",
+                "label": "Menu",
+                "default": "main-menu"
+            }
+        ]
+    }
+{% endschema %}
