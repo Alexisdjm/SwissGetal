@@ -99,7 +99,7 @@
       "header": {
         "type": "header",
         "settings": {
-          "logo_width": 150,
+          "logo_width": 50,
           "enable_header_overlap": true,
           "enable_sticky": true,
           "enable_logo_shrink": true,
@@ -115,9 +115,9 @@
           "contact_info_in_mega": true,
           "show_country_selector": true,
           "show_language_selector": true,
-          "tint_color": "#000000",
+          "tint_color": "#c20000",
           "tint_opacity": 25,
-          "text_color": "#ffffff"
+          "text_color": "#5c6ac4"
         }
       },
       "footer": {
