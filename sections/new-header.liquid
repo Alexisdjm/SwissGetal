@@ -1,6 +1,6 @@
 <div class="new-header">
     <div class="menu-container menu-links-1">
-        <nav class="navbar-links">
+        <nav id="navbar-full-width" class="navbar-links">
             {% for link in linklists[section.settings.menu_linklist].links %}
                 <div class="each-link">
                     <a href="{{ link.url }}">{{ link.title }}</a>
@@ -12,7 +12,7 @@
         <img width="{{ section.settings.logo_width }}" src="{{ section.settings.logo-img | img_url: 'master' }}" alt="logo">
     </div>
     <div class="items-container">
-        <i class="fa-regular fa-heart"></i>
+        <i id="heart-link" class="heart-icon-centered fa-regular fa-heart"></i>
         {%- if settings.enable_search -%}
             <span class="header-items__item header-items__search-link">
                 <a href="{{ routes.search_url }}" class="header-search-toggle" aria-label="{{ 'layout.header.search' | t | escape }}">
@@ -20,13 +20,13 @@
                 </a>
             </span>
         {%- endif -%}
-        <span class="header-items__item header-items__account-link hide-until-sm">
-        <a href="{{ routes.account_url }}" aria-label="{{ 'layout.customer.log_in' | t | escape }}">
-            <span class="cart-link-icon cart-link-icon__account">{% render 'svg-account' %}</span>
-        </a>
+        <span id="account-link" class="center-icons header-items__item header-items__account-link hide-until-sm">
+            <a href="{{ routes.account_url }}" aria-label="{{ 'layout.customer.log_in' | t | escape }}">
+                <span class="cart-link-icon cart-link-icon__account">{% render 'svg-account' %}</span>
+            </a>
         </span>
 
-        <span class="header-items__item header-items__cart-link">
+        <span class="center-icons header-items__item header-items__cart-link">
             <a href="{{ routes.cart_url }}" aria-label="{{ 'layout.header.cart' | t | escape }}">
               <span class="cart-link-icon">{% render 'svg-cart' %}</span>
               {% if cart.item_count > 0 %}<span class="cart-count">({{ cart.item_count }})</span>{% endif %}

@@ -686,6 +686,17 @@ section.ig-section {
   margin-right: 2%;
 }
 
+.heart-icon-centered {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+
+.center-icons {
+  position: relative;
+  top: 9%;
+}
+
 /* ----------------------------------------------media queries ------------------------------------------- */
 
 @media only screen and (max-width: 1200px) {
@@ -693,5 +704,17 @@ section.ig-section {
     width: 60%;
     margin: 100px 0;
     left: 10%;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .navbar-links {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #account-link, #heart-link {
+    display: none;
   }
 }
