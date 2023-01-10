@@ -13,8 +13,15 @@
     </div>
     <div class="items-container">
         <i class="fa-regular fa-heart"></i>
-        <i class="fa-solid fa-magnifying-glass"></i>
+        {%- if settings.enable_search -%}
+            <span class="header-items__item header-items__search-link">
+                <a href="{{ routes.search_url }}" class="header-search-toggle" aria-label="{{ 'layout.header.search' | t | escape }}">
+                {% render 'svg-search' %}
+                </a>
+            </span>
+        {%- endif -%}
         <i class="fa-regular fa-user"></i>
+
         <span class="header-items__item header-items__cart-link">
             <a href="{{ routes.cart_url }}" aria-label="{{ 'layout.header.cart' | t | escape }}">
               <span class="cart-link-icon">{% render 'svg-cart' %}</span>
