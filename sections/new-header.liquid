@@ -20,13 +20,11 @@
                 </a>
             </span>
         {%- endif -%}
-        {%- if shop.customer_accounts_enabled -%}
-            <span class="header-items__item header-items__account-link hide-until-sm">
-            <a href="{{ routes.account_url }}" aria-label="{{ 'layout.customer.log_in' | t | escape }}">
-                <span class="cart-link-icon cart-link-icon__account">{% render 'svg-account' %}</span>
-            </a>
-            </span>
-        {%- endif -%}
+        <span class="header-items__item header-items__account-link hide-until-sm">
+        <a href="{{ routes.account_url }}" aria-label="{{ 'layout.customer.log_in' | t | escape }}">
+            <span class="cart-link-icon cart-link-icon__account">{% render 'svg-account' %}</span>
+        </a>
+        </span>
 
         <span class="header-items__item header-items__cart-link">
             <a href="{{ routes.cart_url }}" aria-label="{{ 'layout.header.cart' | t | escape }}">
