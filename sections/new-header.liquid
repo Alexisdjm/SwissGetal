@@ -12,10 +12,15 @@
         <img width="{{ section.settings.logo_width }}" src="{{ section.settings.logo-img | img_url: 'master' }}" alt="logo">
     </div>
     <div class="items-container">
-        <i class="fa-solid fa-magnifying-glass"></i>
         <i class="fa-regular fa-heart"></i>
+        <i class="fa-solid fa-magnifying-glass"></i>
         <i class="fa-regular fa-user"></i>
-        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="header-items__item header-items__cart-link">
+            <a href="{{ routes.cart_url }}" aria-label="{{ 'layout.header.cart' | t | escape }}">
+              <span class="cart-link-icon">{% render 'svg-cart' %}</span>
+              {% if cart.item_count > 0 %}<span class="cart-count">({{ cart.item_count }})</span>{% endif %}
+            </a>
+        </span>
     </div>
 </div>
 {% schema %}
