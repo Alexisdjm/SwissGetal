@@ -713,11 +713,28 @@ section.ig-section {
   }
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (min-width:768px) and (max-width: 1000px) {
   #account-link, #heart-link.heart-icon-centered {
     display: none;
   }
   .items-container {
-    gap: none;
+    gap: 0;
+  }
+
+  .text-container {
+    width: 60%;
+    margin: auto 0;
+    text-align: center;
+    position: static;
+  }
+
+  .align-1, .align-3 {
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .text-container {
+    width: 80%;
   }
 }
