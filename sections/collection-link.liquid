@@ -4,10 +4,10 @@
             <div class="centered-collection">
                 <div class="inner-relative">
                     <img src="{{ block.settings.bg_img | img_url: 'master'  }}" alt="collection" class="img-absolute">
-                </div>
-                <div class="link-n-text">
-                    <h3 class="collection-link-text">{{ block.settings.collection_title }}</h3>
-                    <a href="{{ block.settings.collection_link }}" class="new-button new-secondary-button">{{ block.settings.button_text }}</a>
+                    <div class="link-n-text">
+                        <h3 class="collection-link-text">{{ block.settings.collection_title }}</h3>
+                        <a href="{{ block.settings.collection_link }}" class="new-button new-secondary-button">{{ block.settings.button_text }}</a>
+                    </div>
                 </div>
             </div>
         {% endfor %}
