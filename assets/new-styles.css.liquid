@@ -705,11 +705,16 @@ section.ig-section {
 
 /* ----------------------------------------------media queries ------------------------------------------- */
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (min-width:768px) and (max-width: 1200px) {
   .text-container {
     width: 60%;
     margin: 100px 0;
     left: 10%;
+  }
+
+  .inner-relative {
+    min-width: 25vw;
+    min-height: 25vw;
   }
 }
 
