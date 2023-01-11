@@ -377,8 +377,11 @@ a, button, p {
 }
 
 .inner-relative {
-  height: fit-content;
-  position: relative;
+  min-height: 337px;
+  max-height: 425px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .collection-name {
@@ -790,10 +793,6 @@ section.ig-section {
     min-width: 74vw;
     min-height: 74vw;
     height: fit-content;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
   }
 
   .img-absolute {
