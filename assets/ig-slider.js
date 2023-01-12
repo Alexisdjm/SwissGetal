@@ -1,9 +1,16 @@
 let span = document.getElementsByClassName('arrow-btn');
 let ig_post = document.getElementsByClassName('post')
-let ig_post_page = Math.ceil(ig_post.length/6);
+let postperpage = 6;
 let l = 0;
 let movePer = 17;
-let maxMove = (ig_post.length - 6) * 17;
+
+if (window.innerWidth <= '767px') {
+	movePer = 25;
+	postperpage = 4;
+}
+
+let ig_post_page = Math.ceil(ig_post.length/postperpage);
+let maxMove = (ig_post.length - postperpage) * movePer;
 const right = document.getElementById('right')
 const left = document.getElementById('left')
 
@@ -26,8 +33,7 @@ let right_mover = () => {
 		right.style.visibility = 'hidden'
 	}
 
-	for(const i of ig_post)
-	{
+	for(const i of ig_post) {
 		if (l > maxMove){l = l - movePer;}
 		i.style.left = '-' + l + '%';
 	}
