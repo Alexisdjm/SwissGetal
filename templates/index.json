@@ -84,6 +84,8 @@
         "font_color": "#000000",
         "big_title": "Self-love begins with skincare.",
         "title_size": 95,
+        "mobile_viewport": false,
+        "show_img": false,
         "font_style": "Playfair-italic",
         "text_vertical": "top-middle",
         "text_left": 0,
@@ -140,17 +142,6 @@
       "settings": {
       }
     },
-    "3960676f-d47c-4489-a3f9-5fac1647f0fd": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured collection",
-        "collection": "serums",
-        "grid_show_vendor": false,
-        "products_per_row_int": 4,
-        "product_rows_int": 1,
-        "show_view_all": true
-      }
-    },
     "54b40de3-e782-496f-bb86-b70049688a03": {
       "type": "big-title-image",
       "settings": {
@@ -158,6 +149,8 @@
         "font_color": "#332f2c",
         "big_title": "Revitalise Your Eyes",
         "title_size": 35,
+        "mobile_viewport": false,
+        "show_img": false,
         "font_style": "arial",
         "text_vertical": "top-10",
         "text_left": 1,
@@ -170,6 +163,17 @@
         "display_bg": true,
         "bg_color": "#edf8f6",
         "bg_height": 4
+      }
+    },
+    "3960676f-d47c-4489-a3f9-5fac1647f0fd": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured collection",
+        "collection": "serums",
+        "grid_show_vendor": false,
+        "products_per_row_int": 4,
+        "product_rows_int": 1,
+        "show_view_all": true
       }
     },
     "f14f6588-68af-4e6b-8563-c03d5a8b4333": {
@@ -347,8 +351,8 @@
     "featured-collection",
     "d6f84e7b-1069-436d-a842-e210de8a4c0e",
     "130e948b-50b5-4d36-8bb1-e4683ef8c35e",
-    "3960676f-d47c-4489-a3f9-5fac1647f0fd",
     "54b40de3-e782-496f-bb86-b70049688a03",
+    "3960676f-d47c-4489-a3f9-5fac1647f0fd",
     "f14f6588-68af-4e6b-8563-c03d5a8b4333",
     "c4d121f6-c426-4fd5-9fc5-6fc21e538cef",
     "938522bf-21e4-4a5a-9e89-c1376002a251"
