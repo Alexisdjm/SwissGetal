@@ -4,9 +4,9 @@ let postperpage = 6;
 let l = 0;
 let movePer = 17;
 
-console.log(window.innerWidth)
+console.log(window.innerWidth < '767')
 
-if (window.innerWidth <= '767px') {
+if (window.innerWidth <= '767') {
 	movePer = 25;
 	postperpage = 4;
 }
