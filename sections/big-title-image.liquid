@@ -16,9 +16,7 @@
                 {% endif %}
             </div>
         </div>
-        <div class="{% if section.settings.show_img_align %} relative-img-position {% else %} mobile-remove {% endif %}">
-            <img class="{% if section.settings.show_img_align %} new-img-align {% else %} img-align {% endif %}" src="{{ section.settings.side_image | img_url: 'master'  }}" alt="side image">
-        </div>
+        <img class="{% if section.settings.show_img_align %} new-img-align {% else %} img-align mobile-remove {% endif %}" src="{{ section.settings.side_image | img_url: 'master'  }}" alt="side image">
     </div>
 </div>
 
