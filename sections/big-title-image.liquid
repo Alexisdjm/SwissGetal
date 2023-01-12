@@ -1,6 +1,6 @@
 <div class="section-container align-vertical-center {% if section.settings.show_img_align %}align-image-text-responsive{% endif %}">
     {% if section.settings.display_bg %}
-        <div style="background-color: {{ section.settings.bg_color }}; {% if  section.settings.display_bg %}display: none;{% endif %}" class="tight-optional-background tight-{{ section.settings.bg_height }} {% if section.settings.show_img_align %}min-height-bg{% endif %}"></div> 
+        <div style="background-color: {{ section.settings.bg_color }};" class="tight-optional-background tight-{{ section.settings.bg_height }} {% if section.settings.show_img_align %}min-height-bg{% endif %}"></div> 
     {% endif %}
     <div class="flex-big-container {% if  section.settings.show_img_align %} relative-positioning {% endif %}">
         <div class="main-text-ht {{ section.settings.text_vertical }} left-{{ section.settings.text_left }}">
@@ -16,8 +16,8 @@
                 {% endif %}
             </div>
         </div>
-        <div class="{% if section.settings.display_bg %} relative-img-position {% endif %}">
-            <img class="{% if section.settings.display_bg %} new-img-align {% else %} img-align {% endif %}" src="{{ section.settings.side_image | img_url: 'master'  }}" alt="side image">
+        <div class="{% if section.settings.show_img_align %} relative-img-position {% else %} mobile-remove {% endif %}">
+            <img class="{% if section.settings.show_img_align %} new-img-align {% else %} img-align {% endif %}" src="{{ section.settings.side_image | img_url: 'master'  }}" alt="side image">
         </div>
     </div>
 </div>
