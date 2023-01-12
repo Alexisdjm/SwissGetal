@@ -4,12 +4,18 @@ let postperpage = 6;
 let l = 0;
 let movePer = 17;
 
-console.log(window.innerWidth < '767')
-
 if (window.innerWidth <= '767') {
 	movePer = 25;
 	postperpage = 4;
 }
+
+window.addEventListener('resize', () => {
+	if (window.innerWidth <= '767') {
+		movePer = 25;
+		postperpage = 4;
+		console.log(movePer, postperpage)
+	}
+})
 
 let ig_post_page = Math.ceil(ig_post.length/postperpage);
 let maxMove = (ig_post.length - postperpage) * movePer;
