@@ -20,14 +20,14 @@ if (ig_post_page <= 1) {
 	document.getElementById('arrows-container').style.display = 'none'
 }
 
-console.log(ig_post.length)
+// console.log(ig_post.length)
 
 let right_mover = () => {
 
 	left.style.visibility = 'visible';
 	l = l + movePer;
-	console.log(l)
-	console.log(l === maxMove)
+	// console.log(l)
+	// console.log(l === maxMove)
 	
 	if (ig_post_page == 1){l = 0;}
 
