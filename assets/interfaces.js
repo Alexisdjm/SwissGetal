@@ -7,9 +7,9 @@ let window_ = document.getElementById('main-content')
 
 window.addEventListener('scroll', () => {
 
-    console.log(window_.scrollTop)
+    console.log(header.scrollTop)
     
-    if ( window_.scrollTop > 0) {
+    if ( header.scrollTop > 0) {
         header.classList.add('white-new-header');
         navlinks.classList.add('white-header-links');
         icons_container.classList.add('white-header-icons');
