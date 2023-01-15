@@ -6,8 +6,6 @@ let window_ = document.getElementById('main-content')
 
 
 window.addEventListener('scroll', () => {
-
-    console.log(window.scrollY)
     
     if ( window.scrollY > 0) {
         header.classList.add('white-new-header');
