@@ -2,7 +2,7 @@
     <div class="flex flex-center">
       <div class="flex flex-center">
         <div>
-          <img src="{{ section.settings.open_qm | img_url: 'master' }}" alt="open">
+          <img class="max-width-marks" src="{{ section.settings.open_qm | img_url: 'master' }}" alt="open">
         </div>
         <div class="slider-container">
           {% for block in section.blocks %}
@@ -12,10 +12,7 @@
           {% endfor %}
         </div>
         <div>
-          <img
-            class="align-bottom"
-            src="{{ section.settings.close_qm | img_url: 'master' }}"
-            alt="close">
+          <img class="max-width-marks align-bottom" src="{{ section.settings.close_qm | img_url: 'master' }}" alt="close">
         </div>
       </div>
     </div>
