@@ -11,10 +11,11 @@ let x = document.getElementById('close');
 
 toggle_menu.onclick = () => {
     ninja_menu.style.visibility = 'visible';
+    document.getElementById('bootcamp-alexis').style.overflow = 'hidden';
 }
-
 x.onclick = () => {
     ninja_menu.style.visibility = 'hidden';
+    document.getElementById('bootcamp-alexis').style.overflow = 'visible';
 }
 
 window.addEventListener('scroll', () => {
