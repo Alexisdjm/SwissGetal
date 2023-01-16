@@ -19,17 +19,7 @@
             </button>
         </summary>
     </div>
-    <div id="left-hidden-menu-box">
-        <div class="first-left-container">
-            <nav class="vertical-flex-links">
-                {% for link in linklists[section.settings.menu_linklist].links %}
-                    <div class="link-mobile-menu-container">
-                        <a href="{{ link.url }}">{{ link.title }}</a>
-                    </div>
-                {% endfor %}
-            </nav>
-        </div>
-    </div>
+    
     <div class="logo-header-container">
         <img width="{{ section.settings.logo_width }}" src="{{ section.settings.logo-img | img_url: 'master' }}" alt="logo">
     </div>
@@ -56,6 +46,17 @@
         </span>
     </div>
 </div>
+<div id="left-hidden-menu-box">
+        <div class="first-left-container">
+            <nav class="vertical-flex-links">
+                {% for link in linklists[section.settings.menu_linklist].links %}
+                    <div class="link-mobile-menu-container">
+                        <a href="{{ link.url }}">{{ link.title }}</a>
+                    </div>
+                {% endfor %}
+            </nav>
+        </div>
+    </div>
 {% schema %}
     {
         "name": "new-header",
