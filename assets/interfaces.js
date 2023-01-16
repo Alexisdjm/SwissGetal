@@ -13,7 +13,7 @@ toggle_menu.onclick = () => {
 
     console.log("display status:" + displayed)
 
-    if (displayed === 'false') {
+    if (displayed === false) {
         ninja_menu.style.visibility = 'visible';
     } else {
         ninja_menu.style.visibility = 'hidden';
