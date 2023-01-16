@@ -3,7 +3,7 @@ let navlinks = document.getElementById('navbar-full-width')
 let icons_container = document.getElementById('link-icons')
 let window_ = document.getElementById('main-content')
 let first_container = document.getElementById('new-header-container')
-let lines = docuent.getElementById('mobile-button-lines');
+let lines = document.getElementById('mobile-button-lines');
 
 console.log(lines)
 
