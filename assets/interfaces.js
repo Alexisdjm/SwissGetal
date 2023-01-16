@@ -5,8 +5,6 @@ let window_ = document.getElementById('main-content')
 let first_container = document.getElementById('new-header-container')
 let lines = document.getElementById('mobile-button-lines');
 
-console.log(lines)
-
 let toggle_menu = document.getElementById('toggle-menu');
 let ninja_menu = document.getElementById('left-hidden-menu-box');
 let displayed = false;
