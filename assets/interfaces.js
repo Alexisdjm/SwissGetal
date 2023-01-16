@@ -7,12 +7,14 @@ let lines = document.getElementById('mobile-button-lines');
 
 let toggle_menu = document.getElementById('toggle-menu');
 let ninja_menu = document.getElementById('left-hidden-menu-box');
-
+let x = document.getElementById('close');
 
 toggle_menu.onclick = () => {
-
     ninja_menu.style.visibility = 'visible';
-    
+}
+
+x.onclick = () => {
+    ninja_menu.style.visibility = 'hidden';
 }
 
 window.addEventListener('scroll', () => {
