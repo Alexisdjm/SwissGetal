@@ -10,17 +10,25 @@
     </div>
     <details class="main-menu-wrapper" id="menu-mobile-button">
         <summary tabindex="-1">
-            <button class="main-menu-toggle" type="button" aria-controls="main-menu" aria-label="{{ 'layout.header.menu' | t | escape }}">
-            <div class="icon-burger">
-                <span class="line line-1"></span>
-                <span class="line line-2"></span>
-                <span class="line line-3"></span>
-            </div>
-            <span class="main-menu-toggle__text main-menu-toggle__text--menu">{{ 'layout.header.menu' | t }}</span>
-            <span class="main-menu-toggle__text main-menu-toggle__text--close">{{ 'general.accessibility_labels.close' | t }}</span>
-            <span class="main-menu-toggle__text main-menu-toggle__text--back">{{ 'layout.navigation.back' | t }}</span>
+            <button id="toggle-menu" class="main-menu-toggle" type="button" aria-controls="main-menu" aria-label="{{ 'layout.header.menu' | t | escape }}">
+                <div id="mobile-button-lines" class="icon-burger">
+                    <span class="line line-1"></span>
+                    <span class="line line-2"></span>
+                    <span class="line line-3"></span>
+                </div>
             </button>
         </summary>
+        <div id="left-hidden-menu-box">
+            <div class="first-left-container">
+                <nav class="vertical-flex-links">
+                    {% for link in linklists[section.settings.menu_linklist].links %}
+                        <div class="link-mobile-menu-container">
+                            <a href="{{ link.url }}">{{ link.title }}</a>
+                        </div>
+                    {% endfor %}
+                </nav>
+            </div>
+        </div>
     </details>
     <div class="logo-header-container">
         <img width="{{ section.settings.logo_width }}" src="{{ section.settings.logo-img | img_url: 'master' }}" alt="logo">

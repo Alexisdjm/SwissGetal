@@ -4,7 +4,19 @@ let icons_container = document.getElementById('link-icons')
 let window_ = document.getElementById('main-content')
 let first_container = document.getElementById('new-header-container')
 
+let toggle_menu = document.getElementById('toggle-menu');
+let ninja_menu = document.getElementById('left-hidden-menu-box');
+let displayed = true;
 
+toggle_menu.onclick = () => {
+    
+    if (displayed === 'false') {
+        ninja_menu.style.visibility = 'visible';
+    } else {
+        ninja_menu.style.visibility = 'hidden';
+    }
+    displayed = !displayed
+}
 
 window.addEventListener('scroll', () => {
     
