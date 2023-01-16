@@ -9,6 +9,8 @@ let toggle_menu = document.getElementById('toggle-menu');
 let ninja_menu = document.getElementById('left-hidden-menu-box');
 let displayed = false;
 
+console.log('hola')
+
 console.log(displayed === false)
 
 toggle_menu.onclick = () => {
