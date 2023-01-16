@@ -7,22 +7,12 @@ let lines = document.getElementById('mobile-button-lines');
 
 let toggle_menu = document.getElementById('toggle-menu');
 let ninja_menu = document.getElementById('left-hidden-menu-box');
-let displayed = false;
 
-console.log('hola')
-
-console.log(displayed === false)
 
 toggle_menu.onclick = () => {
 
-    console.log("display status:" + displayed)
-
-    if (displayed === false) {
-        ninja_menu.style.visibility = 'visible';
-    } else {
-        ninja_menu.style.visibility = 'hidden';
-    }
-    displayed = !displayed
+    ninja_menu.style.visibility = 'visible';
+    
 }
 
 window.addEventListener('scroll', () => {
