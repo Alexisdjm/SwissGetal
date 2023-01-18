@@ -4220,7 +4220,10 @@
 
           // Has value changed?
           if ($input.val() == $input.data('previous-value')) {
+            console.log('nothing has changed')
             return;
+          } else {
+            console.log('something has changed')
           }
 
           // Set content state
