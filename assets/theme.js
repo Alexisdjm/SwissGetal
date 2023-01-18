@@ -4218,13 +4218,12 @@
           $form = $(this).closest('form'),
           includeMeta = $searchWrapper.data('live-search-meta');
 
+          console.log($input.val())
+
           // Has value changed?
           if ($input.val() == $input.data('previous-value')) {
-            console.log('nothing has changed')
             return;
-          } else {
-            console.log('something has changed')
-          }
+          } 
 
           // Set content state
           $searchContainer.toggleClass('header-search__content--input-entered', $input.val().length > 0);
