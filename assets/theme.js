@@ -4201,6 +4201,7 @@
         var $searchResultsContainer = $('.header-search__results', target);
         var currentReq = null;
         var searchThrottleDelay = 400;
+        consol.log(searchThrottleDelay)
         var searchThrottleTimeoutId = -1;
         var imageReplaceRegex = {
           search: /(\.[^\.]+)$/,
