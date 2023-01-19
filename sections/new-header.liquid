@@ -47,11 +47,11 @@
     </div>
 </div>
 {%- if settings.enable_search -%}
-    <div class="header-search side-drawer no-js-hidden">
+    <div class="header-search search-box no-js-hidden">
         <button type="button" class="side-drawer__close-btn" aria-label="{{ 'general.accessibility_labels.close' | t | escape }}">{% render 'svg-x' %}</button>
 
         <div class="header-search__content">
-        <h2 class="h3">{{ 'layout.search.title' | t }}</h2>
+        <h2 class="search-header-title">{{ 'layout.search.title' | t }}</h2>
         <form method="get" action="{{ routes.search_url }}" autocomplete="off">
             <input type="hidden" name="type" value="{{ settings.search_type }}">
             <input type="hidden" name="options[prefix]" value="last">
