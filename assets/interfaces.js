@@ -15,7 +15,7 @@ function open(box) {
 }
 
 function close(box) {
-    box.style.visibility = 'visible';
+    box.style.visibility = 'hidden';
     document.getElementById('bootcamp-alexis').style.overflow = 'visible';
 }
 
