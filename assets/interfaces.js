@@ -16,7 +16,7 @@ toggle_menu.onclick = () => {
     ninja_menu.classList.add('is-open')
 }
 x.onclick = () => {
-    ninja_menu.classList.add('is-open')
+    ninja_menu.classList.remove('is-open')
 }
 
 search_glass.onclick = (e) => {
