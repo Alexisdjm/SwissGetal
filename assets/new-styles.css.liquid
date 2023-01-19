@@ -642,6 +642,7 @@ section.ig-section {
   margin: 0 2%;
   padding: 1.6vw 0;
   justify-content: space-between;
+
 }
 
 .new-header-section {
@@ -649,10 +650,14 @@ section.ig-section {
   position: fixed;
   z-index: 999;
   width: 100%;
+  transition: transform .5s ease-out,opacity .5s ease,visibility 0s .5s;
+  transform: translate3d(-50px,0,0);
 }
 
 .white-new-header {
   background-color: white !important;
+  transition: transform .5s ease-out,opacity .5s ease,visibility 0s .5s;
+  transform: translate3d(-50px,0,0);
   top:0;
 }
 
