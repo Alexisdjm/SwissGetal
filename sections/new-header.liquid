@@ -27,7 +27,7 @@
         <i id="heart-link" class="heart-icon-centered fa-regular fa-heart"></i>
         {%- if settings.enable_search -%}
             <span class="header-items__item header-items__search-link">
-                <a href="{{ routes.search_url }}" class="header-search-toggle" aria-label="{{ 'layout.header.search' | t | escape }}">
+                <a id="search-link-glass" href="{{ routes.search_url }}" class="header-search-toggle" aria-label="{{ 'layout.header.search' | t | escape }}">
                 {% render 'svg-search' %}
                 </a>
             </span>
@@ -47,8 +47,8 @@
     </div>
 </div>
 {%- if settings.enable_search -%}
-    <div class="header-search search-box no-js-hidden">
-        <button type="button" class="side-drawer__close-btn" aria-label="{{ 'general.accessibility_labels.close' | t | escape }}">{% render 'svg-x' %}</button>
+    <div id="right-search-form" class="header-search search-box no-js-hidden">
+        <button id="close-search-form" type="button" class="side-drawer__close-btn" aria-label="{{ 'general.accessibility_labels.close' | t | escape }}">{% render 'svg-x' %}</button>
 
         <div class="header-search__content">
         <h2 class="search-header-title">{{ 'layout.search.title' | t }}</h2>

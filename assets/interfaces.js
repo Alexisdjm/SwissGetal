@@ -8,6 +8,9 @@ let lines = document.getElementById('mobile-button-lines');
 let toggle_menu = document.getElementById('toggle-menu');
 let ninja_menu = document.getElementById('left-hidden-menu-box');
 let x = document.getElementById('close');
+let search_glass = document.getElementById('search-link-glass')
+let close_search = document.getElementById('close-search-form')
+let right_box = document.getElementById('right-search-form')
 
 function open(box) {
     box.style.visibility = 'visible';
@@ -24,6 +27,15 @@ toggle_menu.onclick = () => {
 }
 x.onclick = () => {
     close(ninja_menu)
+}
+
+search_glass.onclick = (e) => {
+    e.preventDefault();
+    open(right_box)
+}
+
+close_search.onclick = () => {
+    close(right_box)
 }
 
 window.addEventListener('scroll', () => {
