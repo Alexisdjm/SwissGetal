@@ -1,9 +1,10 @@
 <div id="first-section" class="section-container">
   <div class="img-bg-container align-{{ section.settings.horizontal_align  }}">
-    <img
-      class="img"
-      src="{{ section.settings.background | img_url: 'master'  }}"
-      alt="top">
+    {% if section.settings.mobile_bg %}
+      <img class="img" src="{{ section.settings.mobile_img | img_url: 'master'  }}" alt="top">
+    {% else %}
+      <img class="img" src="{{ section.settings.background | img_url: 'master'  }}" alt="top">
+    {% endif %}
     <div class="text-container v-align-{{ section.settings.vertical_align  }}">
       {% if section.settings.title %}
         <h3 class="text-header font-{{ section.settings.font_color }}">{{ section.settings.title }}</h3>
@@ -29,6 +30,16 @@
         "type": "image_picker",
         "id": "background",
         "label": "background"
+      },
+      {
+        "type": "checkbox",
+        "id": "mobile_bg",
+        "label": "mobile background?"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_img",
+        "label": "mobile background image"
       },
       {
         "type": "text",
