@@ -1,7 +1,8 @@
 <div id="first-section" class="section-container">
   <div class="img-bg-container align-{{ section.settings.horizontal_align  }}">
     {% if section.settings.mobile_bg %}
-      <img class="img" src="{{ section.settings.mobile_img | img_url: 'master'  }}" alt="top">
+      <img class="img img-hidden" src="{{ section.settings.mobile_img | img_url: 'master'  }}" alt="top mobile">
+      <img class="img main-img" src="{{ section.settings.background | img_url: 'master'  }}" alt="top">
     {% else %}
       <img class="img" src="{{ section.settings.background | img_url: 'master'  }}" alt="top">
     {% endif %}
