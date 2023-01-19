@@ -31,11 +31,11 @@ x.onclick = () => {
 
 search_glass.onclick = (e) => {
     e.preventDefault();
-    open(right_box)
+    right_box.classList.add('is-open')
 }
 
 close_search.onclick = () => {
-    close(right_box)
+    right_box.classList.remove('is-open')
 }
 
 window.addEventListener('scroll', () => {
