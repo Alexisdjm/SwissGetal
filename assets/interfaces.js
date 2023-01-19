@@ -9,13 +9,21 @@ let toggle_menu = document.getElementById('toggle-menu');
 let ninja_menu = document.getElementById('left-hidden-menu-box');
 let x = document.getElementById('close');
 
-toggle_menu.onclick = () => {
-    ninja_menu.style.visibility = 'visible';
+function open(box) {
+    box.style.visibility = 'visible';
     document.getElementById('bootcamp-alexis').style.overflow = 'hidden';
 }
-x.onclick = () => {
-    ninja_menu.style.visibility = 'hidden';
+
+function close(box) {
+    box.style.visibility = 'visible';
     document.getElementById('bootcamp-alexis').style.overflow = 'visible';
+}
+
+toggle_menu.onclick = () => {
+    open(ninja_menu)
+}
+x.onclick = () => {
+    close(ninja_menu)
 }
 
 window.addEventListener('scroll', () => {
