@@ -57,8 +57,8 @@
       "type": "fist-text-bg",
       "settings": {
         "background": "shopify:\/\/shop_images\/BANNER02-edit_1.png",
-        "mobile_bg": false,
         "mobile_img": "shopify:\/\/shop_images\/BANNER02-Mobile_1.png",
+        "mobile_bg": true,
         "title": "Backed by Science.",
         "content": "Our innovative skincare products are crafted with clean herbal ingredients and scientifically proven formulas that illuminate your skin.",
         "button_link": "",
