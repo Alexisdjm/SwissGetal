@@ -745,6 +745,9 @@ div#mobile-button-lines {
   height: 100vh;
   background-color: white;
   top: 0;
+  transition: transform .5s ease-out,opacity .5s ease,visibility 0s .5s;
+  transform: translate3d(50px,0,0);
+  opacity: 0;
   padding: 75px 7%;
 }
 
@@ -791,7 +794,7 @@ span#close.close::before {
   text-align: left;
 }
 
-.search-box.is-open {
+.is-open {
   visibility: visible;
   transition: opacity 500ms ease, transform 500ms ease, visibility 0s 0s;
   transition-delay: 0.1s;

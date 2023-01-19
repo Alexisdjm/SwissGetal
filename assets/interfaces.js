@@ -12,21 +12,11 @@ let search_glass = document.getElementById('search-link-glass')
 let close_search = document.getElementById('close-search-form')
 let right_box = document.getElementById('right-search-form')
 
-function open(box) {
-    box.style.visibility = 'visible';
-    document.getElementById('bootcamp-alexis').style.overflow = 'hidden';
-}
-
-function close(box) {
-    box.style.visibility = 'hidden';
-    document.getElementById('bootcamp-alexis').style.overflow = 'visible';
-}
-
 toggle_menu.onclick = () => {
-    open(ninja_menu)
+    ninja_menu.classList.add('is-open')
 }
 x.onclick = () => {
-    close(ninja_menu)
+    ninja_menu.classList.add('is-open')
 }
 
 search_glass.onclick = (e) => {
