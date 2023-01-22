@@ -122,7 +122,7 @@
             {% if block.settings.block_img %}
             <div>
                 <a href="{{ block.settings.link_direction }}">
-                    <img class="hover-zoom" src="{{ block.settings.block_img | img_url: 'master' }}" alt="block img">
+                    <img src="{{ block.settings.block_img | img_url: 'master' }}" alt="block img">
                 </a>
                 <p class="img-text">{{ block.settings.img_text_block }}</p>
             </div>
