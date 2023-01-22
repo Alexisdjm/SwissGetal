@@ -169,7 +169,9 @@
           "b6a51fd3-3818-479a-ad75-1794ef909fd8": {
             "type": "textarea",
             "settings": {
-              "img_text_block": ""
+              "block_img": "shopify:\/\/shop_images\/Optimized-SGF-23.webp",
+              "img_text_block": "Learn More About Our Science",
+              "link_direction": ""
             }
           }
         },
