@@ -117,7 +117,17 @@
     </div>
 
 <div id="product-filter-menu" class="product-filter-menu">
-
+    <div class="first-filter-container">
+        {% for block in section.blocks %}
+            <nav class="filter-menu">
+                {% for link in linklists[block.settings.filter_menu_list].links %}
+                    <div class="menu-links-container">
+                        <a href="{{ link.url }}" class="link-filter">{{ link.title }}</a>
+                    </div>
+                {% endfor %}
+            </nav>
+        {% endfor %}
+    </div>
 </div>
 {% schema %}
     {
@@ -165,24 +175,37 @@
                 "id": "menu_linklist",
                 "label": "Menu",
                 "default": "main-menu"
+            }
+        ],
+        "max_blocks": 4,
+        "blocks": [
+            {
+                "type": "text",
+                "name": "filter links menu",
+                "settings": [
+                    {
+                        "type": "link_list",
+                        "id": "filter_menu_list",
+                        "default": "main-menu",
+                        "label": "filter list menu"
+                    }
+                ]
             },
             {
-                "type": "link_list",
-                "id": "first_filter",
-                "label": "first menu list",
-                "default": "main-menu"
-            },
-            {
-                "type": "link_list",
-                "id": "second_filter",
-                "label": "second menu list",
-                "default": "main-menu"
-            },
-            {
-                "type": "link_list",
-                "id": "third_filter",
-                "label": "third menu list",
-                "default": "main-menu"
+                "type": "textarea",
+                "name": "image block",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "block_img",
+                        "label": "image block"
+                    },
+                    {
+                        "type": "text",
+                        "id": "img_text_block",
+                        "label": "optional image text"
+                    }
+                ]
             }
         ]
     }
