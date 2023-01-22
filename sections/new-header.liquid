@@ -121,7 +121,7 @@
         {% for block in section.blocks %}
             {% if block.settings.block_img %}
                 <a href="{{ block.settings.link_direction }}">
-                    <img src="{{ blick.settings.block_img }}" alt="block img">
+                    <img src="{{ block.settings.block_img | img_url: 'master' }}" alt="block img">
                 </a>
                 {% else %}
                 
