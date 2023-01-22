@@ -123,8 +123,8 @@
                 <a href="{{ block.settings.link_direction }}">
                     <img src="{{ block.settings.block_img | img_url: 'master' }}" alt="block img">
                 </a>
-                {% else %}
-                
+                <p>{{ block.settings.img_text_block }}</p>
+            {% else %}
                 <nav class="filter-menu">
                     {% for link in linklists[block.settings.filter_menu_list].links %}
                         <div class="menu-links-container">
