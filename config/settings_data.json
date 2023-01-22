@@ -153,10 +153,31 @@
             "settings": {
               "filter_menu_list": "product-line"
             }
+          },
+          "b557c3e9-be23-4ee9-9766-51d0c197d198": {
+            "type": "text",
+            "settings": {
+              "filter_menu_list": "category"
+            }
+          },
+          "e2e1247e-b316-460e-ad62-a2d151fe7fd0": {
+            "type": "text",
+            "settings": {
+              "filter_menu_list": "skin-concern"
+            }
+          },
+          "b6a51fd3-3818-479a-ad75-1794ef909fd8": {
+            "type": "textarea",
+            "settings": {
+              "img_text_block": ""
+            }
           }
         },
         "block_order": [
-          "f3dcf34e-097d-49ce-a666-d1cdee7165e6"
+          "f3dcf34e-097d-49ce-a666-d1cdee7165e6",
+          "b557c3e9-be23-4ee9-9766-51d0c197d198",
+          "e2e1247e-b316-460e-ad62-a2d151fe7fd0",
+          "b6a51fd3-3818-479a-ad75-1794ef909fd8"
         ],
         "settings": {
           "logo-img": "shopify:\/\/shop_images\/image_1-removebg-preview.png",
