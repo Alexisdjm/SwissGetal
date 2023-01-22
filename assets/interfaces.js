@@ -1,4 +1,4 @@
-let header = document.getElementById('shopify-section-new-header')
+let header = document.getElementById('new-header-container')
 let navlinks = document.getElementById('navbar-full-width')
 let icons_container = document.getElementById('link-icons')
 let window_ = document.getElementById('main-content')
