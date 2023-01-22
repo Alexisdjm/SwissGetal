@@ -1,11 +1,14 @@
+{% assign count = 0 %}
 <div id="new-header-container" class="new-header">
     <div id="menu-full-width" class="menu-container menu-links-1">
         <nav id="navbar-full-width" class="navbar-links">
             {% for link in linklists[section.settings.menu_linklist].links %}
-                <div id="{{ link.items }}" class="each-link">
+                <div id="div-{{ count }}" class="each-link">
                     <a href="{{ link.url }}">{{ link.title }}</a>
                 </div>
+                {% assign count = count | plus: 1 %}
             {% endfor %}
+            {{ count }}
         </nav>
     </div>
     <div id="menu-mobile-button">
