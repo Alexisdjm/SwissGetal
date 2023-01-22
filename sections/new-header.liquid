@@ -2,7 +2,7 @@
     <div id="menu-full-width" class="menu-container menu-links-1">
         <nav id="navbar-full-width" class="navbar-links">
             {% for link in linklists[section.settings.menu_linklist].links %}
-                <div id="{{ link.current }}" class="each-link">
+                <div id="{{ link.items }}" class="each-link">
                     <a href="{{ link.url }}">{{ link.title }}</a>
                 </div>
             {% endfor %}
