@@ -120,10 +120,12 @@
     <div class="first-filter-container">
         {% for block in section.blocks %}
             {% if block.settings.block_img %}
+            <div>
                 <a href="{{ block.settings.link_direction }}">
                     <img src="{{ block.settings.block_img | img_url: 'master' }}" alt="block img">
                 </a>
                 <p>{{ block.settings.img_text_block }}</p>
+            </div>
             {% else %}
                 <nav class="filter-menu">
                     {% for link in linklists[block.settings.filter_menu_list].links %}
