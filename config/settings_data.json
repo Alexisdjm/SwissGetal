@@ -147,6 +147,17 @@
       },
       "new-header": {
         "type": "new-header",
+        "blocks": {
+          "f3dcf34e-097d-49ce-a666-d1cdee7165e6": {
+            "type": "text",
+            "settings": {
+              "filter_menu_list": "product-line"
+            }
+          }
+        },
+        "block_order": [
+          "f3dcf34e-097d-49ce-a666-d1cdee7165e6"
+        ],
         "settings": {
           "logo-img": "shopify:\/\/shop_images\/image_1-removebg-preview.png",
           "logo_width": 150,
