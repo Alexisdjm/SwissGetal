@@ -15,7 +15,7 @@ let right_box = document.getElementById('right-search-form')
 const filter_menu = document.getElementById('product-filter-menu')
 let shop_by_link = document.getElementById('div-0')
 
-filter_menu.addEventListener('hover', () => {
+filter_menu.addEventListener('mouseover', () => {
     // if (!shop_by_link.classList.contains("is-open")) {
     //     shop_by_link.classList.add('is-open')
     // } else {
