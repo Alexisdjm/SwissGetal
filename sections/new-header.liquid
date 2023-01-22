@@ -119,13 +119,20 @@
 <div id="product-filter-menu" class="product-filter-menu">
     <div class="first-filter-container">
         {% for block in section.blocks %}
-            <nav class="filter-menu">
-                {% for link in linklists[block.settings.filter_menu_list].links %}
-                    <div class="menu-links-container">
-                        <a href="{{ link.url }}" class="link-filter">{{ link.title }}</a>
-                    </div>
-                {% endfor %}
-            </nav>
+            {% if block.settings.block_img %}
+                <a href="{{ block.settings.link_direction }}">
+                    <img src="{{ blick.settings.block_img }}" alt="block img">
+                </a>
+                {% else %}
+                
+                <nav class="filter-menu">
+                    {% for link in linklists[block.settings.filter_menu_list].links %}
+                        <div class="menu-links-container">
+                            <a href="{{ link.url }}" class="link-filter">{{ link.title }}</a>
+                        </div>
+                    {% endfor %}
+                </nav>
+            {% endif %}
         {% endfor %}
     </div>
 </div>
@@ -204,6 +211,11 @@
                         "type": "text",
                         "id": "img_text_block",
                         "label": "optional image text"
+                    },
+                    {
+                        "type": "url",
+                        "id": "link_direction",
+                        "label": "link img direction"
                     }
                 ]
             }
