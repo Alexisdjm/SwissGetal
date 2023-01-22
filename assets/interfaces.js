@@ -16,10 +16,10 @@ const filter_menu = document.getElementById('product-filter-menu')
 let shop_by_link = document.getElementById('div-0')
 
 shop_by_link.addEventListener('mouseover', () => {
-    if (!shop_by_link.classList.contains("is-open")) {
-        shop_by_link.classList.add('is-open')
+    if (!filter_menu.classList.contains("is-open")) {
+        filter_menu.classList.add('is-open')
     } else {
-        shop_by_link.classList.remove('is-open')
+        filter_menu.classList.remove('is-open')
     }
 })
 
