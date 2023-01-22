@@ -28,6 +28,8 @@ close_search.onclick = () => {
     right_box.classList.remove('is-open')
 }
 
+
+
 window.addEventListener('scroll', () => {
     
     if ( window.scrollY > 0) {
