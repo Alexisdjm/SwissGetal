@@ -16,12 +16,11 @@ const filter_menu = document.getElementById('product-filter-menu')
 let shop_by_link = document.getElementById('div-0')
 
 shop_by_link.addEventListener('mouseover', () => {
-    // if (!shop_by_link.classList.contains("is-open")) {
-    //     shop_by_link.classList.add('is-open')
-    // } else {
-    //     shop_by_link.classList.remove('is-open')
-    // }
-    console.log('hover')
+    if (!shop_by_link.classList.contains("is-open")) {
+        shop_by_link.classList.add('is-open')
+    } else {
+        shop_by_link.classList.remove('is-open')
+    }
 })
 
 toggle_menu.onclick = () => {
