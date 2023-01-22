@@ -171,7 +171,7 @@
             "settings": {
               "block_img": "shopify:\/\/shop_images\/Optimized-SGF-23.webp",
               "img_text_block": "Learn More About Our Science",
-              "link_direction": ""
+              "link_direction": "shopify:\/\/blogs\/news"
             }
           }
         },
