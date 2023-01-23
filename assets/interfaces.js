@@ -17,18 +17,24 @@ const filter_menu = document.getElementById('product-filter-menu')
 let shop_by_link = document.getElementById('div-0')
 let inner_lists = document.getElementById('product-lists-flex')
 
-let status_ = false
+let counter = 0
 
-const arr = [filter_menu, shop_by_link, inner_lists]
+const arr = [shop_by_link, filter_menu, inner_lists]
 
 arr.forEach(function(element, index) {
     element.onmouseenter = () => {
-        console.log(`element number ${index} is hovered`)
+        counter++
     }
     element.onmouseleave = () => {
-        console.log(`element number ${index} is not hovered`)
+        counter--
     }
 })
+
+if (counter < 1) {
+    console.log('menu is hidden')
+} else {
+    console.log('menu is visible')
+}
 
 shop_by_link.addEventListener('mouseenter', () => {
     filter_menu.classList.add('open-hover')
