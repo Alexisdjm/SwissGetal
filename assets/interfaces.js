@@ -31,7 +31,7 @@ function hoverout(element) {
 
 // hoverout(shop_by_link)
 
-hoverout(filter_menu)
+// hoverout(filter_menu)
 
 hoverout(inner_lists)
 

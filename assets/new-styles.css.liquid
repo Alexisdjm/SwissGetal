@@ -754,6 +754,7 @@ div#mobile-button-lines {
 }
 
 .left-hidden-menu-box {
+  display:none;
   visibility: hidden;
   position: absolute;
   width: 100%;
@@ -826,6 +827,7 @@ span#close.close::before {
 /* ---------------------------------------------- product filter menu ------------------------------------ */
 
 .product-filter-menu {
+  z-index: -1;
   visibility: hidden;
   width: 100%;
   height: 100vh;
@@ -866,6 +868,7 @@ span#close.close::before {
 }
 
 .open-hover {
+  z-index: 99;
   visibility: visible;
   transition: opacity 500ms ease, transform 500ms ease, visibility 0s 0s;
   transition-delay: 0.1s;
@@ -1071,6 +1074,12 @@ span#close.close::before {
 
   .main-img {
     display: none;
+  }
+
+  /* -------------------------------------------------- header -------------------------------------------- */
+
+  .left-hidden-menu-box {
+    display: block;
   }
   
 }
