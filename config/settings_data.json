@@ -227,7 +227,7 @@
           "9a78a81f-413f-481e-b4a0-cd69837ae5f3"
         ],
         "settings": {
-          "newsletter": false,
+          "newsletter": true,
           "footer_bg_color": "#e6f4f1"
         }
       }
