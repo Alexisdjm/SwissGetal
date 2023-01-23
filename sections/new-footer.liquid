@@ -35,7 +35,7 @@
             {% for block in section.blocks %}
                 <nav class="filter-menu">
                     {% if block.settings.menu_title %}
-                        <p class="menu-title">{{ block.settings.menu_links.title }}</p>
+                        <p class="menu-title">{{ block.settings.menu_title }}</p>
                     {% endif %}
                     {% for link in linklists[block.settings.menu_links].links %}
                         <div class="menu-links-container">
