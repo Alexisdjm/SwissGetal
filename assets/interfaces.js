@@ -18,12 +18,22 @@ let shop_by_link = document.getElementById('div-0')
 
 shop_by_link.addEventListener('mouseover', () => {
     filter_menu.classList.add('open-hover')
-    header.classList.add('white-new-header');
+    if (window.scrollY === 0) {
+        header.classList.add('white-new-header');
+        navlinks.classList.add('white-header-links');
+        icons_container.classList.add('white-header-icons');
+        lines.classList.add('black-lines-button');
+    }
 })
 
 shop_by_link.addEventListener('mouseout', () => {
     filter_menu.classList.remove('open-hover')
-    header.classList.remove('white-new-header');
+    if (window.scrollY === 0) {
+        header.classList.remove('white-new-header');
+        navlinks.classList.remove('white-header-links');
+        icons_container.classList.remove('white-header-icons');
+        lines.classList.remove('black-lines-button');
+    }
 })
 
 toggle_menu.onclick = () => {
@@ -41,8 +51,6 @@ search_glass.onclick = (e) => {
 close_search.onclick = () => {
     right_box.classList.remove('is-open')
 }
-
-
 
 window.addEventListener('scroll', () => {
     
