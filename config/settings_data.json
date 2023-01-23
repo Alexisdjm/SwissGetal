@@ -194,29 +194,29 @@
           "5a274de2-c3d4-4857-aac0-7945ed239fe0": {
             "type": "text",
             "settings": {
-              "menu_links": "main-menu",
-              "menu_title": ""
+              "menu_links": "product-line",
+              "menu_title": "collection"
             }
           },
           "e6396592-62d3-4064-80de-674900db2f9f": {
             "type": "text",
             "settings": {
-              "menu_links": "main-menu",
-              "menu_title": ""
+              "menu_links": "small-category-menu",
+              "menu_title": "Product"
             }
           },
           "178e3c97-cf51-48ab-8f8a-d436b35463e1": {
             "type": "text",
             "settings": {
-              "menu_links": "main-menu",
-              "menu_title": ""
+              "menu_links": "about-us",
+              "menu_title": "About Us"
             }
           },
           "9a78a81f-413f-481e-b4a0-cd69837ae5f3": {
             "type": "text",
             "settings": {
-              "menu_links": "main-menu",
-              "menu_title": ""
+              "menu_links": "legal-support",
+              "menu_title": "Legal & Support"
             }
           }
         },
