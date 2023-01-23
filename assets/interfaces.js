@@ -85,6 +85,7 @@ window.addEventListener('scroll', () => {
                 status++ 
             }
             element.onmouseleave = () => {
+                filter_menu.classList.remove('open-hover')
                 status--
                 if (status < 1) {
                     header.classList.remove('white-new-header');
