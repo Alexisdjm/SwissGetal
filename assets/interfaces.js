@@ -16,6 +16,8 @@ let right_box = document.getElementById('right-search-form')
 const filter_menu = document.getElementById('product-filter-menu')
 let shop_by_link = document.getElementById('div-0')
 
+let arr = [shop_by_link, filter_menu]
+
 shop_by_link.addEventListener('mouseover', () => {
     filter_menu.classList.add('open-hover')
     if (window.scrollY === 0) {
@@ -25,15 +27,16 @@ shop_by_link.addEventListener('mouseover', () => {
         lines.classList.add('black-lines-button');
     }
 })
-
-shop_by_link.addEventListener('mouseout', () => {
-    filter_menu.classList.remove('open-hover')
-    if (window.scrollY === 0) {
-        header.classList.remove('white-new-header');
-        navlinks.classList.remove('white-header-links');
-        icons_container.classList.remove('white-header-icons');
-        lines.classList.remove('black-lines-button');
-    }
+arr.forEach( (element) => {
+    element.addEventListener('mouseout', () => {
+        filter_menu.classList.remove('open-hover')
+        if (window.scrollY === 0) {
+            header.classList.remove('white-new-header');
+            navlinks.classList.remove('white-header-links');
+            icons_container.classList.remove('white-header-icons');
+            lines.classList.remove('black-lines-button');
+        }
+    })
 })
 
 toggle_menu.onclick = () => {
