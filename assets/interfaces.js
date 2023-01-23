@@ -15,6 +15,7 @@ let right_box = document.getElementById('right-search-form')
 
 const filter_menu = document.getElementById('product-filter-menu')
 let shop_by_link = document.getElementById('div-0')
+let inner_lists = document.getElementById('product-lists-flex')
 
 function hoverout(element) {
     element.addEventListener('mouseout', () => {
@@ -31,6 +32,8 @@ function hoverout(element) {
 // hoverout(shop_by_link)
 
 hoverout(filter_menu)
+
+hoverout(inner_lists)
 
 shop_by_link.addEventListener('mouseover', () => {
     filter_menu.classList.add('open-hover')
