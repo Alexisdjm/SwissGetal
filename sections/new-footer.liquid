@@ -1,0 +1,90 @@
+<div style="background-color: {{  }};" class="new-footer-container">
+    <div class="flex-menus-footer">
+        {% if section.settings.newsletter %}
+            <div class="signup-section{% if section.blocks.size == 0 and section.settings.show_country_selector == blank and section.settings.show_language_selector == blank and section.settings.show_social == blank %} no-border-bottom{% endif %}">
+                <div class="container">
+                {% form 'customer', id: 'footer-signup-form' %}
+                    <input type="hidden" name="contact[tags]" value="prospect,newsletter">
+                    <div class="signup-icon">
+                    {% render 'svg-email' %}
+                    </div>
+                    <h2 class="h3">{{ section.settings.newsletter_heading }}</h2>
+                    <div class="input-with-button">
+                    <div class="input-with-button__input-wrapper">
+                        <input class="input-with-button__input input"
+                            type="email"
+                            name="contact[email]"
+                            value=""
+                            placeholder="{{ 'layout.signup.email' | t }}"
+                            aria-label="{{ 'layout.signup.email' | t | escape }}"
+                            required>
+                    </div>
+                    <button class="input-with-button__button button" type="submit">{{ 'layout.signup.button' | t }}</button>
+                    </div>
+        
+                    {%- if section.settings.newsletter_text != blank -%}
+                    <div class="rte">
+                        {{ section.settings.newsletter_text }}
+                    </div>
+                    {%- endif -%}
+                {% endform %}
+                </div>
+            </div>
+        {% endif %}
+        <div class="blocks-flex-container">
+            {% for block in section.blocks %}
+                <nav class="filter-menu">
+                    {% if block.settings.menu_title %}
+                        <p class="menu-title">{{ block.settings.menu_links.title }}</p>
+                    {% endif %}
+                    {% for link in linklists[block.settings.menu_links].links %}
+                        <div class="menu-links-container">
+                            <a href="{{ link.url }}" class="link-filter">{{ link.title }}</a>
+                        </div>
+                    {% endfor %}
+                </nav>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "New Footer",
+        "class": "new-footer-section",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "newsletter",
+                "label": "show newsletter",
+                "default": false
+            },
+            {
+                "type": "color",
+                "id": "footer_bg_color",
+                "label": "footer background color",
+                "default": "#e6f4f1"
+            }
+        ],
+        "max_blocks": 4,
+        "blocks": [
+            {
+                "type": "text",
+                "name": "menu",
+                "settings": [
+                    {
+                        "type": "link_list",
+                        "id": "menu_links",
+                        "label": "menu selection",
+                        "default": "main-menu"
+                    },
+                    {
+                        "type": "text",
+                        "id": "menu_title",
+                        "label": "menu custom title"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}
