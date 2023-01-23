@@ -151,19 +151,22 @@
           "f3dcf34e-097d-49ce-a666-d1cdee7165e6": {
             "type": "text",
             "settings": {
-              "filter_menu_list": "product-line"
+              "filter_menu_list": "product-line",
+              "list_title": "Product Line"
             }
           },
           "b557c3e9-be23-4ee9-9766-51d0c197d198": {
             "type": "text",
             "settings": {
-              "filter_menu_list": "category"
+              "filter_menu_list": "category",
+              "list_title": ""
             }
           },
           "e2e1247e-b316-460e-ad62-a2d151fe7fd0": {
             "type": "text",
             "settings": {
-              "filter_menu_list": "skin-concern"
+              "filter_menu_list": "skin-concern",
+              "list_title": ""
             }
           },
           "b6a51fd3-3818-479a-ad75-1794ef909fd8": {
