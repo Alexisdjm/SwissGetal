@@ -31,6 +31,10 @@ function hoverout(element) {
 
 // hoverout(shop_by_link)
 
+if (filter_menu.onmouseenter) {
+    console.log('hovered')
+}
+
 hoverout(filter_menu)
 
 hoverout(inner_lists)
