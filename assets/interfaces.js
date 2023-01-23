@@ -32,25 +32,25 @@ hoverout(shop_by_link)
 
 hoverout(filter_menu)
 
-// shop_by_link.addEventListener('mouseover', () => {
-//     filter_menu.classList.add('open-hover')
-//     if (window.scrollY === 0) {
-//         header.classList.add('white-new-header');
-//         navlinks.classList.add('white-header-links');
-//         icons_container.classList.add('white-header-icons');
-//         lines.classList.add('black-lines-button');
-//     }
-// })
-
-shop_by_link.addEventListener('mouseout', () => {
-    filter_menu.classList.remove('open-hover')
+shop_by_link.addEventListener('mouseover', () => {
+    filter_menu.classList.add('open-hover')
     if (window.scrollY === 0) {
-        header.classList.remove('white-new-header');
-        navlinks.classList.remove('white-header-links');
-        icons_container.classList.remove('white-header-icons');
-        lines.classList.remove('black-lines-button');
+        header.classList.add('white-new-header');
+        navlinks.classList.add('white-header-links');
+        icons_container.classList.add('white-header-icons');
+        lines.classList.add('black-lines-button');
     }
 })
+
+// shop_by_link.addEventListener('mouseout', () => {
+//     filter_menu.classList.remove('open-hover')
+//     if (window.scrollY === 0) {
+//         header.classList.remove('white-new-header');
+//         navlinks.classList.remove('white-header-links');
+//         icons_container.classList.remove('white-header-icons');
+//         lines.classList.remove('black-lines-button');
+//     }
+// })
 
 toggle_menu.onclick = () => {
     ninja_menu.classList.add('is-open')
