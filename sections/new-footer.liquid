@@ -3,31 +3,22 @@
         {% if section.settings.newsletter %}
             <div class="signup-section{% if section.blocks.size == 0 and section.settings.show_country_selector == blank and section.settings.show_language_selector == blank and section.settings.show_social == blank %} no-border-bottom{% endif %}">
                 <div class="container">
-                {% form 'customer', id: 'footer-signup-form' %}
-                    <input type="hidden" name="contact[tags]" value="prospect,newsletter">
-                    <div class="signup-icon">
-                    {% render 'svg-email' %}
-                    </div>
-                    <h2 class="h3">{{ section.settings.newsletter_heading }}</h2>
-                    <div class="input-with-button">
-                    <div class="input-with-button__input-wrapper">
-                        <input class="input-with-button__input input"
-                            type="email"
-                            name="contact[email]"
-                            value=""
-                            placeholder="{{ 'layout.signup.email' | t }}"
-                            aria-label="{{ 'layout.signup.email' | t | escape }}"
-                            required>
-                    </div>
-                    <button class="input-with-button__button button" type="submit">{{ 'layout.signup.button' | t }}</button>
-                    </div>
-        
-                    {%- if section.settings.newsletter_text != blank -%}
-                    <div class="rte">
-                        {{ section.settings.newsletter_text }}
-                    </div>
-                    {%- endif -%}
-                {% endform %}
+                    {% form 'customer', id: 'footer-signup-form' %}
+                        <input type="hidden" name="contact[tags]" value="prospect,newsletter">
+                        <h2 class="h3">{{ section.settings.newsletter_heading }}</h2>
+                        <div class="input-with-button">
+                            <div class="input-with-button__input-wrapper">
+                                <input class="newsletter-new-input"
+                                    type="email"
+                                    name="contact[email]"
+                                    value=""
+                                    placeholder="{{ 'layout.signup.email' | t }}"
+                                    aria-label="{{ 'layout.signup.email' | t | escape }}"
+                                    required>
+                            </div>
+                            <button class="transparent-button" type="submit">{% render 'svg-right' %}</button>
+                        </div>
+                    {% endform %}
                 </div>
             </div>
         {% endif %}
@@ -58,6 +49,12 @@
                 "id": "newsletter",
                 "label": "show newsletter",
                 "default": false
+            },
+            {
+                "type": "text",
+                "id": "newsletter_text",
+                "label": "Newsletter upper text",
+                "default": "Insert new text"
             },
             {
                 "type": "color",
