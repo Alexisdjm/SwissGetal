@@ -82,6 +82,7 @@ window.addEventListener('scroll', () => {
         arr.forEach(function(element) {
             let status = 0
             element.onmouseenter = () => {
+                filter_menu.classList.add('open-hover')
                 status++ 
             }
             element.onmouseleave = () => {
