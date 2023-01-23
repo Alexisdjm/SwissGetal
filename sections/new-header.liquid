@@ -4,7 +4,7 @@
         <nav id="navbar-full-width" class="navbar-links">
             {% for link in linklists[section.settings.menu_linklist].links %}
                 <div id="div-{{ count }}" class="each-link">
-                    <a href="{{ link.url }}">{{ link.title }}</a>
+                    <a class="hover-link" href="{{ link.url }}">{{ link.title }}</a>
                 </div>
                 {% assign count = count | plus: 1 %}
             {% endfor %}
