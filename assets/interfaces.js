@@ -38,7 +38,7 @@ arr.forEach(function(element) {
         counter--
         if (counter < 1) {
             filter_menu.classList.remove('open-hover')
-            if (window.scrollY === 0 && !filter_menu.classList.contains('open-hover')) {
+            if (window.scrollY === 0 && counter < 1) {
                 header.classList.remove('white-new-header');
                 navlinks.classList.remove('white-header-links');
                 icons_container.classList.remove('white-header-icons');
@@ -73,7 +73,7 @@ window.addEventListener('scroll', () => {
         navlinks.classList.add('white-header-links');
         icons_container.classList.add('white-header-icons');
         lines.classList.add('black-lines-button');
-    } else if (window.scrollY === 0 && !filter_menu.classList.contains('open-hover')) {
+    } else if (window.scrollY === 0 && counter < 1) {
         header_container.classList.remove('top-0')
         header.classList.remove('white-new-header');
         first_container.classList.remove('new-padding-header')
