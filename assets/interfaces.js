@@ -17,19 +17,18 @@ const filter_menu = document.getElementById('product-filter-menu')
 let shop_by_link = document.getElementById('div-0')
 let inner_lists = document.getElementById('product-lists-flex')
 
-let status_1 = false
-let status_2 = false
-let status_3 = false
+let status_ = false
 
-shop_by_link.onmouseenter = () => {
-    status_1 = true
-    console.log(status_1)
-}
+const arr = [filter_menu, shop_by_link, inner_lists]
 
-shop_by_link.onmouseleave = () => {
-    status_1 = false
-    console.log(status_1)
-}
+arr.forEach(function(element) {
+    element.onmouseenter = () => {
+        console.log(element.className + 'is hovered')
+    }
+    element.onmouseleave = () => {
+        console.log(element.className + 'is not hovered')
+    }
+})
 
 shop_by_link.addEventListener('mouseenter', () => {
     filter_menu.classList.add('open-hover')
