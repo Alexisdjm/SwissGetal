@@ -31,7 +31,7 @@ function hoverout(element) {
 
 // hoverout(shop_by_link)
 
-if (filter_menu.onmouseenter) {
+if (shop_by_link.onmouseenter) {
     console.log('hovered')
 }
 
