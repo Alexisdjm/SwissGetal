@@ -17,29 +17,21 @@ const filter_menu = document.getElementById('product-filter-menu')
 let shop_by_link = document.getElementById('div-0')
 let inner_lists = document.getElementById('product-lists-flex')
 
-function hoverout(element) {
-    element.addEventListener('mouseout', () => {
-        filter_menu.classList.remove('open-hover')
-        if (window.scrollY === 0) {
-            header.classList.remove('white-new-header');
-            navlinks.classList.remove('white-header-links');
-            icons_container.classList.remove('white-header-icons');
-            lines.classList.remove('black-lines-button');
-        }
-    })
+let status_1 = false
+let status_2 = false
+let status_3 = false
+
+shop_by_link.onmouseenter = () => {
+    status_1 = true
+    console.log(status_1)
 }
 
-// hoverout(shop_by_link)
-
-if (shop_by_link.onmouseenter) {
-    console.log('hovered')
+shop_by_link.onmouseleave = () => {
+    status_1 = false
+    console.log(status_1)
 }
 
-hoverout(filter_menu)
-
-hoverout(inner_lists)
-
-shop_by_link.addEventListener('mouseover', () => {
+shop_by_link.addEventListener('mouseenter', () => {
     filter_menu.classList.add('open-hover')
     if (window.scrollY === 0) {
         header.classList.add('white-new-header');
@@ -48,16 +40,6 @@ shop_by_link.addEventListener('mouseover', () => {
         lines.classList.add('black-lines-button');
     }
 })
-
-// shop_by_link.addEventListener('mouseout', () => {
-//     filter_menu.classList.remove('open-hover')
-//     if (window.scrollY === 0) {
-//         header.classList.remove('white-new-header');
-//         navlinks.classList.remove('white-header-links');
-//         icons_container.classList.remove('white-header-icons');
-//         lines.classList.remove('black-lines-button');
-//     }
-// })
 
 toggle_menu.onclick = () => {
     ninja_menu.classList.add('is-open')
