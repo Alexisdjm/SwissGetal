@@ -19,6 +19,8 @@ let inner_lists = document.getElementById('product-lists-flex')
 
 let counter = 0
 
+shop_by_link.onclick = (e) => { e.preventDefault() }
+
 const arr = [shop_by_link, filter_menu]
 
 arr.forEach(function(element) {
