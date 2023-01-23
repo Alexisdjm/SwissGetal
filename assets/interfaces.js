@@ -19,7 +19,7 @@ let inner_lists = document.getElementById('product-lists-flex')
 
 let counter = 0
 
-const arr = [shop_by_link, filter_menu, inner_lists]
+const arr = [shop_by_link, filter_menu]
 
 arr.forEach(function(element, index) {
     element.onmouseenter = () => {
