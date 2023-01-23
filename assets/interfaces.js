@@ -79,26 +79,11 @@ window.addEventListener('scroll', () => {
         lines.classList.add('black-lines-button');
     } else {
         header_container.classList.remove('top-0')
-        arr.forEach(function(element) {
-            let status = 0
-            element.onmouseenter = () => {
-                filter_menu.classList.add('open-hover')
-                status++ 
-            }
-            element.onmouseleave = () => {
-                filter_menu.classList.remove('open-hover')
-                status--
-                if (status < 1) {
-                    header.classList.remove('white-new-header');
-                    first_container.classList.remove('new-padding-header')
-                    navlinks.classList.remove('white-header-links');
-                    icons_container.classList.remove('white-header-icons');
-                    lines.classList.remove('black-lines-button');
-                } else {
-                    return ''
-                }
-            }
-        })
+        header.classList.remove('white-new-header');
+        first_container.classList.remove('new-padding-header')
+        navlinks.classList.remove('white-header-links');
+        icons_container.classList.remove('white-header-icons');
+        lines.classList.remove('black-lines-button');
         
     }
 })
