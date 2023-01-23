@@ -76,12 +76,15 @@ window.addEventListener('scroll', () => {
         icons_container.classList.add('white-header-icons');
         lines.classList.add('black-lines-button');
     } else {
+        header_container.classList.remove('top-0')
         arr.forEach(function(element) {
-            let status;
+            let status = 0
+            element.onmouseenter = () => {
+                status++ 
+            }
             element.onmouseleave = () => {
-                status = false;
-                if (!status) {
-                    header_container.classList.remove('top-0')
+                status--
+                if (status < 1) {
                     header.classList.remove('white-new-header');
                     first_container.classList.remove('new-padding-header')
                     navlinks.classList.remove('white-header-links');
