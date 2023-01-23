@@ -642,9 +642,11 @@ section.ig-section {
   display: flex;
   padding: 1.6vw 2vw;
   justify-content: space-between;
-  animation-name: fade;
-  animation-duration: 500ms;
-
+  -webkit-transition: background-color 1000ms linear;
+  -moz-transition: background-color 1000ms linear;
+  -o-transition: background-color 1000ms linear;
+  -ms-transition: background-color 1000ms linear;
+  transition: background-color 1000ms linear;
 }
 
 .top-0  {
@@ -866,10 +868,6 @@ span#close.close::before {
   opacity: 1;
 }
 
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
 
 /* ----------------------------------------------media queries ------------------------------------------- */
 
