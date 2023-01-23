@@ -18,10 +18,12 @@ let shop_by_link = document.getElementById('div-0')
 
 shop_by_link.addEventListener('mouseover', () => {
     filter_menu.classList.add('open-hover')
+    header.classList.add('white-new-header');
 })
 
 shop_by_link.addEventListener('mouseout', () => {
     filter_menu.classList.remove('open-hover')
+    header.classList.remove('white-new-header');
 })
 
 toggle_menu.onclick = () => {
