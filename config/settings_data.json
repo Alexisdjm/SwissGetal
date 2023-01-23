@@ -151,22 +151,19 @@
           "f3dcf34e-097d-49ce-a666-d1cdee7165e6": {
             "type": "text",
             "settings": {
-              "filter_menu_list": "product-line",
-              "list_title": "Product Line"
+              "filter_menu_list": "product-line"
             }
           },
           "b557c3e9-be23-4ee9-9766-51d0c197d198": {
             "type": "text",
             "settings": {
-              "filter_menu_list": "category",
-              "list_title": ""
+              "filter_menu_list": "category"
             }
           },
           "e2e1247e-b316-460e-ad62-a2d151fe7fd0": {
             "type": "text",
             "settings": {
-              "filter_menu_list": "skin-concern",
-              "list_title": ""
+              "filter_menu_list": "skin-concern"
             }
           },
           "b6a51fd3-3818-479a-ad75-1794ef909fd8": {
@@ -189,6 +186,49 @@
           "logo_width": 150,
           "enable_sticky": true,
           "menu_linklist": "main-menu"
+        }
+      },
+      "new-footer": {
+        "type": "new-footer",
+        "blocks": {
+          "5a274de2-c3d4-4857-aac0-7945ed239fe0": {
+            "type": "text",
+            "settings": {
+              "menu_links": "main-menu",
+              "menu_title": ""
+            }
+          },
+          "e6396592-62d3-4064-80de-674900db2f9f": {
+            "type": "text",
+            "settings": {
+              "menu_links": "main-menu",
+              "menu_title": ""
+            }
+          },
+          "178e3c97-cf51-48ab-8f8a-d436b35463e1": {
+            "type": "text",
+            "settings": {
+              "menu_links": "main-menu",
+              "menu_title": ""
+            }
+          },
+          "9a78a81f-413f-481e-b4a0-cd69837ae5f3": {
+            "type": "text",
+            "settings": {
+              "menu_links": "main-menu",
+              "menu_title": ""
+            }
+          }
+        },
+        "block_order": [
+          "5a274de2-c3d4-4857-aac0-7945ed239fe0",
+          "e6396592-62d3-4064-80de-674900db2f9f",
+          "178e3c97-cf51-48ab-8f8a-d436b35463e1",
+          "9a78a81f-413f-481e-b4a0-cd69837ae5f3"
+        ],
+        "settings": {
+          "newsletter": false,
+          "footer_bg_color": "#e6f4f1"
         }
       }
     },
