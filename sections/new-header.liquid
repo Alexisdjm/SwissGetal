@@ -130,6 +130,9 @@
             </div>
             {% else %}
                 <nav class="filter-menu">
+                    {% if block.settings.list_title %}
+                        <p>{{ block.settings.list_title }}</p>
+                    {% endif %}
                     {% for link in linklists[block.settings.filter_menu_list].links %}
                         <div class="menu-links-container">
                             <a href="{{ link.url }}" class="link-filter">{{ link.title }}</a>
@@ -199,6 +202,11 @@
                         "id": "filter_menu_list",
                         "default": "main-menu",
                         "label": "filter list menu"
+                    },
+                    {
+                        "type": "text",
+                        "id": "list_title",
+                        "label": "list menu title",
                     }
                 ]
             },
