@@ -21,7 +21,7 @@ let counter = 0
 
 const arr = [shop_by_link, filter_menu]
 
-arr.forEach(function(element, index) {
+arr.forEach(function(element) {
     element.onmouseenter = () => {
         counter++
         if (counter > 0) {
@@ -73,7 +73,7 @@ window.addEventListener('scroll', () => {
         navlinks.classList.add('white-header-links');
         icons_container.classList.add('white-header-icons');
         lines.classList.add('black-lines-button');
-    } else {
+    } else if (window.scrollY === 0 && !filter_menu.classList.contains('open-hover')) {
         header_container.classList.remove('top-0')
         header.classList.remove('white-new-header');
         first_container.classList.remove('new-padding-header')
