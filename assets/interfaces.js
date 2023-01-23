@@ -21,12 +21,12 @@ let status_ = false
 
 const arr = [filter_menu, shop_by_link, inner_lists]
 
-arr.forEach(function(element) {
+arr.forEach(function(element, index) {
     element.onmouseenter = () => {
-        console.log(element.className + 'is hovered')
+        console.log(`element number ${index} is hovered`)
     }
     element.onmouseleave = () => {
-        console.log(element.className + 'is not hovered')
+        console.log(`element number ${index} is not hovered`)
     }
 })
 
