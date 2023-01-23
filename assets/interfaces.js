@@ -24,15 +24,12 @@ const arr = [shop_by_link, filter_menu]
 arr.forEach(function(element, index) {
     element.onmouseenter = () => {
         counter++
-        console.log(counter, 'menu is visible')
     }
     element.onmouseleave = () => {
         counter--
         console.log(counter)
-        if (counter < 1) {
-            console.log(counter, 'menu is hidden')
-        } 
     }
+    console.log(counter)
 })
 
 shop_by_link.addEventListener('mouseenter', () => {
