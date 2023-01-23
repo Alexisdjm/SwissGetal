@@ -133,6 +133,7 @@
                     {% if block.settings.list_title %}
                         <p>{{ block.settings.list_title }}</p>
                     {% endif %}
+                    <p>{{ block.settings.filter_menu_list.title }}</p>
                     {% for link in linklists[block.settings.filter_menu_list].links %}
                         <div class="menu-links-container">
                             <a href="{{ link.url }}" class="link-filter">{{ link.title }}</a>
