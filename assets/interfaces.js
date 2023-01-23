@@ -75,12 +75,23 @@ window.addEventListener('scroll', () => {
         navlinks.classList.add('white-header-links');
         icons_container.classList.add('white-header-icons');
         lines.classList.add('black-lines-button');
-    } else if (window.scrollY === 0) {
-        header_container.classList.remove('top-0')
-        header.classList.remove('white-new-header');
-        first_container.classList.remove('new-padding-header')
-        navlinks.classList.remove('white-header-links');
-        icons_container.classList.remove('white-header-icons');
-        lines.classList.remove('black-lines-button');
+    } else {
+        arr.forEach(function(element) {
+            let status;
+            element.onmouseleave = () => {
+                status = false;
+                if (!status) {
+                    header_container.classList.remove('top-0')
+                    header.classList.remove('white-new-header');
+                    first_container.classList.remove('new-padding-header')
+                    navlinks.classList.remove('white-header-links');
+                    icons_container.classList.remove('white-header-icons');
+                    lines.classList.remove('black-lines-button');
+                } else {
+                    return ''
+                }
+            }
+        })
+        
     }
 })
