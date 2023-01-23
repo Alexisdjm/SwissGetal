@@ -24,9 +24,11 @@ const arr = [shop_by_link, filter_menu, inner_lists]
 arr.forEach(function(element, index) {
     element.onmouseenter = () => {
         counter++
+        console.log(counter)
     }
     element.onmouseleave = () => {
         counter--
+        console.log(counter)
     }
 })
 
