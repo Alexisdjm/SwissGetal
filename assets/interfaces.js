@@ -26,14 +26,12 @@ arr.forEach(function(element) {
         counter++
         if (counter > 0) {
             filter_menu.classList.add('open-hover')
-            window.addEventListener('scroll', () => {
-                if (window.scrollY === 0) {
-                    header.classList.add('white-new-header');
-                    navlinks.classList.add('white-header-links');
-                    icons_container.classList.add('white-header-icons');
-                    lines.classList.add('black-lines-button');
-                }    
-            })
+            if (window.scrollY === 0) {
+                header.classList.add('white-new-header');
+                navlinks.classList.add('white-header-links');
+                icons_container.classList.add('white-header-icons');
+                lines.classList.add('black-lines-button');
+            }    
         }
     }
     element.onmouseleave = () => {
