@@ -30,11 +30,13 @@ let header_items = [left_navbar, right_icons]
 
 header_items.forEach(element => {
     element.onmouseenter = () => {
-        hoverstatus("", 'in', "")
+        counter++
+        counter > 0 ? hoverstatus("", 'in', "") : ''
         console.log(counter)
     }
     element.onmouseleave = () => {
-        hoverstatus("",'out',"")
+        counter--
+        counter < 1 ? hoverstatus("",'out',"") : ''
         console.log(counter)
     }
 });
