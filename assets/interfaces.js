@@ -39,7 +39,7 @@ function hoverstatus(box, what, open_class, varr) {
     if (what === "in") {
         box.classList.add(`${open_class}`)
     } else if (what === "out") {
-        varr < 1 ? box.classList.remove(`${open_class}`) : ''
+        varr < 1 ? box.classList.remove(`${open_class}`) : box.classList.add(`${open_class}`)
     } 
 }
 
@@ -72,20 +72,20 @@ function showhide(element, css, box, vari) {
         if (vari > 0) {
             hoverstatus(box, "in", css, vari)
         } 
-        console.log(vari, element)
+        console.log(vari)
     }
     element.onmouseleave = () => {
         vari--
         if (vari < 1) {
             hoverstatus(box, "out", css, vari)
         }
-        console.log(vari, element)
+        console.log(vari)
     }
 }
-showhide(shop_by_link, "about-us-hover", aboutUs, counter)
-showhide(filter_menu, "about-us-hover", aboutUs, counter)
-showhide(aboutUs_link, "open-hover", filter_menu, counter)
-showhide(aboutUs, "open-hover", filter_menu, counter)
+showhide(shop_by_link, "about-us-hover", filter_menu, counter)
+showhide(filter_menu, "about-us-hover", filter_menu, counter)
+showhide(aboutUs_link, "open-hover", aboutUs, counter)
+showhide(aboutUs, "open-hover", aboutUs, counter)
 blackorwhite(header_items, second_counter)
 
 //-----------------------------------------------------------------------------------------------------------------
