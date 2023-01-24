@@ -25,27 +25,7 @@ const right_icons = document.getElementById('link-icons')
 let counter = 0
 
 let links = [shop_by_link, aboutUs_link]
-
 let header_items = [left_navbar, right_icons, filter_menu]
-
-header_items.forEach(element => {
-    element.onmouseenter = () => {
-        counter++
-        console.log(counter)
-        if (counter > 0) {
-            hoverstatus("", 'in', "", counter)
-        }
-        
-    }
-    element.onmouseleave = () => {
-        counter--
-        console.log(counter)
-        if (counter < 1) {
-            hoverstatus("",'out',"", counter)
-        }
-        
-    }
-});
 
 links.forEach((element) => {
     element.onclick = (e) => { e.preventDefault() }
@@ -88,6 +68,7 @@ function showhide(arrr, css, box, vari) {
                 hoverstatus(box, "in", css, vari)
             }
         }
+        console.log(vari)
         element.onmouseleave = () => {
             vari--
             if (vari < 1) {
@@ -99,6 +80,8 @@ function showhide(arrr, css, box, vari) {
 }
 showhide(arr2, "about-us-hover", aboutUs, counter)
 showhide(arr, "open-hover", filter_menu, counter)
+
+//-----------------------------------------------------------------------------------------------------------------
 
 function handdle(xx, box, what) {
     xx.onclick = (e) => {
