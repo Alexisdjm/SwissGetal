@@ -68,7 +68,7 @@ function blackorwhite(arrr, vari2) {
     arrr.forEach((element) => {
         element.onmouseenter = () => {
             vari2++
-            if (vari2 > 0 && window.scrollY === 0) {
+            if (window.scrollY === 0) {
                 header.classList.add('white-new-header');
                 navlinks.classList.add('white-header-links');
                 icons_container.classList.add('white-header-icons');
