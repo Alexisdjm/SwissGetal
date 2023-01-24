@@ -33,10 +33,10 @@ let header_items = [journal, skin_type, heart_icon, search_glass, account, cart]
 
 header_items.forEach(element => {
     element.onmouseenter = () => {
-        hoverstatus('in')
+        hoverstatus("", 'in', "")
     }
     element.onmouseleave = () => {
-        hoverstatus('out')
+        hoverstatus("",'out',"")
     }
 });
 
