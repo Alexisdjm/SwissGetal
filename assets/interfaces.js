@@ -50,22 +50,23 @@ function hoverstatus(box, what, open_class) {
     } 
 }
 
-function showhide(arr, func, css, box, vari) {
+function showhide(arr, css, box, vari) {
     arr.forEach((element) => {
         element.onmouseenter = () => {
             vari++
             if (vari > 0) {
-                func(box, "in", css)
+                hoverstatus(box, "in", css)
         }}
         element.onmouseleave = () => {
             vari--
             if (vari < 1) {
-                func(box, "out", css)
+                hoverstatus(box, "out", css)
         }}
     })
 }
 
-showhide(arr2, hoverstatus, "about-us-hover", aboutUs, counter)
+showhide(arr2, "about-us-hover", aboutUs, counter)
+showhide(arr, "open-hover", filter_menu, counter)
 
 // arr2.forEach(function(element) {
 //     element.onmouseenter = () => {
@@ -82,20 +83,20 @@ showhide(arr2, hoverstatus, "about-us-hover", aboutUs, counter)
 //     }
 // })
 
-arr.forEach(function(element) {
-    element.onmouseenter = () => {
-        counter++
-        if (counter > 0) {
-            hoverstatus(filter_menu, "in", "open-hover")    
-        }
-    }
-    element.onmouseleave = () => {
-        counter--
-        if (counter < 1) {
-            hoverstatus(filter_menu, "out", "open-hover") 
-        }
-    }
-})
+// arr.forEach(function(element) {
+//     element.onmouseenter = () => {
+//         counter++
+//         if (counter > 0) {
+//             hoverstatus(filter_menu, "in", "open-hover")    
+//         }
+//     }
+//     element.onmouseleave = () => {
+//         counter--
+//         if (counter < 1) {
+//             hoverstatus(filter_menu, "out", "open-hover") 
+//         }
+//     }
+// })
 
 function handdle(xx, box, what) {
     xx.onclick = (e) => {
