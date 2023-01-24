@@ -2,12 +2,11 @@
     <div class="flex-menus-footer">
         {% if section.settings.newsletter %}
             <div class="newsletter-general-container">
-                <div>
+                <div style="margin-top: {{ section.settings.newsletter_upper_spacing }}">
                     {% form 'customer', id: 'footer-signup-form' %}
                         <input type="hidden" name="contact[tags]" value="prospect,newsletter">
                         {% if section.settings.newsletter_text != blank %}
                             <p class="newsletter-upper-text">{{ section.settings.newsletter_text }}</p>
-                            
                         {% endif %}
                         <div class="input-and-button">
                             <div>
@@ -59,6 +58,16 @@
                 "label": "Newsletter upper text",
                 "default": "Insert new text"
             },
+            {
+                "type": "range",
+                "id": "newsletter_upper_spacing",
+                "min": 0,
+                "max": 10,
+                "unit": "vh",
+                "default": 0,
+                "label": "newsletter top margin",
+                "step": 1
+            }
             {
                 "type": "color",
                 "id": "footer_bg_color",
