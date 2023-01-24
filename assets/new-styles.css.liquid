@@ -948,16 +948,29 @@ span#close.close::before {
   padding: 0px 6%;
 }
 
-.newsletter-upper-text {
+.newsletter-upper-text, .mobile-newsletter-text {
   font-size: 22px;
   font-family: 'Nanum Myeongjo', serif;
-  max-width: 290px;
   margin-bottom: 10vh;
+}
+
+.newsletter-upper-text {
+  max-width: 290px;
+}
+
+.mobile-newsletter-text {
+  max-width: 80%; 
 }
 
 .input-and-button {
   width: fit-content;
   display: flex;
+}
+
+.mobile-bottom-newsletter {
+  display: none;
+  width: 100%;
+  margin-bottom: 40px;
 }
 
 /* ----------------------------------------------media queries ------------------------------------------- */
@@ -997,6 +1010,19 @@ span#close.close::before {
 
  div#menu-mobile-button {
     display: block;
+  }
+
+  .newsletter-general-container {
+    display: none;
+  }
+
+  .blocks-flex-container {
+    display: block;
+  }
+
+  .mobile-bottom-newsletter {
+    display: flex;
+    justify-content: center;
   }
 }
 

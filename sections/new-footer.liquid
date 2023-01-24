@@ -38,6 +38,28 @@
                 </nav>
             {% endfor %}
         </div>
+        <div class="mobile-bottom-newsletter">
+                <div>
+                    {% form 'customer', id: 'footer-signup-form' %}
+                        <input type="hidden" name="contact[tags]" value="prospect,newsletter">
+                        {% if section.settings.newsletter_text != blank %}
+                            <p class="mobile-newsletter-text">{{ section.settings.newsletter_text }}</p>
+                        {% endif %}
+                        <div class="input-and-button">
+                            <div>
+                                <input class="mobile-newsletter-input"
+                                    type="email"
+                                    name="contact[email]"
+                                    value=""
+                                    placeholder="{{ 'layout.signup.email' | t }}"
+                                    aria-label="{{ 'layout.signup.email' | t | escape }}"
+                                    required>
+                            </div>
+                            <button class="transparent-button" type="submit">{% render 'svg-right' %}</button>
+                        </div>
+                    {% endform %}
+                </div>
+            </div>
     </div>
 </div>
 
