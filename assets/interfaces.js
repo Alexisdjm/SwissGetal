@@ -27,9 +27,6 @@ links.forEach((element) => {
     element.onclick = (e) => { e.preventDefault() }
 })
 
-// shop_by_link.onclick = (e) => { e.preventDefault() }
-// aboutUs_link.onclick = (e) => { e.preventDefault() }
-
 const arr = [shop_by_link, filter_menu]
 const arr2 = [aboutUs_link, aboutUs]
 
@@ -87,21 +84,32 @@ arr.forEach(function(element) {
     }
 })
 
-toggle_menu.onclick = () => {
-    ninja_menu.classList.add('is-open')
-}
-x.onclick = () => {
-    ninja_menu.classList.remove('is-open')
-}
-
-search_glass.onclick = (e) => {
-    e.preventDefault();
-    right_box.classList.add('is-open')
+function handdle(xx, box, what) {
+    xx.onclick = () => {
+        what === 'close' ? box.classList.remove('is-open') : box.classList.add('is-open')
+    }
 }
 
-close_search.onclick = () => {
-    right_box.classList.remove('is-open')
-}
+handdle(toggle_menu, ninja_menu, "open")
+handdle(search_glass, right_box, "open")
+
+handdle(x, ninja_menu, "close")
+handdle(close_search, right_box, "close")
+
+// toggle_menu.onclick = () => {
+//     ninja_menu.classList.add('is-open')
+// }
+// x.onclick = () => {
+//     ninja_menu.classList.remove('is-open')
+// }
+
+// search_glass.onclick = () => {
+//     right_box.classList.add('is-open')
+// }
+
+// close_search.onclick = () => {
+//     right_box.classList.remove('is-open')
+// }
 
 window.addEventListener('scroll', () => {
     
