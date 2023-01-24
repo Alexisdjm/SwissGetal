@@ -30,7 +30,6 @@ let header_items = [left_navbar, right_icons]
 
 header_items.forEach(element => {
     element.onmouseenter = () => {
-        counter++
         hoverstatus("", 'in', "")
         console.log(counter)
     }
