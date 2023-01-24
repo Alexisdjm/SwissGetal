@@ -69,28 +69,13 @@ arr.forEach(function(element) {
     element.onmouseenter = () => {
         counter++
         if (counter > 0) {
-
-            hoverstatus(filter_menu, "in", "open-hover")
-            // filter_menu.classList.add('open-hover')
-            // if (window.scrollY === 0) {
-            //     header.classList.add('white-new-header');
-            //     navlinks.classList.add('white-header-links');
-            //     icons_container.classList.add('white-header-icons');
-            //     lines.classList.add('black-lines-button');
-            // }    
+            hoverstatus(filter_menu, "in", "open-hover")    
         }
     }
     element.onmouseleave = () => {
         counter--
         if (counter < 1) {
-            hoverstatus(filter_menu, "out", "open-hover")
-            // filter_menu.classList.remove('open-hover')
-            // if (window.scrollY === 0 && counter < 1) {
-            //     header.classList.remove('white-new-header');
-            //     navlinks.classList.remove('white-header-links');
-            //     icons_container.classList.remove('white-header-icons');
-            //     lines.classList.remove('black-lines-button');
-            // }  
+            hoverstatus(filter_menu, "out", "open-hover") 
         }
     }
 })
