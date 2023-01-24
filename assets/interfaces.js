@@ -19,9 +19,26 @@ let inner_lists = document.getElementById('product-lists-flex')
 const aboutUs_link = document.getElementById('div-1')
 const aboutUs = document.getElementById('about-us-menu')
 
+const heart_icon = document.getElementById('heart-link')
+const cart = document.getElementById('cart')
+const account = document.getElementById('account')
+const journal = document.getElementById('div-2')
+const skin_type = document.getElementById('div-3')
+
 let counter = 0
 
 let links = [shop_by_link, aboutUs_link]
+
+let header_items = [journal, skin_type, heart_icon, search_glass, account, cart]
+
+header_items.forEach(element => {
+    element.onmouseenter = () => {
+        window.screenY === 0 ? header.classList.add('white-new-header') : ''
+    }
+    element.onmouseleave = () => {
+        window.screenY === 0 ? header.classList.remove('white-new-header') : ''
+    }
+});
 
 links.forEach((element) => {
     element.onclick = (e) => { e.preventDefault() }
