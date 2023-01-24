@@ -73,7 +73,7 @@ function showhide(arrr, css, box, vari) {
             if (vari > 0) {
                 hoverstatus(box, "in", css, vari)
             } 
-            console.log(vari)
+            console.log(vari, element)
         }
         element.onmouseleave = () => {
             vari--
