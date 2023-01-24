@@ -86,6 +86,9 @@ function showhide(element, css, box, vari) {
 aboutUs.onmouseenter = () => {console.log('hovered')}
 aboutUs.onmouseleave = () => {console.log('not hovered')}
 
+aboutUs_link.onmouseenter = () => {console.log('hovered')}
+aboutUs_link.onmouseleave = () => {console.log('not hovered')}
+
 aboutUs.onclick = () => { console.log('click')}
 
 // showhide(shop_by_link, "about-us-hover", filter_menu, counter)
