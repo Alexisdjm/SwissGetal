@@ -55,22 +55,22 @@ function hoverstatus(box, what, open_class) {
         if (box && open_class) {
             box.classList.add(`${open_class}`)
         }
-        if (window.scrollY === 0) {
-            header.classList.add('white-new-header');
-            navlinks.classList.add('white-header-links');
-            icons_container.classList.add('white-header-icons');
-            lines.classList.add('black-lines-button');
-        }  
+        // if (window.scrollY === 0) {
+        //     header.classList.add('white-new-header');
+        //     navlinks.classList.add('white-header-links');
+        //     icons_container.classList.add('white-header-icons');
+        //     lines.classList.add('black-lines-button');
+        // }  
     } else if (what === "out") {
         if (box && open_class) {
             box.classList.remove(`${open_class}`)
         }
-        if (window.scrollY === 0 && counter < 1) {
-            header.classList.remove('white-new-header');
-            navlinks.classList.remove('white-header-links');
-            icons_container.classList.remove('white-header-icons');
-            lines.classList.remove('black-lines-button');
-        }  
+        // if (window.scrollY === 0 && counter < 1) {
+        //     header.classList.remove('white-new-header');
+        //     navlinks.classList.remove('white-header-links');
+        //     icons_container.classList.remove('white-header-icons');
+        //     lines.classList.remove('black-lines-button');
+        // }  
     } 
 }
 
