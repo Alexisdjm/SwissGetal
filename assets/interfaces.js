@@ -26,16 +26,14 @@ let counter = 0
 
 let links = [shop_by_link, aboutUs_link]
 
-let header_items = [left_navbar, right_icons]
+let header_items = [left_navbar, right_icons, filter_menu]
 
 header_items.forEach(element => {
     element.onmouseenter = () => {
         hoverstatus("", 'in', "")
-        console.log(counter)
     }
     element.onmouseleave = () => {
         hoverstatus("",'out',"")
-        console.log(counter)
     }
 });
 
