@@ -930,15 +930,23 @@ span#close.close::before {
   border-bottom: 1px solid black;
 }
 
-.newsletter-new-input {
+.newsletter-new-input, .mobile-newsletter-inputt {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid black;
   height: 50px;
+}
+
+.newsletter-new-input {
   width: 265px;
 }
 
-.newsletter-new-input:focus {
+.mobile-newsletter-input {
+  width: 80%;
+  max-width: 600px;
+}
+
+.newsletter-new-input:focus, .mobile-newsletter-input:focus {
   outline: none;
   text-decoration: none;
 }
@@ -1023,6 +1031,10 @@ span#close.close::before {
   .mobile-bottom-newsletter {
     display: flex;
     justify-content: center;
+  }
+
+  .flex-menus-footer {
+    display: block;
   }
 }
 
