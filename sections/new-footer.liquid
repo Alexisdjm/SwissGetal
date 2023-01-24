@@ -5,8 +5,8 @@
                 <div>
                     {% form 'customer', id: 'footer-signup-form' %}
                         <input type="hidden" name="contact[tags]" value="prospect,newsletter">
-                        {% if section.settings.newsletter_heading != blank %}
-                        <p class="newsletter-upper-text">{{ section.settings.newsletter_heading }}</p>
+                        {% if section.settings.newsletter_text != blank %}
+                            <p class="newsletter-upper-text">{{ section.settings.newsletter_text }}</p>
                             
                         {% endif %}
                         <div class="input-and-button">
