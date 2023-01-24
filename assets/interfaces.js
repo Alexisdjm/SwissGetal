@@ -44,7 +44,7 @@ links.forEach((element) => {
 const arr = [shop_by_link, filter_menu]
 const arr2 = [aboutUs_link, aboutUs]
 
-function hoverstatus(box, what, open_class) {
+function hoverstatus(box, what, open_class, varr) {
     if (what === "in") {
         if (box && open_class) {
             box.classList.add(`${open_class}`)
@@ -60,7 +60,7 @@ function hoverstatus(box, what, open_class) {
         if (box && open_class) {
             box.classList.remove(`${open_class}`)
         } else {
-            if (window.scrollY === 0 && counter < 1) {
+            if (window.scrollY === 0 && varr < 1) {
                 header.classList.remove('white-new-header');
                 navlinks.classList.remove('white-header-links');
                 icons_container.classList.remove('white-header-icons');
@@ -75,14 +75,14 @@ function showhide(arrr, css, box, vari) {
         element.onmouseenter = () => {
             vari++
             if (vari > 0) {
-                hoverstatus(box, "in", css)
+                hoverstatus(box, "in", css, vari)
             }
             console.log(vari)
         }
         element.onmouseleave = () => {
             vari--
             if (vari < 1) {
-                hoverstatus(box, "out", css)
+                hoverstatus(box, "out", css, vari)
             }
             console.log(vari)
         }
