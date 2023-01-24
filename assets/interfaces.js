@@ -85,7 +85,8 @@ arr.forEach(function(element) {
 })
 
 function handdle(xx, box, what) {
-    xx.onclick = () => {
+    xx.onclick = (e) => {
+        e.preventDefault();
         what === 'close' ? box.classList.remove('is-open') : box.classList.add('is-open')
     }
 }
