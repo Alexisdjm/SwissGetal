@@ -26,7 +26,7 @@ let counter = 0
 let second_counter = 0
 
 let links = [shop_by_link, aboutUs_link]
-let header_items = [left_navbar, right_icons, filter_menu]
+let header_items = [left_navbar, right_icons, filter_menu, aboutUs]
 
 links.forEach((element) => {
     element.onclick = (e) => { e.preventDefault() }
@@ -57,21 +57,44 @@ const arr2 = [aboutUs_link, aboutUs]
 function hoverstatus(box, what, open_class, varr) {
     if (what === "in") {
         box.classList.add(`${open_class}`)
-        if (window.scrollY === 0) {
-            header.classList.add('white-new-header');
-            navlinks.classList.add('white-header-links');
-            icons_container.classList.add('white-header-icons');
-            lines.classList.add('black-lines-button');
-        } 
+        // if (window.scrollY === 0) {
+        //     header.classList.add('white-new-header');
+        //     navlinks.classList.add('white-header-links');
+        //     icons_container.classList.add('white-header-icons');
+        //     lines.classList.add('black-lines-button');
+        // } 
     } else if (what === "out") {
         box.classList.remove(`${open_class}`)
-        if (window.scrollY === 0 && varr < 1) {
-            header.classList.remove('white-new-header');
-            navlinks.classList.remove('white-header-links');
-            icons_container.classList.remove('white-header-icons');
-            lines.classList.remove('black-lines-button');
-        }  
+        // if (window.scrollY === 0 && varr < 1) {
+        //     header.classList.remove('white-new-header');
+        //     navlinks.classList.remove('white-header-links');
+        //     icons_container.classList.remove('white-header-icons');
+        //     lines.classList.remove('black-lines-button');
+        // }  
     } 
+}
+
+function blackorwhite(arrr, vari2) {
+    arrr.forEach((element) => {
+        element.onmouseenter = () => {
+            vari2++
+            if (vari2 > 0 && window.scrollY === 0) {
+                header.classList.add('white-new-header');
+                navlinks.classList.add('white-header-links');
+                icons_container.classList.add('white-header-icons');
+                lines.classList.add('black-lines-button'); 
+            }
+        }
+        element.onmouseleave = () => {
+            vari2--
+            if (window.scrollY === 0 && vari2 < 1) {
+                header.classList.remove('white-new-header');
+                navlinks.classList.remove('white-header-links');
+                icons_container.classList.remove('white-header-icons');
+                lines.classList.remove('black-lines-button');
+            } 
+        }
+    })
 }
 
 function showhide(arrr, css, box, vari) {
@@ -80,7 +103,7 @@ function showhide(arrr, css, box, vari) {
             vari++
             if (vari > 0) {
                 hoverstatus(box, "in", css, vari)
-            }
+            } 
         }
         element.onmouseleave = () => {
             vari--
@@ -93,6 +116,7 @@ function showhide(arrr, css, box, vari) {
 }
 showhide(arr2, "about-us-hover", aboutUs, counter)
 showhide(arr, "open-hover", filter_menu, counter)
+blackorwhite(header_items, second_counter)
 
 //-----------------------------------------------------------------------------------------------------------------
 
