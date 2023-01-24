@@ -50,20 +50,37 @@ function hoverstatus(box, what, open_class) {
     } 
 }
 
-arr2.forEach(function(element) {
-    element.onmouseenter = () => {
-        counter++
-        if (counter > 0) {
-            hoverstatus(aboutUs, "in", "about-us-hover")   
-        }
-    }
-    element.onmouseleave = () => {
-        counter--
-        if (counter < 1) {
-            hoverstatus(aboutUs, "out", "about-us-hover")   
-        }
-    }
-})
+function showhide(arr, func, css, box, vari) {
+    arr.forEach((element) => {
+        element.onmouseenter = () => {
+            vari++
+            if (vari > 0) {
+                func(box, "in", css)
+        }}
+        element.onmouseleave = () => {
+            vari--
+            if (vari < 1) {
+                func(box, "out", css)
+        }}
+    })
+}
+
+showhide(arr2, hoverstatus, "about-us-hover", aboutUs, counter)
+
+// arr2.forEach(function(element) {
+//     element.onmouseenter = () => {
+//         counter++
+//         if (counter > 0) {
+//             hoverstatus(aboutUs, "in", "about-us-hover")   
+//         }
+//     }
+//     element.onmouseleave = () => {
+//         counter--
+//         if (counter < 1) {
+//             hoverstatus(aboutUs, "out", "about-us-hover")   
+//         }
+//     }
+// })
 
 arr.forEach(function(element) {
     element.onmouseenter = () => {
