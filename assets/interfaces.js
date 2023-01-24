@@ -66,27 +66,26 @@ function blackorwhite(arrr, vari2) {
     })
 }
 
-function showhide(arrr, css, box, vari) {
-    arrr.forEach((element) => {
-        element.onmouseenter = () => {
-            vari++
-            if (vari > 0) {
-                hoverstatus(box, "in", css, vari)
-            } 
-            console.log(vari, element)
+function showhide(element, css, box, vari) {
+    element.onmouseenter = () => {
+        vari++
+        if (vari > 0) {
+            hoverstatus(box, "in", css, vari)
+        } 
+        console.log(vari, element)
+    }
+    element.onmouseleave = () => {
+        vari--
+        if (vari < 1) {
+            hoverstatus(box, "out", css, vari)
         }
-        element.onmouseleave = () => {
-            vari--
-            if (vari < 1) {
-                hoverstatus(box, "out", css, vari)
-            }
-            console.log(vari)
-        }
-       
-    })
+        console.log(vari, element)
+    }
 }
-showhide(arr2, "about-us-hover", aboutUs, counter)
-showhide(arr, "open-hover", filter_menu, counter)
+showhide(shop_by_link, "about-us-hover", aboutUs, counter)
+showhide(filter_menu, "about-us-hover", aboutUs, counter)
+showhide(aboutUs_link, "open-hover", filter_menu, counter)
+showhide(aboutUs, "open-hover", filter_menu, counter)
 blackorwhite(header_items, second_counter)
 
 //-----------------------------------------------------------------------------------------------------------------
