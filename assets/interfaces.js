@@ -19,12 +19,6 @@ let inner_lists = document.getElementById('product-lists-flex')
 const aboutUs_link = document.getElementById('div-1')
 const aboutUs = document.getElementById('about-us-menu')
 
-// const heart_icon = document.getElementById('heart-link')
-// const cart = document.getElementById('cart')
-// const account = document.getElementById('account')
-// const journal = document.getElementById('div-2')
-// const skin_type = document.getElementById('div-3')
-
 const left_navbar = document.getElementById('navbar-full-width')
 const right_icons = document.getElementById('link-icons')
 
@@ -76,8 +70,8 @@ function hoverstatus(box, what, open_class) {
     } 
 }
 
-function showhide(arr, css, box, vari) {
-    arr.forEach((element) => {
+function showhide(arrr, css, box, vari) {
+    arrr.forEach((element) => {
         element.onmouseenter = () => {
             vari++
             if (vari > 0) {
@@ -90,7 +84,6 @@ function showhide(arr, css, box, vari) {
         }   }
     })
 }
-
 showhide(arr2, "about-us-hover", aboutUs, counter)
 showhide(arr, "open-hover", filter_menu, counter)
 
