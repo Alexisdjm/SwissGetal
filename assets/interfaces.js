@@ -58,7 +58,9 @@ function hoverstatus(box, what, open_class, varr) {
     if (what === "in") {
         box.classList.add(`${open_class}`)
     } else if (what === "out") {
-        box.classList.remove(`${open_class}`) 
+        if (varr < 1) {
+            box.classList.remove(`${open_class}`) 
+        }
     } 
 }
 
