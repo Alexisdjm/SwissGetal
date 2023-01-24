@@ -2,7 +2,7 @@
     <div class="flex-menus-footer">
         {% if section.settings.newsletter %}
             <div class="newsletter-general-container">
-                <div style="margin-top: {{ section.settings.newsletter_upper_spacing }}">
+                <div style="margin-top: {{ section.settings.newsletter_upper_spacing }}vh">
                     {% form 'customer', id: 'footer-signup-form' %}
                         <input type="hidden" name="contact[tags]" value="prospect,newsletter">
                         {% if section.settings.newsletter_text != blank %}
