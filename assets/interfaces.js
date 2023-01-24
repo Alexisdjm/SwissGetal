@@ -56,39 +56,21 @@ const arr2 = [aboutUs_link, aboutUs]
 
 function hoverstatus(box, what, open_class, varr) {
     if (what === "in") {
-        if (box && open_class) {
-            box.classList.add(`${open_class}`)
-            if (window.scrollY === 0) {
-                header.classList.add('white-new-header');
-                navlinks.classList.add('white-header-links');
-                icons_container.classList.add('white-header-icons');
-                lines.classList.add('black-lines-button');
-            } 
-        } else {
-            if (window.scrollY === 0) {
-                header.classList.add('white-new-header');
-                navlinks.classList.add('white-header-links');
-                icons_container.classList.add('white-header-icons');
-                lines.classList.add('black-lines-button');
-            }  
-        }
+        box.classList.add(`${open_class}`)
+        if (window.scrollY === 0) {
+            header.classList.add('white-new-header');
+            navlinks.classList.add('white-header-links');
+            icons_container.classList.add('white-header-icons');
+            lines.classList.add('black-lines-button');
+        } 
     } else if (what === "out") {
-        if (box && open_class) {
-            box.classList.remove(`${open_class}`)
-            if (window.scrollY === 0 && varr < 1) {
-                header.classList.remove('white-new-header');
-                navlinks.classList.remove('white-header-links');
-                icons_container.classList.remove('white-header-icons');
-                lines.classList.remove('black-lines-button');
-            }  
-        } else {
-            if (window.scrollY === 0 && varr < 1) {
-                header.classList.remove('white-new-header');
-                navlinks.classList.remove('white-header-links');
-                icons_container.classList.remove('white-header-icons');
-                lines.classList.remove('black-lines-button');
-            }  
-        }
+        box.classList.remove(`${open_class}`)
+        if (window.scrollY === 0 && varr < 1) {
+            header.classList.remove('white-new-header');
+            navlinks.classList.remove('white-header-links');
+            icons_container.classList.remove('white-header-icons');
+            lines.classList.remove('black-lines-button');
+        }  
     } 
 }
 
