@@ -83,7 +83,7 @@ function showhide(element, css, box, vari) {
     }
 }
 
-fdocument.getElementById('product-filter-menu').onmouseenter = () => {console.log('hovered')}
+document.getElementById('product-filter-menu').onclick = () => {alert('hovered')}
 
 // showhide(shop_by_link, "about-us-hover", filter_menu, counter)
 showhide(filter_menu, "about-us-hover", filter_menu, counter)
