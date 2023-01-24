@@ -141,6 +141,16 @@
         {% endfor %}
     </div>
 </div>
+
+<div class="second-menu-hover">
+    <nav class="filter-menu">
+        {% for link in linklists[section.settings.menu_second_hover].links %}
+            <div class="menu-links-container">
+                <a href="{{ link.url }}" class="link-filter">{{ link.title }}</a>
+            </div>
+        {% endfor %}
+    </nav>
+</div>
 {% schema %}
     {
         "name": "new-header",
@@ -187,6 +197,12 @@
                 "id": "menu_linklist",
                 "label": "Menu",
                 "default": "main-menu"
+            },
+            {
+                "type": "link_list",
+                "id": "menu_second_hover",
+                "default": "main-menu",
+                "label": "choose the menu"
             }
         ],
         "max_blocks": 4,
