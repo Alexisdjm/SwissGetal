@@ -30,10 +30,10 @@ let header_items = [left_navbar, right_icons, filter_menu]
 
 header_items.forEach(element => {
     element.onmouseenter = () => {
-        hoverstatus("", 'in', "")
+        hoverstatus("", 'in', "", counter)
     }
     element.onmouseleave = () => {
-        hoverstatus("",'out',"")
+        hoverstatus("",'out',"", counter)
     }
 });
 
