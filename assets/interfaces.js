@@ -55,7 +55,6 @@ function hoverstatus(box, what, open_class) {
         if (box && open_class) {
             box.classList.add(`${open_class}`)
         } else {
-
             if (window.scrollY === 0) {
                 header.classList.add('white-new-header');
                 navlinks.classList.add('white-header-links');
@@ -67,7 +66,6 @@ function hoverstatus(box, what, open_class) {
         if (box && open_class) {
             box.classList.remove(`${open_class}`)
         } else {
-
             if (window.scrollY === 0 && counter < 1) {
                 header.classList.remove('white-new-header');
                 navlinks.classList.remove('white-header-links');
