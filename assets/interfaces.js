@@ -32,9 +32,9 @@ const arr2 = [aboutUs_link, aboutUs]
 
 function hoverstatus(box, what, open_class) {
     if (what === "in") {
-        box.classList.add('')
+        box.classList.add(`${open_class}`)
         if (window.scrollY === 0) {
-            header.classList.add(`${open_class}`);
+            header.classList.add('white-new-header');
             navlinks.classList.add('white-header-links');
             icons_container.classList.add('white-header-icons');
             lines.classList.add('black-lines-button');
