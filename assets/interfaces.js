@@ -32,6 +32,25 @@ links.forEach((element) => {
     element.onclick = (e) => { e.preventDefault() }
 })
 
+header_items.forEach(element => {
+    element.onmouseenter = () => {
+        if (window.scrollY === 0) {
+            header.classList.add('white-new-header');
+            navlinks.classList.add('white-header-links');
+            icons_container.classList.add('white-header-icons');
+            lines.classList.add('black-lines-button');
+        } 
+    }
+    element.onmouseleave = () => {
+        if (window.scrollY === 0 && varr < 1) {
+            header.classList.remove('white-new-header');
+            navlinks.classList.remove('white-header-links');
+            icons_container.classList.remove('white-header-icons');
+            lines.classList.remove('black-lines-button');
+        }
+    }
+})
+
 const arr = [shop_by_link, filter_menu]
 const arr2 = [aboutUs_link, aboutUs]
 
