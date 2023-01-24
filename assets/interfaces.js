@@ -42,7 +42,7 @@ header_items.forEach(element => {
         } 
     }
     element.onmouseleave = () => {
-        if (window.scrollY === 0 && varr < 1) {
+        if (window.scrollY === 0) {
             header.classList.remove('white-new-header');
             navlinks.classList.remove('white-header-links');
             icons_container.classList.remove('white-header-icons');
