@@ -33,10 +33,10 @@ let header_items = [journal, skin_type, heart_icon, search_glass, account, cart]
 
 header_items.forEach(element => {
     element.onmouseenter = () => {
-        window.screenY === 0 ? header.classList.add('white-new-header') : ''
+        hoverstatus('in')
     }
     element.onmouseleave = () => {
-        window.screenY === 0 ? header.classList.remove('white-new-header') : ''
+        hoverstatus('out')
     }
 });
 
@@ -49,7 +49,9 @@ const arr2 = [aboutUs_link, aboutUs]
 
 function hoverstatus(box, what, open_class) {
     if (what === "in") {
-        box.classList.add(`${open_class}`)
+        if (box && open_class) {
+            box.classList.add(`${open_class}`)
+        }
         if (window.scrollY === 0) {
             header.classList.add('white-new-header');
             navlinks.classList.add('white-header-links');
@@ -57,7 +59,9 @@ function hoverstatus(box, what, open_class) {
             lines.classList.add('black-lines-button');
         }  
     } else if (what === "out") {
-        box.classList.remove(`${open_class}`)
+        if (box && open_class) {
+            box.classList.remove(`${open_class}`)
+        }
         if (window.scrollY === 0 && counter < 1) {
             header.classList.remove('white-new-header');
             navlinks.classList.remove('white-header-links');
