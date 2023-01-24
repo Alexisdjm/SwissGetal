@@ -21,7 +21,7 @@ const aboutUs = document.getElementById('about-us-menu')
 
 let counter = 0
 
-let links = [shop_by_link, aboutUs_link, search_glass]
+let links = [shop_by_link, aboutUs_link]
 
 links.forEach((element) => {
     element.onclick = (e) => { e.preventDefault() }
@@ -30,29 +30,37 @@ links.forEach((element) => {
 const arr = [shop_by_link, filter_menu]
 const arr2 = [aboutUs_link, aboutUs]
 
+function hoverstatus(box, what, open_class) {
+    if (what === "in") {
+        box.classList.add('')
+        if (window.scrollY === 0) {
+            header.classList.add(`${open_class}`);
+            navlinks.classList.add('white-header-links');
+            icons_container.classList.add('white-header-icons');
+            lines.classList.add('black-lines-button');
+        }  
+    } else if (what === "out") {
+        box.classList.remove(`${open_class}`)
+        if (window.scrollY === 0 && counter < 1) {
+            header.classList.remove('white-new-header');
+            navlinks.classList.remove('white-header-links');
+            icons_container.classList.remove('white-header-icons');
+            lines.classList.remove('black-lines-button');
+        }  
+    } 
+}
+
 arr2.forEach(function(element) {
     element.onmouseenter = () => {
         counter++
         if (counter > 0) {
-            aboutUs.classList.add('about-us-hover')
-            if (window.scrollY === 0) {
-                header.classList.add('white-new-header');
-                navlinks.classList.add('white-header-links');
-                icons_container.classList.add('white-header-icons');
-                lines.classList.add('black-lines-button');
-            }    
+            hoverstatus(aboutUs, "in", "about-us-hover")   
         }
     }
     element.onmouseleave = () => {
         counter--
         if (counter < 1) {
-            aboutUs.classList.remove('about-us-hover')
-            if (window.scrollY === 0 && counter < 1) {
-                header.classList.remove('white-new-header');
-                navlinks.classList.remove('white-header-links');
-                icons_container.classList.remove('white-header-icons');
-                lines.classList.remove('black-lines-button');
-            }  
+            hoverstatus(aboutUs, "out", "about-us-hover")   
         }
     }
 })
@@ -96,21 +104,6 @@ handdle(search_glass, right_box, "open")
 
 handdle(x, ninja_menu, "close")
 handdle(close_search, right_box, "close")
-
-// toggle_menu.onclick = () => {
-//     ninja_menu.classList.add('is-open')
-// }
-// x.onclick = () => {
-//     ninja_menu.classList.remove('is-open')
-// }
-
-// search_glass.onclick = () => {
-//     right_box.classList.add('is-open')
-// }
-
-// close_search.onclick = () => {
-//     right_box.classList.remove('is-open')
-// }
 
 window.addEventListener('scroll', () => {
     
