@@ -31,12 +31,11 @@ let header_items = [left_navbar, right_icons]
 header_items.forEach(element => {
     element.onmouseenter = () => {
         counter++
-        counter > 0 ? hoverstatus("", 'in', "", counter) : ''
+        hoverstatus("", 'in', "")
         console.log(counter)
     }
     element.onmouseleave = () => {
-        counter--
-        counter < 1 ? hoverstatus("",'out',"", counter) : ''
+        hoverstatus("",'out',"")
         console.log(counter)
     }
 });
