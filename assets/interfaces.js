@@ -83,13 +83,11 @@ function showhide(element, css, box, vari) {
     }
 }
 
-aboutUs.onmouseover = () => {console.log('hovered')}
-aboutUs.onmouseout = () => {console.log('not hovered')}
+aboutUs_link.onmouseenter = () => {console.log('hovered onmouseenter')}
+aboutUs_link.onmouseleave = () => {console.log('not hovered onmouseleave')}
 
-aboutUs_link.onmouseover = () => {console.log('hovered')}
-aboutUs_link.onmouseout = () => {console.log('not hovered')}
-
-aboutUs.onclick = () => { console.log('click')}
+// aboutUs_link.onmouseover = () => {console.log('hovered onmouseover')}
+// aboutUs_link.onmouseout = () => {console.log('not hovered onmouseout')}
 
 // showhide(shop_by_link, "about-us-hover", filter_menu, counter)
 // showhide(filter_menu, "about-us-hover", filter_menu, counter)
