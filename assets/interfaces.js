@@ -89,9 +89,9 @@ aboutUs.onmouseleave = () => {console.log('not hovered')}
 aboutUs.onclick = () => { console.log('click')}
 
 // showhide(shop_by_link, "about-us-hover", filter_menu, counter)
-showhide(filter_menu, "about-us-hover", filter_menu, counter)
+// showhide(filter_menu, "about-us-hover", filter_menu, counter)
 // showhide(aboutUs_link, "open-hover", aboutUs, counter)
-showhide(aboutUs, "open-hover", aboutUs, counter)
+// showhide(aboutUs, "open-hover", aboutUs, counter)
 blackorwhite(header_items, second_counter)
 
 //-----------------------------------------------------------------------------------------------------------------
