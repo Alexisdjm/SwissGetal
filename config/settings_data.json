@@ -229,6 +229,7 @@
         "settings": {
           "newsletter": true,
           "newsletter_text": "Subscribe to unlock special offers, sneak peeks, giveaways, and offers like never before!",
+          "newsletter_upper_spacing": 6,
           "footer_bg_color": "#e6f4f1"
         }
       }
