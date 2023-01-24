@@ -31,8 +31,8 @@ links.forEach((element) => {
     element.onclick = (e) => { e.preventDefault() }
 })
 
-const arr = [shop_by_link, filter_menu, left_navbar, right_icons]
-const arr2 = [aboutUs_link, aboutUs, left_navbar, right_icons]
+const arr = [shop_by_link, filter_menu]
+const arr2 = [aboutUs_link, aboutUs]
 
 function hoverstatus(box, what, open_class, varr) {
     if (what === "in") {
@@ -66,14 +66,12 @@ function showhide(arrr, css, box, vari) {
             vari++
             if (vari > 0) {
                 hoverstatus(box, "in", css, vari)
-                hoverstatus('', "in", '', vari)
             }
         }
         element.onmouseleave = () => {
             vari--
             if (vari < 1) {
                 hoverstatus(box, "out", css, vari)
-                hoverstatus('', "out", '', vari)
             }
         }
        
