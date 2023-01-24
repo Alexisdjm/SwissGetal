@@ -21,8 +21,14 @@ const aboutUs = document.getElementById('about-us-menu')
 
 let counter = 0
 
-shop_by_link.onclick = (e) => { e.preventDefault() }
-aboutUs_link.onclick = (e) => { e.preventDefault() }
+let links = [shop_by_link, aboutUs_link, search_glass]
+
+links.forEach((element) => {
+    element.onclick = (e) => { e.preventDefault() }
+})
+
+// shop_by_link.onclick = (e) => { e.preventDefault() }
+// aboutUs_link.onclick = (e) => { e.preventDefault() }
 
 const arr = [shop_by_link, filter_menu]
 const arr2 = [aboutUs_link, aboutUs]
