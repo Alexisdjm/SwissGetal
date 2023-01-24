@@ -83,8 +83,8 @@ function showhide(element, css, box, vari) {
     }
 }
 
-aboutUs.onmouseenter = () => {console.log('hovered')}
-aboutUs.onmouseleave = () => {console.log('not hovered')}
+aboutUs.onmouseover = () => {console.log('hovered')}
+aboutUs.onmouseout = () => {console.log('not hovered')}
 
 aboutUs_link.onmouseenter = () => {console.log('hovered')}
 aboutUs_link.onmouseleave = () => {console.log('not hovered')}
