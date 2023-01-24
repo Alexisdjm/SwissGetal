@@ -31,11 +31,19 @@ let header_items = [left_navbar, right_icons, filter_menu]
 header_items.forEach(element => {
     element.onmouseenter = () => {
         counter++
-        hoverstatus("", 'in', "", counter)
+        console.log(counter)
+        if (counter > 0) {
+            hoverstatus("", 'in', "", counter)
+        }
+        
     }
     element.onmouseleave = () => {
         counter--
-        hoverstatus("",'out',"", counter)
+        console.log(counter)
+        if (counter < 1) {
+            hoverstatus("",'out',"", counter)
+        }
+        
     }
 });
 
@@ -79,14 +87,12 @@ function showhide(arrr, css, box, vari) {
             if (vari > 0) {
                 hoverstatus(box, "in", css, vari)
             }
-            // console.log(vari)
         }
         element.onmouseleave = () => {
             vari--
             if (vari < 1) {
                 hoverstatus(box, "out", css, vari)
             }
-            // console.log(vari)
         }
        
     })
