@@ -19,17 +19,20 @@ let inner_lists = document.getElementById('product-lists-flex')
 const aboutUs_link = document.getElementById('div-1')
 const aboutUs = document.getElementById('about-us-menu')
 
-const heart_icon = document.getElementById('heart-link')
-const cart = document.getElementById('cart')
-const account = document.getElementById('account')
-const journal = document.getElementById('div-2')
-const skin_type = document.getElementById('div-3')
+// const heart_icon = document.getElementById('heart-link')
+// const cart = document.getElementById('cart')
+// const account = document.getElementById('account')
+// const journal = document.getElementById('div-2')
+// const skin_type = document.getElementById('div-3')
+
+const left_navbar = document.getElementById('navbar-full-width')
+const right_icons = document.getElementById('link-icons')
 
 let counter = 0
 
 let links = [shop_by_link, aboutUs_link]
 
-let header_items = [journal, skin_type, heart_icon, search_glass, account, cart]
+let header_items = [left_navbar, right_icons]
 
 header_items.forEach(element => {
     element.onmouseenter = () => {
