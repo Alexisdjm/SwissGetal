@@ -31,7 +31,7 @@ arr2.forEach(function(element) {
     element.onmouseenter = () => {
         counter++
         if (counter > 0) {
-            aboutUs.classList.add('open-hover')
+            aboutUs.classList.add('about-us-hover')
             if (window.scrollY === 0) {
                 header.classList.add('white-new-header');
                 navlinks.classList.add('white-header-links');
@@ -43,7 +43,7 @@ arr2.forEach(function(element) {
     element.onmouseleave = () => {
         counter--
         if (counter < 1) {
-            aboutUs.classList.remove('open-hover')
+            aboutUs.classList.remove('about-us-hover')
             if (window.scrollY === 0 && counter < 1) {
                 header.classList.remove('white-new-header');
                 navlinks.classList.remove('white-header-links');

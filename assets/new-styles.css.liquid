@@ -891,8 +891,6 @@ span#close.close::before {
   max-width: 350px;
 }
 
-
-
 .menu-title {
   text-transform: uppercase;
   padding: 10px 10px 20px;
@@ -912,13 +910,20 @@ span#close.close::before {
   opacity: 0;
 }
 
-.open-hover {
+.open-hover, .about-us-hover {
   z-index: 99;
   visibility: visible;
   transition: opacity 500ms ease, transform 500ms ease, visibility 0s 0s;
   transition-delay: 0.1s;
-  transform: translate3d(0, -5px, 0);
   opacity: 1;
+}
+
+.open-hover {
+  transform: translate3d(0, 0, 0);
+}
+
+.about-us-hover {
+  transform: translate3d(0, -5px, 0);
 }
 
 /* ---------------------------------------------- footer ------------------------------------------------- */
