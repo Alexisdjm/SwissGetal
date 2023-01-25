@@ -97,25 +97,24 @@ blackorwhite(header_items, second_counter)
 
 //-----------------------------------------------------------------------------------------------------------------
 
-function handdle(xx, box, what) {
+function handdle(xx, box, what, boxnt) {
     xx.onclick = (e) => {
         e.preventDefault();
-        what === 'close' ? box.classList.remove('is-open') : box.classList.add('is-open')
-    }
-    if (box.classList.contains('is-open')) {
-        window.onclick = (event) => {
-            if (event.target == xx) {
-                box.classList.remove('is-open')
-            }
+        if (what === 'close') {
+            box.classList.remove('is-open')
+        } else {
+            box.classList.add('is-open')
+            boxnt.classlist.remove('is-open')
         }
+        // what === 'close' ? box.classList.remove('is-open') : box.classList.add('is-open')
     }
 }
 
 handdle(toggle_menu, ninja_menu, "open")
 handdle(search_glass, right_box, "open")
 
-handdle(x, ninja_menu, "close")
-handdle(close_search, right_box, "close")
+handdle(x, ninja_menu, "close", right_box)
+handdle(close_search, right_box, "close", ninja_menu)
 
 window.addEventListener('scroll', () => {
     
