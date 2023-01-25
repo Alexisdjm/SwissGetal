@@ -106,15 +106,14 @@ function handdle(xx, box, what, boxnt) {
             box.classList.add('is-open')
             boxnt.classlist.remove('is-open')
         }
-        // what === 'close' ? box.classList.remove('is-open') : box.classList.add('is-open')
     }
 }
 
-handdle(toggle_menu, ninja_menu, "open")
-handdle(search_glass, right_box, "open")
+handdle(toggle_menu, ninja_menu, "open", right_box)
+handdle(search_glass, right_box, "open", ninja_menu)
 
-handdle(x, ninja_menu, "close", right_box)
-handdle(close_search, right_box, "close", ninja_menu)
+handdle(x, ninja_menu, "close")
+handdle(close_search, right_box, "close")
 
 window.addEventListener('scroll', () => {
     
