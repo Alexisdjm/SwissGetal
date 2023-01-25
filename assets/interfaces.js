@@ -98,12 +98,14 @@ blackorwhite(header_items, second_counter)
 //-----------------------------------------------------------------------------------------------------------------
 
 function handdle(xx, box, what) {
-    window.onclick = (e) => {
-        e.target != xx ? box.classList.remove('is-open') : box.classList.add('is-open')
-    }
     xx.onclick = (e) => {
         e.preventDefault();
         what === 'close' ? box.classList.remove('is-open') : box.classList.add('is-open')
+    }
+    window.onclick = (event) => {
+        if (box.classList.contains('is-open') && event.target != xx) {
+            box.classList.remove('is-open')
+        }
     }
 }
 
