@@ -104,7 +104,7 @@ function handdle(xx, box, what, boxnt) {
             box.classList.remove('is-open')
         } else {
             box.classList.add('is-open')
-            boxnt.classlist.remove('is-open')
+            boxnt.classList.contains('is-open') ? boxnt.classlist.remove('is-open') : ''
         }
     }
 }
