@@ -104,7 +104,7 @@ function handdle(xx, box, what) {
     }
     if (box.classList.contains('is-open')) {
         window.onclick = (event) => {
-            if (event.target != xx) {
+            if (event.target == xx) {
                 box.classList.remove('is-open')
             }
         }
