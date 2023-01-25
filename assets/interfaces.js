@@ -66,33 +66,34 @@ function blackorwhite(arrr, vari2) {
     })
 }
 
-function showhide(element, css, box, vari) {
-    element.onmouseenter = () => {
-        vari++
-        if (vari > 0) {
-            hoverstatus(box, "in", css, vari)
-        } 
-        console.log(vari)
-    }
-    element.onmouseleave = () => {
-        vari--
-        if (vari < 1) {
-            hoverstatus(box, "out", css, vari)
+function showhide(arrr, css, box, vari) {
+    arrr.forEach(element => {
+
+        element.onmouseover = () => {
+            vari++
+            if (vari > 0) {
+                hoverstatus(box, "in", css, vari)
+            } 
+            console.log(vari)
         }
-        console.log(vari)
-    }
+        element.onmouseout = () => {
+            vari--
+            if (vari < 1) {
+                hoverstatus(box, "out", css, vari)
+            }
+            console.log(vari)
+        }
+    })
 }
 
-aboutUs.onmouseenter = () => {console.log('hovered onmouseenter')}
-aboutUs.onmouseleave = () => {console.log('not hovered onmouseleave')}
+// aboutUs.onmouseenter = () => {console.log('hovered onmouseenter')}
+// aboutUs.onmouseleave = () => {console.log('not hovered onmouseleave')}
 
-aboutUs.onmouseover = () => {console.log('hovered onmouseover')}
-aboutUs.onmouseout = () => {console.log('not hovered onmouseout')}
+// aboutUs.onmouseover = () => {console.log('hovered onmouseover')}
+// aboutUs.onmouseout = () => {console.log('not hovered onmouseout')}
 
-// showhide(shop_by_link, "about-us-hover", filter_menu, counter)
-// showhide(filter_menu, "about-us-hover", filter_menu, counter)
-// showhide(aboutUs_link, "open-hover", aboutUs, counter)
-// showhide(aboutUs, "open-hover", aboutUs, counter)
+showhide(arr2, "about-us-hover", filter_menu, counter)
+showhide(arr, "open-hover", aboutUs, counter)
 blackorwhite(header_items, second_counter)
 
 //-----------------------------------------------------------------------------------------------------------------
