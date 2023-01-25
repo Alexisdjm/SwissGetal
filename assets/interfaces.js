@@ -102,9 +102,11 @@ function handdle(xx, box, what) {
         e.preventDefault();
         what === 'close' ? box.classList.remove('is-open') : box.classList.add('is-open')
     }
-    window.onclick = (event) => {
-        if (box.classList.contains('is-open') && event.target != xx) {
-            box.classList.remove('is-open')
+    if (box.classList.contains('is-open')) {
+        window.onclick = (event) => {
+            if (event.target != xx) {
+                box.classList.remove('is-open')
+            }
         }
     }
 }
