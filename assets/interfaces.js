@@ -63,20 +63,12 @@ function blackorwhite(arrr, vari2) {
             vari2++
             if (window.scrollY === 0) {
                 handleCss('add')
-                // header.classList.add('white-new-header');
-                // navlinks.classList.add('white-header-links');
-                // icons_container.classList.add('white-header-icons');
-                // lines.classList.add('black-lines-button'); 
             }
         }
         element.onmouseleave = () => {
             vari2--
             if (window.scrollY === 0 && vari2 < 1) {
                 handleCss('remove')
-                // header.classList.remove('white-new-header');
-                // navlinks.classList.remove('white-header-links');
-                // icons_container.classList.remove('white-header-icons');
-                // lines.classList.remove('black-lines-button');
             } 
         }
     })
