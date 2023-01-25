@@ -86,12 +86,6 @@ function showhide(arrr, css, box, vari) {
     })
 }
 
-// aboutUs.onmouseenter = () => {console.log('hovered onmouseenter')}
-// aboutUs.onmouseleave = () => {console.log('not hovered onmouseleave')}
-
-// aboutUs.onmouseover = () => {console.log('hovered onmouseover')}
-// aboutUs.onmouseout = () => {console.log('not hovered onmouseout')}
-
 showhide(arr2, "about-us-hover", aboutUs, counter)
 showhide(arr, "open-hover", filter_menu, counter)
 blackorwhite(header_items, second_counter)
