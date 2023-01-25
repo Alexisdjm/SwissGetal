@@ -43,24 +43,40 @@ function hoverstatus(box, what, open_class, varr) {
     } 
 }
 
+function handleCss(what) {
+    if (what === 'add') {
+        header.classList.add('white-new-header');
+        navlinks.classList.add('white-header-links');
+        icons_container.classList.add('white-header-icons');
+        lines.classList.add('black-lines-button'); 
+    } else if(what === 'remove') {
+        header.classList.remove('white-new-header');
+        navlinks.classList.remove('white-header-links');
+        icons_container.classList.remove('white-header-icons');
+        lines.classList.remove('black-lines-button');
+    }
+}
+
 function blackorwhite(arrr, vari2) {
     arrr.forEach((element) => {
         element.onmouseenter = () => {
             vari2++
             if (window.scrollY === 0) {
-                header.classList.add('white-new-header');
-                navlinks.classList.add('white-header-links');
-                icons_container.classList.add('white-header-icons');
-                lines.classList.add('black-lines-button'); 
+                handleCss('add')
+                // header.classList.add('white-new-header');
+                // navlinks.classList.add('white-header-links');
+                // icons_container.classList.add('white-header-icons');
+                // lines.classList.add('black-lines-button'); 
             }
         }
         element.onmouseleave = () => {
             vari2--
             if (window.scrollY === 0 && vari2 < 1) {
-                header.classList.remove('white-new-header');
-                navlinks.classList.remove('white-header-links');
-                icons_container.classList.remove('white-header-icons');
-                lines.classList.remove('black-lines-button');
+                handleCss('remove')
+                // header.classList.remove('white-new-header');
+                // navlinks.classList.remove('white-header-links');
+                // icons_container.classList.remove('white-header-icons');
+                // lines.classList.remove('black-lines-button');
             } 
         }
     })
@@ -68,20 +84,17 @@ function blackorwhite(arrr, vari2) {
 
 function showhide(arrr, css, box, vari) {
     arrr.forEach(element => {
-
         element.onmouseover = () => {
             vari++
             if (vari > 0) {
                 hoverstatus(box, "in", css, vari)
             } 
-            console.log(vari)
         }
         element.onmouseout = () => {
             vari--
             if (vari < 1) {
                 hoverstatus(box, "out", css, vari)
             }
-            console.log(vari)
         }
     })
 }
