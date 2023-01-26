@@ -1,53 +1,106 @@
 {% assign count = 0 %}
-<div id="new-header-container" class="new-header">
-    <div id="menu-full-width" class="menu-container menu-links-1">
-        <nav id="navbar-full-width" class="navbar-links">
-            {% for link in linklists[section.settings.menu_linklist].links %}
-                <div id="div-{{ count }}" class="each-link">
-                    <a class="hover-link" href="{{ link.url }}">{{ link.title }}</a>
-                </div>
-                {% assign count = count | plus: 1 %}
-            {% endfor %}
-        </nav>
-    </div>
-    <div id="menu-mobile-button">
-        <summary tabindex="-1">
-            <button id="toggle-menu" class="main-menu-toggle" type="button" aria-controls="main-menu" aria-label="{{ 'layout.header.menu' | t | escape }}">
-                <div id="mobile-button-lines" class="icon-burger">
-                    <span class="line line-1"></span>
-                    <span class="line line-2"></span>
-                    <span class="line line-3"></span>
-                </div>
-            </button>
-        </summary>
-    </div>
-    
-    <div class="logo-header-container">
-        <img width="{{ section.settings.logo_width }}" src="{{ section.settings.logo-img | img_url: 'master' }}" alt="logo">
-    </div>
-    <div id="link-icons" class="items-container">
-        <i id="heart-link" class="heart-icon-centered fa-regular fa-heart"></i>
-        {%- if settings.enable_search -%}
-            <span class="header-items__item header-items__search-link">
-                <a id="search-link-glass" href="{{ routes.search_url }}" class="header-search-toggle" aria-label="{{ 'layout.header.search' | t | escape }}">
-                {% render 'svg-search' %}
+{% unless template != 'index' and section.settings.index_only_transparent %}
+    <div id="new-header-container" class="new-header">
+        <div id="menu-full-width" class="menu-container menu-links-1">
+            <nav id="navbar-full-width" class="navbar-links">
+                {% for link in linklists[section.settings.menu_linklist].links %}
+                    <div id="div-{{ count }}" class="each-link">
+                        <a class="hover-link" href="{{ link.url }}">{{ link.title }}</a>
+                    </div>
+                    {% assign count = count | plus: 1 %}
+                {% endfor %}
+            </nav>
+        </div>
+        <div id="menu-mobile-button" class="black-lines-button">
+            <summary tabindex="-1">
+                <button id="toggle-menu" class="main-menu-toggle" type="button" aria-controls="main-menu" aria-label="{{ 'layout.header.menu' | t | escape }}">
+                    <div id="mobile-button-lines" class="icon-burger">
+                        <span class="line line-1"></span>
+                        <span class="line line-2"></span>
+                        <span class="line line-3"></span>
+                    </div>
+                </button>
+            </summary>
+        </div>
+        
+        <div class="logo-header-container">
+            <img width="{{ section.settings.logo_width }}" src="{{ section.settings.logo-img | img_url: 'master' }}" alt="logo">
+        </div>
+        <div id="link-icons" class="items-container">
+            <i id="heart-link" class="heart-icon-centered fa-regular fa-heart"></i>
+            {%- if settings.enable_search -%}
+                <span class="header-items__item header-items__search-link">
+                    <a id="search-link-glass" href="{{ routes.search_url }}" class="header-search-toggle" aria-label="{{ 'layout.header.search' | t | escape }}">
+                    {% render 'svg-search' %}
+                    </a>
+                </span>
+            {%- endif -%}
+            <span id="account-link" class="center-icons header-items__item header-items__account-link hide-until-sm">
+                <a id="account" href="{{ routes.account_url }}" aria-label="{{ 'layout.customer.log_in' | t | escape }}">
+                    <span class="cart-link-icon cart-link-icon__account">{% render 'svg-account' %}</span>
                 </a>
             </span>
-        {%- endif -%}
-        <span id="account-link" class="center-icons header-items__item header-items__account-link hide-until-sm">
-            <a id="account" href="{{ routes.account_url }}" aria-label="{{ 'layout.customer.log_in' | t | escape }}">
-                <span class="cart-link-icon cart-link-icon__account">{% render 'svg-account' %}</span>
-            </a>
-        </span>
 
-        <span class="center-icons header-items__item header-items__cart-link">
-            <a href="{{ routes.cart_url }}" aria-label="{{ 'layout.header.cart' | t | escape }}">
-              <span id="cart" class="cart-link-icon">{% render 'svg-cart' %}</span>
-              {% if cart.item_count > 0 %}<span class="cart-count">({{ cart.item_count }})</span>{% endif %}
-            </a>
-        </span>
+            <span class="center-icons header-items__item header-items__cart-link">
+                <a href="{{ routes.cart_url }}" aria-label="{{ 'layout.header.cart' | t | escape }}">
+                <span id="cart" class="cart-link-icon">{% render 'svg-cart' %}</span>
+                {% if cart.item_count > 0 %}<span class="cart-count">({{ cart.item_count }})</span>{% endif %}
+                </a>
+            </span>
+        </div>
     </div>
-</div>
+{% else %}
+    <div id="new-header-container" class="new-header white-new-header">
+        <div id="menu-full-width" class="menu-container menu-links-1">
+            <nav id="navbar-full-width" class="navbar-links white-header-links">
+                {% for link in linklists[section.settings.menu_linklist].links %}
+                    <div id="div-{{ count }}" class="each-link">
+                        <a class="hover-link" href="{{ link.url }}">{{ link.title }}</a>
+                    </div>
+                    {% assign count = count | plus: 1 %}
+                {% endfor %}
+            </nav>
+        </div>
+        <div id="menu-mobile-button">
+            <summary tabindex="-1">
+                <button id="toggle-menu" class="main-menu-toggle" type="button" aria-controls="main-menu" aria-label="{{ 'layout.header.menu' | t | escape }}">
+                    <div id="mobile-button-lines" class="icon-burger">
+                        <span class="line line-1"></span>
+                        <span class="line line-2"></span>
+                        <span class="line line-3"></span>
+                    </div>
+                </button>
+            </summary>
+        </div>
+        
+        <div class="logo-header-container">
+            <img width="{{ section.settings.logo_width }}" src="{{ section.settings.logo-img | img_url: 'master' }}" alt="logo">
+        </div>
+        <div id="link-icons" class="items-container white-header-icons">
+            <i id="heart-link" class="heart-icon-centered fa-regular fa-heart"></i>
+            {%- if settings.enable_search -%}
+                <span class="header-items__item header-items__search-link">
+                    <a id="search-link-glass" href="{{ routes.search_url }}" class="header-search-toggle" aria-label="{{ 'layout.header.search' | t | escape }}">
+                    {% render 'svg-search' %}
+                    </a>
+                </span>
+            {%- endif -%}
+            <span id="account-link" class="center-icons header-items__item header-items__account-link hide-until-sm">
+                <a id="account" href="{{ routes.account_url }}" aria-label="{{ 'layout.customer.log_in' | t | escape }}">
+                    <span class="cart-link-icon cart-link-icon__account">{% render 'svg-account' %}</span>
+                </a>
+            </span>
+
+            <span class="center-icons header-items__item header-items__cart-link">
+                <a href="{{ routes.cart_url }}" aria-label="{{ 'layout.header.cart' | t | escape }}">
+                <span id="cart" class="cart-link-icon">{% render 'svg-cart' %}</span>
+                {% if cart.item_count > 0 %}<span class="cart-count">({{ cart.item_count }})</span>{% endif %}
+                </a>
+            </span>
+        </div>
+    </div>
+    
+{% endunless %}
 {%- if settings.enable_search -%}
     <div id="right-search-form" class="header-search search-box no-js-hidden">
         <button id="close-search-form" type="button" class="side-drawer__close-btn" aria-label="{{ 'general.accessibility_labels.close' | t | escape }}">{% render 'svg-x' %}</button>
@@ -162,10 +215,10 @@
                 "id": "logo-img"
             },
             {
-                "type": "image_picker",
-                "id": "alt_logo",
-                "label": "Contrast logo",
-                "info": "Optional logo used when over the header slideshow and images."
+                "type": "checkbox",
+                "id": "index_only_transparent",
+                "label": "transparent bg only in home page?",
+                "default": true
             },
             {
                 "type": "range",
@@ -177,16 +230,6 @@
                 "label": "Maximum logo width",
                 "info": "Logo height is restricted to 150px.",
                 "default": 150
-            },
-            {
-                "type": "header",
-                "content": "Layout"
-            },
-            {
-                "type": "checkbox",
-                "id": "enable_sticky",
-                "label": "Stick to top of screen on scroll",
-                "default": true
             },
             {
                 "type": "header",
