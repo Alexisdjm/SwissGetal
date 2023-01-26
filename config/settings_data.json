@@ -89,7 +89,7 @@
         "type": "announcement",
         "settings": {
           "show_announcement": true,
-          "announcement_home_only": true,
+          "announcement_home_only": false,
           "announcement_bar_text": "Free shipping on all orders over $100 (only USA)",
           "announcement_bar_link": "",
           "announcement_bar_bg_color": "#ffffff",
