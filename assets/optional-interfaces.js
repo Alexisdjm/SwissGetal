@@ -27,10 +27,11 @@ handdle(close_search, right_box, "close")
 window.addEventListener('scroll', () => {
     
     if ( window.scrollY > 0) {
+        header_container.classList.remove('top-positioning')
         header_container.classList.add('top-0')
         header.classList.add('new-padding-header');
     } else {
-        header_container.classList.remove('top-0')
+        header_container.classList.add('top-positioning')
         header.classList.remove('new-padding-header')
     }
 })
