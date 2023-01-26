@@ -41,6 +41,7 @@ function showhide(arrr, css, box, vari) {
             vari++
             if (vari > 0) {
                 hoverstatus(box, "in", css, vari)
+                console.log(element)
             } 
         }
         element.onmouseout = () => {
