@@ -11,11 +11,45 @@ let search_glass = document.getElementById('search-link-glass')
 let close_search = document.getElementById('close-search-form')
 let right_box = document.getElementById('right-search-form')
 
+const filter_menu = document.getElementById('product-filter-menu')
+const shop_by_link = document.getElementById('div-0')
+const aboutUs_link = document.getElementById('div-1')
+const aboutUs = document.getElementById('about-us-menu')
+
+let counter = 0
+
+let links = [shop_by_link, aboutUs_link]
+
+function hoverstatus(box, what, open_class, varr) {
+    if (what === "in") {
+        box.classList.add(`${open_class}`)
+    } else if (what === "out") {
+        varr < 1 ? box.classList.remove(`${open_class}`) : ''
+    } 
+}
+
 function handdle(xx, box, what) {
     xx.onclick = (e) => {
         e.preventDefault();
         what === 'close' ? box.classList.remove('is-open') : box.classList.add('is-open')
     }
+}
+
+function showhide(arrr, css, box, vari) {
+    arrr.forEach(element => {
+        element.onmouseover = () => {
+            vari++
+            if (vari > 0) {
+                hoverstatus(box, "in", css, vari)
+            } 
+        }
+        element.onmouseout = () => {
+            vari--
+            if (vari < 1) {
+                hoverstatus(box, "out", css, vari)
+            }
+        }
+    })
 }
 
 handdle(toggle_menu, ninja_menu, "open")

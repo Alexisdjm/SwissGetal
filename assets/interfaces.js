@@ -12,8 +12,7 @@ let close_search = document.getElementById('close-search-form')
 let right_box = document.getElementById('right-search-form')
 
 const filter_menu = document.getElementById('product-filter-menu')
-let shop_by_link = document.getElementById('div-0')
-let inner_lists = document.getElementById('product-lists-flex')
+const shop_by_link = document.getElementById('div-0')
 const aboutUs_link = document.getElementById('div-1')
 const aboutUs = document.getElementById('about-us-menu')
 
