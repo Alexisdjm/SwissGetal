@@ -50,9 +50,9 @@
         </div>
     </div>
 {% else %}
-    <div class="new-header white-new-header">
+    <div id="static-white-header" class="new-header white-new-header">
         <div id="menu-full-width" class="menu-container menu-links-1">
-            <nav class="navbar-links white-header-links">
+            <nav id="static-black-links" class="navbar-links white-header-links">
                 {% for link in linklists[section.settings.menu_linklist].links %}
                     <div id="div-{{ count }}" class="each-link">
                         <a class="hover-link" href="{{ link.url }}">{{ link.title }}</a>
@@ -64,7 +64,7 @@
         <div id="menu-mobile-button">
             <summary tabindex="-1">
                 <button id="toggle-menu" class="main-menu-toggle" type="button" aria-controls="main-menu" aria-label="{{ 'layout.header.menu' | t | escape }}">
-                    <div id="mobile-button-lines" class="icon-burger black-lines-button">
+                    <div id="black-hamburger-lines" class="icon-burger black-lines-button">
                         <span class="line line-1"></span>
                         <span class="line line-2"></span>
                         <span class="line line-3"></span>
@@ -76,7 +76,7 @@
         <div class="logo-header-container">
             <img width="{{ section.settings.logo_width }}" src="{{ section.settings.logo-img | img_url: 'master' }}" alt="logo">
         </div>
-        <div class="items-container white-header-icons">
+        <div id="black-icons" class="items-container white-header-icons">
             <i id="heart-link" class="heart-icon-centered fa-regular fa-heart"></i>
             {%- if settings.enable_search -%}
                 <span class="header-items__item header-items__search-link">
@@ -205,7 +205,11 @@
     </nav>
 </div>
 
-<script src="{{ 'interfaces.js' | asset_url }}"></script>
+{% unless template != 'index' and section.settings.index_only_transparent %}
+    <script src="{{ 'interfaces.js' | asset_url }}"></script>
+{% else %}
+    <script src="{{ 'optional-interfaces.js' | asset_url }}"></script>
+{% endunless %}
 
 {% schema %}
     {

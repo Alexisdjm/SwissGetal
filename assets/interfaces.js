@@ -1,10 +1,8 @@
-let header = document.getElementById('new-header-container')
+const header = document.getElementById('new-header-container')
 const header_container = document.getElementById('shopify-section-new-header')
-let navlinks = document.getElementById('navbar-full-width')
-let icons_container = document.getElementById('link-icons')
-let window_ = document.getElementById('main-content')
-let first_container = document.getElementById('new-header-container')
-let lines = document.getElementById('mobile-button-lines');
+const navlinks = document.getElementById('navbar-full-width')
+const icons_container = document.getElementById('link-icons')
+const lines = document.getElementById('mobile-button-lines');
 
 let toggle_menu = document.getElementById('toggle-menu');
 let ninja_menu = document.getElementById('left-hidden-menu-box');
@@ -114,11 +112,11 @@ window.addEventListener('scroll', () => {
     
     if ( window.scrollY > 0) {
         header_container.classList.add('top-0')
-        first_container.classList.add('new-padding-header');
+        header.classList.add('new-padding-header');
         handleCss('add')
     } else {
         header_container.classList.remove('top-0')
-        first_container.classList.remove('new-padding-header')
+        header.classList.remove('new-padding-header')
         handleCss('remove')
     }
 })
