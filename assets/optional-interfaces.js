@@ -16,6 +16,8 @@ const shop_by_link = document.getElementById('div-0')
 const aboutUs_link = document.getElementById('div-1')
 const aboutUs = document.getElementById('about-us-menu')
 
+document.addEventListener('DOMContentLoaded', () => {header_container.classList.add('top-positioning')})
+
 let counter = 0
 
 const arr = [shop_by_link, filter_menu]
@@ -44,7 +46,6 @@ function showhide(arrr, css, box, vari) {
             vari++
             if (vari > 0) {
                 hoverstatus(box, "in", css, vari)
-                console.log(element)
             } 
         }
         element.onmouseout = () => {
