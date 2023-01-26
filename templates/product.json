@@ -5,35 +5,56 @@
       "blocks": {
         "title": {
           "type": "title",
-          "settings": {}
+          "settings": {
+          }
         },
         "price": {
           "type": "price",
-          "settings": {}
+          "settings": {
+            "show_tax_and_shipping": true
+          }
         },
         "divider-0": {
           "type": "divider",
-          "settings": {}
+          "settings": {
+          }
         },
         "description": {
           "type": "description",
-          "settings": {}
+          "settings": {
+          }
         },
         "divider-1": {
           "type": "divider",
-          "settings": {}
+          "settings": {
+          }
         },
         "variant-picker": {
           "type": "variant-picker",
-          "settings": {}
+          "settings": {
+            "selector_style": "buttons",
+            "enable_dynamic_availability": true,
+            "enable_size_chart": false,
+            "size_chart_variant": "Size",
+            "size_chart_page": ""
+          }
         },
         "buy-buttons": {
           "type": "buy-buttons",
-          "settings": {}
+          "settings": {
+            "show_quantity_selector": true,
+            "enable_ajax_form": "true",
+            "enable_payment_button": true,
+            "show_pickup_availability": true,
+            "show_backorder_text": true,
+            "show_inventory_notice": false,
+            "inventory_notice_threshold": 10
+          }
         },
         "share": {
           "type": "share",
-          "settings": {}
+          "settings": {
+          }
         }
       },
       "block_order": [
@@ -46,11 +67,20 @@
         "buy-buttons",
         "share"
       ],
-      "settings": {}
+      "settings": {
+        "prod_lightbox": true,
+        "prod_lightbox_zoom": true,
+        "enable_video_looping": false,
+        "description_location": "details"
+      }
     },
     "recommendations": {
       "type": "product-recommendations",
-      "settings": {}
+      "settings": {
+        "recommendations_title": "You may also like",
+        "grid_show_vendor": false,
+        "products_per_row_int": 4
+      }
     }
   },
   "order": [
