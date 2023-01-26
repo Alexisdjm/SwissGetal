@@ -35,7 +35,7 @@
   endif
 -%}
 
-<body style="position: absolute; width: 100%;" class="{{ body_classes }}" id="{{ page_title | handle }}">
+<body class="{{ body_classes }}" id="{{ page_title | handle }}">
   {%- if settings.enable_transition_in -%}
     <script>if ('IntersectionObserver' in window) document.body.classList.add('cc-animate-enabled');</script>
   {%- endif -%}
