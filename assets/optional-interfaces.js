@@ -28,9 +28,9 @@ window.addEventListener('scroll', () => {
     
     if ( window.scrollY > 0) {
         header_container.classList.add('top-0')
-        first_container.classList.add('new-padding-header');
+        header.classList.add('new-padding-header');
     } else {
         header_container.classList.remove('top-0')
-        first_container.classList.remove('new-padding-header')
+        header.classList.remove('new-padding-header')
     }
 })
