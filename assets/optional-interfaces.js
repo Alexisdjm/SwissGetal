@@ -18,6 +18,9 @@ const aboutUs = document.getElementById('about-us-menu')
 
 let counter = 0
 
+const arr = [shop_by_link, filter_menu]
+const arr2 = [aboutUs_link, aboutUs]
+
 let links = [shop_by_link, aboutUs_link]
 
 function hoverstatus(box, what, open_class, varr) {
@@ -52,6 +55,9 @@ function showhide(arrr, css, box, vari) {
         }
     })
 }
+
+showhide(arr2, "about-us-hover", aboutUs, counter)
+showhide(arr, "open-hover", filter_menu, counter)
 
 handdle(toggle_menu, ninja_menu, "open")
 handdle(search_glass, right_box, "open")
