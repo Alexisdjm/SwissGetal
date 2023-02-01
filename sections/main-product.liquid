@@ -20,18 +20,18 @@
     {%- endif -%}
 
     <div class="product-grid">
-      <div class="product-grid__media">
-        <div class="media-gallery">
-          {% render 'media-gallery', featured_image: featured_image %}
+      <div class="vertical-flex">
+        <div class="images-flex">
+          {%- if product != blank -%}
+            {% render 'media-gallery', product: product, featured_image: featured_image %}
+          {%- else -%}
+            <div class="media-gallery__main">
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
+            </div>
         </div>
-        {%- if product.media.size > 1 -%}
-          <div class="expand-media-row light-spaced-row-top">
-            <button type="button" class="expand-media-btn feature-link">
-              <span class="expand-label">{{ 'products.product.expand_images' | t }}</span>
-              <span class="collapse-label">{{ 'products.product.collapse_images' | t }}</span>
-            </button>
-          </div>
-        {%- endif -%}
+        <div class="video-product-container">
+          <iframe src="https://player.vimeo.com/video/747334367?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&controls=0&loop=1" frameborder="0"></iframe>
+        </div>
       </div>
       <div class="product-grid__detail" data-cc-animate>
         {%- for block in section.blocks -%}
