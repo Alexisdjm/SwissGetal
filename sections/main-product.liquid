@@ -20,7 +20,7 @@
     {%- endif -%}
 
     <div class="product-grid">
-      <div class="product-grid__media">
+      {% comment %} <div class="product-grid__media">
         <div class="media-gallery">
           {% render 'media-gallery', featured_image: featured_image %}
         </div>
@@ -32,7 +32,7 @@
             </button>
           </div>
         {%- endif -%}
-      </div>
+      </div> {% endcomment %}
       <div class="product-grid__detail" data-cc-animate>
         {%- for block in section.blocks -%}
           {%- case block.type -%}
