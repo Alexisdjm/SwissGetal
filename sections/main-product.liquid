@@ -33,7 +33,18 @@
           <iframe class="swiss-product-iframe" src="https://player.vimeo.com/video/747334367?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&controls=0&loop=1" frameborder="0"></iframe>
         </div>
       </div>
-      <div class="new-product-detail product-grid__detail" data-cc-animate>
+      <div class="new-product-detail detail-box" data-cc-animate>
+        {% if section.settings.brand_url_redirect %}
+          <div class="brand_url_fixed">
+            <p class="by">by <a class="green-link" href="{{ section.settings.brand_url_redirect }}">SwissGetal</a></p>
+            <i id="heart-link" class="heart-icon-centered fa-regular fa-heart"></i>
+          </div>
+        {% endif %}
+        {% if section.settings.advice_custom_text %}
+        <div class="advice-position">
+          <p class="advice_text">{{ section.settings.advice_custom_text }}</p>
+        </div>
+        {% endif %}
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when '@app' -%}
@@ -386,6 +397,16 @@
           "en": "Enable video looping"
         },
         "default": false
+      },
+      {
+        "type": "url",
+        "id": "brand_url_redirect",
+        "label": "brand link"
+      },
+      {
+        "type": "text",
+        "id": "advice_custom_text",
+        "label": "add your custom advice text"
       },
       {
         "type": "header",
