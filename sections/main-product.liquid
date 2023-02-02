@@ -23,10 +23,10 @@
       <div class="vertical-flex">
         <div class="images-flex">
           <div class="product-image-container">
-            <img src="{{ product.images[0] | img_url: '600x600' }}" alt="{{product.images[0].alt}}" />
+            <img class="img-product-contain" src="{{ product.images[0] | img_url: '600x600' }}" alt="{{product.images[0].alt}}" />
           </div>
           <div class="product-image-container">
-            <img src="{{ product.images[1] | img_url: '600x600' }}" alt="{{product.images[0].alt}}" />
+            <img class="img-roduct-cover" src="{{ product.images[1] | img_url: '600x600' }}" alt="{{product.images[1].alt}}" />
           </div>
         </div>
         <div>
