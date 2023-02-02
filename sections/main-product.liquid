@@ -40,7 +40,7 @@
             <i id="heart-link" class="heart-icon-centered fa-regular fa-heart"></i>
           </div>
         {% endif %}
-        {% if section.settings.advice_custom_text %}
+        {% if section.settings.advice_custom_text != blank %}
           <div class="advice-position">
             <p class="advice_text">{{ section.settings.advice_custom_text }}</p>
           </div>
