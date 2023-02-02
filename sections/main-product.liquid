@@ -134,8 +134,8 @@
 
             {%- when 'description' -%}
               {%- if section.settings.description_location == 'details' and product.description != blank -%}
-                <div class="product-form-block product-description rte" {{ block.shopify_attributes }}>
-                  {{ product.description }}
+                <div class="description-product" {{ block.shopify_attributes }}>
+                  <p>{{ product.description }}</p>
                 </div>
               {%- endif -%}
             {%- comment -%} ==================== end of block ==================== {%- endcomment -%}
