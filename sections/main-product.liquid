@@ -81,7 +81,7 @@
                   {{ form | payment_terms }}
                 {%- endform -%}
 
-                {%- if block.settings.show_tax_and_shipping -%}
+                {% comment %} {%- if block.settings.show_tax_and_shipping -%}
                   {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
                     <div class="product-policies">
                       {%- if cart.taxes_included -%}
@@ -92,7 +92,7 @@
                       {%- endif -%}
                     </div>
                   {%- endif -%}
-                {%- endif -%}
+                {%- endif -%} {% endcomment %}
               </div>
             {%- comment -%} ==================== end of block ==================== {%- endcomment -%}
 
@@ -159,7 +159,7 @@
                 assign show_inventory = block.settings.show_inventory_notice
                 assign inventory_threshold = block.settings.inventory_notice_threshold
               -%}
-              <div class="product-form-block" {{ block.shopify_attributes }}>
+              <div  class="product-form-block quantity-buttons-mt" {{ block.shopify_attributes }}>
                 {%- if show_inventory -%}
                   {%- capture inventory_notice -%}
                     {%- if current_variant.inventory_management != blank and current_variant.inventory_quantity > 0 -%}
