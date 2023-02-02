@@ -51,7 +51,7 @@
             {%- when 'price' -%}
               <div class="product-form-block" {{ block.shopify_attributes }}>
                 <div class="product-price product-price--large">
-                  <span style="color: black;" class="product-price__amount theme-money">
+                  <span class="product-price__amount theme-money">
                     {%- if settings.show_currency_code -%}
                       {{- current_variant.price | money_with_currency -}}
                     {%- else -%}
