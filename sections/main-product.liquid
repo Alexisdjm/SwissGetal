@@ -44,7 +44,7 @@
 
             {%- when 'title' -%}
               <div class="product-form-block product-title" {{ block.shopify_attributes }}>
-                <h1 style="color: black;" class="Nanum-Myeongjo size-40">{{ product.title }}</h1>
+                <h1 style="color: black;" class="Nanum-Myeongjo size-35">{{ product.title }}</h1>
               </div>
             {%- comment -%} ==================== end of block ==================== {%- endcomment -%}
 
@@ -59,7 +59,7 @@
                     {%- endif -%}
                   </span>
                   {%- if current_variant.compare_at_price > current_variant.price -%}
-                    <span class="product-price__compare theme-money">{{ current_variant.compare_at_price | money }}</span>
+                    <span style="color: black;" class="product-price__compare theme-money">{{ current_variant.compare_at_price | money }}</span>
                   {%- endif -%}
                   {% render 'unit-price', variant: current_variant %}
                 </div>
