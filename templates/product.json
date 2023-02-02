@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "new-main-product",
+      "type": "main-product",
       "blocks": {
         "title": {
           "type": "title",
@@ -71,6 +71,8 @@
         "prod_lightbox": true,
         "prod_lightbox_zoom": true,
         "enable_video_looping": false,
+        "brand_url_redirect": "shopify:\/\/collections\/all",
+        "advice_custom_text": "ALL PRODUCTS BEAUTY MUST HAVES BUY WITH MATTE CARE SERUMS",
         "description_location": "details"
       }
     },
