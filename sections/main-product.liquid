@@ -13,7 +13,7 @@
   {%- if current_variant.available and is_out_of_stock %} variant-status--backorder{%- endif -%}
 {%- endcapture -%}
 
-<div class="spaced-section product{{ status_classes }}" data-section-type="product" data-product-id="{{ product.id }}" data-components="accordion,custom-select">
+<div class="" data-section-type="product" data-product-id="{{ product.id }}" data-components="accordion,custom-select">
   <div class="container section-content">
     {%- if settings.show_breadcrumbs -%}
       {% render 'breadcrumbs', show_next_prev: true %}
@@ -22,18 +22,18 @@
     <div class="product-grid">
       <div class="vertical-flex">
         <div class="images-flex">
-          <div>
+          <div class="product-image-container">
             <img src="{{ product.images[0] | img_url: '600x600' }}" alt="{{product.images[0].alt}}" />
           </div>
-          <div>
-            <img src="{{ product.images[0] | img_url: '600x600' }}" alt="{{product.images[0].alt}}" />
+          <div class="product-image-container">
+            <img src="{{ product.images[1] | img_url: '600x600' }}" alt="{{product.images[0].alt}}" />
           </div>
         </div>
         <div>
-          <iframe src="https://player.vimeo.com/video/747334367?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&controls=0&loop=1" frameborder="0"></iframe>
+          <iframe class="swiss-product-iframe" src="https://player.vimeo.com/video/747334367?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&controls=0&loop=1" frameborder="0"></iframe>
         </div>
       </div>
-      <div class="product-grid__detail" data-cc-animate>
+      <div class="new-product-detail product-grid__detail" data-cc-animate>
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when '@app' -%}
