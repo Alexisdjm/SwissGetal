@@ -19,7 +19,7 @@
       {% render 'breadcrumbs', show_next_prev: true %}
     {%- endif -%}
 
-    <div class="product-grid">
+    <div class="new-product-grid">
       <div class="vertical-flex">
         <div class="images-flex">
           <div class="product-image-container">
@@ -41,9 +41,9 @@
           </div>
         {% endif %}
         {% if section.settings.advice_custom_text %}
-        <div class="advice-position">
-          <p class="advice_text">{{ section.settings.advice_custom_text }}</p>
-        </div>
+          <div class="advice-position">
+            <p class="advice_text">{{ section.settings.advice_custom_text }}</p>
+          </div>
         {% endif %}
         {%- for block in section.blocks -%}
           {%- case block.type -%}
