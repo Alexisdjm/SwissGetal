@@ -184,7 +184,6 @@
         "settings": {
           "logo-img": "shopify:\/\/shop_images\/image_1-removebg-preview.png",
           "logo_width": 150,
-          "enable_sticky": true,
           "menu_linklist": "main-menu",
           "menu_second_hover": "about-us"
         }
