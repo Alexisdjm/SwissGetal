@@ -1,51 +1,50 @@
 <div class="section-container min-h">
     <div class="flex-section"> 
-            <div class="flex-row-element simple-flex">
-                {% if section.settings.left_image %}
-                    <div class="img-box">
-                        <img src="{{ section.settings.img | img_url: 'master' }}" alt="img">
-                    </div> 
-                    <div class="textbox filter-menu">
-                        <h2 class="Nanum-Myeongjo">{{ section.settings.title }}</h2>
-                        <div class="text-box-element">
-                            {% if section.settings.first_subtitle != blank %}  
-                                <h5 class="Nanum-Myeongjo">{{ section.settings.first_subtitle }}</h5>
-                            {% endif %}
-                            <p class="inner-text-section">{{ section.settings.first_content }}</p>
-                        </div>
-                        {% if section.settings.second_content != blank %} 
-                            <div class="text-box-element">
-                                {% if section.settings.second_subtitle != blank %}  
-                                    <h5 class="Nanum-Myeongjo">{{ section.settings.second_subtitle }}</h5>
-                                {% endif %}
-                                <p class="inner-text-section">{{ section.settings.second_content }}</p>
-                            </div>
+        <div class="flex-row-element simple-flex">
+            {% if section.settings.left_image %}
+                <div class="img-box">
+                    <img src="{{ section.settings.img | img_url: 'master' }}" alt="img">
+                </div> 
+                <div class="textbox filter-menu">
+                    <h2 class="Nanum-Myeongjo">{{ section.settings.title }}</h2>
+                    <div class="text-box-element">
+                        {% if section.settings.first_subtitle != blank %}  
+                            <h5 class="Nanum-Myeongjo">{{ section.settings.first_subtitle }}</h5>
                         {% endif %}
+                        <p class="inner-text-section">{{ section.settings.first_content }}</p>
                     </div>
-                {% else %}
-                    <div class="textbox filter-menu">
-                        <h2>{{ section.settings.title }}</h2>
+                    {% if section.settings.second_content != blank %} 
                         <div class="text-box-element">
-                            {% if section.settings.first_subtitle != blank %}  
-                                <h5>{{ section.settings.first_subtitle }}</h5>
+                            {% if section.settings.second_subtitle != blank %}  
+                                <h5 class="Nanum-Myeongjo">{{ section.settings.second_subtitle }}</h5>
                             {% endif %}
-                            <p class="inner-text-section">{{ section.settings.first_content }}</p>
+                            <p class="inner-text-section">{{ section.settings.second_content }}</p>
                         </div>
-                        {% if section.settings.second_content != blank %} 
-                            <div class="text-box-element">
-                                {% if section.settings.second_subtitle != blank %}  
-                                    <h5 class="Nanum-Myeongjo">{{ section.settings.second_subtitle }}</h5>
-                                {% endif %}
-                                <p class="inner-text-section">{{ section.settings.second_content }}</p>
-                            </div>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="textbox filter-menu">
+                    <h2>{{ section.settings.title }}</h2>
+                    <div class="text-box-element">
+                        {% if section.settings.first_subtitle != blank %}  
+                            <h5>{{ section.settings.first_subtitle }}</h5>
                         {% endif %}
+                        <p class="inner-text-section">{{ section.settings.first_content }}</p>
                     </div>
-                    <div class="img-box">
-                        <img src="{{ section.settings.img | img_url: 'master' }}" alt="img">
-                    </div>
-                {% endif %}
-            </div>       
-        {% endfor %} 
+                    {% if section.settings.second_content != blank %} 
+                        <div class="text-box-element">
+                            {% if section.settings.second_subtitle != blank %}  
+                                <h5 class="Nanum-Myeongjo">{{ section.settings.second_subtitle }}</h5>
+                            {% endif %}
+                            <p class="inner-text-section">{{ section.settings.second_content }}</p>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="img-box">
+                    <img src="{{ section.settings.img | img_url: 'master' }}" alt="img">
+                </div>
+            {% endif %}
+        </div>       
     </div>
 </div>
 {% schema %}
