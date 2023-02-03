@@ -6,17 +6,17 @@
                     <img src="{{ section.settings.img | img_url: 'master' }}" alt="img">
                 </div> 
                 <div class="textbox filter-menu">
-                    <h2 class="Nanum-Myeongjo">{{ section.settings.title }}</h2>
+                    <h2 class="Nanum-Myeongjo font-black">{{ section.settings.title }}</h2>
                     <div class="text-box-element">
                         {% if section.settings.first_subtitle != blank %}  
-                            <h5 class="Nanum-Myeongjo">{{ section.settings.first_subtitle }}</h5>
+                            <h5 class="font-black">{{ section.settings.first_subtitle }}</h5>
                         {% endif %}
                         <p class="inner-text-section">{{ section.settings.first_content }}</p>
                     </div>
                     {% if section.settings.second_content != blank %} 
                         <div class="text-box-element">
                             {% if section.settings.second_subtitle != blank %}  
-                                <h5 class="Nanum-Myeongjo">{{ section.settings.second_subtitle }}</h5>
+                                <h5 class="font-black">{{ section.settings.second_subtitle }}</h5>
                             {% endif %}
                             <p class="inner-text-section">{{ section.settings.second_content }}</p>
                         </div>
@@ -24,17 +24,17 @@
                 </div>
             {% else %}
                 <div class="textbox filter-menu">
-                    <h2>{{ section.settings.title }}</h2>
+                    <h2 class="Nanum-Myeongjo font-black">{{ section.settings.title }}</h2>
                     <div class="text-box-element">
                         {% if section.settings.first_subtitle != blank %}  
-                            <h5>{{ section.settings.first_subtitle }}</h5>
+                            <h5 class="font-black">{{ section.settings.first_subtitle }}</h5>
                         {% endif %}
                         <p class="inner-text-section">{{ section.settings.first_content }}</p>
                     </div>
                     {% if section.settings.second_content != blank %} 
                         <div class="text-box-element">
                             {% if section.settings.second_subtitle != blank %}  
-                                <h5 class="Nanum-Myeongjo">{{ section.settings.second_subtitle }}</h5>
+                                <h5 class="font-black">{{ section.settings.second_subtitle }}</h5>
                             {% endif %}
                             <p class="inner-text-section">{{ section.settings.second_content }}</p>
                         </div>
