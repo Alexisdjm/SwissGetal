@@ -98,22 +98,10 @@
             "second_subtitle": "Enriched with Organic Materials",
             "second_content": "Our formula features a unique composition of organic botanical ingredients to promote an all natural approach to stimulating and promoting cell renewal."
           }
-        },
-        "5b843cbd-11f6-4f0a-8bdd-f24416b28283": {
-          "type": "text",
-          "settings": {
-            "left_image": false,
-            "title": "",
-            "first_subtitle": "",
-            "first_content": "Loren ipsum",
-            "second_subtitle": "",
-            "second_content": "Loren ipsum"
-          }
         }
       },
       "block_order": [
-        "f5bf38d6-ad40-412b-b4fb-020f07cd7625",
-        "5b843cbd-11f6-4f0a-8bdd-f24416b28283"
+        "f5bf38d6-ad40-412b-b4fb-020f07cd7625"
       ],
       "settings": {
       }
