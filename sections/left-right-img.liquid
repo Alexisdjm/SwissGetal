@@ -1,48 +1,47 @@
 <div class="section-container min-h">
-    <div class="filter-menu">
-        {%  for block in section.blocks %}  
+    <div class="flex-section"> 
             <div class="flex-row-element simple-flex">
-                {% if block.settings.left_image %}
+                {% if section.settings.left_image %}
                     <div class="img-box">
-                        <img src="{{ block.settings.img | img_url: 'master' }}" alt="img">
+                        <img src="{{ section.settings.img | img_url: 'master' }}" alt="img">
                     </div> 
                     <div class="textbox filter-menu">
-                        <h2>{{ block.settings.title }}</h2>
+                        <h2 class="Nanum-Myeongjo">{{ section.settings.title }}</h2>
                         <div class="text-box-element">
-                            {% if block.settings.first_subtitle != blank %}  
-                                <h5>{{ block.settings.first_subtitle }}</h5>
+                            {% if section.settings.first_subtitle != blank %}  
+                                <h5 class="Nanum-Myeongjo">{{ section.settings.first_subtitle }}</h5>
                             {% endif %}
-                            <p>{{ block.settings.first_content }}</p>
+                            <p class="inner-text-section">{{ section.settings.first_content }}</p>
                         </div>
-                        {% if block.settings.second_content != blank %} 
+                        {% if section.settings.second_content != blank %} 
                             <div class="text-box-element">
-                                {% if block.settings.second_subtitle != blank %}  
-                                    <h5></h5>
+                                {% if section.settings.second_subtitle != blank %}  
+                                    <h5 class="Nanum-Myeongjo">{{ section.settings.second_subtitle }}</h5>
                                 {% endif %}
-                                <p>{{ block.settings.second_content }}</p>
+                                <p class="inner-text-section">{{ section.settings.second_content }}</p>
                             </div>
                         {% endif %}
                     </div>
                 {% else %}
                     <div class="textbox filter-menu">
-                        <h2>{{ block.settings.title }}</h2>
+                        <h2>{{ section.settings.title }}</h2>
                         <div class="text-box-element">
-                            {% if block.settings.first_subtitle != blank %}  
-                                <h5>{{ block.settings.first_subtitle }}</h5>
+                            {% if section.settings.first_subtitle != blank %}  
+                                <h5>{{ section.settings.first_subtitle }}</h5>
                             {% endif %}
-                            <p>{{ block.settings.first_content }}</p>
+                            <p class="inner-text-section">{{ section.settings.first_content }}</p>
                         </div>
-                        {% if block.settings.second_content != blank %} 
+                        {% if section.settings.second_content != blank %} 
                             <div class="text-box-element">
-                                {% if block.settings.second_subtitle != blank %}  
-                                    <h5></h5>
+                                {% if section.settings.second_subtitle != blank %}  
+                                    <h5 class="Nanum-Myeongjo">{{ section.settings.second_subtitle }}</h5>
                                 {% endif %}
-                                <p>{{ block.settings.second_content }}</p>
+                                <p class="inner-text-section">{{ section.settings.second_content }}</p>
                             </div>
                         {% endif %}
                     </div>
                     <div class="img-box">
-                        <img src="{{ block.settings.img | img_url: 'master' }}" alt="img">
+                        <img src="{{ section.settings.img | img_url: 'master' }}" alt="img">
                     </div>
                 {% endif %}
             </div>       
@@ -53,51 +52,43 @@
     {
         "name": "left right text & images",
         "class": "left-right-section",
-        "max_blocks": 3,
-        "blocks": [
+        "settings": [
             {
-                "name": "text_image",
+                "type": "image_picker",
+                "id": "img",
+                "label": "choose a first img file"
+            },
+            {
+                "type": "checkbox",
+                "id": "left_image",
+                "label": "display image on the left side?",
+                "default": false
+            },
+            {
                 "type": "text",
-                "settings": [
-                    {
-                        "type": "image_picker",
-                        "id": "img",
-                        "label": "choose a first img file"
-                    },
-                    {
-                        "type": "checkbox",
-                        "id": "left_image",
-                        "label": "display image on the left side?",
-                        "default": false
-                    },
-                    {
-                        "type": "text",
-                        "id": "title",
-                        "label": "first title"
-                    },
-                    {
-                        "type": "text",
-                        "id": "first_subtitle",
-                        "label": "subtitle"
-                    },
-                    {
-                        "type": "text",
-                        "id": "first_content",
-                        "label": "first box text",
-                        "default": "Loren ipsum"
-                    },
-                    {
-                        "type": "text",
-                        "id": "second_subtitle",
-                        "label": "subtitle"
-                    },
-                    {
-                        "type": "text",
-                        "id": "second_content",
-                        "label": "second box text",
-                        "default": "Loren ipsum"
-                    }
-                ]
+                "id": "title",
+                "label": "first title"
+            },
+            {
+                "type": "text",
+                "id": "first_subtitle",
+                "label": "subtitle"
+            },
+            {
+                "type": "text",
+                "id": "first_content",
+                "label": "first box text",
+                "default": "Loren ipsum"
+            },
+            {
+                "type": "text",
+                "id": "second_subtitle",
+                "label": "subtitle"
+            },
+            {
+                "type": "text",
+                "id": "second_content",
+                "label": "second box text"
             }
         ],
         "presets": [
