@@ -78,24 +78,14 @@
     },
     "5802c8eb-b9e5-4657-b3f8-93017cc41d8d": {
       "type": "left-right-img",
-      "blocks": {
-        "f5bf38d6-ad40-412b-b4fb-020f07cd7625": {
-          "type": "text",
-          "settings": {
-            "img": "shopify:\/\/shop_images\/SGselect-2_1.png",
-            "left_image": false,
-            "title": "Benefits",
-            "first_subtitle": "Refreshing Deep Clean",
-            "first_content": "Prepare your skin for the next step of your nightly routine by first cleaning it thoroughly. This toner cleanses deeply while still invigorating and moisturizing the skin in a way that feels refreshing.",
-            "second_subtitle": "Enriched with Organic Materials",
-            "second_content": "Our formula features a unique composition of organic botanical ingredients to promote an all natural approach to stimulating and promoting cell renewal."
-          }
-        }
-      },
-      "block_order": [
-        "f5bf38d6-ad40-412b-b4fb-020f07cd7625"
-      ],
       "settings": {
+        "img": "shopify:\/\/shop_images\/SGselect-2_1.png",
+        "left_image": false,
+        "title": "Benefits",
+        "first_subtitle": "Refreshing Deep Clean",
+        "first_content": "Prepare your skin for the next step of your nightly routine by first cleaning it thoroughly. This toner cleanses deeply while still invigorating and moisturizing the skin in a way that feels refreshing.",
+        "second_subtitle": "Enriched with Organic Materials",
+        "second_content": "Our formula features a unique composition of organic botanical ingredients to promote an all natural approach to stimulating and promoting cell renewal."
       }
     },
     "recommendations": {
