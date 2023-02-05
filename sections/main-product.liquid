@@ -373,11 +373,11 @@
             <div class="textbox filter-menu">
                 <h2 class="Nanum-Myeongjo font-black">Benefits</h2>
                 <div class="text-box-element">
-                  {{ product.metafields.custom.benefits.value }}
+                  <p>{{ product.metafields.custom.benefits.value }}</p>
                 </div>
             </div>
             <div class="img-box">
-                <img src="{{ product.metafields.custom.benefits | img_tag }}" alt="img">
+                <img src="{{ product.metafields.custom.benefits | img_url: 'master' }}" alt="img">
             </div>
         </div>       
     </div>
