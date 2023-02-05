@@ -88,17 +88,6 @@
         "second_content": "Our formula features a unique composition of organic botanical ingredients to promote an all natural approach to stimulating and promoting cell renewal."
       }
     },
-    "e2126120-d598-4c31-8f43-935cca249c33": {
-      "type": "left-right-img",
-      "settings": {
-        "left_image": true,
-        "title": "",
-        "first_subtitle": "",
-        "first_content": "Loren ipsum",
-        "second_subtitle": "",
-        "second_content": ""
-      }
-    },
     "recommendations": {
       "type": "product-recommendations",
       "settings": {
@@ -111,7 +100,6 @@
   "order": [
     "main",
     "5802c8eb-b9e5-4657-b3f8-93017cc41d8d",
-    "e2126120-d598-4c31-8f43-935cca249c33",
     "recommendations"
   ]
 }
