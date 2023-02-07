@@ -372,9 +372,16 @@
         <div class="flex-row-element simple-flex">
             <div class="textbox filter-menu">
                 <h2 class="Nanum-Myeongjo font-black">Benefits</h2>
-                <div class="text-box-element">
-                  <p>{{ product.metafields.custom.benefits.value }}</p>
-                </div>
+                {% for item in product.metafields.custom.benefits_.value %}
+                  <h4>{{ item.subtitle }}</h4>
+                  <div class="text-box-element">
+                    <p>{{ item.content }}</p>
+                  </div>
+                  <h4>{{ item.optional_sub }}</h4>
+                  <div class="text-box-element">
+                    <p>{{ item.optional_content }}</p>
+                  </div>
+                {% endfor %}
             </div>
             <div class="img-box">
                 <img src="{{ product.metafields.custom.benefits_image | img_url: 'master' }}" alt="img">
