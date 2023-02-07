@@ -400,7 +400,7 @@
         <h2 class="Nanum-Myeongjo font-black benefits-title">Before & After</h2>
         <ul>
           {% for item in product.metafields.custom.before_after.value %}
-            <li><p class="benefits-content">{{ item }}</p></li>
+            <li class="benefits-content"></li>{{ item }}</li>
           {% endfor %}
         </ul>
       </div>
