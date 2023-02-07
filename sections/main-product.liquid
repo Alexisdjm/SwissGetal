@@ -392,12 +392,12 @@
 
 <div class="section-container min-h">
   <div> 
-    <div class="flex-row-element gap-60 simple-flex">
-      <div class="img-box">
+    <div class="flex-row-element lateral-margin-10 simple-flex ">
+      <div class="new-image-box">
         <img src="{{ product.metafields.custom.before_after_image | img_url: 'master' }}" alt="img">
       </div>
-      <div class="textbox filter-menu">
-        <h2 class="Nanum-Myeongjo font-black benefits-title margin-0">Before & After</h2>
+      <div class="textbox filter-menu list-box-right-margin">
+        <h2 class="Nanum-Myeongjo font-black benefits-title margin-before-after-title">Before & After</h2>
         <ul>
           {% for item in product.metafields.custom.before_after.value %}
             <li><p class="benefits-content margin-0">{{ item }}</p></li>
