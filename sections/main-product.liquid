@@ -373,10 +373,10 @@
             <div class="textbox filter-menu">
                 <h2 class="Nanum-Myeongjo font-black">Benefits</h2>
                 {% for item in product.metafields.custom.benefits_.value %}
-                  <p>item</p>
+                  <pre>item</pre>
                   <h4>{{ item.subtitle }}</h4>
                   <div class="text-box-element">
-                    <pre>{{ item.content }}</pre>
+                    <p>{{ item.content }}</p>
                   </div>
                   <h4>{{ item.optional_sub }}</h4>
                   <div class="text-box-element">
