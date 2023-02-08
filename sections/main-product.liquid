@@ -408,6 +408,18 @@
   </div>
 </div>
 
+<div class="ingredients-section">
+  <h1 class="ingredients">Key Ingredients</h1>
+  <div class="ingredients-box">
+    {% for ingredient in product.metafields.custom.ingredients_json.value %}
+      <div class="main-ingredient-box">
+        <h4 class="benefits-sub htu-sub-m">{{ ingredient.name }}</h4>
+        <p class="benefits-content htu-p-m">{{ ingredient.description }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
 <div class="section-container">
   <div> 
     {% for item in product.metafields.custom.how_to_use_.value %}
