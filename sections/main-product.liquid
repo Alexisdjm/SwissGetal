@@ -409,12 +409,12 @@
 </div>
 
 <div class="ingredients-section">
-  <h1 class="ingredients">Key Ingredients</h1>
+  <h1 class="ingredients Nanum-Myeongjo font-black benefits-title">Key Ingredients</h1>
   <div class="ingredients-box">
     {% for ingredient in product.metafields.custom.ingredients_json.value %}
       <div class="main-ingredient-box">
-        <h4 class="benefits-sub htu-sub-m">{{ ingredient.name }}</h4>
-        <p class="benefits-content htu-p-m">{{ ingredient.description }}</p>
+        <h4 class="benefits-sub">{{ ingredient.name }}</h4>
+        <p class="benefits-content">{{ ingredient.description }}</p>
       </div>
     {% endfor %}
   </div>
