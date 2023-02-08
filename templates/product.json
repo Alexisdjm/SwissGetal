@@ -83,10 +83,53 @@
         "grid_show_vendor": false,
         "products_per_row_int": 4
       }
+    },
+    "73ad22b6-e583-4427-9e3b-f15c77244efd": {
+      "type": "logo-gallery",
+      "blocks": {
+        "de031db8-c52a-44a4-8f49-9b5174a53b8d": {
+          "type": "text",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Swiss.png",
+            "logo_text": "Swiss Made"
+          }
+        },
+        "cc959c64-979b-48dd-a69a-e88f49ece100": {
+          "type": "text",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Quality.png",
+            "logo_text": "Hight Quality"
+          }
+        },
+        "ec2c5ee0-88ac-43f6-a171-80450ae58e76": {
+          "type": "text",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Proven.png",
+            "logo_text": "Proven Results"
+          }
+        },
+        "66782e95-697c-43ca-8ab9-e10bd1e36f1e": {
+          "type": "text",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Science.png",
+            "logo_text": "Backed by Science"
+          }
+        }
+      },
+      "block_order": [
+        "de031db8-c52a-44a4-8f49-9b5174a53b8d",
+        "cc959c64-979b-48dd-a69a-e88f49ece100",
+        "ec2c5ee0-88ac-43f6-a171-80450ae58e76",
+        "66782e95-697c-43ca-8ab9-e10bd1e36f1e"
+      ],
+      "settings": {
+        "content_size": 14
+      }
     }
   },
   "order": [
     "main",
-    "recommendations"
+    "recommendations",
+    "73ad22b6-e583-4427-9e3b-f15c77244efd"
   ]
 }
