@@ -408,7 +408,7 @@
   </div>
 </div>
 
-<div class="section-container">
+{% comment %} <div class="section-container">
   <div> 
     {% for item in product.metafields.custom.how_to_use_.value %}
       <div class="flex-row-element lateral-margin-10 simple-flex ">
@@ -423,7 +423,7 @@
       </div>       
     {% endfor %}
   </div>
-</div>
+</div> {% endcomment %}
 
 <script type="application/json" id="ProductJson-{{ product.id }}">{{ product | json }}</script>
 
