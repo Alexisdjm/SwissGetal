@@ -444,11 +444,12 @@
       {% for element in product.metafields.custom.use_with.value %}
         <div class="product-container-uw">
           <img src="{{ element.media[0].preview_image | img_url: 'master' }}" alt="">
+          <p class="Nanum-Myeongjo">{{ element.title | t }}</p>
         </div>
       {% endfor %}
     </div>
     <div class="discount-uw-price">
-      <button class="add-collection">Add Products to Cart</button>
+      <a class="new-button new-secondary-button" href="#">Add products to Cart</a>
     </div>
   </div>
 </div>
