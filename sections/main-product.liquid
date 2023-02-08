@@ -412,9 +412,7 @@
   <div> 
     {% for item in product.metafields.custom.how_to_use_.value %}
       <div class="flex-row-element lateral-margin-10 simple-flex ">
-        {% comment %} <div class="new-image-box">
-          <iframe src="{{ item.url }}" alt="video">
-        </div> {% endcomment %}
+        <iframe src="{{ item.url }}" alt="video">
         <div class="list-box-right-margin">
           <h2 class="Nanum-Myeongjo font-black benefits-title margin-before-after-title">How to Use</h2>
           <h4 class="benefits-sub">{{ item.title }}</h4>
