@@ -408,6 +408,14 @@
   </div>
 </div>
 
+{% for item in product.metafields.custom.how_to_use_.value %}
+  <div class="flex-row-element lateral-margin-10 simple-flex ">
+    <div class="new-image-box">
+      <iframe src="{{ item.url }}" alt="video">
+    </div>
+  </div>       
+{% endfor %}
+
 {% comment %} <div class="section-container">
   <div> 
     {% for item in product.metafields.custom.how_to_use_.value %}
