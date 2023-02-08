@@ -444,7 +444,7 @@
       {% for element in product.metafields.custom.use_with.value %}
         <div class="product-container-uw">
           <img src="{{ element.media[0].preview_image | img_url: 'master' }}" alt="">
-          <p class="Nanum-Myeongjo">{{ element.title | t }}</p>
+          <p class="Nanum-Myeongjo content-14">{{ element.title }}</p>
         </div>
       {% endfor %}
     </div>
