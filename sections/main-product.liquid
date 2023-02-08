@@ -440,7 +440,7 @@
 <div class="new-section-margin">
   <div class="gray-bg-padding">
     <h2 class="Nanum-Myeongjo font-black benefits-title">Use With</h2>
-    <div class="simple-flex">
+    <div class="simple-flex flex-ar">
       {% for element in product.metafields.custom.use_with.value %}
         <div class="product-container-uw">
           <img src="{{ element.media[0].preview_image | img_url: 'master' }}" alt="">
