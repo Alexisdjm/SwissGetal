@@ -11,7 +11,7 @@
         <h3 class="text-header font-{{ section.settings.font_color }}">{{ section.settings.title }}</h3>
       {% endif %}
 
-      <p class="main-text font-{{ section.settings.font_color }}">{{ section.settings.content }}</p>
+      <p style="{% if section.settings.text_box_wide %} max-width: 85% {% endif %}" class="main-text font-{{ section.settings.font_color }}">{{ section.settings.content }}</p>
 
       {% if section.settings.button_link %}
         <div>
