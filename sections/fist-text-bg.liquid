@@ -1,10 +1,10 @@
-<div id="first-section" class="section-container">
-  <div class="img-bg-container align-{{ section.settings.horizontal_align  }}">
+<div style="max-width: {{ section.settings.height }}00px" id="first-section" class="section-container">
+  <div style="min-height: {{ section.settings.height }}00px" class="img-bg-container align-{{ section.settings.horizontal_align  }}">
     {% if section.settings.mobile_bg %}
       <img class="img img-hidden" src="{{ section.settings.mobile_img | img_url: 'master'  }}" alt="top mobile">
       <img class="img main-img" src="{{ section.settings.background | img_url: 'master'  }}" alt="top">
     {% else %}
-      <img class="img" src="{{ section.settings.background | img_url: 'master'  }}" alt="top">
+      <img style="max-height: {{ section.settings.height }}00px" class="img" src="{{ section.settings.background | img_url: 'master'  }}" alt="top">
     {% endif %}
     <div class="text-container v-align-{{ section.settings.vertical_align  }}">
       {% if section.settings.title %}
@@ -113,6 +113,15 @@
         "step": 1,
         "default": 1,
         "label": "vertical align"
+      },
+      {
+        "type": "range",
+        "id": "height",
+        "label": "section height",
+        "max": 7,
+        "min": 4,
+        "default": 6,
+        "step": 1
       }
     ],
     "presets": [
