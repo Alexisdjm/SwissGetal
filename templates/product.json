@@ -84,6 +84,22 @@
         "products_per_row_int": 4
       }
     },
+    "4cbb4f24-8db6-4a3a-ad2b-ac4bd8e1b2b3": {
+      "type": "fist-text-bg",
+      "settings": {
+        "background": "shopify:\/\/shop_images\/SGF-80_1.png",
+        "mobile_bg": false,
+        "title": "Natural Products That Suit Every Skin",
+        "content": "We go above and beyond to help you achieve your skincare goals. Our top skincare products are formulated by experts using cutting-edge technology and clean ingredients.",
+        "button_link": "shopify:\/\/pages\/about-us",
+        "button_text": "button",
+        "button_style": "button button--alt",
+        "font_color": "white",
+        "horizontal_align": 2,
+        "vertical_align": 1,
+        "height": 4
+      }
+    },
     "73ad22b6-e583-4427-9e3b-f15c77244efd": {
       "type": "logo-gallery",
       "blocks": {
@@ -125,28 +141,12 @@
       "settings": {
         "content_size": 14
       }
-    },
-    "4cbb4f24-8db6-4a3a-ad2b-ac4bd8e1b2b3": {
-      "type": "fist-text-bg",
-      "settings": {
-        "background": "shopify:\/\/shop_images\/SGF-80_1.png",
-        "mobile_bg": false,
-        "title": "Natural Products That Suit Every Skin",
-        "content": "We go above and beyond to help you achieve your skincare goals. Our top skincare products are formulated by experts using cutting-edge technology and clean ingredients.",
-        "button_link": "shopify:\/\/pages\/about-us",
-        "button_text": "button",
-        "button_style": "button button--alt",
-        "font_color": "white",
-        "horizontal_align": 2,
-        "vertical_align": 1,
-        "height": 4
-      }
     }
   },
   "order": [
     "main",
     "recommendations",
-    "73ad22b6-e583-4427-9e3b-f15c77244efd",
-    "4cbb4f24-8db6-4a3a-ad2b-ac4bd8e1b2b3"
+    "4cbb4f24-8db6-4a3a-ad2b-ac4bd8e1b2b3",
+    "73ad22b6-e583-4427-9e3b-f15c77244efd"
   ]
 }
