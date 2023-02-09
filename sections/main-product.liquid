@@ -443,7 +443,11 @@
     <div class="simple-flex flex-ar">
       {% for element in product.metafields.custom.use_with.value %}
         {% assign discount = element.price | times: 0.9 %}
-        {%- assign uw_collection_total = uw_collection_total | plus: discount -%}
+        {%- 
+          assign uw_collection_total = uw_collection_total | plus: discount 
+          assign real_total = real_total | plus: element.price
+        -%}
+        
         <div class="product-container-uw">
           <img src="{{ element.media[0].preview_image | img_url: 'master' }}" alt="img">
           <p class="Nanum-Myeongjo content-14 font-black product-uw-font-align new-p-margin"><a href="{{ element.url }}">{{ element.title }}</p>
@@ -452,7 +456,7 @@
       {% endfor %}
     </div>
     <div class="discount-uw-price">
-      <p class="font-black">Total price {{ uw_collection_total | money_with_currency }}</p>
+      <p class="font-black">Total price {{ uw_collection_total | money_with_currency }} <b>{{ real_total | money_with_currency }}</b></p>
       <a class="button" href="#">Add products to Cart</a>
     </div>
   </div>
