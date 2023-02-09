@@ -442,11 +442,12 @@
     <h2 class="Nanum-Myeongjo font-black benefits-title">Use With</h2>
     <div class="simple-flex flex-ar">
       {% for element in product.metafields.custom.use_with.value %}
-        {%- assign uw_collection_total = uw_collection_total | plus: element.price -%}
+        {% assign discount = element.price | times: 0.9 %}
+        {%- assign uw_collection_total = uw_collection_total | plus: discount -%}
         <div class="product-container-uw">
           <img src="{{ element.media[0].preview_image | img_url: 'master' }}" alt="img">
           <p class="Nanum-Myeongjo content-14 font-black product-uw-font-align new-p-margin"><a href="{{ element.url }}">{{ element.title }}</p>
-          <p class="Nanum-Myeongjo content-14 font-black new-p-margin">{{ element.price | times: 0.9 | money_with_currency }}</p>
+          <p class="Nanum-Myeongjo content-14 font-black new-p-margin">{{ discount | money_with_currency }}</p>
         </div></a>
       {% endfor %}
     </div>
