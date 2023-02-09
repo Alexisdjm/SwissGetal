@@ -454,7 +454,7 @@
       {% endfor %}
     </div>
     <div class="discount-uw-price">
-      <p class="font-black">Total price {{ uw_collection_total | money_with_currency }} <b>{{ real_total | money_with_currency }}</b></p>
+      <span class="font-black">Total price {{ uw_collection_total | money_with_currency }} <p class="price-wt-discount">{{ real_total | money_with_currency }}</p></span>
       <a class="button" href="#">Add products to Cart</a>
     </div>
   </div>
