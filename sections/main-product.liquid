@@ -446,7 +446,7 @@
         <div class="product-container-uw">
           <img src="{{ element.media[0].preview_image | img_url: 'master' }}" alt="">
           <p class="Nanum-Myeongjo content-14 font-black product-uw-font-align new-p-margin"><a href="{{ element.url }}">{{ element.title }}</p>
-          <p class="Nanum-Myeongjo content-14 font-black new-p-margin">{{ element.price | times: 0.9 | money_with_currency }}</p>
+          <p class="Nanum-Myeongjo content-14 font-black new-p-margin">{{ element.price | times: 2 }}</p>
         </div></a>
       {% endfor %}
     </div>
