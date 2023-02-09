@@ -6,7 +6,7 @@
     {% else %}
       <img style="max-height: {{ section.settings.height }}00px" class="img" src="{{ section.settings.background | img_url: 'master'  }}" alt="top">
     {% endif %}
-    <div class="{% if section.settings.text_box_wide %} optional-text-container{% else %} text-container{% endif %} v-align-{{ section.settings.vertical_align  }}">
+    <div class="{% if section.settings.text_box_wide %}optional-text-container{% else %} text-container{% endif %} v-align-{{ section.settings.vertical_align  }}">
       {% if section.settings.title %}
         <h3 class="text-header font-{{ section.settings.font_color }}">{{ section.settings.title }}</h3>
       {% endif %}
