@@ -443,10 +443,8 @@
     <div class="simple-flex flex-ar">
       {% for element in product.metafields.custom.use_with.value %}
         {% assign discount = element.price | times: 0.9 %}
-        {%- 
-          assign uw_collection_total = uw_collection_total | plus: discount 
-          assign real_total = real_total | plus: element.price
-        -%}
+        {%- assign uw_collection_total = uw_collection_total | plus: discount -%}
+        {%- assign real_total = real_total | plus: element.price -%}
         
         <div class="product-container-uw">
           <img src="{{ element.media[0].preview_image | img_url: 'master' }}" alt="img">
