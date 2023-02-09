@@ -449,13 +449,13 @@
         <div class="product-container-uw">
           <img src="{{ element.media[0].preview_image | img_url: 'master' }}" alt="img">
           <p class="Nanum-Myeongjo content-14 font-black product-uw-font-align new-p-margin"><a href="{{ element.url }}">{{ element.title }}</p>
-          <p class="Nanum-Myeongjo content-14 font-black new-p-margin">{{ discount | money_with_currency }}</p>
+          <p class="Nanum-Myeongjo content-14 font-black new-p-margin">${{ discount | money_without_currency }}</p>
         </div></a>
       {% endfor %}
     </div>
-    <div class="discount-uw-price">
-      <span class="font-black">Total price ${{ uw_collection_total | money_without_currency }} <span class="price-wt-discount">${{ real_total | money_without_currency }}</span> <b>${{ discount_diference | money_without_currency }}</b></span>
-      <a class="button" href="#">Add products to Cart</a>
+    <div class="discount-uw-price filter-menu">
+      <span class="font-black total-products-pack">Total price ${{ uw_collection_total | money_without_currency }} <span class="price-wt-discount">${{ real_total | money_without_currency }}</span> <b>Save ${{ discount_diference | money_without_currency }}</b></span>
+      <a class="button width-320" href="#">Add products to Cart</a>
     </div>
   </div>
 </div>
