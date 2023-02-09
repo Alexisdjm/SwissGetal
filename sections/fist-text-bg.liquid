@@ -6,7 +6,7 @@
     {% else %}
       <img class="img" src="{{ section.settings.background | img_url: 'master'  }}" alt="top">
     {% endif %}
-    <div class="text-container">
+    <div class="text-container v-align-{{ section.settings.vertical_align  }}">
       {% if section.settings.title %}
         <h3 class="text-header font-{{ section.settings.font_color }}">{{ section.settings.title }}</h3>
       {% endif %}
@@ -109,7 +109,7 @@
         "type": "range",
         "id": "vertical_align",
         "min": 1,
-        "max": 8,
+        "max": 12,
         "step": 1,
         "default": 1,
         "label": "vertical align"
