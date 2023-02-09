@@ -88,7 +88,7 @@
         "text_box_wide": true,
         "button_style": "button button--alt",
         "font_color": "white",
-        "horizontal_align": 2,
+        "horizontal_align": 1,
         "vertical_align": 1,
         "height": 4
       }
