@@ -101,6 +101,40 @@
         "products_per_row_int": 4
       }
     },
+    "4aeb5cbe-66f6-4158-83c9-6f18e575aee2": {
+      "type": "FAQ",
+      "blocks": {
+        "899e5041-8b64-46e3-8553-7ff8d7a22881": {
+          "type": "text",
+          "settings": {
+            "ask": "Why is Swiss Getal natural?",
+            "answer": "SwissGetal’s formulations combine natural plant extracts and oils together with various biotechnologically derived cell extracts, such as stem cells from the lotus flower and live cells from the European beech (Fagus sylvatica). SwissGetal is therefore a skin care line whose ingredients both nourish and rejuvenate the skin in its entirety, while at the same time embodying a symbiosis of nature and science."
+          }
+        },
+        "0b6d18d2-5bc2-474d-a36c-07ba9a8e9fb2": {
+          "type": "text",
+          "settings": {
+            "ask": "Can I return an Item?﻿",
+            "answer": "We have a 30-day return policy, which means you have 30 days after receiving your item to request a return.﻿To be eligible for a return, your item must be in the same condition that you received it, unworn or unused, with tags, and in its original packaging. You’ll also need the receipt or proof of purchase. ﻿To start a return, you can contact us at skincare@swissgetalusa.com. If your return is accepted, we’ll send you a return shipping label, as well as instructions on how and where to send your package. Items sent back to us without first requesting a return will not be accepted. You can always contact us for any return question at skincare@swissgetalusa.com﻿"
+          }
+        },
+        "ebe0cd86-1b81-4a39-bf94-2b3517550ba6": {
+          "type": "text",
+          "settings": {
+            "ask": "What kind of payment do you receive?",
+            "answer": "We accept all mayor Credit and Debit Card, PayPal."
+          }
+        }
+      },
+      "block_order": [
+        "899e5041-8b64-46e3-8553-7ff8d7a22881",
+        "0b6d18d2-5bc2-474d-a36c-07ba9a8e9fb2",
+        "ebe0cd86-1b81-4a39-bf94-2b3517550ba6"
+      ],
+      "settings": {
+        "title": "Frequeny Asked Questions"
+      }
+    },
     "73ad22b6-e583-4427-9e3b-f15c77244efd": {
       "type": "logo-gallery",
       "blocks": {
@@ -142,47 +176,13 @@
       "settings": {
         "content_size": 14
       }
-    },
-    "4aeb5cbe-66f6-4158-83c9-6f18e575aee2": {
-      "type": "FAQ",
-      "blocks": {
-        "899e5041-8b64-46e3-8553-7ff8d7a22881": {
-          "type": "text",
-          "settings": {
-            "ask": "Why is Swiss Getal natural?",
-            "answer": "SwissGetal’s formulations combine natural plant extracts and oils together with various biotechnologically derived cell extracts, such as stem cells from the lotus flower and live cells from the European beech (Fagus sylvatica). SwissGetal is therefore a skin care line whose ingredients both nourish and rejuvenate the skin in its entirety, while at the same time embodying a symbiosis of nature and science."
-          }
-        },
-        "0b6d18d2-5bc2-474d-a36c-07ba9a8e9fb2": {
-          "type": "text",
-          "settings": {
-            "ask": "Can I return an Item?﻿",
-            "answer": "We have a 30-day return policy, which means you have 30 days after receiving your item to request a return.﻿To be eligible for a return, your item must be in the same condition that you received it, unworn or unused, with tags, and in its original packaging. You’ll also need the receipt or proof of purchase. ﻿To start a return, you can contact us at skincare@swissgetalusa.com. If your return is accepted, we’ll send you a return shipping label, as well as instructions on how and where to send your package. Items sent back to us without first requesting a return will not be accepted. You can always contact us for any return question at skincare@swissgetalusa.com﻿"
-          }
-        },
-        "ebe0cd86-1b81-4a39-bf94-2b3517550ba6": {
-          "type": "text",
-          "settings": {
-            "ask": "What kind of payment do you receive?",
-            "answer": "We accept all mayor Credit and Debit Card, PayPal."
-          }
-        }
-      },
-      "block_order": [
-        "899e5041-8b64-46e3-8553-7ff8d7a22881",
-        "0b6d18d2-5bc2-474d-a36c-07ba9a8e9fb2",
-        "ebe0cd86-1b81-4a39-bf94-2b3517550ba6"
-      ],
-      "settings": {
-        "title": "Frequeny Asked Questions"
-      }
     }
   },
   "order": [
     "main",
     "4cbb4f24-8db6-4a3a-ad2b-ac4bd8e1b2b3",
     "recommendations",
-    "73ad22b6-e583-4427-9e3b-f15c77244efd",
-    "4aeb5cbe-66f6-4158-83c9-6f18e575aee2"
+    "4aeb5cbe-66f6-4158-83c9-6f18e575aee2",
+    "73ad22b6-e583-4427-9e3b-f15c77244efd"
   ]
 }
