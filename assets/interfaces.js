@@ -128,6 +128,7 @@ console.log(questions.length)
 for (let i = 1; i < questions.length; i++) {
     document.getElementById(`toggle-${i}`).onclick = () => {
         document.getElementById(`answer-${i}`).classList.toggle("collapsed")
+        console.log('collapsed')
     }
     
 }
