@@ -76,31 +76,6 @@
         "description_location": "details"
       }
     },
-    "recommendations": {
-      "type": "product-recommendations",
-      "settings": {
-        "recommendations_title": "You may also like",
-        "grid_show_vendor": false,
-        "products_per_row_int": 4
-      }
-    },
-    "4cbb4f24-8db6-4a3a-ad2b-ac4bd8e1b2b3": {
-      "type": "fist-text-bg",
-      "settings": {
-        "background": "shopify:\/\/shop_images\/SGF-80_1.png",
-        "mobile_bg": false,
-        "title": "Natural Products That Suit Every Skin",
-        "content": "We go above and beyond to help you achieve your skincare goals. Our top skincare products are formulated by experts using cutting-edge technology and clean ingredients.",
-        "button_link": "shopify:\/\/pages\/about-us",
-        "button_text": "Our Laboratory",
-        "text_box_wide": true,
-        "button_style": "button button--alt",
-        "font_color": "white",
-        "horizontal_align": 1,
-        "vertical_align": 1,
-        "height": 4
-      }
-    },
     "4aeb5cbe-66f6-4158-83c9-6f18e575aee2": {
       "type": "FAQ",
       "blocks": {
@@ -133,6 +108,31 @@
       ],
       "settings": {
         "title": "Frequeny Asked Questions"
+      }
+    },
+    "4cbb4f24-8db6-4a3a-ad2b-ac4bd8e1b2b3": {
+      "type": "fist-text-bg",
+      "settings": {
+        "background": "shopify:\/\/shop_images\/SGF-80_1.png",
+        "mobile_bg": false,
+        "title": "Natural Products That Suit Every Skin",
+        "content": "We go above and beyond to help you achieve your skincare goals. Our top skincare products are formulated by experts using cutting-edge technology and clean ingredients.",
+        "button_link": "shopify:\/\/pages\/about-us",
+        "button_text": "Our Laboratory",
+        "text_box_wide": true,
+        "button_style": "button button--alt",
+        "font_color": "white",
+        "horizontal_align": 1,
+        "vertical_align": 1,
+        "height": 4
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "recommendations_title": "You may also like",
+        "grid_show_vendor": false,
+        "products_per_row_int": 4
       }
     },
     "73ad22b6-e583-4427-9e3b-f15c77244efd": {
@@ -180,9 +180,9 @@
   },
   "order": [
     "main",
-    "recommendations",
-    "4cbb4f24-8db6-4a3a-ad2b-ac4bd8e1b2b3",
     "4aeb5cbe-66f6-4158-83c9-6f18e575aee2",
+    "4cbb4f24-8db6-4a3a-ad2b-ac4bd8e1b2b3",
+    "recommendations",
     "73ad22b6-e583-4427-9e3b-f15c77244efd"
   ]
 }
