@@ -4,11 +4,11 @@
         {% assign count = count | plus: 1 %}
         <div class="ask-container">
             <div class="the-question top-bottom-border">
-                <h3 class="question">{{ block.settings.ask  }}</h3>
+                <h3 class="question work-sans">{{ block.settings.ask  }}</h3>
                 <button id="toggle-{{ count }}" class="show-answer"><span class="mdi mdi-plus"></span></button>
             </div>
             <div id="answer-{{ count }}" class="the-answer collapsed">
-                <p class="answer">{{ block.settings.answer }}</p>
+                <p class="answer work-sans">{{ block.settings.answer }}</p>
             </div>
         </div>
     {% endfor %}
