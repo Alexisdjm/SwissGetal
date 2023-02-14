@@ -156,7 +156,7 @@
         "0b6d18d2-5bc2-474d-a36c-07ba9a8e9fb2": {
           "type": "text",
           "settings": {
-            "ask": "the ask",
+            "ask": "Can I return an Item?﻿",
             "answer": "the answer"
           }
         },
