@@ -1,0 +1,53 @@
+<div class="FAQ-section">
+    <h1 class="FAQ-header Nanum-Myeongjo">{{ sections.settings.title }}</h1>
+    {% for block in section.blocks %}
+        <div class="ask-container">
+            <div class="the-question top-bottom-border">
+                <h3 class="question">{{ block.settings.ask  }}</h3>
+                <button class="show-answer"><span class="mdi mdi-plus"></span></button>
+            </div>
+            <div class="the-answer top-bottom-border">
+                <p class="answer">{{ block.settings.answer }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% schema %}
+    {
+        "class": "FAQ",
+        "name": "FAQ",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "Frequeny Asked Questions"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "text",
+                "name": "asks",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "ask",
+                        "label": "enter your ask",
+                        "default": "the ask"
+                    },
+                    {
+                        "type": "text",
+                        "id": "answer",
+                        "label": "enter the answer",
+                        "default": "the answer"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "FAQ"
+            }
+        ]
+    }
+{% endschema %}
