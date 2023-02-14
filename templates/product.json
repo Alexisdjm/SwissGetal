@@ -127,6 +127,12 @@
         "height": 4
       }
     },
+    "872d73b6-3111-49c2-8aac-cfd990881253": {
+      "type": "single-video-section",
+      "settings": {
+        "video": "https:\/\/player.vimeo.com\/video\/751703363?autoplay=1&muted=1&playlist=751703363&loop=1&controls=0"
+      }
+    },
     "recommendations": {
       "type": "product-recommendations",
       "settings": {
@@ -182,6 +188,7 @@
     "main",
     "4aeb5cbe-66f6-4158-83c9-6f18e575aee2",
     "4cbb4f24-8db6-4a3a-ad2b-ac4bd8e1b2b3",
+    "872d73b6-3111-49c2-8aac-cfd990881253",
     "recommendations",
     "73ad22b6-e583-4427-9e3b-f15c77244efd"
   ]
