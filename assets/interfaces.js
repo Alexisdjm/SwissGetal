@@ -119,3 +119,15 @@ window.addEventListener('scroll', () => {
         handleCss('remove')
     }
 })
+
+// -------------------------------------------------------------------------------------------------------------------------
+
+let questions = document.getElementsByClassName("#ask-container")
+console.log(questions.length)
+
+for (let i = 0; i < questions.length; i++) {
+    document.getElementById(`toggle-${i}`).onclick = () => {
+        document.getElementById(`answer-${i}`).classList.toggle("collapsed")
+    }
+    
+}
