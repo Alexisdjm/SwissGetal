@@ -121,14 +121,3 @@ window.addEventListener('scroll', () => {
 })
 
 // -------------------------------------------------------------------------------------------------------------------------
-
-let questions = document.getElementsByClassName("#ask-container")
-console.log(questions)
-
-for (let i = 1; i < questions.length; i++) {
-    document.getElementById(`toggle-${i}`).onclick = () => {
-        document.getElementById(`answer-${i}`).classList.toggle("collapsed")
-        console.log('collapsed')
-    }
-    
-}
