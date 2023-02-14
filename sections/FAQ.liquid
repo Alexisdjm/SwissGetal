@@ -17,7 +17,7 @@
 <script>
     let questions = document.getElementsByClassName("ask-container")
 
-    for (let i = 1; i < questions.length; i++) {
+    for (let i = 1; i <= questions.length; i++) {
         document.getElementById(`toggle-${i}`).onclick = () => {
             document.getElementById(`answer-${i}`).classList.toggle("collapsed")
             console.log('collapsed')
