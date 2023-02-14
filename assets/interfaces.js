@@ -123,7 +123,7 @@ window.addEventListener('scroll', () => {
 // -------------------------------------------------------------------------------------------------------------------------
 
 let questions = document.getElementsByClassName("#ask-container")
-console.log(questions.length)
+console.log(questions)
 
 for (let i = 1; i < questions.length; i++) {
     document.getElementById(`toggle-${i}`).onclick = () => {
