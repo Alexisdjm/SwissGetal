@@ -1,0 +1,22 @@
+<div class="section-single-video flex-section">
+    <div class="padding-vertical-video">
+        <div class="padding-horizontal-video">
+            <iframe class="single-video-dimensions" src="{{ section.settings.video }}" frameborder="0" allow="autoplay; fullscreen"></iframe>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Single video",
+        "settings": [
+            {
+                "type": "video_url",
+                "id": "video",
+                "label": "video",
+                "accepts": ["vimeo", "youtube"],
+                "default": "https://player.vimeo.com/video/751703363?autoplay=1&muted=1&playlist=751703363&loop=1&controls=0"
+            }
+        ]
+    }
+{% endschema %}
