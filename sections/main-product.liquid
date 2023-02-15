@@ -429,8 +429,19 @@
         </div>
         <div class="how-to-use-text-box">
           <h2 class="Nanum-Myeongjo font-black benefits-title">How to Use</h2>
-          <h4 class="benefits-sub htu-sub-m">{{ item.title }}</h4>
+          {% if item.title != blank %}
+            <h4 class="benefits-sub htu-sub-m">{{ item.title }}</h4>
+          {% endif %}
           <p class="benefits-content htu-p-m">{{ item.content }}</p>
+          {% if item.content_1 != blank %}
+            <p class="benefits-content htu-p-m">{{ item.content_1 }}</p>
+          {% endif %}
+          {% if item.content_2 != blank %}
+            <p class="benefits-content htu-p-m">{{ item.content_2 }}</p>
+          {% endif %}
+          {% if item.content_3 != blank %}
+            <p class="benefits-content htu-p-m">{{ item.content_3 }}</p>
+          {% endif %}
         </div>
       </div>       
     {% endfor %}
