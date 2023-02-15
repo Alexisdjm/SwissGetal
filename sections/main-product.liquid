@@ -381,6 +381,12 @@
                   <div class="text-box-element">
                     <p class="benefits-content">{{ item.optional_content }}</p>
                   </div>
+                  {% if item.third_sub != blank and item.third_content != blank %}
+                  <h4 class="benefits-sub">{{ item.third_sub }}</h4>
+                  <div class="text-box-element">
+                    <p class="benefits-content">{{ item.third_content }}</p>
+                  </div>
+                  {% endif %}
                 {% endfor %}
             </div>
             <div class="img-box">
