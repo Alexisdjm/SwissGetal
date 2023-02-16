@@ -373,18 +373,18 @@
             <div class="textbox filter-menu">
                 <h2 class="Nanum-Myeongjo font-black benefits-title">Benefits</h2>
                 {% for item in product.metafields.custom.benefits_.value %}
-                  <h4 class="benefits-sub">{{ item.subtitle }}</h4>
+                  <h4 class="benefits-sub">{{ item.title }}</h4>
                   <div class="text-box-element">
                     <p class="benefits-content">{{ item.content }}</p>
                   </div>
-                  <h4 class="benefits-sub">{{ item.optional_sub }}</h4>
+                  <h4 class="benefits-sub">{{ item.title_1 }}</h4>
                   <div class="text-box-element">
-                    <p class="benefits-content">{{ item.optional_content }}</p>
+                    <p class="benefits-content">{{ item.content_1 }}</p>
                   </div>
-                  {% if item.third_sub != blank and item.third_content != blank %}
-                  <h4 class="benefits-sub">{{ item.third_sub }}</h4>
+                  {% if item.title_2 != blank and item.content_2 != blank %}
+                  <h4 class="benefits-sub">{{ item.title_2 }}</h4>
                   <div class="text-box-element">
-                    <p class="benefits-content">{{ item.third_content }}</p>
+                    <p class="benefits-content">{{ item.content_2 }}</p>
                   </div>
                   {% endif %}
                 {% endfor %}
