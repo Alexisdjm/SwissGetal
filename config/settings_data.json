@@ -241,7 +241,7 @@
     "blocks": {
       "11082817785457682960": {
         "type": "shopify:\/\/apps\/chatra-live-chat-chatbot\/blocks\/widget\/3617185a-5880-4550-b1d3-81cdb9d37290",
-        "disabled": false,
+        "disabled": true,
         "settings": {
         }
       }
