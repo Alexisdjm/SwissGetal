@@ -233,9 +233,9 @@
             "star": "#000",
             "review_type": "product",
             "reviews_shown": 33,
-            "header_bg_colour": "#000",
-            "header_colour": "#fff",
-            "header_star_colour": "#fff",
+            "header_bg_colour": "#ffffff",
+            "header_colour": "#000000",
+            "header_star_colour": "#000000",
             "heading_text_colour": "#0E1311",
             "heading_font": "helvetica_n4",
             "body_text_colour": "#0E1311",
@@ -250,7 +250,7 @@
             "item_shadow_colour": "rgba(0,0,0,0.05)",
             "enable_rich_snippets": false,
             "disable_same_customer": false,
-            "logo_colour": "var(--logo-inverted)"
+            "logo_colour": "var(--logo-normal)"
           }
         }
       },
