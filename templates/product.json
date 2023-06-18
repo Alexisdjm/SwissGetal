@@ -84,7 +84,7 @@
           "settings": {
             "star": "#000000",
             "review_type": "product_review,questions",
-            "per_page": 8,
+            "per_page": 3,
             "primary_btn_bg_color": "#000000",
             "primary_btn_border_color": "#000000",
             "primary_btn_text_color": "#ffffff",
