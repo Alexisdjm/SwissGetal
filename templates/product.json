@@ -252,10 +252,17 @@
             "disable_same_customer": true,
             "logo_colour": "var(--logo-normal)"
           }
+        },
+        "00be7817-f447-47a0-ae01-dcc507bb4055": {
+          "type": "shopify:\/\/apps\/reviews-io\/blocks\/reviewsio-rating-bar\/92a082e5-b297-4e88-b428-ac96cbc505f9",
+          "settings": {
+            "widget_id": ""
+          }
         }
       },
       "block_order": [
-        "4c025ee3-057a-45b6-a5fe-244a43954f30"
+        "4c025ee3-057a-45b6-a5fe-244a43954f30",
+        "00be7817-f447-47a0-ae01-dcc507bb4055"
       ],
       "settings": {
         "skip_container": false
