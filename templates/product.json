@@ -14,6 +14,11 @@
             "show_tax_and_shipping": true
           }
         },
+        "7d9fb90a-6e62-4a17-8d3b-41e5f22fa4e5": {
+          "type": "shopify:\/\/apps\/reviews-io\/blocks\/reviewsio-rating-output\/92a082e5-b297-4e88-b428-ac96cbc505f9",
+          "settings": {
+          }
+        },
         "divider-0": {
           "type": "divider",
           "settings": {
@@ -60,6 +65,7 @@
       "block_order": [
         "title",
         "price",
+        "7d9fb90a-6e62-4a17-8d3b-41e5f22fa4e5",
         "divider-0",
         "description",
         "divider-1",
