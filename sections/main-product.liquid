@@ -78,6 +78,11 @@
 
             {%- when 'price' -%}
             <div class="product-form-block" {{ block.shopify_attributes }}>
+              <div class="reviews-io-rating-bar-widget"
+                widget-id="OWrN1IjVStD9UBAk"
+               data-store-name="bootcamp-alexis.myshopify.com"
+               lang="en"></div>
+              <script src='//widget.reviews.io/modern-widgets/rating-bar.js'></script>
               <div class="product-price product-price--large">
                 <span class="product-price__amount theme-money">
                   {%- if settings.show_currency_code -%}
@@ -86,11 +91,6 @@
                     {{- current_variant.price | money -}}
                   {%- endif -%}
                 </span>
-                <div class="reviews-io-rating-bar-widget"
-                  widget-id="OWrN1IjVStD9UBAk"
-                 data-store-name="bootcamp-alexis.myshopify.com"
-                 lang="en"></div>
-                <script src='//widget.reviews.io/modern-widgets/rating-bar.js'></script>
                 {%- if current_variant.compare_at_price > current_variant.price -%}
                   <span class="product-price__compare theme-money">{{ current_variant.compare_at_price | money }}</span>
                 {%- endif -%}
