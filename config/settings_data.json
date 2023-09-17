@@ -348,12 +348,6 @@
         "disabled": true,
         "settings": {
         }
-      },
-      "14660309866608708618": {
-        "type": "shopify:\/\/apps\/split-payment-depo\/blocks\/app-embed\/35a708d6-4cb9-406a-9fdb-e05a89b032c6",
-        "disabled": false,
-        "settings": {
-        }
       }
     }
   },

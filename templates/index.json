@@ -52,7 +52,7 @@
         "color_scheme": "none",
         "color_bg": "{{ shop.brand.colors.primary[0].background }}",
         "color_heading": "",
-        "color_text": "#000000"
+        "color_text": "#c20000"
       }
     },
     "619dd855-8e65-4a24-adc6-6b1fdb721a52": {
