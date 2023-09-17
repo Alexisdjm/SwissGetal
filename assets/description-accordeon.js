@@ -1,0 +1,1 @@
+let accordeon = document.getElementById("container-acc");

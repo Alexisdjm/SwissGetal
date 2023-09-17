@@ -78,11 +78,11 @@
 
             {%- when 'price' -%}
             <div class="product-form-block" {{ block.shopify_attributes }}>
-              <div class="reviews-io-rating-bar-widget"
+              <div
+                class="reviews-io-rating-bar-widget"
                 widget-id="YHb4g1qiXMtRCrF5"
-               data-store-name="bootcamp-alexis.myshopify.com"
-               lang="en"
-              ></div>
+                data-store-name="bootcamp-alexis.myshopify.com"
+                lang="en"></div>
               <script src='//widget.reviews.io/modern-widgets/rating-bar.js'></script>
               <div class="product-price product-price--large">
                 <span class="product-price__amount theme-money">
@@ -152,7 +152,7 @@
                   class="product-reviews-link"
                   href="#shopify-product-reviews"
                   aria-label="{{ 'products.product.reviews_link' | t | escape }}">
-                  {% render 'rating'
+                  {% render 'rating' 
                    , rating_value: product.metafields.reviews.rating.value,
                    rating_count: product.metafields.reviews.rating_count %}
                 </a>
@@ -256,6 +256,12 @@
                       {%- endif -%}
                     </div>
                   </div>
+                  <div class="accordeon">
+                    <div id="container-cc" class="container-acc">
+                      <div class="label-acc">Description</div>
+                      <div class="content-acc p-hidden">{{ product.description }}</div>
+                    </div>
+                  </div>
                 {%- endform -%}
               {%- else -%}
                 <p class="product-unavailable h5">{{ 'products.product.product_unavailable' | t }}</p>
@@ -308,7 +314,7 @@
                         assign desc_open = false
                       endif
                     -%}
-                  {% render 'accordion'
+                  {% render 'accordion' 
                    , allow_multi_open: false,
                    first_item_open: desc_open,
                    add_content_class: 'rte',
@@ -321,7 +327,7 @@
                    item4_title: tab3_title,
                    item4_content: tab3_content %}
                 {%- else -%}
-                  {% render 'accordion'
+                  {% render 'accordion' 
                    , allow_multi_open: false,
                    first_item_open: false,
                    add_content_class: 'rte',
@@ -368,7 +374,13 @@
                       {{ img | image_url: width: 200 }} 200w{% endif -%}
                     {%- if img.width >= 400 %}, {{ img | image_url: width: 400 }} 400w{% endif -%}
                     {%- if img.width >= 670 %}, {{ img | image_url: width: 670 }} 670w{% endif -%}
-                    {%- if img.width >= 800 %}, {{ img | image_url: width: 800 }} 800w{% endif -%}"data-src="{{ img | image_url: width: 400 }}"data-sizes="auto"class="img-fit lazyload"width="{{ img.width }}"height="{{ img.height }}"alt="{{ img.alt | escape }}">
+                    {%- if img.width >= 800 %}, {{ img | image_url: width: 800 }} 800w{% endif -%}"
+                    data-src="{{ img | image_url: width: 400 }}"
+                    data-sizes="auto"
+                    class="img-fit lazyload"
+                    width="{{ img.width }}"
+                    height="{{ img.height }}"
+                    alt="{{ img.alt | escape }}">
                     <noscript>
                       <img
                         src="{{ img | image_url: width: 400 }}"

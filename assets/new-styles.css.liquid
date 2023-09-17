@@ -1416,6 +1416,54 @@ p.answer {
   height: 675px;
 }
 
+/* -------------------------------------------- accordeon tania mallow -------------------------------------- */
+
+.accordeon {
+  width: 100%;
+  height: fit-content;
+  padding: 15px;
+  margin: 40px 0;
+}
+
+.container-acc {
+  position: relative;
+  margin: 10px 0;
+}
+
+.label-acc {
+  color: black;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.label-acc::before {
+  content: '+';
+  color: black;
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  font-size: 30px;
+  transform: translateY(-50%);
+}
+
+.content-acc {
+  color: black;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.p-hidden {
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: max-height .3s linear;
+}
+
+.grow {
+  margin: 10px 0;
+  max-height: 500px;
+}
+
 /* ---------------------------------------------- media queries ------------------------------------------- */
 
 @media only screen and (min-width:768px) and(max-width: 1200px) {
