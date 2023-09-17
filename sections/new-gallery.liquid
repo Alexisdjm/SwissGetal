@@ -1,0 +1,196 @@
+<div class="gallery-container">
+    <div class="content-box">
+        <h1>{{ section.settings.gallery_heading }}</h1>
+        {% if section.settings.optional_content %}
+            <p>{{ section.settings.optional_content }}</p>   
+        {% endif %}
+    </div>
+  <div class="gallery-flex-container">
+    {% for block in section.blocks %}
+      <div class="block-box">
+        <div class="block-inner-container">
+          <img class="img-gallery"
+            src="{{ block.settings.first_img | img_url: 'master' }}"
+            alt="first img"
+            style="aspect-ratio: {{ block.settings.first_aspect }};">
+        </div>
+      </div>
+      <div class="block-box">
+        <div class="block-inner-container">
+          <img class="img-gallery"
+            src="{{ block.settings.second_img | img_url: 'master' }}"
+            alt="second img"
+            style="aspect-ratio: {{ block.settings.second_aspect }};">
+        </div>
+      </div>
+      <div class="block-box">
+        <div class="block-inner-container">
+          <img class="img-gallery"
+            src="{{ block.settings.third_img | img_url: 'master' }}"
+            alt="third img"
+            style="aspect-ratio: {{ block.settings.third_aspect }};">
+        </div>
+      </div>
+      <div class="block-box">
+        <div class="block-inner-container">
+          <img class="img-gallery"
+            src="{{ block.settings.forth_img | img_url: 'master' }}"
+            alt="forth img"
+            style="aspect-ratio: {{ block.settings.forth_aspect }};">
+        </div>
+      </div>
+      {% if block.settings.fifth_img and block.settings.fifth_aspect %}
+        <div class="block-box">
+            <div class="block-inner-container">
+            <img class="img-gallery"
+                src="{{ block.settings.fifth_img | img_url: 'master' }}"
+                alt="fifth img"
+                style="aspect-ratio: {{ block.settings.fifth_aspect }};">
+            </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "class": "gallery-section",
+    "name": "Image Gallery",
+    "settings": [
+      {
+        "type": "textarea",
+        "default": "Gallery Heading",
+        "id": "gallery_heading",
+        "label": "Gallery heading"
+      }, {
+        "type": "textarea",
+        "id": "optional_content",
+        "label": "Optional Text"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "images block",
+        "type": "images",
+        "limit": 5,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "first_img",
+            "label": "First Image"
+          },
+          {
+            "type": "select",
+            "id": "first_aspect",
+            "default": "4/3",
+            "label": "Aspect ratio of the image",
+            "options": [
+              {
+                "label": "4/3",
+                "value": "4/3"
+              }, {
+                "label": "1/1",
+                "value": "1/1"
+              }, {
+                "label": "16/9",
+                "value": "16/9"
+              }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "second_img",
+            "label": "second Image"
+          },
+          {
+            "type": "select",
+            "id": "second_aspect",
+            "default": "4/3",
+            "label": "Aspect ratio of the image",
+            "options": [
+              {
+                "label": "4/3",
+                "value": "4/3"
+              }, {
+                "label": "1/1",
+                "value": "1/1"
+              }, {
+                "label": "16/9",
+                "value": "16/9"
+              }
+            ]
+          }, {
+            "type": "image_picker",
+            "id": "third_img",
+            "label": "third Image"
+          }, {
+            "type": "select",
+            "id": "third_aspect",
+            "default": "4/3",
+            "label": "Aspect ratio of the image",
+            "options": [
+              {
+                "label": "4/3",
+                "value": "4/3"
+              }, {
+                "label": "1/1",
+                "value": "1/1"
+              }, {
+                "label": "16/9",
+                "value": "16/9"
+              }
+            ]
+          }, {
+            "type": "image_picker",
+            "id": "forth_img",
+            "label": "forth Image"
+          }, {
+            "type": "select",
+            "id": "forth_aspect",
+            "default": "4/3",
+            "label": "Aspect ratio of the image",
+            "options": [
+              {
+                "label": "4/3",
+                "value": "4/3"
+              }, {
+                "label": "1/1",
+                "value": "1/1"
+              }, {
+                "label": "16/9",
+                "value": "16/9"
+              }
+            ]
+          }, {
+            "type": "image_picker",
+            "id": "fifth_img",
+            "label": "fifth Image"
+          }, {
+            "type": "select",
+            "id": "fifth_aspect",
+            "default": "4/3",
+            "label": "Aspect ratio of the image",
+            "options": [
+              {
+                "label": "4/3",
+                "value": "4/3"
+              }, {
+                "label": "1/1",
+                "value": "1/1"
+              }, {
+                "label": "16/9",
+                "value": "16/9"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "presets": [
+        {
+            "name": "Image Gallery"
+        }
+    ]
+  }
+{% endschema %}

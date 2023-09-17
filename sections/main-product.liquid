@@ -366,7 +366,9 @@
                 {%- if block.settings.url != blank -%}
                   <a href="{{ block.settings.url }}">
                   {%- endif -%}
-                  <div class="lazyload-placeholder" style="padding-top: {{ 1 | divided_by: img.aspect_ratio | times: 100 }}%;">
+                  <div
+                    class="lazyload-placeholder"
+                    style="padding-top: {{ 1 | divided_by: img.aspect_ratio | times: 100 }}%;">
                     <img
                       data-srcset="{%- if img.width < 200 %}
                       {{ img | image_url }} {{ img.width }}w{% endif -%}
