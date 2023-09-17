@@ -230,6 +230,32 @@
         "content_size": 14
       }
     },
+    "57b538ee-94a8-4a78-a2a6-165af2e750a9": {
+      "type": "new-gallery",
+      "blocks": {
+        "63efca14-a0bd-4515-af53-4c8e6312b661": {
+          "type": "images",
+          "settings": {
+            "first_img": "shopify:\/\/shop_images\/eye-serum-1.webp",
+            "first_aspect": "4\/3",
+            "second_img": "shopify:\/\/shop_images\/Optimized-SGF-23.webp",
+            "second_aspect": "1\/1",
+            "third_img": "shopify:\/\/shop_images\/SGF-11_1.png",
+            "third_aspect": "16\/9",
+            "forth_img": "shopify:\/\/shop_images\/Silky-Gold-Cream-1.webp",
+            "forth_aspect": "1\/1",
+            "fifth_aspect": "4\/3"
+          }
+        }
+      },
+      "block_order": [
+        "63efca14-a0bd-4515-af53-4c8e6312b661"
+      ],
+      "settings": {
+        "gallery_heading": "Gallery Heading",
+        "optional_content": ""
+      }
+    },
     "168704370512862f85": {
       "type": "apps",
       "blocks": {
@@ -283,6 +309,7 @@
     "872d73b6-3111-49c2-8aac-cfd990881253",
     "recommendations",
     "73ad22b6-e583-4427-9e3b-f15c77244efd",
+    "57b538ee-94a8-4a78-a2a6-165af2e750a9",
     "168704370512862f85"
   ]
 }
