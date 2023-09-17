@@ -1,15 +1,16 @@
 <div class="gallery-container">
-    <div class="content-box">
-        <h1>{{ section.settings.gallery_heading }}</h1>
-        {% if section.settings.optional_content %}
-            <p>{{ section.settings.optional_content }}</p>   
-        {% endif %}
-    </div>
+  <div class="content-box">
+    <h1>{{ section.settings.gallery_heading }}</h1>
+    {% if section.settings.optional_content %}
+      <p>{{ section.settings.optional_content }}</p>
+    {% endif %}
+  </div>
   <div class="gallery-flex-container">
     {% for block in section.blocks %}
       <div class="block-box">
         <div class="block-inner-container">
-          <img class="img-gallery"
+          <img
+            class="img-gallery"
             src="{{ block.settings.first_img | img_url: 'master' }}"
             alt="first img"
             style="aspect-ratio: {{ block.settings.first_aspect }};">
@@ -17,7 +18,8 @@
       </div>
       <div class="block-box">
         <div class="block-inner-container">
-          <img class="img-gallery"
+          <img
+            class="img-gallery"
             src="{{ block.settings.second_img | img_url: 'master' }}"
             alt="second img"
             style="aspect-ratio: {{ block.settings.second_aspect }};">
@@ -25,7 +27,8 @@
       </div>
       <div class="block-box">
         <div class="block-inner-container">
-          <img class="img-gallery"
+          <img
+            class="img-gallery"
             src="{{ block.settings.third_img | img_url: 'master' }}"
             alt="third img"
             style="aspect-ratio: {{ block.settings.third_aspect }};">
@@ -33,7 +36,8 @@
       </div>
       <div class="block-box">
         <div class="block-inner-container">
-          <img class="img-gallery"
+          <img
+            class="img-gallery"
             src="{{ block.settings.forth_img | img_url: 'master' }}"
             alt="forth img"
             style="aspect-ratio: {{ block.settings.forth_aspect }};">
@@ -41,12 +45,13 @@
       </div>
       {% if block.settings.fifth_img and block.settings.fifth_aspect %}
         <div class="block-box">
-            <div class="block-inner-container">
-            <img class="img-gallery"
-                src="{{ block.settings.fifth_img | img_url: 'master' }}"
-                alt="fifth img"
-                style="aspect-ratio: {{ block.settings.fifth_aspect }};">
-            </div>
+          <div class="block-inner-container">
+            <img
+              class="img-gallery"
+              src="{{ block.settings.fifth_img | img_url: 'master' }}"
+              alt="fifth img"
+              style="aspect-ratio: {{ block.settings.fifth_aspect }};">
+          </div>
         </div>
       {% endif %}
     {% endfor %}
@@ -188,9 +193,9 @@
       }
     ],
     "presets": [
-        {
-            "name": "Image Gallery"
-        }
+      {
+        "name": "New Image Gallery"
+      }
     ]
   }
 {% endschema %}
