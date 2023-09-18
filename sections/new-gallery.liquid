@@ -7,7 +7,7 @@
   </div>
   <div class="gallery-flex-container">
     {% for block in section.blocks %}
-      <div class="block-box">
+      <div class="block-box {{ block.settings.block_height }}">
         <div class="block-inner-container">
           <img
             class="img-gallery"
@@ -16,7 +16,7 @@
             style="aspect-ratio: {{ block.settings.first_aspect }};">
         </div>
       </div>
-      <div class="block-box">
+      <div class="block-box {{ block.settings.block_height }}">
         <div class="block-inner-container">
           <img
             class="img-gallery"
@@ -25,7 +25,7 @@
             style="aspect-ratio: {{ block.settings.second_aspect }};">
         </div>
       </div>
-      <div class="block-box">
+      <div class="block-box {{ block.settings.block_height }}">
         <div class="block-inner-container">
           <img
             class="img-gallery"
@@ -34,7 +34,7 @@
             style="aspect-ratio: {{ block.settings.third_aspect }};">
         </div>
       </div>
-      <div class="block-box">
+      <div class="block-box {{ block.settings.block_height }}">
         <div class="block-inner-container">
           <img
             class="img-gallery"
@@ -44,7 +44,7 @@
         </div>
       </div>
       {% if block.settings.fifth_img and block.settings.fifth_aspect %}
-        <div class="block-box">
+        <div class="block-box {{ block.settings.block_height }}">
           <div class="block-inner-container">
             <img
               class="img-gallery"
@@ -87,6 +87,20 @@
           },
           {
             "type": "select",
+            "id": "block_height",
+            "label": "Select the block's hight",
+            "options": [
+              {
+                "value": "block-height-4",
+                "label": "4 images height"
+              }, {
+                "value": "block-height-4",
+                "label": "5 images height"
+              }
+            ]
+          },
+          {
+            "type": "select",
             "id": "first_aspect",
             "default": "4/3",
             "label": "Aspect ratio of the image",
@@ -107,8 +121,7 @@
             "type": "image_picker",
             "id": "second_img",
             "label": "second Image"
-          },
-          {
+          }, {
             "type": "select",
             "id": "second_aspect",
             "default": "4/3",
