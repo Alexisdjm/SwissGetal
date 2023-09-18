@@ -237,6 +237,7 @@
           "type": "images",
           "settings": {
             "first_img": "shopify:\/\/shop_images\/eye-serum-1.webp",
+            "block_height": "block-height-5",
             "first_aspect": "4\/3",
             "second_img": "shopify:\/\/shop_images\/Optimized-SGF-23.webp",
             "second_aspect": "1\/1",
