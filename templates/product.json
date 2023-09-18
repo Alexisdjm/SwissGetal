@@ -252,11 +252,15 @@
         "ccf1153e-3420-4a1a-9d88-7b5469da5424": {
           "type": "images",
           "settings": {
+            "first_img": "shopify:\/\/shop_images\/SGselect-2_1.png",
             "block_height": "block-height-4",
-            "first_aspect": "4\/3",
-            "second_aspect": "4\/3",
+            "first_aspect": "16\/9",
+            "second_img": "shopify:\/\/shop_images\/Makeup-remover-1.webp",
+            "second_aspect": "1\/1",
+            "third_img": "shopify:\/\/shop_images\/eye-lifting-1.webp",
             "third_aspect": "4\/3",
-            "forth_aspect": "4\/3",
+            "forth_img": "shopify:\/\/shop_images\/eye-pads-1.webp",
+            "forth_aspect": "16\/9",
             "fifth_aspect": "4\/3"
           }
         }
