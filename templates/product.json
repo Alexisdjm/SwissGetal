@@ -252,18 +252,39 @@
         "ccf1153e-3420-4a1a-9d88-7b5469da5424": {
           "type": "images",
           "settings": {
+            "first_img": "shopify:\/\/shop_images\/SGselect-2_1.png",
             "block_height": "block-height-4",
-            "first_aspect": "4\/3",
-            "second_aspect": "4\/3",
+            "first_aspect": "16\/9",
+            "second_img": "shopify:\/\/shop_images\/Makeup-remover-1.webp",
+            "second_aspect": "1\/1",
+            "third_img": "shopify:\/\/shop_images\/eye-lifting-1.webp",
             "third_aspect": "4\/3",
-            "forth_aspect": "4\/3",
+            "forth_img": "shopify:\/\/shop_images\/eye-pads-1.webp",
+            "forth_aspect": "16\/9",
             "fifth_aspect": "4\/3"
+          }
+        },
+        "3d012cf9-155c-4217-869b-b8e29d63fff3": {
+          "type": "images",
+          "settings": {
+            "first_img": "shopify:\/\/shop_images\/Silky-Gold-Cream-1.webp",
+            "block_height": "block-height-5",
+            "first_aspect": "1\/1",
+            "second_img": "shopify:\/\/shop_images\/CellularMoisturizingHandCream-1.webp",
+            "second_aspect": "16\/9",
+            "third_img": "shopify:\/\/shop_images\/celular-rt.webp",
+            "third_aspect": "1\/1",
+            "forth_img": "shopify:\/\/shop_images\/botocare-mask-1.webp",
+            "forth_aspect": "16\/9",
+            "fifth_img": "shopify:\/\/shop_images\/Group87-16.jpg",
+            "fifth_aspect": "1\/1"
           }
         }
       },
       "block_order": [
         "63efca14-a0bd-4515-af53-4c8e6312b661",
-        "ccf1153e-3420-4a1a-9d88-7b5469da5424"
+        "ccf1153e-3420-4a1a-9d88-7b5469da5424",
+        "3d012cf9-155c-4217-869b-b8e29d63fff3"
       ],
       "settings": {
         "gallery_heading": "Gallery Heading",
