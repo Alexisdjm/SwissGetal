@@ -248,10 +248,22 @@
             "fifth_img": "shopify:\/\/shop_images\/anti-oxidant-1.webp",
             "fifth_aspect": "4\/3"
           }
+        },
+        "ccf1153e-3420-4a1a-9d88-7b5469da5424": {
+          "type": "images",
+          "settings": {
+            "block_height": "block-height-4",
+            "first_aspect": "4\/3",
+            "second_aspect": "4\/3",
+            "third_aspect": "4\/3",
+            "forth_aspect": "4\/3",
+            "fifth_aspect": "4\/3"
+          }
         }
       },
       "block_order": [
-        "63efca14-a0bd-4515-af53-4c8e6312b661"
+        "63efca14-a0bd-4515-af53-4c8e6312b661",
+        "ccf1153e-3420-4a1a-9d88-7b5469da5424"
       ],
       "settings": {
         "gallery_heading": "Gallery Heading",
