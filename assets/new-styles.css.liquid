@@ -1468,9 +1468,13 @@ p.answer {
 
 .p-hidden {
   margin: 0;
-  max-height: 0;
+  /* max-height: 0; */
   overflow: hidden;
   transition: max-height 0.3s linear;
+  display: -webkit-box;
+  -webkit-line-clamp: 6; /* Número máximo de líneas que deseas mostrar */
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis; /* Agrega los tres puntos suspensivos */
 }
 
 .grow {
