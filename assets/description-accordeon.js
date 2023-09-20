@@ -8,7 +8,7 @@ accordeon.addEventListener("click", () => {
   if (textoAcordeon.classList.contains('grow')) {
     setTimeout(() => {
       content.classList.remove('grow');
-    }, 0);
+    }, 300);
   }
     label.classList.toggle("toggle-icon");
 })
