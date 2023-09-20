@@ -1469,8 +1469,9 @@ p.answer {
 
 .p-hidden {
   margin: 10px 0;
+  max-width: 3em;
   overflow: hidden;
-   transition: -webkit-line-clamp 0.3s ease-in-out;
+   transition: all 0.3s ease-in-out;
   display: -webkit-box;
   -webkit-line-clamp: 6; /* Número máximo de líneas que deseas mostrar */
   -webkit-box-orient: vertical;
@@ -1478,6 +1479,7 @@ p.answer {
 }
 
 .grow {
+  max-width: 30em;
   margin: 10px 0;
   overflow: hidden;
   display: block;
