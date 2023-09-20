@@ -3,7 +3,12 @@ const content = document.getElementById("content-acc");
 const label = document.getElementById("label-acc");
 
 accordeon.addEventListener("click", () => {
-    console.log('click')
     content.classList.toggle("grow");
+
+  if (textoAcordeon.classList.contains('grow')) {
+    setTimeout(() => {
+      content.classList.remove('grow');
+    }, 0);
+  }
     label.classList.toggle("toggle-icon");
 })
