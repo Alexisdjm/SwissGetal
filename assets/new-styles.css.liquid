@@ -1469,7 +1469,7 @@ p.answer {
 .p-hidden {
   margin: 10px 0;
   overflow: hidden;
-  transition: max-height 0.3s linear;
+   transition: -webkit-line-clamp 0.3s ease-in-out;
   display: -webkit-box;
   -webkit-line-clamp: 6; /* Número máximo de líneas que deseas mostrar */
   -webkit-box-orient: vertical;
@@ -1480,9 +1480,8 @@ p.answer {
   margin: 10px 0;
   overflow: hidden;
   display: block;
-  -webkit-line-clamp: auto;
+  -webkit-line-clamp: unset;
   text-overflow: none;
-  transition: max-height 0.3s linear;
 }
 
 /* ---------------------------------------------- image gallery ------------------------------------------- */
